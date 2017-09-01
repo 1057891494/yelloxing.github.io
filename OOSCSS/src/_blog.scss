@@ -1,0 +1,142 @@
+/***************************************
+*******
+文章样式
+*******
+***************************************/
+
+.paper {
+    background-image: url('../image/paper.png');
+    @include background_reset;
+    width: 200px;
+    height: 250px;
+    background-position: 0px 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
+
+@media (max-width: #{$split_pc_phone}) {
+    .paper {
+        transform: rotate(96deg);
+        right: 31px;
+        top: -40px;
+        left: auto;
+    }
+}
+
+.__blog__ {
+    //1.文章头
+    .header {
+        .title {
+            font-size: 36px;
+            color: #1b1b1a;
+            font-family: cursive;
+        }
+        .time {
+            font-size: 16px;
+            color: #7a7876;
+            font-family: monospace;
+        }
+    }
+    //2.内容块
+    .section {
+        &.block {
+            padding-bottom: 30px;
+        }
+        &.title {
+            color: rgba(240, 26, 11, 0.95);
+            font-size: 20px;
+        }
+    }
+    //3.通用的东西
+    .flag {
+        //开头描述说明
+        text-indent: 2em;
+        line-height: 30px;
+    }
+    .grammer {
+        //语法
+        font-size: 14px;
+        color: #f1f8f7;
+        font-weight: 500;
+        background-color: #858774;
+        padding: 10px;
+    }
+    .error,
+    .warn {
+        @include background_reset;
+        background-position: left center;
+        background-size: 20px auto;
+        padding-left: 30px;
+        line-height: 40px;
+        font-size: 14px;
+        background-position-y: 10px;
+    }
+    .error {
+        background-image: url('../image/blog/error.png');
+        color: #f40e36;
+    }
+    .warn {
+        background-image: url('../image/blog/warn.png');
+        color: #bf8908;
+    }
+    .code {
+        overflow: scroll;
+    }
+    //4.例子专用
+    .example {
+        &.frame:after {
+            @include cleanBoth;
+        }
+        &.block {
+            background-color: #f2f2f2;
+            min-width: 300px;
+            float: left;
+            margin: 20px;
+        }
+        &.key {
+            padding: 16px;
+            font-size: 14px;
+            color: #4b4ee8;
+            .info {
+                color: #977d16;
+            }
+        }
+    }
+    //5.列表简单介绍使用
+    .little {
+        &.key {
+            color: #131414;
+            border-left: 5px solid #0a5fa9;
+            padding-left: 10px;
+            background-color: #dce8f2;
+            line-height: 30px;
+        }
+        &.value {
+            color: #5bb2de;
+            padding-bottom: 6px;
+            line-height: 40px;
+            text-indent: 1em;
+            background-color: rgba(247, 249, 249, 0.69);
+        }
+    }
+    //6.简单列表
+    .item {
+        &.key {
+            background-color: #b1ebeb;
+            padding: 5px;
+            color: #081702;
+        }
+        &.value {
+            background-color: rgba(239, 251, 245, 0.82);
+            padding: 10px;
+            text-indent: 2em;
+            line-height: 26px;
+            color: #161716;
+        }
+        &.block {
+            margin-bottom: 16px;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<article class='__blog__'>
+    <hgroup class='header'>
+        <h1 class='title'>Mac常用文件和命令</h1>
+        <h2 class='time'>2017-07-23&nbsp;&nbsp;星期日&nbsp;&nbsp;南京&nbsp;晴</h2>
+    </hgroup>
+    <p class='flag'>
+        这里是关于一些比较简单但经常使用到的Mac电脑下会去修改的配置文件和命令，对于比较复杂的命令，在这里就不赘述了，会单独进行比较详细的说明。
+    </p>
+    <section class='section block'>
+        <h1 class='section title'>常用文件</h1>
+        <ul>
+            <li class='item block'>
+                <div class='item key'>修改Host配置</div>
+                <div class='item value'>
+                    Mac用来记录Host的配置文件位于/private/etc下，直接vi&vim打开hosts文件编辑即可（可能需要root权限打开才可以保存）。
+                </div>
+            </li>
+            <li class='item block'>
+                <div class='item key'>修改配置的环境变量</div>
+                <div class='item value'>
+                    Mac是按照不同权限来设置环境变量的，【/etc/profile】、【/etc/bashrc】和【~/.bash_profile】，第一个不建议修改，不管是哪个用户，登录时都会读取该文件，一般在第二个文件中修改系统级环境变量，最后一个是我们经常修改的，在这个文件中添加用户级环境变量。
+                </div>
+            </li>
+        </ul>
+    </section>
+</article>

@@ -1,0 +1,85 @@
+/***************************************
+*******  
+首页菜单样式
+*******
+***************************************/
+
+//pc样式和通用样式
+.sprout {
+    width: $content_width_pc;
+    @include margin_auto;
+    font-family: "sans-serif inherit";
+    margin-top: 20px;
+    overflow-x: hidden;
+}
+
+@media (max-width: #{$split_pc_phone}) {
+    //手机模式样式
+    .sprout {
+        width: $content_width_phone;
+    }
+}
+
+//上面的是比较公共的部分，下面是菜单独有的
+//手机样式和通用样式
+.menu {
+    &.title {
+        border-left: 3px solid red;
+        font-size: 18px;
+        color: blueviolet;
+        padding-left: 7px;
+        line-height: 20px;
+    }
+    &.block {
+        background-color: rgba(221, 234, 246, 0.89);
+        margin-top: 15px;
+        margin-bottom: 25px;
+        color: #3c403e;
+    }
+    &.item {
+        padding: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    &.item:not(:last-child) {
+        border-bottom: 1px solid rgba(222, 222, 230, 0.78);
+    }
+}
+
+@media (min-width: #{$split_pc_phone + 1px}) {
+    //pc模式样式
+    .menu {
+        &.title {
+            color: rgba(22, 22, 22, 0.88);
+        }
+        &.block {
+            color: #657fdf;
+            background-color: rgba(0, 0, 0, 0);
+        }
+        &.item:not(:last-child) {
+            border-bottom-width: 0px;
+        }
+        &.item {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            @include background_reset;
+            background-position-x: 0px;
+            padding: 0px;
+        }
+    }
+    .item {
+        &.name {
+            width: 200px;
+            line-height: 48px;
+            color: rgba(245, 245, 247, .94);
+            background-color: rgba(52, 213, 179, 0.9);
+            padding-left: 10px;
+            margin-top: 152px;
+        }
+    }
+    .menu.item {
+        background-image: url('../image/item.jpg');
+    }
+}

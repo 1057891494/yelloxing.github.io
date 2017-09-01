@@ -1,0 +1,22 @@
+/***************************************
+*******  
+variables（基础的公共参数配置）
+*******
+***************************************/
+
+//首页导航个数
+$home_nav_num:6;
+//工具菜单个数
+$home_tool_num:4;
+//内容宽
+$content_width_pc:calc(100% - 200px);
+$content_width_phone:calc(100% - 40px);
+//选择使用手机还是pc显示样式的分界屏幕宽
+$split_pc_phone:700px;
+//下面方便是数据，显示，控制，高效，工具，其它的种类个数
+$data_item_num:1;
+$display_item_num:1;
+$control_item_num:1;
+$efficient_item_num:1;
+$tooler_item_num:1;
+$other_item_num:2;

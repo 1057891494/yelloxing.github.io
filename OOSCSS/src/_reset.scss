@@ -1,0 +1,33 @@
+/***************************************
+*******  
+reset（重置浏览器的默认样式设置为项目需要的）
+*******
+***************************************/
+
+body {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-size: 16px;
+    font-family: cursive;
+    position: relative;
+}
+
+
+div,
+span,
+p,
+nav,
+article,
+section,
+ul,
+ol {
+    box-sizing: border-box;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}

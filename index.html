@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Sprout 新芽</title>
+    <link rel="icon" href="favicon.ico" />
+    <!-- 使用chrome渲染，没有chrome使用最高版本的IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- 屏幕逻辑宽度与等于设备宽度，初始缩放比例为1,用户不可以缩放比例,最大放大比例，最小缩放比例-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <!-- 数字不当做电话拨出去 禁止邮件自动跳转-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <!-- seo字段 -->
+    <meta name="Keywords" content="Sprout 新芽" />
+    <meta name="description" content="Sprout 新芽" />
+    <meta name="author" content="心叶" />
+    <!-- 苹果设备 -->
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <!-- 样式文件 -->
+    <link rel="stylesheet" type="text/css" href="build/bundle.min.css" />
+</head>
+
+<body>
+    <img onclick='closePage()' class='close_page' src='../image/sprout.png' id='close_page'/>
+    <div class='paper' id='paper'></div>
+    <div class='phone_tool' id='phone_tool'>
+        <input type='text' value='Sprout 新芽' class='line' readonly/>
+        <div class='three_line' onclick='toggleTool()'>
+            <!--打开帮助工具-->
+        </div>
+    </div>
+    <nav id="sprout_nav" class='nav'>
+        <!--菜单-->
+    </nav>
+    <div id="sprout" class='sprout'>
+        <!--内容-->
+    </div>
+    <footer class='footer'>
+        <!--快速工具和脚注-->
+        <ul class='tool' id='tool'>
+            <li onclick='window.location.href="./aboutUs.html"'>关于我们</li>
+            <li onclick='window.location.href="./copyright.html"'>免责声明</li>
+            <li onclick='window.location.href="./suppose.html"'>提供帮助</li>
+            <li  onclick='cleanBlog()'>
+                <span class='clean home'>清除缓存</span>
+            </li>
+            <div class='github' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </ul>
+        <div class='copyright'>不过一席沉思 &copy;2007-2017 Sprout 新芽 心叶维护 yelloxing@gmail.com </div>
+    </footer>
+    <script type='text/javascript' src='build/bundle.min.js'></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!--
+    =================================================
+    走一步，再走一步。
+    =================================================
+-->

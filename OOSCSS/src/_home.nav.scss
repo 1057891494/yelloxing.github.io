@@ -1,0 +1,50 @@
+/***************************************
+*******  
+首页导航条样式
+*******
+***************************************/
+
+//pc样式和通用样式
+.nav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    background-color: rgba(203, 211, 219, 0.39);
+}
+
+.nav li {
+    width: 70px;
+    height: 20px;
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+    box-sizing: content-box;
+    padding-top: 50px;
+    background-image: url('../image/icons.smile.png');
+    @include background_reset;
+    cursor: pointer;
+}
+
+@for $i from 0 to $home_nav_num {
+    .nav li:nth-child(#{$i + 1}) {
+        background-position-y: (0 - $i)*70px - 20px;
+    }
+}
+
+@media (max-width: #{$split_pc_phone}) {
+    //手机模式样式
+    .nav {
+        position: relative;
+        width: $content_width_phone;
+        @include margin_auto;
+        padding-left: 5%;
+        padding-bottom: 15px;
+    }
+    .nav li {
+        float: left;
+        width: 30%;
+    }
+    .nav:after {
+        @include cleanBoth;
+    }
+}

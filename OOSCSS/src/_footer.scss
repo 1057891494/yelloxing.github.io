@@ -1,0 +1,25 @@
+/***************************************
+*******  
+脚注样式
+*******
+***************************************/
+
+//pc样式和通用样式
+.footer{
+    position: fixed;
+    bottom: 0px;
+    width:100%;
+    text-align: center;
+    line-height: 20px;
+}
+.copyright{
+    font-size: 12px;
+    color: #6a7677;
+}
+
+@media (max-width: #{$split_pc_phone}) {
+    //手机模式样式
+   .copyright{
+       display: none;
+   }
+}

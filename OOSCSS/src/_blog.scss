@@ -139,4 +139,50 @@
             margin-bottom: 16px;
         }
     }
+    //7.命令行代码
+    .terminal {
+        &.frame {
+            border-width: 1px;
+            border-left-width: 7px;
+            border-style: solid;
+            border-color: #969b93;
+            padding: 10px 0px 10px 0px;
+            background-color: #d9e1e1;
+        }
+        &.bash {
+            padding-left: 20px;
+            line-height: 32px;
+            font-size: 14px;
+            font-family: monospace;
+            color: rgba(49, 188, 27, 0.86);
+            &::before {
+                color: #0e0012;
+                content: "terminal:~ yelloxing$ "
+            }
+            &:nth-of-type(odd) {
+                background-color: #ecf2f2;
+            }
+        }
+        &.info{
+            &::before {
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                border-radius: 50%;
+                background-color: #000306;
+                content: " "
+            }
+            text-indent: 2em;
+            padding: 10px 0px 10px 0px;
+            line-height: 30px;
+        }
+    }
+    //8.二级导航
+    .small{
+        &.title{
+            font-size: 18px;
+            border-top: 2px solid #f7f7e6;
+            padding-top: 3px;
+        }
+    }
 }

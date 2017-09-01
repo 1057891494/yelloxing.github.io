@@ -3,4 +3,46 @@
         <h1 class='title'>Git使用</h1>
         <h2 class='time'>2017-08-31&nbsp;&nbsp;星期四&nbsp;&nbsp;南京&nbsp;雨</h2>
     </hgroup>
+    <p class='flag'>
+        这里介绍的是Git的命令行使用和一些重要的理论知识，不会设计服务器方面的学习，并且这是一个循序渐进的笔记，在使用中不断提取重要的命令加以记录。
+    </p>
+    <section class='section block'>
+        <h1 class='section title'>工作原理</h1>
+        <p class='section flag'>
+
+        </p>
+    </section>
+    <section class='section block'>
+        <h1 class='section title'>常用文件</h1>
+
+    </section>
+    <section class='section block'>
+        <h1 class='section title'>常用命令</h1>
+        <ul>
+            <li>
+                <h2 class='small title'>git config</h2>
+                <p class='small flag'>
+                    关于git的一些配置的设置和查看都可以很方便的通过这个命令。
+                </p>
+                <ul>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git config [--global] user.name [username]
+                            </div>
+                            <div class='terminal bash'>
+                                git config [--global] user.email [email]
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            常用的其实就是上面的命令，分别表示用户名和邮箱，其中--global带和不带的区别在于操作文件是.git/config还是~/.gitconfig，如果你使用的是--system则对应的就是/etc/gitconfig文件。
+                        </div>
+                        <div class='terminal info'>
+                            对于是否在最后带username或email，区别在于你是设置还是查看。
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
 </article>

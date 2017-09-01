@@ -501,4 +501,37 @@ body的特殊样式
   color: #161716; }
 .__blog__ .item.block {
   margin-bottom: 16px; }
+.__blog__ .terminal.frame {
+  border-width: 1px;
+  border-left-width: 7px;
+  border-style: solid;
+  border-color: #969b93;
+  padding: 10px 0px 10px 0px;
+  background-color: #d9e1e1; }
+.__blog__ .terminal.bash {
+  padding-left: 20px;
+  line-height: 32px;
+  font-size: 14px;
+  font-family: monospace;
+  color: rgba(49, 188, 27, 0.86); }
+  .__blog__ .terminal.bash::before {
+    color: #0e0012;
+    content: "terminal:~ yelloxing$ "; }
+  .__blog__ .terminal.bash:nth-of-type(odd) {
+    background-color: #ecf2f2; }
+.__blog__ .terminal.info {
+  text-indent: 2em;
+  padding: 10px 0px 10px 0px;
+  line-height: 30px; }
+  .__blog__ .terminal.info::before {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: #000306;
+    content: " "; }
+.__blog__ .small.title {
+  font-size: 18px;
+  border-top: 2px solid #f7f7e6;
+  padding-top: 3px; }
 /*# sourceMappingURL=../OOSCSS/ooscss.standard.css.map */

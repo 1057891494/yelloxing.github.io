@@ -43,6 +43,9 @@ class DoRouter {
                     [{
                         name: "Mac常用文件和命令",
                         menu: "src/tool/mac-normal.html"
+                    },{
+                        name: "Git使用",
+                        menu: "src/tool/git.html"
                     }]
                 ]
             }, {

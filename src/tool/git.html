@@ -42,6 +42,98 @@
                         </div>
                     </li>
                 </ul>
+                <h2 class='small title'>基本命令</h2>
+                <p class='small flag'>
+                    下面先介绍几个比较简单但使用频率很高或有用的命令。
+                </p>
+                <ul>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git [--bare] init [--shared]
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            使用该命令会在目录中创建新的Git仓库，本地化的。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git status
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            执行该命令可以知道仓库目前的状态，是否是最新代码，有没有修改等。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git clone uri [dir]
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            把uri指定的仓库代码克隆到本地来，如果加了可选参数dir，表示克隆到改文件夹下。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git add filename|-A
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            添加文件到缓冲区，你可以指定添加的文件filename，也可以使用-A把文件夹下全部文件添加到缓冲区。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git commit [-m remark]
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            提交代码到本地仓库，-m后面的remark表示对这次提交的描述。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git push storehouseName branchName
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            提交代码到远程服务器，storehouseName是对应的仓库名称，branchName是分支名称
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git pull storehouseName branchName
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            从远程服务器拉取代码更新，storehouseName是对应的仓库名称，branchName是分支名称
+                        </div>
+                    </li>
+                </ul>
+                <h2 class='small title'>分支</h2>
+                <p class='small flag'>
+
+                </p>
+                <ul>
+                    <li>
+                    </li>
+                </ul>
+                <h2 class='small title'>日志和回滚</h2>
+                <p class='small flag'>
+
+                </p>
+                <ul>
+                    <li>
+                    </li>
+                </ul>
             </li>
         </ul>
     </section>

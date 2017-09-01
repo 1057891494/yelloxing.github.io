@@ -525,11 +525,12 @@ body的特殊样式
   line-height: 30px; }
   .__blog__ .terminal.info::before {
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background-color: #000306;
-    content: " "; }
+    content: " ";
+    margin-bottom: 3px; }
 .__blog__ .small.title {
   font-size: 18px;
   border-top: 2px solid #f7f7e6;

@@ -117,21 +117,216 @@
                             从远程服务器拉取代码更新，storehouseName是对应的仓库名称，branchName是分支名称
                         </div>
                     </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git remote add storehouseName uri
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            添加连接的远程仓库，其中storehouseName是给仓库起的名称，uri是仓库地址
+                        </div>
+                    </li>
                 </ul>
                 <h2 class='small title'>分支</h2>
                 <p class='small flag'>
-
+                    分支的建立可以帮助多人合作开发变得更加方便，比如在结束一个功能之后才合并到主分支上。
                 </p>
                 <ul>
                     <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git branch branchname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            创建一个名称叫branchname的分支，此分支初始化拥有的是你创建此分支时活跃分支。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git branch
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            查看分支状态。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git checkout branchname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            切换当前活跃分支为branchname。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git merge branchname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            合并分支，合并到哪个分支由过会执行提交到的分支决定。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git branch -d branchname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            删除本地指定分支branchname。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git push --delete branchname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            删除远程指定分支branchname。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git branch -m oldBranchname newBranchname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            修改本地分支oldBranchname的名称为newBranchname。
+                        </div>
                     </li>
                 </ul>
-                <h2 class='small title'>日志和回滚</h2>
+                <h2 class='small title'>日志</h2>
                 <p class='small flag'>
-
+                    日志命令的参数非常丰富，这里只是介绍常用的，不会全部列出。
                 </p>
                 <ul>
                     <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git log [-num|fileName|branchName|commit|]
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            查看日志，后面的那些可选参数是对日志过滤以后再显示，-num举个例子：-2表示查看最近2次的提交历史记录，后面的fileName和branchName方便表示查看特定文件和分支的日志，commit代表查看提交日志。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git show hashname|tagname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            查看一次具体提交的具体信息，其中hashname是hash值，开头可以唯一标志 就可以了，tagname是标签名称。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git diff commitFromHashname..commitToHashname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            查看二次提交对比修改了什么，可以看见他们之间的全部更改。
+                        </div>
+                    </li>
+                </ul>
+                <h2 class='small title'>标签</h2>
+                <p class='small flag'>
+                    可以用标签的方式来在一个版本的时候标记一下。
+                </p>
+                <ul>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git tag -a tagname -m tagremark
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            打一个名称为tagname并添加该标签的注释为tagremark的标签。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git tag
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            查看已经打的标签。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git tag -d tagname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            删除标签tagname。
+                        </div>
+                    </li>
+                </ul>
+                <h2 class='small title'>回退</h2>
+                <ul>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git checkout hashname filename
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            将特定的filename文件回滚到hashname提交。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git commit —amend
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            如果发现最新的一次提交完了加某个文件,它会把最新的提交打回暂存区，并尝试重新提交。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git revert HEAD|hashname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            回滚提交，其中HEAD是最新的一次提交别名。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git reset -- filename
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            把add添加的文件filename从缓冲区删除。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git fetch storehouseName [branchName]
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            查看远程仓库，你可以选择是否指定分支，干了什么，不会对本地产生影响。
+                        </div>
                     </li>
                 </ul>
             </li>

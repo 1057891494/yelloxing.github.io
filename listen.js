@@ -47,3 +47,9 @@ chokidar.watch('sprout.router.js').on('change', function() {
     shelljs.exec("npm run webpack_compiler");
     console.log("[" + new Date() + "] >>> 路由编译结束\n");
 });
+
+chokidar.watch('index.js').on('change', function() {
+    console.log("[" + new Date() + "] >>> 监听到启动脚步修改\n");
+    shelljs.exec("npm run webpack_compiler");
+    console.log("[" + new Date() + "] >>> 启动脚步编译结束\n");
+});

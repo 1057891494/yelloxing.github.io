@@ -167,7 +167,9 @@ if (url) {
         indexClass.storage.setValueWithKey(url.replace(/[/.]/g, '_split_'), data);
     });
 } else {
-    sprout.innerHTML = indexClass.getHtmlByName(indexClass.names[0]);
+    indexClass.ajax.doRemote("src/github.html", function (data) {
+        sprout.innerHTML = data;
+    });
 }
 
 if (window.addEventListener) {

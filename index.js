@@ -21,7 +21,7 @@ class IndexClass {
     }
 
     getHtmlByName(name) {
-        return this.navTemplate.getTemplateByName(name, this.router.getMenuByName(name),this.router.getEnglishNameByName(name));
+        return this.navTemplate.getTemplateByName(name, this.router.getMenuByName(name), this.router.getEnglishNameByName(name));
     }
 
     getNavHtml() {
@@ -48,7 +48,7 @@ sprout_nav.innerHTML = indexClass.getNavHtml();
 window.openPage = function(url) {
     window.isBrowerLoad = true;
     window.location.href = window.location.href.split("/#")[0] + "#/" + url;
-    var data = indexClass.storage.getValueByKey(url.replace(/[/.]/g,'_split_'));
+    var data = indexClass.storage.getValueByKey(url.replace(/[/.]/g, '_split_'));
     if (data) {
         sprout.innerHTML = data;
         sprout_nav.style.display = "none";
@@ -58,17 +58,17 @@ window.openPage = function(url) {
             sprout.innerHTML = data;
             sprout_nav.style.display = "none";
             sprout_phone_tool.style.display = "none";
-            indexClass.storage.setValueWithKey(url.replace(/[/.]/g,'_split_'), data);
+            indexClass.storage.setValueWithKey(url.replace(/[/.]/g, '_split_'), data);
         });
     }
-    tool.style.display='none';
-    sprout.style.height='auto';
-    close_page.style.display='block';
-    paper.style.display='block';
+    tool.style.display = 'none';
+    sprout.style.height = 'auto';
+    close_page.style.display = 'block';
+    paper.style.display = 'block';
 };
-window.cleanBlog=function(){
+window.cleanBlog = function() {
     indexClass.storage.deleteAll();
-    window.location.href=window.location.href.split("/#")[0];
+    window.location.href = window.location.href.split("/#")[0];
 };
 window.closePage = function() {
     window.location.href = window.location.href.split("/#")[0];
@@ -79,17 +79,19 @@ window.navCursor = function(name) {
 
 var url = window.location.href.split("/#/")[1];
 if (url) {
-    tool.style.display='none';
+    tool.style.display = 'none';
     indexClass.ajax.doRemote(url, function(data) {
         sprout.innerHTML = data;
         sprout_nav.style.display = "none";
         sprout_phone_tool.style.display = "none";
-        close_page.style.display='block';
-        paper.style.display='block';
-        indexClass.storage.setValueWithKey(url.replace(/[/.]/g,'_split_'), data);
+        close_page.style.display = 'block';
+        paper.style.display = 'block';
+        indexClass.storage.setValueWithKey(url.replace(/[/.]/g, '_split_'), data);
     });
 } else {
-    sprout.innerHTML = indexClass.getHtmlByName(indexClass.names[0]);
+    indexClass.ajax.doRemote("src/github.html", function(data) {
+        sprout.innerHTML = data;
+    });
 }
 
 if (window.addEventListener) {
@@ -122,4 +124,4 @@ window.toggleTool = function() {
         sprout.style.height = 'calc(100vh - 246px)';
         sprout.style.overflow = "hidden";
     }
-}; 
+};

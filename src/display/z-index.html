@@ -55,7 +55,7 @@
     <section class='section block'>
         <h1 class='section title'>CSS3下层叠上下文的产生</h1>
         <p class='section flag'>
-            css3添加了非常多新的东西，其中有很多涉及了这里说的话题，下面就分别一一接受几个比较常用的属性：
+            css3添加了非常多新的东西，其中有很多涉及了这里说的话题，下面就分别一一介绍几个比较常用的属性：
         </p>
         <h3 class='grammer'>一个被设置了display:flex的元素包含的元素对其设置z-index为数值时其会产生层叠上下文</h3>
         <div class='example frame'>
@@ -245,7 +245,7 @@
     .__blog__ .example.block {
         background-color: rgba(0, 0, 0, 0.00);
     }
-    
+
     .min_width {
         margin-left: -34px;
         width: 282px;
@@ -253,7 +253,7 @@
     .info{
         margin-left: -34px;
     }
-    
+
     .stacking_order {
         width: 504px;
         height: 342px;
@@ -261,111 +261,111 @@
         margin-right: auto;
         display: block;
     }
-    
+
     @media (max-width: 504px) {
         .stacking_order {
             width: 100%;
             height: auto;
         }
     }
-    
+
     ._box_ {
         width: 100px;
         height: 323px;
     }
-    
+
     ._box_ img {
         margin-left: 50px;
         z-index: -1;
         position: relative;
     }
-    
+
     ._bg_1_ {
         background-color: #62c1d4;
     }
-    
+
     ._bg_2_ {
         background-color: #4cf36d;
     }
-    
+
     ._bg_3_ {
         background-color: #e745ce;
     }
     /*
 ---------------------1
 */
-    
+
     ._1_one,
     ._1_two {
         background-color: #906838;
         z-index: 1;
     }
-    
+
     .dispaly-flex {
         display: flex;
     }
     /*
 ---------------------2
 */
-    
+
     ._2_one,
     ._2_two {
         background-color: #906838;
         z-index: 1;
     }
-    
+
     ._2_two {
         opacity: 0.5;
     }
     /*
 ---------------------3
 */
-    
+
     ._3_one,
     ._3_two {
         background-color: #906838;
         z-index: 1;
     }
-    
+
     ._3_two {
         transform: rotate(45deg);
     }
     /*
 ---------------------4
 */
-    
+
     ._4_one,
     ._4_two {
         background-color: #906838;
         z-index: 1;
     }
-    
+
     ._4_two {
         mix-blend-mode: darken;
     }
     /*
 ---------------------5
 */
-    
+
     ._5_one,
     ._5_two {
         background-color: #906838;
         z-index: 1;
     }
-    
+
     ._5_two {
         filter: blur(5px);
     }
     /*
 ---------------------6
 */
-    
+
     ._6_one,
     ._6_two {
         background-color: #906838;
         z-index: 1;
     }
-    
+
     ._6_two {
         will-change: transform;
     }

@@ -1,5 +1,5 @@
 /***************************************
-*******  
+*******
 reset（重置浏览器的默认样式设置为项目需要的）
 *******
 ***************************************/
@@ -13,14 +13,22 @@ body {
     position: relative;
 }
 
-
 div,
 span,
 p,
 nav,
 article,
 section,
+footer,
+label,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 ul,
+li,
 ol {
     box-sizing: border-box;
 }
@@ -30,4 +38,7 @@ ol {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
 }

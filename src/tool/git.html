@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div class='terminal info'>
-                            提交代码到远程服务器，storehouseName是对应的仓库名称，branchName是分支名称
+                            提交代码到远程服务器，storehouseName是对应的仓库名称，branchName是分支名称。
                         </div>
                     </li>
                     <li>
@@ -116,7 +116,7 @@
                             </div>
                         </div>
                         <div class='terminal info'>
-                            从远程服务器拉取代码更新，storehouseName是对应的仓库名称，branchName是分支名称
+                            从远程服务器拉取代码更新，storehouseName是对应的仓库名称，branchName是分支名称。
                         </div>
                     </li>
                     <li>
@@ -126,7 +126,27 @@
                             </div>
                         </div>
                         <div class='terminal info'>
-                            添加连接的远程仓库，其中storehouseName是给仓库起的名称，uri是仓库地址
+                            添加连接的远程仓库，其中storehouseName是给仓库起的名称，uri是仓库地址。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git remote rm storehouseName
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            删除连接的远程仓库，其中storehouseName是给仓库起的名称。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git remote rename oldStorehouseName newStorehouseName
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            修改远程主机oldStorehouseName名称为newStorehouseName。
                         </div>
                     </li>
                 </ul>
@@ -152,7 +172,7 @@
                             </div>
                         </div>
                         <div class='terminal info'>
-                            查看分支状态。
+                            查看分支状态，如果使用-r（即：git branch -r）表示查看远程分支状态，-a选项查看所有分支。
                         </div>
                     </li>
                     <li>
@@ -172,7 +192,7 @@
                             </div>
                         </div>
                         <div class='terminal info'>
-                            合并分支，合并到哪个分支由过会执行提交到的分支决定。
+                            合并分支到当前活跃分支。
                         </div>
                     </li>
                     <li>
@@ -206,9 +226,9 @@
                         </div>
                     </li>
                 </ul>
-                <h2 class='small title'>日志</h2>
+                <h2 class='small title'>查看</h2>
                 <p class='small flag'>
-                    日志命令的参数非常丰富，这里只是介绍常用的，不会全部列出。
+                    查看相关的命令非常丰富，这里只是介绍常用的，不会全部列出。
                 </p>
                 <ul>
                     <li>
@@ -239,6 +259,46 @@
                         </div>
                         <div class='terminal info'>
                             查看二次提交对比修改了什么，可以看见他们之间的全部更改。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git fetch storehouseName [branchName]
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            查看远程仓库，你可以选择是否指定分支，干了什么，不会对本地产生影响。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git reflog
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            显示整个本地仓储的commit，包括所有branch的commit，甚至包括已经撤销的commit，只要HEAD发生了变化，就会在reflog里面看得到，git log只包括当前分支的commit。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git remote
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            列出所有远程主机，使用-v选项（即：git remote -v），可以参看远程主机的网址。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git remote show storehouseName
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            列出指定主机storehouseName的详细信息。
                         </div>
                     </li>
                 </ul>
@@ -323,11 +383,11 @@
                     <li>
                         <div class='terminal frame'>
                             <div class='terminal bash'>
-                                git fetch storehouseName [branchName]
+                                git reset --hard hashname
                             </div>
                         </div>
                         <div class='terminal info'>
-                            查看远程仓库，你可以选择是否指定分支，干了什么，不会对本地产生影响。
+                            恢复到hashname指定的提交时。
                         </div>
                     </li>
                 </ul>

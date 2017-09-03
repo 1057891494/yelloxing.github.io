@@ -24,8 +24,8 @@ body {
   padding: 0px;
   border: 0px;
   font-size: 16px;
-  font-family: cursive;
-  position: relative; }
+  position: relative;
+  font-family: monospace; }
 
 div,
 span,
@@ -273,7 +273,7 @@ ol {
   width: calc(100% - 200px);
   margin-left: auto;
   margin-right: auto;
-  font-family: "sans-serif inherit";
+  font-family: "monospace";
   margin-top: 20px;
   overflow-x: hidden; }
 
@@ -427,7 +427,7 @@ body的特殊样式
 .__blog__ .header .title {
   font-size: 36px;
   color: #1b1b1a;
-  font-family: cursive; }
+  font-family: "monospace"; }
 .__blog__ .header .time {
   font-size: 16px;
   color: #7a7876;

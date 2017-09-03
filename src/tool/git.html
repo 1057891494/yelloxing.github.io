@@ -353,6 +353,16 @@
                     <li>
                         <div class='terminal frame'>
                             <div class='terminal bash'>
+                                git checkout .
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            用暂存区的所有文件直接覆盖本地文件，不给用户任何确认的机会，可以理解放弃本地修改。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
                                 git commit —amend
                             </div>
                         </div>
@@ -387,7 +397,73 @@
                             </div>
                         </div>
                         <div class='terminal info'>
-                            恢复到hashname指定的提交时。
+                            恢复到hashname指定的提交时，不保留修改。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git reset --soft hashname
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            恢复到hashname指定的提交时，保留修改。
+                        </div>
+                    </li>
+                </ul>
+                <h2 class='small title'>暂存</h2>
+                <p class='small flag'>
+                    可以用git stash的方式来暂存当前正在进行的工作并在需要的时候恢复。
+                </p>
+                <ul>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git stash
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            暂存当前正在进行的工作，比如想pull最新代码，又不想加新commit，或者另外一种情况，为了fix一个紧急的bug，先stash，使返回到自己上一个commit,改完bug之后再stash pop，继续原来的工作。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git stash pop
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            取出最后暂存的，并从暂存栈移除。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git stash list
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            将当前的暂存栈信息打印出来。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git stash clear
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            将暂存栈清空。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                git stash apply stash@{num}
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            将你指定版本号为stash@{num}的工作取出来。
                         </div>
                     </li>
                 </ul>

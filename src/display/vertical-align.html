@@ -50,10 +50,16 @@
     <section class='section block'>
         <h1 class='section title'>vertical-align基本概念和小注意点</h1>
         <p class='section flag'>
-            垂直对齐方式是用来设置垂直对齐方式，所有垂直对齐的元素都会影响行高，是一个inline-block或inline依赖型元素，修改的是自己的什么线垂直对齐父元素的什么线，比如默认自己的基线对齐父元素的基线；如果取值百分百，计算是相对行高计算的。
+            垂直对齐方式是用来设置垂直对齐方式，所有垂直对齐的元素都会影响行高，修改的是自己的什么线垂直对齐父元素的什么线，比如默认自己的基线对齐父元素的基线；如果取值百分百，计算是相对行高计算的。
         </p>
         <div class='terminal info'>
+            其是一个inline-block、table-cell（比如td元素）或inline依赖型元素。
+        </div>
+        <div class='terminal info'>
             inline-block的基线是正常流中最后一个line box的基线，除非，这个line box里面既没有line boxes或者本身overflow属性的计算值而不是visible，这种情况下基线是margin底边缘。
+        </div>
+        <div class='terminal info'>
+            如果设置为数值，百分百或em等单位，表示的是在默认基础上偏移的对齐。
         </div>
     </section>
 </article>

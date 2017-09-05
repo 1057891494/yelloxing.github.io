@@ -22,6 +22,12 @@ class DoRouter {
                     }, {
                         name: "垂直对齐相关",
                         menu: "src/display/vertical-align.html"
+                    }, {
+                        name: "盒子三大属性",
+                        menu: "src/display/paddingBorderMargin.html"
+                    }, {
+                        name: "三大传统定位",
+                        menu: "src/display/absoluteRelativeFloat.html"
                     }]
                 ]
             }, {
@@ -46,7 +52,7 @@ class DoRouter {
                     [{
                         name: "Mac常用文件和命令",
                         menu: "src/tool/mac-normal.html"
-                    },{
+                    }, {
                         name: "Git使用",
                         menu: "src/tool/git.html"
                     }]

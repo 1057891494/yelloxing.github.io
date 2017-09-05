@@ -1,0 +1,59 @@
+<article class='__blog__'>
+    <hgroup class='header'>
+        <h1 class='title'>垂直对齐相关</h1>
+        <h2 class='time'>2017-09-05&nbsp;&nbsp;星期二&nbsp;&nbsp;南京&nbsp;晴</h2>
+    </hgroup>
+    <p class='flag'>
+        垂直对齐方式vertical-align是一个非常非常复杂的属性，这里只是整理了一些比较有用的知识，实在不敢说理解，后期会循序渐进的增加和修改；其次，由于一些属性和它有着千丝万缕的联系，因此也会提前介绍一下。
+    </p>
+    <section class='section block'>
+        <h1 class='section title'>行内盒子模型</h1>
+        <p class='section flag'>
+            这里介绍的盒子模型只是蜻蜓点水，比较具体的会在单独的地方更加系统的学习后整理，因为真的太难的，一口气学不会，慢慢来吧！
+        </p>
+        <div class='terminal info'>
+            内容区域（content area）：一种围绕着文字看不见的盒子，大小和font-size有关。
+        </div>
+        <div class='terminal info'>
+            内联盒子（inline boxes）：不好表达，举例子解释一下，被inline水平标签（em、a和span等）包含的称为"内联盒子"，如果是光秃秃的文字就称为"匿名内联盒子"。
+        </div>
+        <div class='terminal info'>
+            行框盒子（line boxes）：一行就是一个行框盒子，里面由一个个内联盒子组成，应该不是太难理解。
+        </div>
+        <div class='terminal info'>
+            包含盒子（containing box）：由一行行的行框盒子组成，比如"&lt;p&gt;单纯的文字&lt;em&gt;被inline水平标签包含的文字&lt;/em&gt;&lt;/p&gt;"
+        </div>
+    </section>
+    <section class='section block'>
+        <h1 class='section title'>line-height 行高</h1>
+        <p class='section flag'>
+            行高定义的是二行文字基线（baseline）的距离（不一定准确，更严格说应该是行框盒子的实际高度，不是高度），内容区域（content area）高度+行间距(vertical spacing)=行高，行高由于继承，无处不在，包括单行文本也不例外；其次，高度的表现不是行高而是内容区域高度+行间距，而且内容区域高度只与字号和字体有关，和行高没有任何关系。
+        </p>
+        <p class='section flag'>
+            简单的说就是：行高决定了内联盒子高度，行间距可大可小、可正可负，始终保证行高等于高。
+        </p>
+        <ul>
+            <li>
+                <h2 class='small title'>行高几点细节</h2>
+                <div class='terminal info'>
+                    内容区域高度不一定是font-size，还取决于字体，不同字体不一样，在simsum下二者是一样的。
+                </div>
+                <div class='terminal info'>
+                    line-height取值数字时所有可继承根据font-size重新计算，而取百分百和em时，当前元素根据font-size计算之后把计算的结果继承给下面元素，区别有点大。
+                </div>
+                <div class='terminal info'>
+                    替换元素比较特别，一般有内在尺寸和宽高比，不可以简单的去理解，遇到要小心，后期关于元素会专门去讨论。
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class='section block'>
+        <h1 class='section title'>vertical-align基本概念和小注意点</h1>
+        <p class='section flag'>
+            垂直对齐方式是用来设置垂直对齐方式，所有垂直对齐的元素都会影响行高，是一个inline-block或inline依赖型元素，修改的是自己的什么线垂直对齐父元素的什么线，比如默认自己的基线对齐父元素的基线；如果取值百分百，计算是相对行高计算的。
+        </p>
+        <div class='terminal info'>
+            inline-block的基线是正常流中最后一个line box的基线，除非，这个line box里面既没有line boxes或者本身overflow属性的计算值而不是visible，这种情况下基线是margin底边缘。
+        </div>
+    </section>
+</article>

@@ -286,6 +286,9 @@ var DoRouter = function () {
                 }, {
                     name: "z-index技术周边",
                     menu: "src/display/z-index.html"
+                }, {
+                    name: "垂直对齐方式",
+                    menu: "src/display/vertical-align.html"
                 }]]
             }, {
                 //控制

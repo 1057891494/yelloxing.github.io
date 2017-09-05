@@ -53,3 +53,9 @@ chokidar.watch('index.js').on('change', function() {
     shelljs.exec("npm run webpack_compiler");
     console.log("[" + new Date() + "] >>> 启动脚步编译结束\n");
 });
+
+chokidar.watch('build/bundle.js').on('change', function() {
+    console.log("[" + new Date() + "] >>> 监听到脚步编译结束，启动脚步压缩\n");
+    shelljs.exec("npm run grunt_compress_compiler");
+    console.log("[" + new Date() + "] >>> 启动脚步压缩结束\n");
+});

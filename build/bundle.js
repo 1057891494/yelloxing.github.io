@@ -290,11 +290,8 @@ var DoRouter = function () {
                     name: "垂直对齐相关",
                     menu: "src/display/vertical-align.html"
                 }, {
-                    name: "盒子三大属性",
-                    menu: "src/display/paddingBorderMargin.html"
-                }, {
-                    name: "三大传统定位",
-                    menu: "src/display/absoluteRelativeFloat.html"
+                    name: "margin 外边距",
+                    menu: "src/display/margin.html"
                 }]]
             }, {
                 //控制

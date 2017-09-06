@@ -4,7 +4,7 @@
         <h2 class='time'>2017-07-23&nbsp;&nbsp;星期日&nbsp;&nbsp;南京&nbsp;晴</h2>
     </hgroup>
     <p class='flag'>
-        这里是关于一些比较简单但经常使用到的Mac电脑下会去修改的配置文件和命令，对于比较复杂的命令，在这里就不赘述了，会单独进行比较详细的说明。
+        这里是关于一些比较简单但经常使用到的Mac电脑下会去修改的配置文件和命令，对于比较复杂的命令，在这里就不赘述了，会单独进行比较详细的说明，另外请注意，这是Mac，有些Linux或unix命令是没法用的，很痛苦，难受，想哭。
     </p>
     <section class='section block'>
         <h1 class='section title'>常用文件</h1>
@@ -29,7 +29,7 @@
             <li>
                 <h2 class='small title'>文件操作</h2>
                 <p class='small flag'>
-                    包括用命令行复制，删除，移动等非常有用的命令的使用快速指南。
+                    包括用命令行复制、删除、移动和查找等非常有用的命令的使用快速指南。
                 </p>
                 <ul>
                     <li>
@@ -53,6 +53,91 @@
                         </div>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <h2 class='small title'>Mac命令行小助手</h2>
+                <p class='small flag'>
+                    一些个人感觉有用的命令，全部是个人日常使用经验的积累，请放心使用（比如磁盘挂载等原本在小蜥蜴上愉快玩耍的命令这里就删除了，好可惜的感觉）。
+                </p>
+                <ul>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                defaults write com.apple.screencapture location 存放位置
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            Mac默认的截图存放位置是桌面，有时候我们需要去修改一下，上面这条命令就是最好的助手。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                env
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            显示当前所有设置过的环境变量。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                df -h
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            显示目前所有文件系统的可用空间及使用情形，其中-h表示用GB、MB等易读的格式（在命令行执行后查看的Filesystem代表档案系统，Mounted on代表挂载点，Size、Used、Avail、及Use%分别是该分割区的容量、已使用的大小、剩下的大小、及使用的百分比）。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                du -h
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            查看当前目录下的文件磁盘使用情况（需要注意的是：如果有一个进程在打开一个大文件的时候，这个大文件直接被rm 或者mv掉，则du会更新统计数值，df不会更新统计数值，还是认为空间没有释放，直到这个打开大文件的进程被Kill掉）。
+                        </div>
+                    </li>
+                    <li>
+                        <div class='terminal frame'>
+                            <div class='terminal bash'>
+                                chmod usernum-groupnum-othernum filename
+                            </div>
+                        </div>
+                        <div class='terminal info'>
+                            这个命令修改权限当然不是只有这个方法，不过上面的够用了，且好记，其中usernum-groupnum-othernum代表的是三个数字，比如771，是控制用户，用户组，其它对后面filename的权限。
+                        </div>
+                        <div class='terminal info'>
+                            比如usernum，可以设置的其实是1、2和4通过加法的结果，分别对应r：表示可读取，w：表示可写入和x：表示可执行。
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section class='section block'>
+        <h1 class='section title'>重要概念</h1>
+        <p class='section flag'>
+            其实这里的概念有点感觉是多余的整理了，不过还是整理了一下，算是对曾经对这些概念懵懵懂懂的自己的一个祭奠。
+        </p>
+        <ul>
+            <li>
+                <div class='little key'>
+                    符号链接
+                </div>
+                <div class='little value'>
+                    可跨分区link，但不被inode记录，文件删除会失效。
+                </div>
+            </li>
+            <li>
+                <div class='little key'>
+                    硬链接
+                </div>
+                <div class='little value'>
+                    真正意义上的"复制"，因为有被inode记录，不过只可以在同一个分区才可以链接。
+                </div>
             </li>
         </ul>
     </section>

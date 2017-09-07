@@ -5,9 +5,12 @@ class DoRouter {
             engName: ['data', 'dispaly', 'control', 'efficient', 'tooler', 'other'],
             menu: [{
                 //数据
-                name: [],
+                name: ["常用标签"],
                 menu: [
-
+                    [{
+                        name:"checkbox 复选框",
+                        menu:"src/data/checkbox.html"
+                    }]
                 ]
             }, {
                 //显示
@@ -25,6 +28,9 @@ class DoRouter {
                     }, {
                         name: "margin 外边距",
                         menu: "src/display/margin.html"
+                    }, {
+                        name: "零碎整理",
+                        menu: "src/display/detail.html"
                     }]
                 ]
             }, {

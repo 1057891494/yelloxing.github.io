@@ -275,8 +275,11 @@ var DoRouter = function () {
             engName: ['data', 'dispaly', 'control', 'efficient', 'tooler', 'other'],
             menu: [{
                 //数据
-                name: [],
-                menu: []
+                name: ["常用标签"],
+                menu: [[{
+                    name: "checkbox 复选框",
+                    menu: "src/data/checkbox.html"
+                }]]
             }, {
                 //显示
                 name: ["样式属性"],
@@ -292,6 +295,9 @@ var DoRouter = function () {
                 }, {
                     name: "margin 外边距",
                     menu: "src/display/margin.html"
+                }, {
+                    name: "零碎整理",
+                    menu: "src/display/detail.html"
                 }]]
             }, {
                 //控制

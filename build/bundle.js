@@ -282,7 +282,7 @@ var DoRouter = function () {
                 }]]
             }, {
                 //显示
-                name: ["样式属性"],
+                name: ["样式属性", "样式编辑扩展"],
                 menu: [[{
                     name: "Transform 转换",
                     menu: "src/display/tranform.html"
@@ -298,6 +298,9 @@ var DoRouter = function () {
                 }, {
                     name: "零碎整理",
                     menu: "src/display/detail.html"
+                }], [{
+                    name: "sass 样式预处理",
+                    menu: "src/display/sass.html"
                 }]]
             }, {
                 //控制

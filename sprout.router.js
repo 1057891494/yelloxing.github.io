@@ -8,13 +8,13 @@ class DoRouter {
                 name: ["常用标签"],
                 menu: [
                     [{
-                        name:"checkbox 复选框",
-                        menu:"src/data/checkbox.html"
+                        name: "checkbox 复选框",
+                        menu: "src/data/checkbox.html"
                     }]
                 ]
             }, {
                 //显示
-                name: ["样式属性"],
+                name: ["样式属性", "样式编辑扩展"],
                 menu: [
                     [{
                         name: "Transform 转换",
@@ -31,6 +31,10 @@ class DoRouter {
                     }, {
                         name: "零碎整理",
                         menu: "src/display/detail.html"
+                    }],
+                    [{
+                        name: "sass 样式预处理",
+                        menu: "src/display/sass.html"
                     }]
                 ]
             }, {

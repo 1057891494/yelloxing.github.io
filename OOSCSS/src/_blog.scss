@@ -4,6 +4,9 @@
 *******
 ***************************************/
 
+body{
+    overflow-x: hidden;
+}
 .paper {
     background-image: url('../image/paper.png');
     @include background_reset;
@@ -185,5 +188,13 @@
             border-top: 2px solid #f7f7e6;
             padding-top: 3px;
         }
+    }
+    //9.代码
+    .code{
+        white-space: pre;
+        padding-left: 2em;
+        color: #e8f0f0;
+        background-color: rgb(6, 6, 6);
+        padding-right: 2em;
     }
 }

@@ -411,6 +411,9 @@ body的特殊样式
 文章样式
 *******
 ***************************************/
+body {
+  overflow-x: hidden; }
+
 .paper {
   background-image: url("../image/paper.png");
   background-repeat: no-repeat;
@@ -548,4 +551,10 @@ body的特殊样式
   font-size: 18px;
   border-top: 2px solid #f7f7e6;
   padding-top: 3px; }
+.__blog__ .code {
+  white-space: pre;
+  padding-left: 2em;
+  color: #e8f0f0;
+  background-color: #060606;
+  padding-right: 2em; }
 /*# sourceMappingURL=../OOSCSS/ooscss.standard.css.map */

@@ -552,4 +552,30 @@ body {
   background-color: #060606;
   padding-right: 2em; }
 
+.project.frame {
+  background-color: #ebeef1;
+  padding: 5px; }
+  @media (max-width: 700px) {
+    .project.frame {
+      width: 100%; } }
+  @media (min-width: 701px) {
+    .project.frame {
+      display: inline-block;
+      min-width: 350px; } }
+.project.title {
+  border-bottom: 1px solid #0c0c0c;
+  font-size: 18px;
+  cursor: pointer; }
+.project.info {
+  font-size: 14px; }
+.project.label {
+  font-size: 0px; }
+  .project.label .item {
+    font-size: 12px;
+    display: inline-block;
+    margin-right: 6px;
+    background-color: #030303;
+    color: aliceblue;
+    padding: 5px; }
+
 /*# sourceMappingURL=ooscss.standard.css.map */

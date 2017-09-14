@@ -557,48 +557,4 @@ body {
   color: #e8f0f0;
   background-color: #060606;
   padding-right: 2em; }
-
-.project.frame {
-  background-color: #ebeef1;
-  padding: 5px;
-  margin-bottom: 20px; }
-  @media (max-width: 700px) {
-    .project.frame {
-      width: 100%; } }
-  @media (min-width: 701px) {
-    .project.frame {
-      display: inline-block;
-      width: 100%;
-      position: relative;
-      background-color: rgba(96, 125, 139, 0); }
-      .project.frame ul {
-        position: absolute;
-        top: 0px;
-        right: 83px; }
-      .project.frame .label .item {
-        background-color: rgba(3, 169, 244, 0.02);
-        color: #4CAF50; }
-      .project.frame .title {
-        border-bottom: 1px solid #2f955f; }
-      .project.frame .info {
-        color: #254646;
-        font-family: cursive;
-        position: absolute;
-        top: -6px;
-        left: 200px; } }
-.project.title {
-  border-bottom: 1px solid #0c0c0c;
-  font-size: 18px;
-  cursor: pointer; }
-.project.info {
-  font-size: 14px; }
-.project.label {
-  font-size: 0px; }
-  .project.label .item {
-    font-size: 12px;
-    display: inline-block;
-    margin-right: 6px;
-    background-color: #030303;
-    color: aliceblue;
-    padding: 5px; }
 /*# sourceMappingURL=../OOSCSS/ooscss.standard.css.map */

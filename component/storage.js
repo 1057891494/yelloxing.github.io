@@ -1,21 +1,19 @@
 class DoStorage {
-    constructor(name) {
+    constructor() {
         this.storage = window.localStorage;
-        this.storageName = name;
-        let oldValue = this.storage.getItem(this.storageName) || '{}';
-        this.storage.setItem(this.storageName, oldValue);
     }
 
     getValueByKey(key) {
-        return JSON.parse(this.storage.getItem(this.storageName))[key];
+        return this.storage.getItem(key);
     }
     deleteAll() {
-        this.storage.setItem(this.storageName,'{}');
+        this.storage.clear();
+    }
+    deleteKey(key) {
+        this.storage.removeItem(name);
     }
     setValueWithKey(key, value) {
-        var item = JSON.parse(this.storage.getItem(this.storageName));
-        item[key] = value;
-        this.storage.setItem(this.storageName, JSON.stringify(item));
+        this.storage.setItem(key, "<!--"+new Date().toString()+"-->"+value);
     }
 
 }

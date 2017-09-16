@@ -9,6 +9,7 @@
     "scss_compiler": "sass OOSCSS/ooscss.scss OOSCSS/ooscss.standard.css",
     "grunt_css_compiler": "grunt stylepost",
     "grunt_compress_compiler": "grunt filecompress",
+    "grunt_lazy_compiler": "grunt fileLazy",
     "server": "node_modules/.bin/gulp",
     "listen": "node listen.js"
   },
@@ -32,6 +33,7 @@
     "babel-preset-es2015": "^6.24.1",
     "chokidar": "^1.7.0",
     "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-cssmin": "^2.2.0",
     "grunt-contrib-uglify": "^3.0.1",
     "grunt-postcss": "^0.8.0",

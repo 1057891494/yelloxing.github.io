@@ -90,7 +90,7 @@ var IndexClass = function () {
         this.router = new _sproutRouter.Router();
         this.navTemplate = new _navTemplate.NavTemplate();
         this.names = this.router.getRootNav();
-        this.storage = new _storage.Storage('blog');
+        this.storage = new _storage.Storage();
     }
 
     _createClass(IndexClass, [{
@@ -126,7 +126,7 @@ sprout_nav.innerHTML = indexClass.getNavHtml();
 window.openPage = function (url) {
     window.isBrowerLoad = true;
     window.location.href = window.location.href.split("/#")[0] + "#/" + url;
-    var data = indexClass.storage.getValueByKey(url.replace(/[/.]/g, '_split_'));
+    var data = indexClass.storage.getValueByKey(url.replace(/[/.]/g, '_[-]_'));
     if (data) {
         sprout.innerHTML = data;
         sprout_nav.style.display = "none";
@@ -136,7 +136,7 @@ window.openPage = function (url) {
             sprout.innerHTML = data;
             sprout_nav.style.display = "none";
             sprout_phone_tool.style.display = "none";
-            indexClass.storage.setValueWithKey(url.replace(/[/.]/g, '_split_'), data);
+            indexClass.storage.setValueWithKey(url.replace(/[/.]/g, '_[-]_'), data);
         });
     }
     tool.style.display = 'none';
@@ -164,7 +164,7 @@ if (url) {
         sprout_phone_tool.style.display = "none";
         close_page.style.display = 'block';
         paper.style.display = 'block';
-        indexClass.storage.setValueWithKey(url.replace(/[/.]/g, '_split_'), data);
+        indexClass.storage.setValueWithKey(url.replace(/[/.]/g, '_[-]_'), data);
     });
 } else {
     indexClass.ajax.doRemote("src/github.html", function (data) {
@@ -446,31 +446,31 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var DoStorage = function () {
-    function DoStorage(name) {
+    function DoStorage() {
         _classCallCheck(this, DoStorage);
 
         this.storage = window.localStorage;
-        this.storageName = name;
-        var oldValue = this.storage.getItem(this.storageName) || '{}';
-        this.storage.setItem(this.storageName, oldValue);
     }
 
     _createClass(DoStorage, [{
-        key: 'getValueByKey',
+        key: "getValueByKey",
         value: function getValueByKey(key) {
-            return JSON.parse(this.storage.getItem(this.storageName))[key];
+            return this.storage.getItem(key);
         }
     }, {
-        key: 'deleteAll',
+        key: "deleteAll",
         value: function deleteAll() {
-            this.storage.setItem(this.storageName, '{}');
+            this.storage.clear();
         }
     }, {
-        key: 'setValueWithKey',
+        key: "deleteKey",
+        value: function deleteKey(key) {
+            this.storage.removeItem(name);
+        }
+    }, {
+        key: "setValueWithKey",
         value: function setValueWithKey(key, value) {
-            var item = JSON.parse(this.storage.getItem(this.storageName));
-            item[key] = value;
-            this.storage.setItem(this.storageName, JSON.stringify(item));
+            this.storage.setItem(key, "<!--" + new Date().toString() + "-->" + value);
         }
     }]);
 

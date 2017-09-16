@@ -59,3 +59,9 @@ chokidar.watch('build/bundle.js').on('change', function() {
     shelljs.exec("npm run grunt_compress_compiler");
     console.log("[" + new Date() + "] >>> 启动脚步压缩结束\n");
 });
+
+chokidar.watch('lazy').on('change', function() {
+    console.log("[" + new Date() + "] >>> 监听到Lazy脚步编译结束，启动脚步压缩\n");
+    shelljs.exec("npm run grunt_lazy_compiler");
+    console.log("[" + new Date() + "] >>> 启动Lazy脚步压缩结束\n");
+});

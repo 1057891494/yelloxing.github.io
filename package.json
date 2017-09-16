@@ -11,6 +11,8 @@
     "grunt_compress_compiler": "grunt filecompress",
     "grunt_lazy_compiler": "grunt fileLazy",
     "server": "node_modules/.bin/gulp",
+    "karma_cli": "node_modules/.bin/karma",
+    "test": "npm run karma_cli start karma.conf.js ",
     "listen": "node listen.js"
   },
   "repository": {
@@ -39,6 +41,10 @@
     "grunt-postcss": "^0.8.0",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
     "shelljs": "^0.7.8",
     "webpack": "^3.2.0"
   }

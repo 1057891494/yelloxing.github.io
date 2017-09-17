@@ -7,7 +7,7 @@
         throw new Error("Lazy requires a window with a document!");
     }
 
-})(window, function(window,undefined) {
+})(window, function(window, undefined) {
     'use strict';
 
     var Lazy = function(selector, context) {
@@ -75,10 +75,10 @@
                 this.context = undefined;
                 return this;
             } else {
-                // //sizzle选择器
-                // if (!Sizzle) {
-                //     throw new Error("Sizzle is necessary for Lazy!");
-                // }
+                //内置小型sizzle选择器
+                if (!Lazy.doSelector) {
+                    throw new Error("Sizzle is necessary for Lazy!");
+                }
                 var nodes = Lazy.doSelector(selector, context);
                 var flag = 0;
                 for (; flag < nodes.length; flag++) {
@@ -373,9 +373,9 @@
     Lazy.extend({
 
         /*一个小型的sizzle.js选择器*/
-        "selector": function(selector, context) {
-            if(new String(selector).test(/^#/)){
-                return document.getElementById(new String(selector).replace(/^#/,''));
+        "doSelector": function(selector, context) {
+            if (new String(selector).test(/^#/)) {
+                return document.getElementById(new String(selector).replace(/^#/, ''));
             }
         }
     });

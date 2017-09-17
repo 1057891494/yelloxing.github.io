@@ -91,6 +91,7 @@ if (url) {
 } else {
     indexClass.ajax.doRemote("src/github.html", function(data) {
         sprout.innerHTML = data;
+
     });
 }
 

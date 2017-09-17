@@ -7,7 +7,7 @@
         throw new Error("Lazy requires a window with a document!");
     }
 
-})(window, function(window) {
+})(window, function(window,undefined) {
     'use strict';
 
     var Lazy = function(selector, context) {
@@ -46,8 +46,8 @@
         //选择器: $$(""), $$(null), $$(undefined), $$(false)，兼容一下
         if (!selector) {
             return this;　　
-        }else{
-            this.selector=selector;
+        } else {
+            this.selector = selector;
         }
 
         //body比较特殊，直接提出来
@@ -133,7 +133,7 @@
             this[0] = selector[0];
             this.context = selector.context || context;
             this.length = 1;
-            this.selector=selector.selector;
+            this.selector = selector.selector;
             return this;
         }
 

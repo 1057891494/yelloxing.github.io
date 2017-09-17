@@ -40,4 +40,5 @@ expect(a).toBeLessThan(b);//期望a小于b
 expect(a).toBeGreaterThan(b);//期望a大于b
 expect(a).toThrowError(/reg/);//期望a方法抛出异常，异常信息可以是字符串、正则表达式、错误类型以及错误类型和错误信息
 expect(a).toThrow();//期望a方法抛出异常
-expect(a).toContain(b);//期望a(数组或者对象)包含b*/
+expect(a).toContain(b);//期望a(数组或者对象)包含b
+*/

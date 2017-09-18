@@ -61,8 +61,10 @@
 
         //如果是字符串
         if (typeof selector === 'string') {
-
-            if (/^<([^<>]+)>.*<\/\1>$/.test(selector)) {
+            //去掉：换行，换页，回车
+            selector = new String(selector).trim().replace(/[\n\f\r]/g, '');
+            //废除：/^<([^<>]+)>.*<\/\1>$/
+            if (/^<([^<>]+)>.*<([^<>]+)>$/.test(selector)) {
                 //如果是html文档（<div>类似这样的结构</div>）
                 if (!context) {
                     throw new Error("Parameter error!");
@@ -91,7 +93,7 @@
             }
         }
         //如果是DOM节点
-        if (selector.nodeType) {
+        if (selector.nodeType === 1 || selector.nodeType === 11 || selector.nodeType === 9) {
             this.context = context;
             this[0] = selector;
             this.isTouch = true;
@@ -186,6 +188,27 @@
 ;(function(window, Lazy, undefined) {
     'use strict';
 
+    Lazy.extend({
+
+        /**
+         * 获取元素包括的自己的字符串
+         */
+        "outerHTML": function(node) {
+            return node.outerHTML || (function(n) {
+                var div = document.createElement('div'),
+                    h;
+                div.appendChild(n);
+                h = div.innerHTML;
+                div = null;
+                return h;
+            })(node);
+        }
+
+    });
+})(window, window.Lazy);
+;(function(window, Lazy, undefined) {
+    'use strict';
+
     Lazy.prototype.extend({
 
         /**
@@ -270,7 +293,7 @@
         /**
          * 设置或返回被选元素的一个样式属性
          */
-        "css": function() {
+        "css": function(name, style) {
             var $$this = Lazy(this);
             if (typeof name === 'string' && arguments.length === 1) {
                 return $$this[0].style[name];
@@ -281,6 +304,8 @@
                 for (var key in name) {
                     $$this[0].style[key] = name[key];
                 }
+            } else {
+                throw new Error("Not acceptable type!");
             }
             return $$this;
         },
@@ -294,45 +319,93 @@
         },
 
         /**
-         * 在被选元素的结尾插入内容
+         * 在被选元素内部的结尾插入内容
          */
-        "append": function() {
+        "append": function(node) {
+            var $$this = Lazy(this);
+            if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+                $$this[0].appendChild(node);
+            } else if (node.isTouch) {
+                $$this[0].appendChild(node[0]);
+            } else if (typeof node == 'string') {
+                $$this[0].appendChild(Lazy(node)[0]);
+            } else {
+                throw new Error("Not acceptable type!");
+            }
 
+            return $$this;
         },
 
         /**
-         * 在被选元素的开头插入内容
+         * 在被选元素内部的开头插入内容
          */
-        "prepend": function() {
+        "prepend": function(node) {
+            var $$this = Lazy(this);
+            if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+                $$this[0].insertBefore(node, $$this[0].childNodes[0]);
+            } else if (node.isTouch) {
+                $$this[0].insertBefore(node[0], $$this[0].childNodes[0]);
+            } else if (typeof node == 'string') {
+                $$this[0].insertBefore(Lazy(node)[0], $$this[0].childNodes[0]);
+            } else {
+                throw new Error("Not acceptable type!");
+            }
 
+            return $$this;
         },
 
         /**
          * 在被选元素之后插入内容
          */
-        "after": function() {
+        "after": function(node) {
+            var $$this = Lazy(this);
+            var $$parent = $$this[0].parentNode || Lazy('body')[0];
+            if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+                $$parent.insertBefore(node, $$this[0].nextSibling); //如果第二个参数undefined,在结尾追加，目的一样达到
+            } else if (node.isTouch) {
+                $$parent.insertBefore(node[0], $$this[0].nextSibling);
+            } else if (typeof node == 'string') {
+                $$parent.insertBefore(Lazy(node)[0], $$this[0].nextSibling);
+            } else {
+                throw new Error("Not acceptable type!");
+            }
 
+            return $$this;
         },
 
         /**
          * 在被选元素之前插入内容
          */
-        "before": function() {
+        "before": function(node) {
+            var $$this = Lazy(this);
+            var $$parent = $$this[0].parentNode || Lazy('body')[0];
+            if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+                $$parent.insertBefore(node, $$this[0]);
+            } else if (node.isTouch) {
+                $$parent.insertBefore(node[0], $$this[0]);
+            } else if (typeof node == 'string') {
+                $$parent.insertBefore(Lazy(node)[0], $$this[0]);
+            } else {
+                throw new Error("Not acceptable type!");
+            }
 
+            return $$this;
         },
 
         /**
          * 删除被选元素（及其子元素）
          */
         "remove": function() {
-
+            var $$this = Lazy(this);
+            return $$this;
         },
 
         /**
          * 从被选元素中删除子元素
          */
         "empty": function() {
-
+            var $$this = Lazy(this);
+            return $$this;
         }
     });
 
@@ -344,26 +417,28 @@
 
         /*添加绑定事件*/
         "bind": function(eventType, callback, useCapture) {
+            var $$this = Lazy(this);
             if (window.attachEvent) {
-                this[0].attachEvent("on" + eventType, callback);
+                $$this[0].attachEvent("on" + eventType, callback);
             } else {
                 //默认捕获
                 useCapture = useCapture || false;
-                this[0].addEventListener(eventType, callback, useCapture);
+                $$this[0].addEventListener(eventType, callback, useCapture);
             }
-            return this;
+            return $$this;
         },
 
         /*解除绑定事件*/
         "unbind": function(eventType, callback, useCapture) {
+            var $$this = Lazy(this);
             if (window.detachEvent) {
-                this[0].detachEvent("on" + eventType, callback);
+                $$this[0].detachEvent("on" + eventType, callback);
             } else {
                 //默认捕获
                 useCapture = useCapture || false;
-                this[0].removeEventListener(eventType, callback, useCapture);
+                $$this[0].removeEventListener(eventType, callback, useCapture);
             }
-            return this;
+            return $$this;
         }
     });
 })(window, window.Lazy);
@@ -374,8 +449,8 @@
 
         /*一个小型的sizzle.js选择器*/
         "doSelector": function(selector, context) {
-            if (new String(selector).test(/^#/)) {
-                return document.getElementById(new String(selector).replace(/^#/, ''));
+            if (/^#/.test(selector)) {
+                return [document.getElementById(new String(selector).replace(/^#/, ''))];
             }
         }
     });

@@ -1,5 +1,11 @@
 'use strict';
-var src_list = ["lazy/core.js", "lazy/dom.js", "lazy/event.js", "lazy/selector.js"];
+var src_list = [
+    "lazy/_core_.js",
+    "lazy/tool-inner.js",
+    "lazy/dom.js",
+    "lazy/event.js",
+    "lazy/selector.js"
+];
 module.exports = function(grunt) {
 
     /*配置插件*/

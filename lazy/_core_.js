@@ -61,8 +61,10 @@
 
         //如果是字符串
         if (typeof selector === 'string') {
-
-            if (/^<([^<>]+)>.*<\/\1>$/.test(selector)) {
+            //去掉：换行，换页，回车
+            selector = new String(selector).trim().replace(/[\n\f\r]/g, '');
+            //废除：/^<([^<>]+)>.*<\/\1>$/
+            if (/^<([^<>]+)>.*<([^<>]+)>$/.test(selector)) {
                 //如果是html文档（<div>类似这样的结构</div>）
                 if (!context) {
                     throw new Error("Parameter error!");
@@ -91,7 +93,7 @@
             }
         }
         //如果是DOM节点
-        if (selector.nodeType) {
+        if (selector.nodeType === 1 || selector.nodeType === 11 || selector.nodeType === 9) {
             this.context = context;
             this[0] = selector;
             this.isTouch = true;

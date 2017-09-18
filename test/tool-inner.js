@@ -1,0 +1,4 @@
+describe('lazy tool', function() {
+
+
+});

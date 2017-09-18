@@ -1,8 +1,7 @@
 describe('lazy core', function() {
     it('基本测试', function() {
-        expect(true).toBe($$("<div>你好</div>").isTouch);
+        expect(true).toBe($$("<div>一个小型的Jquery，方便提供例子</div>").isTouch);
     });
-
 
     beforeEach(function() {
         //在每一个测试用例(it)执行之前都执行一遍beforeEach函数；

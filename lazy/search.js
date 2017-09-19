@@ -1,7 +1,7 @@
 (function(window, Lazy, undefined) {
     'use strict';
 
-    Lazy.extend({
+    Lazy.prototype.extend({
 
         /**
          * 返回被选元素的直接父元素
@@ -32,9 +32,9 @@
         },
 
         /**
-         * 返回被选元素的后代元素
+         * 返回被选元素的后代元素[可选参数来过滤对后代元素的搜索]
          */
-        "find": function() {
+        "find": function(selector) {
 
         },
 

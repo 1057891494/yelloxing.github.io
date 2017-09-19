@@ -6,7 +6,13 @@
         /*一个小型的sizzle.js选择器*/
         "doSelector": function(selector, context) {
             if (/^#/.test(selector)) {
-                return [document.getElementById(new String(selector).replace(/^#/, ''))];
+                var elem = context.getElementById(new String(selector).replace(/^#/, ''));
+                if (elem) {
+                    return [elem];
+                } else {
+                    return [];
+                }
+
             }
         }
     });

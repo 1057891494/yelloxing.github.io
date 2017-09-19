@@ -8,7 +8,7 @@
          */
         "html": function(template) {
             var $$this = Lazy(this);
-            if (!template) {
+            if ('' != template && !template) {
                 return $$this[0].innerHTML;
             } else {
                 $$this[0].innerHTML = template;
@@ -58,28 +58,62 @@
          * 向被选元素添加一个或多个类
          */
         "addClass": function(val) {
-
+            var $$this = Lazy(this);
+            if (typeof val === "string" && val) {
+                var i = 0,
+                    curClass = '',
+                    node = undefined;
+                while (node = $$this[i++]) {
+                    curClass = node.getAttribute('class') || '';
+                    var uniqueClass = Lazy.uniqueClass(curClass, val);
+                    node.setAttribute('class', uniqueClass);
+                }
+            }
+            return $$this;
         },
 
         /**
          * 从被选元素删除一个或多个类
          */
         "removeClass": function(val) {
-
+            var $$this = Lazy(this);
+            if (typeof val === "string" && val) {
+                var i = 0,
+                    curClass = '',
+                    node = undefined;
+                while (node = $$this[i++]) {
+                    curClass = node.getAttribute('class') || '';
+                    var resultClass = Lazy.operateClass(curClass, val, true);
+                    node.setAttribute('class', resultClass);
+                }
+            }
+            return $$this;
         },
 
         /**
          * 对被选元素进行添加/删除类的切换操作
          */
         "toggleClass": function(val) {
-
+            var $$this = Lazy(this);
+            if (typeof val === "string" && val) {
+                var i = 0,
+                    curClass = '',
+                    node = undefined;
+                while (node = $$this[i++]) {
+                    curClass = node.getAttribute('class') || '';
+                    var resultClass = Lazy.operateClass(curClass, val);
+                    node.setAttribute('class', resultClass);
+                }
+            }
+            return $$this;
         },
 
         /**
          * 设置或获取class
          */
         "class": function(val) {
-
+            var $$this = Lazy(this);
+            return $$this;
         },
 
         /**
@@ -100,14 +134,6 @@
                 throw new Error("Not acceptable type!");
             }
             return $$this;
-        },
-
-        /**
-         * 查找当前节点内的元素
-         */
-        "find": function(selector) {
-            var $$this = Lazy(this);
-            return Lazy(selector, $$this);
         },
 
         /**
@@ -189,6 +215,8 @@
          */
         "remove": function() {
             var $$this = Lazy(this);
+            var $$parent = $$this[0].parentNode || Lazy('body')[0];
+            $$parent.removeChild($$this[0]);
             return $$this;
         },
 
@@ -197,6 +225,8 @@
          */
         "empty": function() {
             var $$this = Lazy(this);
+            $$this.html('');
+
             return $$this;
         }
     });

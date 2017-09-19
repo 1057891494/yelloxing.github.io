@@ -49,7 +49,54 @@ describe('lazy dom', function() {
     });
 
     it('css[设置或返回被选元素的一个样式属性]', function() {
-        expect("30px").toBe($$("#val-name").css('font-size', '30px').css('font-size'));
+        expect("30px").toBe($$("#val-name").css('font-size', '30px').css({
+            'color': 'red',
+            'width': '360px',
+            'outline': '0px',
+            'border': '0px'
+        }).css('font-size'));
+    });
+
+    it('empty[从被选元素中删除子元素]', function() {
+
+        $$("body").append(`
+            <section>
+                <header id='classTest'>empty[从被选元素中删除子元素]</header>
+                <div id='empty-id'>
+                    你看不见这里的东西
+                </div>
+                <div id='remove-id'>
+                remove测试
+                    <ul>
+                        <li>不存在之物</li>
+                    </ul>
+                </div>
+            </section>
+        `);
+
+        expect('').toBe($$("#empty-id").empty().html());
+    });
+
+    it('remove[删除被选元素（及其子元素）]', function() {
+        $$("#remove-id").remove();
+        expect(0).toBe($$("#remove-id").length);
+
+    });
+
+    it('addClass[向被选元素添加一个或多个类]', function() {
+        $$('#classTest').addClass('addClass1');
+    });
+
+    it('removeClass[从被选元素删除一个或多个类]', function() {
+
+    });
+
+    it('toggleClass[对被选元素进行添加/删除类的切换操作]', function() {
+
+    });
+
+    it('class[设置或获取class]', function() {
+
     });
 
 });

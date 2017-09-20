@@ -12,13 +12,16 @@
                 node = undefined,
                 parent = null;
             while (node = $$this[i]) {
-                parent = node.parentNode;
-                $$this[i] = (function(flag) {
-                    if (flag) {
-                        return parent;
-                    }
-                    return null;
-                })(parent && parent.nodeType === 1);
+                parent = node;
+                do {
+                    parent = parent.parentNode;
+                    $$this[i] = (function(flag) {
+                        if (flag) {
+                            return parent;
+                        }
+                        return null;
+                    })(parent && parent.nodeType === 1);
+                } while (parent.parentNode && !$$this[i])
                 i++;
             }
             return $$this;
@@ -29,20 +32,16 @@
          */
         "parents": function() {
             var $$this = Lazy(this);
-            var parent = $$this[0].parentNode;
+            var parent = $$this[0];
             $$this.length = 0;
-            while (parent && parent.nodeType === 1) {
-                $$this[$$this.length++] = parent;
+            do {
                 parent = parent.parentNode;
-            }
+                if (parent && parent.nodeType === 1) {
+                    $$this[$$this.length] = parent;
+                    $$this.length += 1;
+                }
+            } while (parent)
             return $$this;
-        },
-
-        /**
-         * 返回介于两个给定元素之间的所有祖先元素
-         */
-        "parentsUntil": function() {
-
         },
 
         /**
@@ -68,7 +67,8 @@
          * 返回被选元素的后代元素[可选参数来过滤对后代元素的搜索]
          */
         "find": function(selector) {
-            //推迟开发
+            var $$this = Lazy(this);
+            return Lazy(selector, $$this);
         },
 
         /**
@@ -89,13 +89,16 @@
                 node = undefined,
                 sibling = null;
             while (node = $$this[i]) {
-                sibling = node.nextSibling;
-                $$this[i] = (function(flag) {
-                    if (flag) {
-                        return sibling;
-                    }
-                    return null;
-                })(sibling && sibling.nodeType === 1);
+                sibling = node;
+                do {
+                    sibling = sibling.nextSibling;
+                    $$this[i] = (function(flag) {
+                        if (flag) {
+                            return sibling;
+                        }
+                        return null;
+                    })(sibling && sibling.nodeType === 1);
+                } while (sibling.nextSibling && !$$this[i])
                 i++;
             }
             return $$this;
@@ -106,20 +109,16 @@
          */
         "nextAll": function() {
             var $$this = Lazy(this);
-            var sibling = $$this[0].nextSibling;
+            var sibling = $$this[0];
             $$this.length = 0;
-            while (sibling && sibling.nodeType === 1) {
-                $$this[$$this.length++] = sibling;
+            do {
                 sibling = sibling.nextSibling;
-            }
+                if (sibling && sibling.nodeType === 1) {
+                    $$this[$$this.length] = sibling;
+                    $$this.length += 1
+                }
+            } while (sibling)
             return $$this;
-        },
-
-        /**
-         * 返回介于两个给定参数之间的所有跟随的同胞元素
-         */
-        "nextUntil": function() {
-
         },
 
         /**
@@ -131,13 +130,16 @@
                 node = undefined,
                 sibling = null;
             while (node = $$this[i]) {
-                sibling = node.previousSibling;
-                $$this[i] = (function(flag) {
-                    if (flag) {
-                        return sibling;
-                    }
-                    return null;
-                })(sibling && sibling.nodeType === 1);
+                sibling = node;
+                do {
+                    sibling = sibling.previousSibling;
+                    $$this[i] = (function(flag) {
+                        if (flag) {
+                            return sibling;
+                        }
+                        return null;
+                    })(sibling && sibling.nodeType === 1);
+                } while (sibling.previousSibling && !$$this[i])
                 i++;
             }
             return $$this;
@@ -148,20 +150,16 @@
          */
         "prevAll": function() {
             var $$this = Lazy(this);
-            var sibling = $$this[0].previousSibling;
+            var sibling = $$this[0];
             $$this.length = 0;
-            while (sibling && sibling.nodeType === 1) {
-                $$this[$$this.length++] = sibling;
+            do {
                 sibling = sibling.previousSibling;
-            }
+                if (sibling && sibling.nodeType === 1) {
+                    $$this[$$this.length] = sibling;
+                    $$this.length += 1;
+                }
+            } while (sibling)
             return $$this;
-        },
-
-        /**
-         * 返回介于两个给定参数之间的所有之前的同胞元素
-         */
-        "prevUntil": function() {
-
         },
 
         /**
@@ -183,8 +181,8 @@
          */
         "last": function() {
             var $$this = Lazy(this);
-            if ($$this[$$this.length]) {
-                $$this[0] = $$this[$$this.length];
+            if ($$this[$$this.length - 1]) {
+                $$this[0] = $$this[$$this.length - 1];
                 $$this.length = 1;
             } else {
                 $$this.length = 0;
@@ -204,22 +202,43 @@
             } else {
                 $$this.length = 0;
             }
-            $$this.selector = $$this.selector + ":eq("+num+")";
+            $$this.selector = $$this.selector + ":eq(" + num + ")";
             return $$this;
         },
 
         /**
          * 返回集合里匹配的元素集合
          */
-        "filter": function() {
-
+        "filter": function(testback) {
+            var $$this = Lazy(this);
+            var len = 0,
+                i = 0;
+            for (; i < $$this.length; i++) {
+                if (testback(Lazy($$this[i]))) {
+                    $$this[len] = $$this[i];
+                    len += 1;
+                }
+            }
+            $$this.length = len;
+            return $$this;
         },
 
         /**
          * 返回不匹配标准的所有元素
          */
-        "not": function() {
+        "not": function(testback) {
+            var $$this = Lazy(this);
+            var len = 0,
+                i = 0;
+            for (; i < $$this.length; i++) {
+                if (!testback(Lazy($$this[i]))) {
 
+                    $$this[len] = $$this[i];
+                    len += 1;
+                }
+            }
+            $$this.length = len;
+            return $$this;
         }
     });
 })(window, window.Lazy);

@@ -129,12 +129,15 @@
             return this;
         }
 
-        //如果是Lazy对象,只会提取第一个
+        //如果是Lazy对象
         if (selector.isTouch) {
             this.isTouch = true;
-            this[0] = selector[0];
+            var flag = 0;
+            for (; flag < selector.length; flag++) {
+                this[flag] = selector[flag];
+            }
             this.context = selector.context || context;
-            this.length = 1;
+            this.length = selector.length;
             this.selector = selector.selector;
             return this;
         }

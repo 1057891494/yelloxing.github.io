@@ -36,7 +36,6 @@
             if (!val) {
                 return $$this[0].value;
             }
-
             $$this[0].value = val;
             return $$this;
         },
@@ -113,6 +112,16 @@
          */
         "class": function(val) {
             var $$this = Lazy(this);
+            if (typeof val === "string" && val) {
+                var i = 0,
+                    curClass = '',
+                    node = undefined;
+                while (node = $$this[i++]) {
+                    node.setAttribute('class', Lazy.uniqueClass(val));
+                }
+            } else {
+                return $$this[0].getAttribute('class') || '';
+            }
             return $$this;
         },
 
@@ -150,7 +159,6 @@
             } else {
                 throw new Error("Not acceptable type!");
             }
-
             return $$this;
         },
 
@@ -168,7 +176,6 @@
             } else {
                 throw new Error("Not acceptable type!");
             }
-
             return $$this;
         },
 
@@ -187,7 +194,6 @@
             } else {
                 throw new Error("Not acceptable type!");
             }
-
             return $$this;
         },
 
@@ -206,7 +212,6 @@
             } else {
                 throw new Error("Not acceptable type!");
             }
-
             return $$this;
         },
 
@@ -226,7 +231,6 @@
         "empty": function() {
             var $$this = Lazy(this);
             $$this.html('');
-
             return $$this;
         }
     });

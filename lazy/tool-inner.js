@@ -4,7 +4,7 @@
     Lazy.extend({
 
         /**
-         * 获取元素包括的自己的字符串
+         * 获取包括元素自己的字符串
          */
         "outerHTML": function(node) {
             return node.outerHTML || (function(n) {
@@ -60,9 +60,7 @@
                 classObj[item] = true;
             }, this);
             opeClassArray.forEach(function(item) {
-                console.log(flag, item);
                 classObj[item] = flag ? false : !classObj[item];
-                console.log(classObj, item);
             }, this);
             var classString = '';
             for (var item in classObj) {

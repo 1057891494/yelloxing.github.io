@@ -1,11 +1,42 @@
 describe('lazy search', function() {
 
     it('parent[返回被选元素的直接父元素]', function() {
-
+        $$("body").append(`
+            <header class='parent'>
+                <h1 id='parent-id'>[search]测试代码</h1>
+            </header>
+        `);
+        expect($$("#parent-id").parent().class()).toBe('parent');
     });
 
     it('parents[返回被选元素的所有祖先元素]', function() {
-
+        $$("body").append(`
+        <div class='1' id='outer-id'>
+            <div class='2'>
+                <div id='middle-id'  class='3'>
+                    <span class='平行的span'>
+                        平行的span
+                    </span>
+                    <div  class='4'>
+                        <div id='inner-id'  class='5'>
+                            最内部
+                        </div>
+                    </div>
+                    <span class='span1' id='spanRoot'>
+                        span1
+                    </span>
+                    <span class='span2'>
+                        span2
+                    </span>
+                    <span class='span3'>
+                        span3
+                    </span>
+                </div>
+            </div>
+        </div>
+    `);
+        expect($$($$("#middle-id").parents()[0]).class()).toBe('2');
+        expect($$($$("#middle-id").parents()[1]).class()).toBe('1');
     });
 
     it('parentsUntil[返回介于两个给定元素之间的所有祖先元素]', function() {
@@ -13,7 +44,8 @@ describe('lazy search', function() {
     });
 
     it('children[返回被选元素的所有直接子元素]', function() {
-
+        expect($$($$("#middle-id").children()[0]).class()).toBe('平行的span');
+        expect($$($$("#middle-id").children()[1]).class()).toBe('4');
     });
 
     it('find[返回被选元素的后代元素[可选参数来过滤对后代元素的搜索]]', function() {

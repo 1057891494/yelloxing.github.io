@@ -3,6 +3,7 @@ var src_list = [
     "lazy/_core_.js",
     "lazy/tool-inner.js",
     "lazy/dom.js",
+    "lazy/find.js",
     "lazy/event.js",
     "lazy/selector.js"
 ];

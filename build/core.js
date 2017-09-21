@@ -63,7 +63,6 @@
         if (typeof selector === 'string') {
             //去掉：换行，换页，回车
             selector = new String(selector).trim().replace(/[\n\f\r]/g, '');
-            //废除：/^<([^<>]+)>.*<\/\1>$/
             if (/^<([^<>]+)>.*<([^<>]+)>$/.test(selector)) {
                 //如果是html文档（<div>类似这样的结构</div>）
                 if (!context) {
@@ -503,6 +502,123 @@
 ;(function(window, Lazy, undefined) {
     'use strict';
 
+    Lazy.extend({
+
+        /**
+         * 核心小型sizzle代码
+         */
+        "doFind": function(selector, context) {
+            var $$this = Lazy(context);
+            $$this.selector = $$this.selector + ":find(" + selector + ")";
+            /**
+             * 0.对表达式用逗号分开
+             * 1.对表达式分组。
+             * 2.初始化集合（right->left）。
+             * 3.在当前的上下文里过滤要找的节点，并更新上下文，重复这一过程，直到结尾。
+             */
+
+            //0.对表达式用逗号分开
+            selector = selector.trim();
+            $$this.length = 0;
+            if (/,/.test(selector)) {
+                var selectors = selector.split(/ ?, ?/),
+                    tempArray = [],
+                    flag = 0,
+                    innerFlag = 0;
+                for (; flag < selectors.length; flag++) {
+                    if (!/^ +$/.test(selectors[flag])) {
+                        tempArray = $$this.find(selectors[flag]);
+                        for (innerFlag = 0; innerFlag < tempArray.length; innerFlag++) {
+                            $$this[$$this.length] = tempArray[innerFlag];
+                            $$this.length += 1;
+                        }
+                    }
+                }
+            } else {
+                //1.对表达式分组
+                //4种dom元素间关系的判断，分别是 “+”, “>”, “ ”, “~”
+                var splitHook = {
+                    "+": true,
+                    ">": true,
+                    " ": true,
+                    "~": true,
+                };
+                var flag = 0;
+                var selectorArray = [];
+                var curString = "";
+                var hadSpotlight = false;
+                var isClosed = 0;
+                var needCloseArray = [];
+                for (; flag < selector.length; flag++) {
+                    if (splitHook[selector[flag]]) {
+                        //如果没闭合时候出现了意外字符
+                        if (isClosed > 0) {
+                            if (selector[flag] == " ") {
+                                if (!hadSpotlight) {
+                                    curString += selector[flag];
+                                }
+                            } else {
+                                throw new Error('+ > ~ is illegal value!');
+                            }
+                        } else {
+                            //如果是
+                            if (curString != "") {
+                                selectorArray.push(curString);
+                                curString = "";
+                            }
+                            if (selector[flag] == " " && hadSpotlight) {
+                                //toDo
+                            } else {
+                                if (selectorArray[selectorArray.length - 1] == " ") {
+                                    selectorArray[selectorArray.length - 1] = selector[flag];
+                                } else {
+                                    selectorArray.push(selector[flag]);
+                                }
+                            }
+                        }
+                        hadSpotlight = true;
+                    } else {
+                        //如果不是“+”, “>”, “ ”, “~”
+                        hadSpotlight = false;
+                        if (selector[flag] == "'" || selector[flag] == '"' || selector[flag] == "[" || selector[flag] == "]") {
+                            //如果是需要闭合的
+                            if (needCloseArray.length > 0 && selector[flag] == needCloseArray[needCloseArray.length - 1]) {
+                                //如果这次闭合了
+                                isClosed -= 1;
+                                needCloseArray.length -= 1;
+                            } else {
+                                if (']' == selector[flag]) {
+                                    throw new Error('] is illegal value!');
+                                }
+                                //如果这次出现了新的需要闭合
+                                if ('[' == selector[flag]) {
+                                    needCloseArray[needCloseArray.length] = "]";
+                                } else {
+                                    needCloseArray[needCloseArray.length] = selector[flag];
+                                }
+                                isClosed += 1;
+                            }
+                        }
+                        curString += selector[flag];
+                    }
+                }
+                if (curString != '') {
+                    selectorArray.push(curString);
+                }
+
+
+                //2.初始化集合（right->left）
+
+                //3.在当前的上下文里过滤要找的节点，并更新上下文，重复这一过程，直到结尾
+
+            }
+            return $$this;
+        }
+    });
+})(window, window.Lazy);
+;(function(window, Lazy, undefined) {
+    'use strict';
+
     Lazy.prototype.extend({
 
         /*添加绑定事件*/
@@ -539,13 +655,65 @@
 
         /*一个小型的sizzle.js选择器*/
         "doSelector": function(selector, context) {
-            if (/^#/.test(selector)) {
+            /**
+             * 先把单纯的提取出来解决了
+             */
+            context=Lazy(context)[0];
+            selector = selector.trim();
+            //变量必须字母，下划线或美元符开头，除了开头的，还可以包含数字，-，
+            if (/^#[_\w$](?:[_\w\d]|-)*$/.test(selector)) {
+                //Id选择器
                 var elem = context.getElementById(new String(selector).replace(/^#/, ''));
                 if (elem) {
                     return [elem];
                 } else {
                     return [];
                 }
+            } else if (/^([_\w$](?:[_\w\d]|-)*$)|\*/.test(selector)) {
+                //标签选择器或者*
+                //不区分大小写
+                var elems = context.getElementsByTagName(selector);
+                var resultData = [],
+                    elem = null;
+                var flag = 0;
+                for (; flag < elems.length; flag++) {
+                    elem = elems[flag];
+                    if (elem && elem.nodeType && elem.nodeType === 1) {
+                        resultData.push(elem);
+                    }
+                }
+                return resultData;
+            } else if (/^\[ *name *= *["|'][_\w$](?:[_\w\d]|-)*["|'] *\]$/.test(selector)) {
+                //如果是name选择器Lazy('[name="username"]')
+                selector = selector.replace(/^\[ *name *= *["|']/, '');
+                selector = selector.replace(/["|'] *\]/, '').trim();
+                var elems = context.getElementsByName(selector);
+
+                var resultData = [],
+                    elem = null;
+                var flag = 0;
+                for (; flag < elems.length; flag++) {
+                    elem = elems[flag];
+                    if (elem && elem.nodeType && elem.nodeType === 1) {
+                        resultData.push(elem);
+                    }
+                }
+                return resultData;
+            } else if (/^\.[_\w$](?:[_\w\d]|-)*$/.test(selector)) {
+                //如果是class选择器
+                selector = selector.replace(/^\./, '');
+                var elems = [];
+                if (document.getElementsByClassName) {
+                    elems = context.getElementsByClassName(selector);
+                } else {
+                    return Lazy(context).find("." + selector);
+                }
+                return elems;
+            } else {
+                /**
+                 * 对于不是上面简单的字符串，进行下面的选择查找
+                 */
+                return Lazy.doFind(selector, context);
             }
         }
     });

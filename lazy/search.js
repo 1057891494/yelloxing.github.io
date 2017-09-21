@@ -24,6 +24,7 @@
                 } while (parent.parentNode && !$$this[i])
                 i++;
             }
+            $$this.selector = $$this.selector + ":parent";
             return $$this;
         },
 
@@ -41,6 +42,7 @@
                     $$this.length += 1;
                 }
             } while (parent)
+            $$this.selector = $$this.selector + ":parents";
             return $$this;
         },
 
@@ -60,15 +62,8 @@
                 }
                 i++;
             }
+            $$this.selector = $$this.selector + ":children";
             return $$this;
-        },
-
-        /**
-         * 返回被选元素的后代元素[可选参数来过滤对后代元素的搜索]
-         */
-        "find": function(selector) {
-            var $$this = Lazy(this);
-            return Lazy(selector, $$this);
         },
 
         /**
@@ -77,6 +72,7 @@
         "siblings": function() {
             var $$this = Lazy(this);
             var $$parent = $$this.parent();
+            $$this.selector = $$this.selector + ":siblings";
             return Lazy($$parent[0]).children();
         },
 
@@ -101,6 +97,7 @@
                 } while (sibling.nextSibling && !$$this[i])
                 i++;
             }
+            $$this.selector = $$this.selector + ":next";
             return $$this;
         },
 
@@ -118,6 +115,7 @@
                     $$this.length += 1
                 }
             } while (sibling)
+            $$this.selector = $$this.selector + ":nextAll";
             return $$this;
         },
 
@@ -142,6 +140,7 @@
                 } while (sibling.previousSibling && !$$this[i])
                 i++;
             }
+            $$this.selector = $$this.selector + ":prev";
             return $$this;
         },
 
@@ -159,7 +158,17 @@
                     $$this.length += 1;
                 }
             } while (sibling)
+            $$this.selector = $$this.selector + ":prevAll";
             return $$this;
+        },
+
+        /**
+         * 查找结点
+         */
+        "find": function(selector) {
+            var $$this = Lazy(this);
+            selector = selector || "*";
+            return Lazy(selector, $$this[0]);
         },
 
         /**
@@ -220,6 +229,7 @@
                 }
             }
             $$this.length = len;
+            $$this.selector = $$this.selector + ":filter(" + testback + ")";
             return $$this;
         },
 
@@ -238,6 +248,7 @@
                 }
             }
             $$this.length = len;
+            $$this.selector = $$this.selector + ":not(" + testback + ")";
             return $$this;
         }
     });

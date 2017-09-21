@@ -63,7 +63,6 @@
         if (typeof selector === 'string') {
             //去掉：换行，换页，回车
             selector = new String(selector).trim().replace(/[\n\f\r]/g, '');
-            //废除：/^<([^<>]+)>.*<\/\1>$/
             if (/^<([^<>]+)>.*<([^<>]+)>$/.test(selector)) {
                 //如果是html文档（<div>类似这样的结构</div>）
                 if (!context) {

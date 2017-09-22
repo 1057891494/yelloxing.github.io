@@ -28,6 +28,9 @@ npm install
 ```shell
 npm start
 ```
+对于Lazy的笔记测试，选择了Karma-jasmine,请运行下面命令查看单元测试
+```shell
+npm run test
 
 ### 联系我们
 ------

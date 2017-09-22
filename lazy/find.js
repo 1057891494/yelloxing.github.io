@@ -107,9 +107,17 @@
 
 
                 //2.初始化集合（right->left）
+                var popSelector = selectorArray.pop();
+                var domArray = Lazy.doSelector(popSelector, context, true);
 
                 //3.在当前的上下文里过滤要找的节点，并更新上下文，重复这一过程，直到结尾
 
+                //添加到本对象中去
+                var flag = 0;
+                for (; flag < domArray.length; flag++) {
+                    $$this[flag] = domArray[flag];
+                }
+                $$this.length = flag;
             }
             return $$this;
         }

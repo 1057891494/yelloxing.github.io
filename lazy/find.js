@@ -111,8 +111,9 @@
                 var domArray = Lazy.doSelector(popSelector, context, true);
 
                 //3.在当前的上下文里过滤要找的节点，并更新上下文，重复这一过程，直到结尾
+                //停止学习的开发，开始搭建真实的项目
 
-                //添加到本对象中去
+                //4.添加到本对象中去
                 var flag = 0;
                 for (; flag < domArray.length; flag++) {
                     $$this[flag] = domArray[flag];

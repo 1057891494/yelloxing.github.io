@@ -5,7 +5,8 @@ var src_list = [
     "lazy/dom.js",
     "lazy/find.js",
     "lazy/event.js",
-    "lazy/selector.js"
+    "lazy/selector.js",
+    "lazy/tool.js"
 ];
 module.exports = function(grunt) {
 

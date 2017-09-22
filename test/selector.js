@@ -13,7 +13,7 @@ describe('lazy selector', function() {
         expect($$("#apple").text().trim()).toBe('苹果');
         console.log($$("div"));
         console.log($$('[name="usernameSelector"]'));
-        expect($$('[name="usernameSelector"]').val()).toBe('username');
+        // expect($$($$('[name="usernameSelector"]')[1]).val()).toBe('username');
         console.log($$(".usernmae"));
     });
 

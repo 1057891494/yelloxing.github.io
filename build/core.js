@@ -627,8 +627,9 @@
                 var domArray = Lazy.doSelector(popSelector, context, true);
 
                 //3.在当前的上下文里过滤要找的节点，并更新上下文，重复这一过程，直到结尾
+                //停止学习的开发，开始搭建真实的项目
 
-                //添加到本对象中去
+                //4.添加到本对象中去
                 var flag = 0;
                 for (; flag < domArray.length; flag++) {
                     $$this[flag] = domArray[flag];
@@ -687,15 +688,16 @@
             context = Lazy(context)[0];
             selector = selector || "";
             selector = selector.trim();
+            var noSpaceSelector = selector.replace(/ /g, '');
             if (selector == '') {
-                if (document.querySelectorAll) {
-                    return context.querySelectorAll();
+                if (context.querySelectorAll) {
+                    return context.querySelectorAll("*");
                 } else {
                     return context.getElementsByTagName("*");
                 }
             }
             //变量必须字母，下划线或美元符开头，除了开头的，还可以包含数字，-，
-            if (/^#[_\w$](?:[_\w\d]|-)*$/.test(selector)) {
+            if (/^#[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //Id选择器
                 var elem = context.getElementById(new String(selector).replace(/^#/, ''));
                 if (elem) {
@@ -703,7 +705,7 @@
                 } else {
                     return [];
                 }
-            } else if (/^([_\w$](?:[_\w\d]|-)*$)|\*/.test(selector)) {
+            } else if (/^([_\w$](?:[_\w\d$]|-)*$)|\*/.test(selector)) {
                 //标签选择器或者*
                 //不区分大小写
                 var elems = context.getElementsByTagName(selector);
@@ -717,23 +719,7 @@
                     }
                 }
                 return resultData;
-            } else if (/^\[ *name *= *["|'][_\w$](?:[_\w\d]|-)*["|'] *\]$/.test(selector)) {
-                //如果是name选择器Lazy('[name="username"]')
-                selector = selector.replace(/^\[ *name *= *["|']/, '');
-                selector = selector.replace(/["|'] *\]/, '').trim();
-                var elems = context.getElementsByName(selector);
-
-                var resultData = [],
-                    elem = null;
-                var flag = 0;
-                for (; flag < elems.length; flag++) {
-                    elem = elems[flag];
-                    if (elem && elem.nodeType && elem.nodeType === 1) {
-                        resultData.push(elem);
-                    }
-                }
-                return resultData;
-            } else if (/^\.[_\w$](?:[_\w\d]|-)*$/.test(selector)) {
+            } else if (/^\.[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //如果是class选择器
                 selector = selector.replace(/^\./, '');
                 var elems = [];
@@ -743,7 +729,55 @@
                     return Lazy(context).find("." + selector);
                 }
                 return elems;
+                //废弃
+            // } else if (/^\[name=("|')[_\w\d$]+\1\]$/.test(noSpaceSelector)) {
+            //     var name = /("|')(.+)\1/.exec(selector)[2].trim();
+            //     var elems = document.getElementsByName(name);
+            //     var resultData = [],
+            //         elem = null;
+            //     var flag = 0;
+            //     for (; flag < elems.length; flag++) {
+            //         elem = elems[flag];
+            //         if (elem && elem.nodeType && elem.nodeType === 1) {
+            //             resultData.push(elem);
+            //         }
+            //     }
+            //     return resultData;
+            } else if (/^\[[_\w\d$]+=("|')[_\w\d$]+\1\]$/.test(noSpaceSelector)) {
+                debugger
+                //如果是属性
+                var elems = [],
+                    tempelems = [];
+                if (context.querySelectorAll) {
+                    tempelems = context.querySelectorAll("*");
+                } else {
+                    tempelems = context.getElementsByTagName("*");
+                }
+                var attrname = /^\[([_\w\d$]+)=/.exec(noSpaceSelector)[1];
+                var attrvalarray = /("|')(.+)\1/.exec(selector)[2].trim().split(/ +/);
+
+                var flag = 0,
+                    ittr = "",
+                    inFlag = 0;
+                checkitem: for (; flag < tempelems.length; flag++) {
+                    ittr = Lazy(tempelems[flag]).attr(attrname);
+                    console.log(ittr);
+                    if (ittr) {
+                        ittr = " " + ittr + " ";
+                        for (inFlag = 0; inFlag < attrvalarray.length; inFlag++) {
+                            if (!ittr.search(" " + attrvalarray[inFlag] + " ")) {
+                                continue checkitem;
+                            }
+                        }
+                        elems.push(tempelems[flag]);
+                    }
+                }
+                return elems;
             } else if (isMustEasy) {
+                /**
+                 * 对于[class='btn']的class属性，变成.btn的形式
+                 */
+
                 /**
                  * 前面已经查找了ID,class,name,*,undefined，对于余下的不包含层级关系的节点查找，都必须在这里结束
                  *
@@ -822,13 +856,13 @@
                     levelObj[curLevel] = selectorArray.length;
                     selectorArray.push(cursor[0]);
                 }
+                curLevel = levelObj["level4"] || levelObj["level3"] || levelObj["level2"] || levelObj["level1"] || 0;
+                var curSel = selectorArray[curLevel];
+                selectorArray[curLevel] = false;
 
-                console.log(selectorArray);
-                console.log(levelObj);
+                var basArray = Lazy.doSelector(curSel, context);
 
-                //开发至准备工作结束
-
-                return [];
+                return basArray;
             }
             /**
              * 对于不是上面简单的字符串，进行下面的选择查找
@@ -838,3 +872,71 @@
         }
     });
 })(window, window.Lazy);
+;/*
+Lazy获取元素相对body的位置
+*/
+;
+(function(window, Lazy, $$, undefined) {
+
+    $$.prototype.extend({
+        getElementPosition: function() {
+            var $$this = $$(this);
+
+            var left = 0;
+            var top = 0;
+
+            var obj = $this[0];
+            top = obj.offsetTop;
+            left = obj.offsetLeft;
+
+            while (obj = obj.offsetParent) {
+                top += obj.offsetTop;
+                left += obj.offsetLeft;
+            }
+
+            $this.left = left;
+            $this.top = top;
+
+            return $$this;
+        }
+    });
+
+})(window, window.Lazy, window.$$);
+
+
+/*
+Lazy获取屏幕大小的方法
+*/
+;
+(function(window, Lazy, $$, undefined) {
+
+        $$.prototype.extend({
+        getViewSize: function() {
+            var $$this = $$(this);
+
+            var winWidth;
+            var winHeight;
+            //获取窗口宽度
+            if (window.innerWidth)
+                winWidth = window.innerWidth;
+            else if ((document.body) && (document.body.clientWidth))
+                winWidth = document.body.clientWidth;
+            //获取窗口高度
+            if (window.innerHeight)
+                winHeight = window.innerHeight;
+            else if ((document.body) && (document.body.clientHeight))
+                winHeight = document.body.clientHeight;
+            //通过深入Document内部对body进行检测，获取窗口大小
+            if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+                winHeight = document.documentElement.clientHeight;
+                winWidth = document.documentElement.clientWidth;
+            }
+
+            $$this.winWidth = winWidth;
+            $$this.winHeight = winHeight;
+
+            return $$this;
+        }
+    });
+
+})(window, window.Lazy, window.$$);

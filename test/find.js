@@ -15,6 +15,6 @@ describe('lazy find', function() {
                 </div>
             </header>
         `);
-        console.log($$("#find-id").find("div > span.info,.username .btn ,[   name=   'info']    [class='info btn']"));
+        console.log($$("#find-id").find("div > span.info,.username .btn ,[   name=   'info']    [name=' info']"));
     });
 });

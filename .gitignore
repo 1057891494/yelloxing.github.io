@@ -9,3 +9,7 @@ node_modules
 .git
 .DS_Store
 .project
+nginx.conf
+nginx
+npm-debug.log
+sprout.psd

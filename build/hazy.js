@@ -1,4 +1,26 @@
-'use strict';
+/*!
+* yelloxing.github.io Sprout2.0.0 hazy
+* https://yelloxing.github.io
+* 
+* Copyright 心叶 and other contributors
+* 
+* Released under the Apache-2.0
+* 
+* Sprout 新芽 V2
+* 
+* Date: 2017-09-25
+*/
+(function(global, factory, undefined) {
+    'use strict';
+
+    if (global && global.document) {
+        factory(global);
+    } else {
+        throw new Error("Hazy requires a window with a document!");
+    }
+
+})(window, function(window) {
+;'use strict';
 var Hazy = function(selector, context) {
     return new Hazy.prototype.init(selector, context);
 };
@@ -43,3 +65,4 @@ Hazy.prototype.init.prototype = Hazy.prototype;
 Hazy.__isLoad__ = false;
 
 window.Hazy = window.$$ = Hazy;
+;});

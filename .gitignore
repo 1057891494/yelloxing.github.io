@@ -13,3 +13,6 @@ nginx.conf
 nginx
 npm-debug.log
 sprout.psd
+leaf/leaf.css.map
+leaf/leaf.css
+jshint.error.txt

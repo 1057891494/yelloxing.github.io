@@ -1,0 +1,10 @@
+(function(global, factory, undefined) {
+    'use strict';
+
+    if (global && global.document) {
+        factory(global);
+    } else {
+        throw new Error("Hazy requires a window with a document!");
+    }
+
+})(window, function(window) {

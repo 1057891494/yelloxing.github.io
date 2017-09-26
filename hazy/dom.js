@@ -57,12 +57,14 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         if (typeof val === "string" && val) {
             var i = 0,
-                curClass = '',
-                node = undefined;
-            while (node = $this[i++]) {
+                curClass,
+                node= $this[i];
+            while (node) {
                 curClass = node.getAttribute('class') || '';
                 var uniqueClass = Hazy.uniqueClass(curClass, val);
                 node.setAttribute('class', uniqueClass);
+                node = $this[i];
+                i+=1;
             }
         }
         return $this;
@@ -75,12 +77,14 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         if (typeof val === "string" && val) {
             var i = 0,
-                curClass = '',
-                node = undefined;
-            while (node = $this[i++]) {
+                curClass,
+                node= $this[i];
+            while (node) {
                 curClass = node.getAttribute('class') || '';
                 var resultClass = Hazy.operateClass(curClass, val, true);
                 node.setAttribute('class', resultClass);
+                node = $this[i];
+                i+=1;
             }
         }
         return $this;
@@ -93,12 +97,14 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         if (typeof val === "string" && val) {
             var i = 0,
-                curClass = '',
-                node = undefined;
-            while (node = $this[i++]) {
+                curClass,
+                node= $this[i];
+            while (node) {
                 curClass = node.getAttribute('class') || '';
                 var resultClass = Hazy.operateClass(curClass, val);
                 node.setAttribute('class', resultClass);
+                node = $this[i];
+                i+=1;
             }
         }
         return $this;
@@ -111,10 +117,12 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         if (typeof val === "string" && val) {
             var i = 0,
-                curClass = '',
-                node = undefined;
-            while (node = $this[i++]) {
+                curClass,
+                node= $this[i];
+            while (node) {
                 node.setAttribute('class', Hazy.uniqueClass(val));
+                node = $this[i];
+                i+=1;
             }
         } else {
             return $this[0].getAttribute('class') || '';

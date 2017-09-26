@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
 
     <!--开发模式-->
-    <script type="text/javascript" src='./hazy.dev.js'></script>
+    <!-- <script type="text/javascript" src='./hazy.dev.js'></script> -->
     <link rel="stylesheet" href="leaf/leaf.css">
 
     <!--预生产模式-->
@@ -26,13 +26,21 @@
     <!-- <link rel="stylesheet" href="./build/leaf.css"> -->
 
     <!--生产模式-->
-    <!-- <script type="text/javascript" src='./build/hazy.min.js'></script> -->
+    <script type="text/javascript" src='./build/hazy.min.js'></script>
     <!-- <link rel="stylesheet" href="./build/leaf.min.css"> -->
 
+    <script>
+        Hazy(function() {
+            Hazy.ajax("get", "router.config.json", function(data) {
+                //启动路由
+                Hazy.startRouter(JSON.parse(data));
+            });
+        });
+    </script>
 </head>
 
 <body>
-
+    <ui-view></ui-view>
 </body>
 
 </html>

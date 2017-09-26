@@ -25,6 +25,7 @@ Hazy.prototype.init = function(selector, context, root) {
     this.length = 0;
     this.context = context;
     this.selector = selector;
+    var flag, len;
     if (!selector) {
         return this;
     }
@@ -33,10 +34,19 @@ Hazy.prototype.init = function(selector, context, root) {
      * 分类处理
      */
 
-    //1.body比较特殊，直接提出来
+    //0.body比较特殊，直接提出来
     if (selector == "body") {
         this.context = document;
         this[0] = document.body;
+        this.isTouch = true;
+        this.length = 1;
+        return this;
+    }
+
+    //1.window
+    if (selector === window) {
+        this.context = document;
+        this[0] = window;
         this.isTouch = true;
         this.length = 1;
         return this;
@@ -55,10 +65,11 @@ Hazy.prototype.init = function(selector, context, root) {
             return this;
         } else if (Hazy.isCssSelect(selector)) {
             this.isTouch = true;
+            var elem;
             //如果是css选择器
             if (/^#[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //Id选择器
-                var elem = context.getElementById(new String(selector).replace(/^#/, ''));
+                elem = context.getElementById(selector.replace(/^#/, ''));
                 if (elem && (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9)) {
                     this[0] = elem;
                     this.length = 1;
@@ -69,8 +80,8 @@ Hazy.prototype.init = function(selector, context, root) {
                 //标签选择器或者*
                 //不区分大小写
                 var elems = context.getElementsByTagName(selector);
-                var flag = 0;
-                len = 0, elem = undefined;
+                flag = 0;
+                len = 0;
                 for (; flag < elems.length; flag++) {
                     elem = elems[flag];
                     if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
@@ -126,7 +137,7 @@ Hazy.prototype.init = function(selector, context, root) {
     //5.如果是Hazy对象
     if (selector.isTouch) {
         this.isTouch = true;
-        var flag = 0;
+        flag = 0;
         for (; flag < selector.length; flag++) {
             this[flag] = selector[flag];
         }
@@ -171,6 +182,10 @@ Hazy.prototype.extend = Hazy.extend = function() {
 
     return target;
 };
+
+Hazy.innerObject = Hazy.innerObject || {};
+
+document.createElement('ui-view');
 
 Hazy.prototype.init.prototype = Hazy.prototype;
 

@@ -8,7 +8,9 @@
         "hazy/tool.js",
         "hazy/event.js",
         "hazy/dom.js",
-        "hazy/search.js"
+        "hazy/search.js",
+        "hazy/ajax.js",
+        "hazy/router.js"
     ];
 
     if (typeof(exports) != "undefined") {

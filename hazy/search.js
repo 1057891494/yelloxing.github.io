@@ -6,20 +6,21 @@ Hazy.prototype.extend({
     "parent": function() {
         var $this = Hazy(this);
         var i = 0,
-            node = undefined,
-            parent = null;
-        while (node = $this[i]) {
+            node = $this[i],
+            parent;
+        while (node) {
             parent = node;
             do {
                 parent = parent.parentNode;
-                $this[i] = (function(flag) {
-                    if (flag) {
-                        return parent;
-                    }
-                    return null;
-                })(parent && parent.nodeType === 1);
-            } while (parent.parentNode && !$this[i])
-            i++;
+                if (parent && parent.nodeType === 1) {
+                    $this[i] = parent;
+                } else {
+                    $this[i] = null;
+                }
+
+            } while (parent.parentNode && !$this[i]);
+            i += 1;
+            node = $this[i];
         }
         $this.selector = $this.selector + ":parent";
         return $this;
@@ -38,7 +39,7 @@ Hazy.prototype.extend({
                 $this[$this.length] = parent;
                 $this.length += 1;
             }
-        } while (parent)
+        } while (parent);
         $this.selector = $this.selector + ":parents";
         return $this;
     },
@@ -50,14 +51,15 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         var children = $this[0].childNodes;
         var i = 0,
-            node = undefined;
+            node = children[i];
         $this.length = 0;
-        while (node = children[i]) {
+        while (node) {
             if (node && node.nodeType === 1) {
                 $this[$this.length] = node;
                 $this.length++;
             }
-            i++;
+            i += 1;
+            node = children[i];
         }
         $this.selector = $this.selector + ":children";
         return $this;
@@ -79,20 +81,20 @@ Hazy.prototype.extend({
     "next": function() {
         var $this = Hazy(this);
         var i = 0,
-            node = undefined,
-            sibling = null;
-        while (node = $this[i]) {
+            node = $this[i],
+            sibling;
+        while (node) {
             sibling = node;
             do {
                 sibling = sibling.nextSibling;
-                $this[i] = (function(flag) {
-                    if (flag) {
-                        return sibling;
-                    }
-                    return null;
-                })(sibling && sibling.nodeType === 1);
-            } while (sibling.nextSibling && !$this[i])
-            i++;
+                if (sibling && sibling.nodeType === 1) {
+                    $this[i] = sibling;
+                } else {
+                    $this[i] = null;
+                }
+            } while (sibling.nextSibling && !$this[i]);
+            i += 1;
+            node = $this[i];
         }
         $this.selector = $this.selector + ":next";
         return $this;
@@ -109,9 +111,9 @@ Hazy.prototype.extend({
             sibling = sibling.nextSibling;
             if (sibling && sibling.nodeType === 1) {
                 $this[$this.length] = sibling;
-                $this.length += 1
+                $this.length += 1;
             }
-        } while (sibling)
+        } while (sibling);
         $this.selector = $this.selector + ":nextAll";
         return $this;
     },
@@ -122,20 +124,20 @@ Hazy.prototype.extend({
     "prev": function() {
         var $this = Hazy(this);
         var i = 0,
-            node = undefined,
-            sibling = null;
-        while (node = $this[i]) {
+            node = $this[i],
+            sibling;
+        while (node) {
             sibling = node;
             do {
                 sibling = sibling.previousSibling;
-                $this[i] = (function(flag) {
-                    if (flag) {
-                        return sibling;
-                    }
-                    return null;
-                })(sibling && sibling.nodeType === 1);
-            } while (sibling.previousSibling && !$this[i])
-            i++;
+                if (sibling && sibling.nodeType === 1) {
+                    $this[i] = sibling;
+                } else {
+                    $this[i] = null;
+                }
+            } while (sibling.previousSibling && !$this[i]);
+            i += 1;
+            node = $this[i];
         }
         $this.selector = $this.selector + ":prev";
         return $this;
@@ -154,7 +156,7 @@ Hazy.prototype.extend({
                 $this[$this.length] = sibling;
                 $this.length += 1;
             }
-        } while (sibling)
+        } while (sibling);
         $this.selector = $this.selector + ":prevAll";
         return $this;
     },

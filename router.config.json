@@ -1,0 +1,5 @@
+{
+    "/home": "page/home.html",
+    "default": "/home",
+    "NotFound": "page/404.html"
+}

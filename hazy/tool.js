@@ -66,5 +66,22 @@ Hazy.extend({
         }
 
         return classString.trim();
+    },
+
+    /**
+     * 获取ajax对象
+     */
+    "getXHR": function() {
+        var xmlhttp = Hazy.innerObject.xmlhttp;
+        if (xmlhttp) {
+            return xmlhttp;
+        }
+        if (window.XMLHttpRequest) {
+            xmlhttp = new window.XMLHttpRequest();
+        } else {
+            xmlhttp = new window.ActiveXObject("Microsoft.XMLHTTP");
+        }
+        Hazy.innerObject.xmlhttp = xmlhttp;
+        return xmlhttp;
     }
 });

@@ -40,10 +40,7 @@ module.exports = function(grunt) {
                 "globals": {
                     "$": true,
                     "window": true,
-                    "angular": true,
-                    "vx": true,
                     "document": true,
-                    "jQuery": true,
                     "console": true
                 },
                 "force": true, // 强制执行，即使出现错误也会执行下面的任务

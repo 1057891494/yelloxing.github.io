@@ -48,6 +48,7 @@ Hazy.prototype.init = function(selector, context, root) {
     this.length = 0;
     this.context = context;
     this.selector = selector;
+    var flag, len;
     if (!selector) {
         return this;
     }
@@ -56,10 +57,19 @@ Hazy.prototype.init = function(selector, context, root) {
      * 分类处理
      */
 
-    //1.body比较特殊，直接提出来
+    //0.body比较特殊，直接提出来
     if (selector == "body") {
         this.context = document;
         this[0] = document.body;
+        this.isTouch = true;
+        this.length = 1;
+        return this;
+    }
+
+    //1.window
+    if (selector === window) {
+        this.context = document;
+        this[0] = window;
         this.isTouch = true;
         this.length = 1;
         return this;
@@ -78,10 +88,11 @@ Hazy.prototype.init = function(selector, context, root) {
             return this;
         } else if (Hazy.isCssSelect(selector)) {
             this.isTouch = true;
+            var elem;
             //如果是css选择器
             if (/^#[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //Id选择器
-                var elem = context.getElementById(new String(selector).replace(/^#/, ''));
+                elem = context.getElementById(selector.replace(/^#/, ''));
                 if (elem && (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9)) {
                     this[0] = elem;
                     this.length = 1;
@@ -92,8 +103,8 @@ Hazy.prototype.init = function(selector, context, root) {
                 //标签选择器或者*
                 //不区分大小写
                 var elems = context.getElementsByTagName(selector);
-                var flag = 0;
-                len = 0, elem = undefined;
+                flag = 0;
+                len = 0;
                 for (; flag < elems.length; flag++) {
                     elem = elems[flag];
                     if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
@@ -149,7 +160,7 @@ Hazy.prototype.init = function(selector, context, root) {
     //5.如果是Hazy对象
     if (selector.isTouch) {
         this.isTouch = true;
-        var flag = 0;
+        flag = 0;
         for (; flag < selector.length; flag++) {
             this[flag] = selector[flag];
         }
@@ -195,6 +206,10 @@ Hazy.prototype.extend = Hazy.extend = function() {
     return target;
 };
 
+Hazy.innerObject = Hazy.innerObject || {};
+
+document.createElement('ui-view');
+
 Hazy.prototype.init.prototype = Hazy.prototype;
 
 Hazy.__isLoad__ = false;
@@ -214,7 +229,7 @@ Hazy.extend({
         }
         return false;
     },
-    "isCssSelect": function(select) {
+    "isCssSelect": function(selector) {
         /**
          *  初始化版本只提供下面简单的选择器：
          *  1.#id
@@ -296,6 +311,23 @@ Hazy.extend({
         }
 
         return classString.trim();
+    },
+
+    /**
+     * 获取ajax对象
+     */
+    "getXHR": function() {
+        var xmlhttp = Hazy.innerObject.xmlhttp;
+        if (xmlhttp) {
+            return xmlhttp;
+        }
+        if (window.XMLHttpRequest) {
+            xmlhttp = new window.XMLHttpRequest();
+        } else {
+            xmlhttp = new window.ActiveXObject("Microsoft.XMLHTTP");
+        }
+        Hazy.innerObject.xmlhttp = xmlhttp;
+        return xmlhttp;
     }
 });
 
@@ -387,12 +419,14 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         if (typeof val === "string" && val) {
             var i = 0,
-                curClass = '',
-                node = undefined;
-            while (node = $this[i++]) {
+                curClass,
+                node= $this[i];
+            while (node) {
                 curClass = node.getAttribute('class') || '';
                 var uniqueClass = Hazy.uniqueClass(curClass, val);
                 node.setAttribute('class', uniqueClass);
+                node = $this[i];
+                i+=1;
             }
         }
         return $this;
@@ -405,12 +439,14 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         if (typeof val === "string" && val) {
             var i = 0,
-                curClass = '',
-                node = undefined;
-            while (node = $this[i++]) {
+                curClass,
+                node= $this[i];
+            while (node) {
                 curClass = node.getAttribute('class') || '';
                 var resultClass = Hazy.operateClass(curClass, val, true);
                 node.setAttribute('class', resultClass);
+                node = $this[i];
+                i+=1;
             }
         }
         return $this;
@@ -423,12 +459,14 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         if (typeof val === "string" && val) {
             var i = 0,
-                curClass = '',
-                node = undefined;
-            while (node = $this[i++]) {
+                curClass,
+                node= $this[i];
+            while (node) {
                 curClass = node.getAttribute('class') || '';
                 var resultClass = Hazy.operateClass(curClass, val);
                 node.setAttribute('class', resultClass);
+                node = $this[i];
+                i+=1;
             }
         }
         return $this;
@@ -441,10 +479,12 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         if (typeof val === "string" && val) {
             var i = 0,
-                curClass = '',
-                node = undefined;
-            while (node = $this[i++]) {
+                curClass,
+                node= $this[i];
+            while (node) {
                 node.setAttribute('class', Hazy.uniqueClass(val));
+                node = $this[i];
+                i+=1;
             }
         } else {
             return $this[0].getAttribute('class') || '';
@@ -570,20 +610,21 @@ Hazy.prototype.extend({
     "parent": function() {
         var $this = Hazy(this);
         var i = 0,
-            node = undefined,
-            parent = null;
-        while (node = $this[i]) {
+            node = $this[i],
+            parent;
+        while (node) {
             parent = node;
             do {
                 parent = parent.parentNode;
-                $this[i] = (function(flag) {
-                    if (flag) {
-                        return parent;
-                    }
-                    return null;
-                })(parent && parent.nodeType === 1);
-            } while (parent.parentNode && !$this[i])
-            i++;
+                if (parent && parent.nodeType === 1) {
+                    $this[i] = parent;
+                } else {
+                    $this[i] = null;
+                }
+
+            } while (parent.parentNode && !$this[i]);
+            i += 1;
+            node = $this[i];
         }
         $this.selector = $this.selector + ":parent";
         return $this;
@@ -602,7 +643,7 @@ Hazy.prototype.extend({
                 $this[$this.length] = parent;
                 $this.length += 1;
             }
-        } while (parent)
+        } while (parent);
         $this.selector = $this.selector + ":parents";
         return $this;
     },
@@ -614,14 +655,15 @@ Hazy.prototype.extend({
         var $this = Hazy(this);
         var children = $this[0].childNodes;
         var i = 0,
-            node = undefined;
+            node = children[i];
         $this.length = 0;
-        while (node = children[i]) {
+        while (node) {
             if (node && node.nodeType === 1) {
                 $this[$this.length] = node;
                 $this.length++;
             }
-            i++;
+            i += 1;
+            node = children[i];
         }
         $this.selector = $this.selector + ":children";
         return $this;
@@ -643,20 +685,20 @@ Hazy.prototype.extend({
     "next": function() {
         var $this = Hazy(this);
         var i = 0,
-            node = undefined,
-            sibling = null;
-        while (node = $this[i]) {
+            node = $this[i],
+            sibling;
+        while (node) {
             sibling = node;
             do {
                 sibling = sibling.nextSibling;
-                $this[i] = (function(flag) {
-                    if (flag) {
-                        return sibling;
-                    }
-                    return null;
-                })(sibling && sibling.nodeType === 1);
-            } while (sibling.nextSibling && !$this[i])
-            i++;
+                if (sibling && sibling.nodeType === 1) {
+                    $this[i] = sibling;
+                } else {
+                    $this[i] = null;
+                }
+            } while (sibling.nextSibling && !$this[i]);
+            i += 1;
+            node = $this[i];
         }
         $this.selector = $this.selector + ":next";
         return $this;
@@ -673,9 +715,9 @@ Hazy.prototype.extend({
             sibling = sibling.nextSibling;
             if (sibling && sibling.nodeType === 1) {
                 $this[$this.length] = sibling;
-                $this.length += 1
+                $this.length += 1;
             }
-        } while (sibling)
+        } while (sibling);
         $this.selector = $this.selector + ":nextAll";
         return $this;
     },
@@ -686,20 +728,20 @@ Hazy.prototype.extend({
     "prev": function() {
         var $this = Hazy(this);
         var i = 0,
-            node = undefined,
-            sibling = null;
-        while (node = $this[i]) {
+            node = $this[i],
+            sibling;
+        while (node) {
             sibling = node;
             do {
                 sibling = sibling.previousSibling;
-                $this[i] = (function(flag) {
-                    if (flag) {
-                        return sibling;
-                    }
-                    return null;
-                })(sibling && sibling.nodeType === 1);
-            } while (sibling.previousSibling && !$this[i])
-            i++;
+                if (sibling && sibling.nodeType === 1) {
+                    $this[i] = sibling;
+                } else {
+                    $this[i] = null;
+                }
+            } while (sibling.previousSibling && !$this[i]);
+            i += 1;
+            node = $this[i];
         }
         $this.selector = $this.selector + ":prev";
         return $this;
@@ -718,7 +760,7 @@ Hazy.prototype.extend({
                 $this[$this.length] = sibling;
                 $this.length += 1;
             }
-        } while (sibling)
+        } while (sibling);
         $this.selector = $this.selector + ":prevAll";
         return $this;
     },
@@ -810,6 +852,79 @@ Hazy.prototype.extend({
         $this.length = len;
         $this.selector = $this.selector + ":not(" + testback + ")";
         return $this;
+    }
+});
+
+Hazy.extend({
+    "ajax": function(method, url, callback, errorback) {
+        /**
+         * 由于笔记目前不可能带参数，不支持带参数的请求
+         */
+        var xmlhttp = Hazy.getXHR();
+        xmlhttp.onreadystatechange = function() {
+
+            //使用了Token，因此缓存304不被支持
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    callback(this.responseText);
+                } else {
+                    errorback();
+                }
+            }
+        };
+        xmlhttp.open(method, url + "?Token=" + (new Date()).valueOf(), true);
+        xmlhttp.send();
+    }
+});
+
+Hazy.extend({
+    "startRouter": function(configJson) {
+        //初始化路由
+        var urlArray = window.location.hash.slice(1).match(/\/[^\/]+/g);
+        if (!urlArray) {
+            window.location.href = "/#" + configJson.default;
+        } else {
+            Hazy.initPage(1, urlArray.length, urlArray, '', configJson);
+        }
+
+        Hazy(window).bind('hashchange', function(event) {
+            //路由变化时
+            var url = configJson[window.location.hash.slice(1)];
+            if (!url) {
+                url = configJson.NotFound;
+            }
+            Hazy.ajax('get', url, function(data) {
+                var deep = window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
+                try {
+                    Hazy("ui-view").eq(deep - 1).html(data);
+                } catch (e) {
+                    throw new Error('Url is illegal!');
+                }
+            }, function() {
+                throw new Error('Not Accepted Error!');
+            });
+
+        });
+
+    },
+    "initPage": function(nowDeep, deep, urlArray, preUrl, configJson) {
+        preUrl = preUrl + urlArray[nowDeep - 1];
+        var url = configJson[preUrl];
+        if (!url) {
+            url = configJson.NotFound;
+        }
+        Hazy.ajax('get', url, function(data) {
+            try {
+                Hazy("ui-view").eq(nowDeep - 1).html(data);
+                if (nowDeep < deep) {
+                    Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
+                }
+            } catch (e) {
+                throw new Error('Url is illegal!');
+            }
+        }, function() {
+            throw new Error('Not Accepted Error!');
+        });
     }
 });
 

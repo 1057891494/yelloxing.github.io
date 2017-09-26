@@ -11,7 +11,7 @@ Hazy.extend({
         }
         return false;
     },
-    "isCssSelect": function(select) {
+    "isCssSelect": function(selector) {
         /**
          *  初始化版本只提供下面简单的选择器：
          *  1.#id

@@ -44,7 +44,46 @@ Hazy.prototype.init = function(selector, context, root) {
 
     //2.如果是字符串
     if (typeof selector === 'string') {
-        return this;
+        if (Hazy.isHtmlTemplate(selector)) {
+            //如果是标签
+            var frameDiv = document.createElement("div");
+            frameDiv.innerHTML = selector;
+            this[0] = frameDiv.childNodes[0];
+            this.isTouch = true;
+            this.length = 1;
+            this.context = undefined;
+            return this;
+        } else if (Hazy.isCssSelect(selector)) {
+            this.isTouch = true;
+            //如果是css选择器
+            if (/^#[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
+                //Id选择器
+                var elem = context.getElementById(new String(selector).replace(/^#/, ''));
+                if (elem && (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9)) {
+                    this[0] = elem;
+                    this.length = 1;
+                } else {
+                    this.length = 0;
+                }
+            } else if (/^[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
+                //标签选择器或者*
+                //不区分大小写
+                var elems = context.getElementsByTagName(selector);
+                var flag = 0;
+                len = 0, elem = undefined;
+                for (; flag < elems.length; flag++) {
+                    elem = elems[flag];
+                    if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
+                        this[len] = elem;
+                        len += 1;
+                    }
+                }
+                this.length = len;
+            }
+            return this;
+        } else {
+            throw new Error("Illegal argument value！");
+        }
     }
 
     //3.如果是DOM节点
@@ -137,4 +176,4 @@ Hazy.prototype.init.prototype = Hazy.prototype;
 
 Hazy.__isLoad__ = false;
 
-window.Hazy = window.$$ = Hazy;
+window.Hazy = window.$ = Hazy;

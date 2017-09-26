@@ -1,14 +1,14 @@
 /*!
 * yelloxing.github.io Sprout2.0.0 hazy
 * https://yelloxing.github.io
-*
+* 
 * Copyright 心叶 and other contributors
-*
+* 
 * Released under the Apache-2.0
-*
+* 
 * Sprout 新芽 V2
-*
-* Date: 2017-09-25
+* 
+* Date: 2017-09-26
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -20,7 +20,8 @@
     }
 
 })(window, function(window) {
-;'use strict';
+
+'use strict';
 var Hazy = function(selector, context) {
     return new Hazy.prototype.init(selector, context);
 };
@@ -66,7 +67,46 @@ Hazy.prototype.init = function(selector, context, root) {
 
     //2.如果是字符串
     if (typeof selector === 'string') {
-        return this;
+        if (Hazy.isHtmlTemplate(selector)) {
+            //如果是标签
+            var frameDiv = document.createElement("div");
+            frameDiv.innerHTML = selector;
+            this[0] = frameDiv.childNodes[0];
+            this.isTouch = true;
+            this.length = 1;
+            this.context = undefined;
+            return this;
+        } else if (Hazy.isCssSelect(selector)) {
+            this.isTouch = true;
+            //如果是css选择器
+            if (/^#[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
+                //Id选择器
+                var elem = context.getElementById(new String(selector).replace(/^#/, ''));
+                if (elem && (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9)) {
+                    this[0] = elem;
+                    this.length = 1;
+                } else {
+                    this.length = 0;
+                }
+            } else if (/^[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
+                //标签选择器或者*
+                //不区分大小写
+                var elems = context.getElementsByTagName(selector);
+                var flag = 0;
+                len = 0, elem = undefined;
+                for (; flag < elems.length; flag++) {
+                    elem = elems[flag];
+                    if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
+                        this[len] = elem;
+                        len += 1;
+                    }
+                }
+                this.length = len;
+            }
+            return this;
+        } else {
+            throw new Error("Illegal argument value！");
+        }
     }
 
     //3.如果是DOM节点
@@ -159,5 +199,618 @@ Hazy.prototype.init.prototype = Hazy.prototype;
 
 Hazy.__isLoad__ = false;
 
-window.Hazy = window.$$ = Hazy;
-;});
+window.Hazy = window.$ = Hazy;
+
+Hazy.extend({
+    "isHtmlTemplate": function(template) {
+        /**
+         * 判断字符串是不是html模板
+         */
+        //去掉：换行，换页，回车
+        template = template.trim().replace(/[\n\f\r]/g, '');
+        //初始化版本简单判断
+        if (/^<([^<> ]+)[^<>]*><\/\1>$/.test(template)) {
+            return true;
+        }
+        return false;
+    },
+    "isCssSelect": function(select) {
+        /**
+         *  初始化版本只提供下面简单的选择器：
+         *  1.#id
+         *  2.element
+         */
+        if (/^#?[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+});
+
+Hazy.extend({
+
+    /**
+     * 获取包括元素自己的字符串
+     */
+    "outerHTML": function(node) {
+        return node.outerHTML || (function(n) {
+            var div = document.createElement('div'),
+                h;
+            div.appendChild(n);
+            h = div.innerHTML;
+            div = null;
+            return h;
+        })(node);
+    },
+
+    /**
+     * 合并若干个class
+     */
+    "uniqueClass": function() {
+        var classString = '',
+            flag = 0;
+        for (; flag < arguments.length; flag++) {
+            if (typeof arguments[flag] !== 'string') {
+                throw new Error('Only string is valid,not project!');
+            }
+            classString += arguments[flag] + " ";
+        }
+        classString = classString.trim();
+        var classArray = classString.split(/ +/);
+        var classObj = {};
+        classArray.forEach(function(item) {
+            classObj[item] = true;
+        }, this);
+        classString = '';
+        for (var item in classObj) {
+            if (classObj[item])
+                classString += item + " ";
+        }
+
+        return classString.trim();
+    },
+
+    /**
+     * 删除已经存在的class或toggle，用flag来标记，flag为真表示删除
+     */
+    "operateClass": function(srcClass, opeClass, flag) {
+        if (typeof srcClass !== 'string' || typeof opeClass !== 'string') {
+            throw new Error('Only string is valid,not project!');
+        }
+        srcClass = srcClass.trim();
+        opeClass = opeClass.trim();
+        var srcClassArray = srcClass.split(/ +/);
+        var opeClassArray = opeClass.split(/ +/);
+        var classObj = {};
+        srcClassArray.forEach(function(item) {
+            classObj[item] = true;
+        }, this);
+        opeClassArray.forEach(function(item) {
+            classObj[item] = flag ? false : !classObj[item];
+        }, this);
+        var classString = '';
+        for (var item in classObj) {
+            if (classObj[item])
+                classString += item + " ";
+        }
+
+        return classString.trim();
+    }
+});
+
+Hazy.prototype.extend({
+
+    /*添加绑定事件*/
+    "bind": function(eventType, callback, useCapture) {
+        var $this = Hazy(this);
+        if (window.attachEvent) {
+            $this[0].attachEvent("on" + eventType, callback);
+        } else {
+            //默认捕获
+            useCapture = useCapture || false;
+            $this[0].addEventListener(eventType, callback, useCapture);
+        }
+        return $this;
+    },
+
+    /*解除绑定事件*/
+    "unbind": function(eventType, callback, useCapture) {
+        var $this = Hazy(this);
+        if (window.detachEvent) {
+            $this[0].detachEvent("on" + eventType, callback);
+        } else {
+            //默认捕获
+            useCapture = useCapture || false;
+            $this[0].removeEventListener(eventType, callback, useCapture);
+        }
+        return $this;
+    }
+});
+
+Hazy.prototype.extend({
+
+    /**
+     * 设置或获取内部html
+     */
+    "html": function(template) {
+        var $this = Hazy(this);
+        if ('' != template && !template) {
+            return $this[0].innerHTML;
+        } else {
+            $this[0].innerHTML = template;
+            return $this;
+        }
+    },
+
+    /**
+     * 设置或返回所选元素的文本内容
+     */
+    "text": function(val) {
+        var $this = Hazy(this);
+        if (!val) {
+            return $this[0].innerText;
+        }
+        $this[0].innerText = val;
+        return $this;
+    },
+
+    /**
+     * 设置或返回表单字段的值
+     */
+    "val": function(val) {
+        var $this = Hazy(this);
+        if (!val) {
+            return $this[0].value;
+        }
+        $this[0].value = val;
+        return $this;
+    },
+
+    /**
+     * 用于设置/改变属性值
+     */
+    "attr": function(attr, val) {
+        var $this = Hazy(this);
+        if (!val) {
+            return $this[0].getAttribute(attr);
+        }
+
+        $this[0].setAttribute(attr, val);
+        return $this;
+    },
+
+    /**
+     * 向被选元素添加一个或多个类
+     */
+    "addClass": function(val) {
+        var $this = Hazy(this);
+        if (typeof val === "string" && val) {
+            var i = 0,
+                curClass = '',
+                node = undefined;
+            while (node = $this[i++]) {
+                curClass = node.getAttribute('class') || '';
+                var uniqueClass = Hazy.uniqueClass(curClass, val);
+                node.setAttribute('class', uniqueClass);
+            }
+        }
+        return $this;
+    },
+
+    /**
+     * 从被选元素删除一个或多个类
+     */
+    "removeClass": function(val) {
+        var $this = Hazy(this);
+        if (typeof val === "string" && val) {
+            var i = 0,
+                curClass = '',
+                node = undefined;
+            while (node = $this[i++]) {
+                curClass = node.getAttribute('class') || '';
+                var resultClass = Hazy.operateClass(curClass, val, true);
+                node.setAttribute('class', resultClass);
+            }
+        }
+        return $this;
+    },
+
+    /**
+     * 对被选元素进行添加/删除类的切换操作
+     */
+    "toggleClass": function(val) {
+        var $this = Hazy(this);
+        if (typeof val === "string" && val) {
+            var i = 0,
+                curClass = '',
+                node = undefined;
+            while (node = $this[i++]) {
+                curClass = node.getAttribute('class') || '';
+                var resultClass = Hazy.operateClass(curClass, val);
+                node.setAttribute('class', resultClass);
+            }
+        }
+        return $this;
+    },
+
+    /**
+     * 设置或获取class
+     */
+    "class": function(val) {
+        var $this = Hazy(this);
+        if (typeof val === "string" && val) {
+            var i = 0,
+                curClass = '',
+                node = undefined;
+            while (node = $this[i++]) {
+                node.setAttribute('class', Hazy.uniqueClass(val));
+            }
+        } else {
+            return $this[0].getAttribute('class') || '';
+        }
+        return $this;
+    },
+
+    /**
+     * 设置或返回被选元素的一个样式属性
+     */
+    "css": function(name, style) {
+        var $this = Hazy(this);
+        if (typeof name === 'string' && arguments.length === 1) {
+            return $this[0].style[name];
+        }
+        if (typeof name === 'string' && typeof style === 'string') {
+            $this[0].style[name] = style;
+        } else if (typeof name === 'object') {
+            for (var key in name) {
+                $this[0].style[key] = name[key];
+            }
+        } else {
+            throw new Error("Not acceptable type!");
+        }
+        return $this;
+    },
+
+    /**
+     * 在被选元素内部的结尾插入内容
+     */
+    "append": function(node) {
+        var $this = Hazy(this);
+        if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+            $this[0].appendChild(node);
+        } else if (node.isTouch) {
+            $this[0].appendChild(node[0]);
+        } else if (typeof node == 'string') {
+            $this[0].appendChild(Hazy(node)[0]);
+        } else {
+            throw new Error("Not acceptable type!");
+        }
+        return $this;
+    },
+
+    /**
+     * 在被选元素内部的开头插入内容
+     */
+    "prepend": function(node) {
+        var $this = Hazy(this);
+        if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+            $this[0].insertBefore(node, $this[0].childNodes[0]);
+        } else if (node.isTouch) {
+            $this[0].insertBefore(node[0], $this[0].childNodes[0]);
+        } else if (typeof node == 'string') {
+            $this[0].insertBefore(Hazy(node)[0], $this[0].childNodes[0]);
+        } else {
+            throw new Error("Not acceptable type!");
+        }
+        return $this;
+    },
+
+    /**
+     * 在被选元素之后插入内容
+     */
+    "after": function(node) {
+        var $this = Hazy(this);
+        var $parent = $this[0].parentNode || Hazy('body')[0];
+        if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+            $parent.insertBefore(node, $this[0].nextSibling); //如果第二个参数undefined,在结尾追加，目的一样达到
+        } else if (node.isTouch) {
+            $parent.insertBefore(node[0], $this[0].nextSibling);
+        } else if (typeof node == 'string') {
+            $parent.insertBefore(Hazy(node)[0], $this[0].nextSibling);
+        } else {
+            throw new Error("Not acceptable type!");
+        }
+        return $this;
+    },
+
+    /**
+     * 在被选元素之前插入内容
+     */
+    "before": function(node) {
+        var $this = Hazy(this);
+        var $parent = $this[0].parentNode || Hazy('body')[0];
+        if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
+            $parent.insertBefore(node, $this[0]);
+        } else if (node.isTouch) {
+            $parent.insertBefore(node[0], $this[0]);
+        } else if (typeof node == 'string') {
+            $parent.insertBefore(Hazy(node)[0], $this[0]);
+        } else {
+            throw new Error("Not acceptable type!");
+        }
+        return $this;
+    },
+
+    /**
+     * 删除被选元素（及其子元素）
+     */
+    "remove": function() {
+        var $this = Hazy(this);
+        var $parent = $this[0].parentNode || Hazy('body')[0];
+        $parent.removeChild($this[0]);
+        return $this;
+    },
+
+    /**
+     * 从被选元素中删除子元素
+     */
+    "empty": function() {
+        var $this = Hazy(this);
+        $this.html('');
+        return $this;
+    }
+});
+
+Hazy.prototype.extend({
+
+    /**
+     * 返回全部被选元素的直接父元素
+     */
+    "parent": function() {
+        var $this = Hazy(this);
+        var i = 0,
+            node = undefined,
+            parent = null;
+        while (node = $this[i]) {
+            parent = node;
+            do {
+                parent = parent.parentNode;
+                $this[i] = (function(flag) {
+                    if (flag) {
+                        return parent;
+                    }
+                    return null;
+                })(parent && parent.nodeType === 1);
+            } while (parent.parentNode && !$this[i])
+            i++;
+        }
+        $this.selector = $this.selector + ":parent";
+        return $this;
+    },
+
+    /**
+     * 返回被选元素的所有祖先元素
+     */
+    "parents": function() {
+        var $this = Hazy(this);
+        var parent = $this[0];
+        $this.length = 0;
+        do {
+            parent = parent.parentNode;
+            if (parent && parent.nodeType === 1) {
+                $this[$this.length] = parent;
+                $this.length += 1;
+            }
+        } while (parent)
+        $this.selector = $this.selector + ":parents";
+        return $this;
+    },
+
+    /**
+     * 返回被选元素的所有直接子元素
+     */
+    "children": function() {
+        var $this = Hazy(this);
+        var children = $this[0].childNodes;
+        var i = 0,
+            node = undefined;
+        $this.length = 0;
+        while (node = children[i]) {
+            if (node && node.nodeType === 1) {
+                $this[$this.length] = node;
+                $this.length++;
+            }
+            i++;
+        }
+        $this.selector = $this.selector + ":children";
+        return $this;
+    },
+
+    /**
+     * 返回被选元素的所有同胞元素
+     */
+    "siblings": function() {
+        var $this = Hazy(this);
+        var $parent = $this.parent();
+        $this.selector = $this.selector + ":siblings";
+        return Hazy($parent[0]).children();
+    },
+
+    /**
+     * 返回全部被选元素的下一个同胞元素
+     */
+    "next": function() {
+        var $this = Hazy(this);
+        var i = 0,
+            node = undefined,
+            sibling = null;
+        while (node = $this[i]) {
+            sibling = node;
+            do {
+                sibling = sibling.nextSibling;
+                $this[i] = (function(flag) {
+                    if (flag) {
+                        return sibling;
+                    }
+                    return null;
+                })(sibling && sibling.nodeType === 1);
+            } while (sibling.nextSibling && !$this[i])
+            i++;
+        }
+        $this.selector = $this.selector + ":next";
+        return $this;
+    },
+
+    /**
+     * 返回被选元素的所有跟随的同胞元素
+     */
+    "nextAll": function() {
+        var $this = Hazy(this);
+        var sibling = $this[0];
+        $this.length = 0;
+        do {
+            sibling = sibling.nextSibling;
+            if (sibling && sibling.nodeType === 1) {
+                $this[$this.length] = sibling;
+                $this.length += 1
+            }
+        } while (sibling)
+        $this.selector = $this.selector + ":nextAll";
+        return $this;
+    },
+
+    /**
+     * 返回全部被选元素的前一个同胞元素
+     */
+    "prev": function() {
+        var $this = Hazy(this);
+        var i = 0,
+            node = undefined,
+            sibling = null;
+        while (node = $this[i]) {
+            sibling = node;
+            do {
+                sibling = sibling.previousSibling;
+                $this[i] = (function(flag) {
+                    if (flag) {
+                        return sibling;
+                    }
+                    return null;
+                })(sibling && sibling.nodeType === 1);
+            } while (sibling.previousSibling && !$this[i])
+            i++;
+        }
+        $this.selector = $this.selector + ":prev";
+        return $this;
+    },
+
+    /**
+     * 返回被选元素的所有之前的同胞元素
+     */
+    "prevAll": function() {
+        var $this = Hazy(this);
+        var sibling = $this[0];
+        $this.length = 0;
+        do {
+            sibling = sibling.previousSibling;
+            if (sibling && sibling.nodeType === 1) {
+                $this[$this.length] = sibling;
+                $this.length += 1;
+            }
+        } while (sibling)
+        $this.selector = $this.selector + ":prevAll";
+        return $this;
+    },
+
+    /**
+     * 查找结点
+     */
+    "find": function(selector) {
+        var $this = Hazy(this);
+        return Hazy(selector, $this[0]);
+    },
+
+    /**
+     * 返回被选元素的首个元素
+     */
+    "first": function() {
+        var $this = Hazy(this);
+        if ($this[0]) {
+            $this.length = 1;
+        } else {
+            $this.length = 0;
+        }
+        $this.selector = $this.selector + ":first";
+        return $this;
+    },
+
+    /**
+     * 返回被选元素的最后一个元素
+     */
+    "last": function() {
+        var $this = Hazy(this);
+        if ($this[$this.length - 1]) {
+            $this[0] = $this[$this.length - 1];
+            $this.length = 1;
+        } else {
+            $this.length = 0;
+        }
+        $this.selector = $this.selector + ":last";
+        return $this;
+    },
+
+    /**
+     * 返回被选元素中带有指定索引号的元素，从0开始
+     */
+    "eq": function(num) {
+        var $this = Hazy(this);
+        if ($this[num]) {
+            $this[0] = $this[num];
+            $this.length = 1;
+        } else {
+            $this.length = 0;
+        }
+        $this.selector = $this.selector + ":eq(" + num + ")";
+        return $this;
+    },
+
+    /**
+     * 返回集合里匹配的元素集合
+     */
+    "filter": function(testback) {
+        var $this = Hazy(this);
+        var len = 0,
+            i = 0;
+        for (; i < $this.length; i++) {
+            if (testback(Hazy($this[i]))) {
+                $this[len] = $this[i];
+                len += 1;
+            }
+        }
+        $this.length = len;
+        $this.selector = $this.selector + ":filter(" + testback + ")";
+        return $this;
+    },
+
+    /**
+     * 返回不匹配标准的所有元素
+     */
+    "not": function(testback) {
+        var $this = Hazy(this);
+        var len = 0,
+            i = 0;
+        for (; i < $this.length; i++) {
+            if (!testback(Hazy($this[i]))) {
+
+                $this[len] = $this[i];
+                len += 1;
+            }
+        }
+        $this.length = len;
+        $this.selector = $this.selector + ":not(" + testback + ")";
+        return $this;
+    }
+});
+
+});

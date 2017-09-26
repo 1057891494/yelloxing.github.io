@@ -1,7 +1,7 @@
 'use strict';
 var hazy = require('./hazy.dev.js').hazy;
-hazy.unshift('./hazy/begin');
-hazy.push('./hazy/end');
+hazy.unshift('./hazy/begin.template');
+hazy.push('./hazy/end.template');
 var infomationHazy = "" +
     "/*!\n" +
     "* <%= pkg.name %> Sprout<%= pkg.version %> hazy\n" +
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         concat: { //合并hazy代码
             options: {
-                separator: ';', //文件连接分隔符，表示连接的文件用指定的separator分割。
+                separator: '\n', //文件连接分隔符，表示连接的文件用指定的separator分割。
                 stripBanners: true, //如果为true，去除代码中的块注释，默认为false
                 banner: infomationHazy
             },
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                     "console": true
                 },
                 "force": true, // 强制执行，即使出现错误也会执行下面的任务
-                "reporterOutput": 'jshint.error.txt' //将jshint校验的结果输出到文件
+                "reporterOutput": 'jshint.debug.txt' //将jshint校验的结果输出到文件
             },
             afterconcat: "build/hazy.js" // 合并之后检测
         },

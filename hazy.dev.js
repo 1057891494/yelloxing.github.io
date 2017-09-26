@@ -3,7 +3,12 @@
  */
 (function() {
     var hazy = [
-        "hazy/core.js"
+        "hazy/core.js",
+        "hazy/test.js",
+        "hazy/tool.js",
+        "hazy/event.js",
+        "hazy/dom.js",
+        "hazy/search.js"
     ];
 
     if (typeof(exports) != "undefined") {

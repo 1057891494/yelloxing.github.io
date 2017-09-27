@@ -30,12 +30,22 @@
     <!-- <link rel="stylesheet" href="./build/leaf.min.css"> -->
 
     <script>
-        $(function() {
-            $.ajax("get", "router.config.json", function(data) {
-                //启动路由
-                $.startRouter(JSON.parse(data));
+        var viewSize = $.getViewSize();
+        var width = viewSize.width;
+        var height = viewSize.height;
+        if (width < 777 || height < 500) {
+            //如果屏幕尺寸不满足要求，现阶段只有拒绝提供服务
+            $.ajax("get", "page/refuse.html", function(data) {
+                Hazy("ui-view").html(data);
             });
-        });
+        } else {
+            $(function() {
+                $.ajax("get", "router.config.json", function(data) {
+                    //启动路由
+                    $.startRouter(JSON.parse(data));
+                });
+            });
+        }
     </script>
 </head>
 

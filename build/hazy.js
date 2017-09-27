@@ -8,7 +8,7 @@
 * 
 * Sprout 新芽 V2
 * 
-* Date: 2017-09-26
+* Date: 2017-09-27
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -890,11 +890,12 @@ Hazy.extend({
         Hazy(window).bind('hashchange', function(event) {
             //路由变化时
             var url = configJson[window.location.hash.slice(1)];
+            var deep = window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
             if (!url) {
                 url = configJson.NotFound;
+                deep = 1;
             }
             Hazy.ajax('get', url, function(data) {
-                var deep = window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
                 try {
                     Hazy("ui-view").eq(deep - 1).html(data);
                 } catch (e) {
@@ -909,14 +910,17 @@ Hazy.extend({
     },
     "initPage": function(nowDeep, deep, urlArray, preUrl, configJson) {
         preUrl = preUrl + urlArray[nowDeep - 1];
-        var url = configJson[preUrl];
+        var url = configJson[preUrl],
+            noError = true;
         if (!url) {
             url = configJson.NotFound;
+            nowDeep = 1;
+            noError = false;
         }
         Hazy.ajax('get', url, function(data) {
             try {
                 Hazy("ui-view").eq(nowDeep - 1).html(data);
-                if (nowDeep < deep) {
+                if (nowDeep < deep && noError) {
                     Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
                 }
             } catch (e) {
@@ -926,6 +930,39 @@ Hazy.extend({
             throw new Error('Not Accepted Error!');
         });
     }
+});
+
+$.extend({
+    //获取屏幕大小的方法
+    "getViewSize": function() {
+        var winWidth;
+        var winHeight;
+        //获取窗口宽度
+        if (window.innerWidth)
+            winWidth = window.innerWidth;
+        else if ((document.body) && (document.body.clientWidth))
+            winWidth = document.body.clientWidth;
+        //获取窗口高度
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        //通过深入Document内部对body进行检测，获取窗口大小
+        if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+            winHeight = document.documentElement.clientHeight;
+            winWidth = document.documentElement.clientWidth;
+        }
+
+        return {
+            "width": winWidth,
+            "height": winHeight
+        };
+    }
+});
+
+$.prototype.extend({
+
+
 });
 
 });

@@ -10,7 +10,9 @@
         "hazy/dom.js",
         "hazy/search.js",
         "hazy/ajax.js",
-        "hazy/router.js"
+        "hazy/router.js",
+        "hazy/hazy.extend.js",
+        "hazy/dom.extend.js"
     ];
 
     if (typeof(exports) != "undefined") {

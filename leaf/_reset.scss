@@ -71,7 +71,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+ui-view {
     margin: 0;
     padding: 0;
     border: 0;
@@ -109,7 +110,8 @@ hgroup,
 menu,
 nav,
 section,
-summary {
+summary,
+ui-view {
     display: block;
     box-sizing: border-box;
 }
@@ -125,6 +127,7 @@ ol {
 }
 
 input,
-select {
+select,
+ui-view {
     vertical-align: middle;
 }

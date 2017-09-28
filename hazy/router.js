@@ -43,6 +43,8 @@ Hazy.extend({
                 Hazy("ui-view").eq(nowDeep - 1).html(data);
                 if (nowDeep < deep && noError) {
                     Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
+                }else{
+                    console.log('%c'+new Date()+'\n\n心叶提示：路由启动成功\n\n', 'color:#daaa65');
                 }
             } catch (e) {
                 throw new Error('Url is illegal!');

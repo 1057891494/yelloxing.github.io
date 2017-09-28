@@ -192,3 +192,5 @@ Hazy.prototype.init.prototype = Hazy.prototype;
 Hazy.__isLoad__ = false;
 
 window.Hazy = window.$ = Hazy;
+
+console.log('%c'+new Date()+'\n\n心叶提示：系统启动成功\n\n', 'color:#daaa65');

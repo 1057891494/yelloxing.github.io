@@ -8,11 +8,14 @@ Hazy.extend({
 
             //使用了Token，因此缓存304不被支持
             if (this.readyState == 4) {
-                if (this.status == 200 && callback) {
-                    callback(this.responseText);
+                if (this.status == 200) {
+                    if (callback) {
+                        callback(this.responseText);
+                    }
                 } else {
-                    if (errorback)
+                    if (errorback) {
                         errorback();
+                    }
                 }
             }
         };

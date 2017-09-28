@@ -8,7 +8,7 @@
 * 
 * Sprout 新芽 V2
 * 
-* Date: 2017-09-27
+* Date: 2017-09-28
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -215,6 +215,8 @@ Hazy.prototype.init.prototype = Hazy.prototype;
 Hazy.__isLoad__ = false;
 
 window.Hazy = window.$ = Hazy;
+
+console.log('%c'+new Date()+'\n\n心叶提示：系统启动成功\n\n', 'color:#daaa65');
 
 Hazy.extend({
     "isHtmlTemplate": function(template) {
@@ -865,11 +867,14 @@ Hazy.extend({
 
             //使用了Token，因此缓存304不被支持
             if (this.readyState == 4) {
-                if (this.status == 200 && callback) {
-                    callback(this.responseText);
+                if (this.status == 200) {
+                    if (callback) {
+                        callback(this.responseText);
+                    }
                 } else {
-                    if (errorback)
+                    if (errorback) {
                         errorback();
+                    }
                 }
             }
         };
@@ -923,6 +928,8 @@ Hazy.extend({
                 Hazy("ui-view").eq(nowDeep - 1).html(data);
                 if (nowDeep < deep && noError) {
                     Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
+                }else{
+                    console.log('%c'+new Date()+'\n\n心叶提示：路由启动成功\n\n', 'color:#daaa65');
                 }
             } catch (e) {
                 throw new Error('Url is illegal!');
@@ -962,7 +969,28 @@ $.extend({
 });
 
 $.prototype.extend({
+    //获取元素相对body的位置
+    "getElementPosition": function() {
+        var $this = $(this);
 
+        var left = 0;
+        var top = 0;
+
+        var obj = $this[0];
+        top = obj.offsetTop;
+        left = obj.offsetLeft;
+        obj = obj.offsetParent;
+        while (obj) {
+            top += obj.offsetTop;
+            left += obj.offsetLeft;
+            obj = obj.offsetParent;
+        }
+
+        $this.left = left;
+        $this.top = top;
+
+        return $this;
+    }
 
 });
 

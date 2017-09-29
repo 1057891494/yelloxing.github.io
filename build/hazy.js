@@ -937,6 +937,7 @@ Hazy.prototype.extend({
                         value = value.replace(/rem$/, '');
                         unit = "rem";
                     } else {
+                        oldValue = oldValue || 'undefined';
                         throw new Error(value + ' is illegal for animation,old value is ' + oldValue + '!');
                     }
                     beginproto.value = beginproto.value || 0;
@@ -1081,6 +1082,8 @@ Hazy.extend({
         });
     }
 });
+
+
 
 $.extend({
     //获取屏幕大小的方法

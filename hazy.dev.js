@@ -12,6 +12,8 @@
         "hazy/ajax.js",
         "hazy/animation.js",
         "hazy/router.js",
+        "hazy/code.format.js",
+        "hazy/copy.js",
         "hazy/hazy.extend.js",
         "hazy/dom.extend.js"
     ];

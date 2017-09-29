@@ -183,7 +183,18 @@ Hazy.prototype.extend = Hazy.extend = function() {
     return target;
 };
 
-Hazy.innerObject = Hazy.innerObject || {};
+//一些全局使用的内部对象
+Hazy.innerObject = {};
+//全局唯一一个实现定时的东西
+Hazy.clock = {};
+//当前正在运动的动画的tick函数堆栈
+Hazy.clock.timers = [];
+//唯一定时器的定时间隔
+Hazy.clock.interval = 13;
+//指定了动画时长duration默认值
+Hazy.clock.speeds = 400;
+//定时器ID
+Hazy.clock.timerId = null;
 
 document.createElement('ui-view');
 
@@ -193,4 +204,4 @@ Hazy.__isLoad__ = false;
 
 window.Hazy = window.$ = Hazy;
 
-console.log('%c'+new Date()+'\n\n心叶提示：系统启动成功\n\n', 'color:#daaa65');
+console.log('%c' + new Date() + '\n\n心叶提示：系统启动成功\n\n', 'color:#daaa65');

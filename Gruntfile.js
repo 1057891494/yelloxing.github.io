@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 dest: 'build/hazy.js'
             }
         },
-        jshint: {//hazy语法检查
+        jshint: { //hazy语法检查
             options: {
                 '-W064': true,
                 "strict": true,
@@ -72,6 +72,13 @@ module.exports = function(grunt) {
                 dest: 'build/leaf.css'
             }
         },
+        csslint: { //leaf语法检查
+            options: {
+                csslintrc: '.csslint'
+            },
+            target: ['build/leaf.css']
+
+        },
         cssmin: { //压缩leaf代码
             options: {
                 keepSpecialComments: 0
@@ -87,11 +94,11 @@ module.exports = function(grunt) {
     /*加载插件*/
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-postcss');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     /*注册任务*/
-    grunt.registerTask('default', ['concat:target', 'jshint:afterconcat', 'uglify:target', 'postcss:target', 'cssmin:target']);
+    grunt.registerTask('default', ['concat:target', 'jshint:afterconcat', 'uglify:target', 'postcss:target', 'csslint:target', 'cssmin:target']);
 };

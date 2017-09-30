@@ -8,7 +8,7 @@
 * 
 * Sprout 新芽 V2
 * 
-* Date: 2017-09-29
+* Date: 2017-09-30
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -198,6 +198,9 @@ Hazy.prototype.extend = Hazy.extend = function() {
     for (var key in source) {
         try {
             target[key] = source[key];
+            if (/^hazy-/.test(key)) {
+                document.createElement(key);
+            }
         } catch (e) {
             throw new Error("Illegal property value！");
         }
@@ -208,6 +211,8 @@ Hazy.prototype.extend = Hazy.extend = function() {
 
 //一些全局使用的内部对象
 Hazy.innerObject = {};
+//组件对象数组
+Hazy.innerObject.component = {};
 //全局唯一一个实现定时的东西
 Hazy.clock = {};
 //当前正在运动的动画的tick函数堆栈
@@ -219,7 +224,7 @@ Hazy.clock.speeds = 400;
 //定时器ID
 Hazy.clock.timerId = null;
 
-document.createElement('ui-view');
+document.createElement('hazy-view');
 
 Hazy.prototype.init.prototype = Hazy.prototype;
 
@@ -341,6 +346,26 @@ Hazy.extend({
         }
         Hazy.innerObject.xmlhttp = xmlhttp;
         return xmlhttp;
+    }
+});
+
+Hazy.extend({
+    /*编译预定义行为的组件，目前只支持元素类型的组件，并且请保证你的指令以hazy-开头*/
+    "compiler": function(dom) {
+        var components = Hazy.innerObject.component,
+            component, flag, elements;
+        for (component in components) {
+            /*
+                element{type:Hazy}
+            */
+            elements = Hazy(component, dom);
+            for (flag = 0; flag < elements.length; flag++) {
+                components[component](Hazy(elements[flag]));
+            }
+        }
+        components = null;
+        component = null;
+        elements = null;
     }
 });
 
@@ -1045,11 +1070,8 @@ Hazy.extend({
                 deep = 1;
             }
             Hazy.ajax('get', url, function(data) {
-                try {
-                    Hazy("ui-view").eq(deep - 1).html(data);
-                } catch (e) {
-                    throw new Error('Url is illegal!');
-                }
+                Hazy("hazy-view").eq(deep - 1).html(data);
+                Hazy.compiler(Hazy("hazy-view")[deep - 1]);
             }, function() {
                 throw new Error('Not Accepted Error!');
             });
@@ -1067,15 +1089,12 @@ Hazy.extend({
             noError = false;
         }
         Hazy.ajax('get', url, function(data) {
-            try {
-                Hazy("ui-view").eq(nowDeep - 1).html(data);
-                if (nowDeep < deep && noError) {
-                    Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
-                } else {
-                    console.log('%c' + new Date() + '\n\n心叶提示：路由恢复成功\n\n', 'color:#daaa65');
-                }
-            } catch (e) {
-                throw new Error('Url is illegal!');
+            Hazy("hazy-view").eq(nowDeep - 1).html(data);
+            if (nowDeep < deep && noError) {
+                Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
+            } else {
+                console.log('%c' + new Date() + '\n\n心叶提示：路由恢复成功\n\n', 'color:#daaa65');
+                Hazy.compiler(Hazy("hazy-view")[0]);
             }
         }, function() {
             throw new Error('Not Accepted Error!');
@@ -1083,7 +1102,19 @@ Hazy.extend({
     }
 });
 
+Hazy.extend(Hazy.innerObject.component, {
+    /*提供格式化代码的组件，只支持html,css和javascript语言的格式化*/
+    "hazy-format": function(element) {
+        console.log(element);
+    }
+});
 
+Hazy.extend(Hazy.innerObject.component, {
+    /*提供复制代码的组件*/
+    "hazy-copy": function(element) {
+        console.log(element);
+    }
+});
 
 $.extend({
     //获取屏幕大小的方法

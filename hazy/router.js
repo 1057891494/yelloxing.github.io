@@ -17,11 +17,8 @@ Hazy.extend({
                 deep = 1;
             }
             Hazy.ajax('get', url, function(data) {
-                try {
-                    Hazy("ui-view").eq(deep - 1).html(data);
-                } catch (e) {
-                    throw new Error('Url is illegal!');
-                }
+                Hazy("hazy-view").eq(deep - 1).html(data);
+                Hazy.compiler(Hazy("hazy-view")[deep - 1]);
             }, function() {
                 throw new Error('Not Accepted Error!');
             });
@@ -39,15 +36,12 @@ Hazy.extend({
             noError = false;
         }
         Hazy.ajax('get', url, function(data) {
-            try {
-                Hazy("ui-view").eq(nowDeep - 1).html(data);
-                if (nowDeep < deep && noError) {
-                    Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
-                } else {
-                    console.log('%c' + new Date() + '\n\n心叶提示：路由恢复成功\n\n', 'color:#daaa65');
-                }
-            } catch (e) {
-                throw new Error('Url is illegal!');
+            Hazy("hazy-view").eq(nowDeep - 1).html(data);
+            if (nowDeep < deep && noError) {
+                Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
+            } else {
+                console.log('%c' + new Date() + '\n\n心叶提示：路由恢复成功\n\n', 'color:#daaa65');
+                Hazy.compiler(Hazy("hazy-view")[0]);
             }
         }, function() {
             throw new Error('Not Accepted Error!');

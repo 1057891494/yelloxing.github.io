@@ -175,6 +175,9 @@ Hazy.prototype.extend = Hazy.extend = function() {
     for (var key in source) {
         try {
             target[key] = source[key];
+            if (/^hazy-/.test(key)) {
+                document.createElement(key);
+            }
         } catch (e) {
             throw new Error("Illegal property value！");
         }
@@ -185,6 +188,8 @@ Hazy.prototype.extend = Hazy.extend = function() {
 
 //一些全局使用的内部对象
 Hazy.innerObject = {};
+//组件对象数组
+Hazy.innerObject.component = {};
 //全局唯一一个实现定时的东西
 Hazy.clock = {};
 //当前正在运动的动画的tick函数堆栈
@@ -196,7 +201,7 @@ Hazy.clock.speeds = 400;
 //定时器ID
 Hazy.clock.timerId = null;
 
-document.createElement('ui-view');
+document.createElement('hazy-view');
 
 Hazy.prototype.init.prototype = Hazy.prototype;
 

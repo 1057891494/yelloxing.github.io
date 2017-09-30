@@ -26,7 +26,7 @@ body {
         right: 30px;
         a {
             text-decoration: none;
-            background-color: $basicColor;
+            background-color: $basicInfoColor;
             color: #fbf6fb;
             padding: 5px;
             border-radius: 8px;
@@ -35,10 +35,10 @@ body {
     }
     .info {
         position: relative;
-        border-top: 2px solid $basicColor;
+        border-top: 2px solid $basicInfoColor;
         padding-top: 10px;
         line-height: 30px;
-        color: $basicColor;
+        color: $basicInfoColor;
     }
 }
 
@@ -55,7 +55,7 @@ body {
     margin-top: 100px;
     padding-left: 2em;
     line-height: 36px;
-    color: $basicColor;
+    color: $basicInfoColor;
     max-width: 450px;
     margin-left: auto;
     margin-right: auto;

@@ -6,14 +6,15 @@
         "hazy/core.js",
         "hazy/test.js",
         "hazy/tool.js",
+        "hazy/compiler.js",
         "hazy/event.js",
         "hazy/dom.js",
         "hazy/search.js",
         "hazy/ajax.js",
         "hazy/animation.js",
         "hazy/router.js",
-        "hazy/code.format.js",
-        "hazy/copy.js",
+        "hazy/format.element.js",
+        "hazy/copy.element.js",
         "hazy/hazy.extend.js",
         "hazy/dom.extend.js"
     ];

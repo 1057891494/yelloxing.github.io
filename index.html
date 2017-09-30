@@ -18,16 +18,16 @@
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
 
     <!--开发模式-->
-    <!-- <script type="text/javascript" src='./hazy.dev.js'></script> -->
-    <!-- <link rel="stylesheet" href="leaf/leaf.css"> -->
+    <script type="text/javascript" src='./hazy.dev.js'></script>
+    <link rel="stylesheet" href="leaf/leaf.css">
 
     <!--预生产模式-->
     <!-- <script type="text/javascript" src='./build/hazy.js'></script> -->
     <!-- <link rel="stylesheet" href="./build/leaf.css"> -->
 
     <!--生产模式-->
-    <script type="text/javascript" src='./build/hazy.min.js'></script>
-    <link rel="stylesheet" href="./build/leaf.min.css">
+    <!-- <script type="text/javascript" src='./build/hazy.min.js'></script> -->
+    <!-- <link rel="stylesheet" href="./build/leaf.min.css"> -->
 
     <script>
         var viewSize = $.getViewSize();
@@ -36,8 +36,8 @@
         if (width < 777 || height < 500) {
             //如果屏幕尺寸不满足要求，现阶段只有拒绝提供服务
             $.ajax("get", "page/refuse.html", function(data) {
-                Hazy("ui-view").html(data);
-                console.log('%c'+new Date()+'\n\n心叶提示：您的访问被拒绝了\n\n', 'color:#daaa65');
+                Hazy("hazy-view").html(data);
+                console.log('%c' + new Date() + '\n\n心叶提示：您的访问被拒绝了\n\n', 'color:#daaa65');
             });
         } else {
             $(function() {
@@ -51,7 +51,7 @@
 </head>
 
 <body>
-    <ui-view></ui-view>
+    <hazy-view></hazy-view>
     <div class="copyright">走一步&nbsp;再走一步 &copy;2007-2017 Sprout 新芽 心叶维护 yelloxing@gmail.com </div>
 </body>
 

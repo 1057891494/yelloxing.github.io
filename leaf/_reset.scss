@@ -73,13 +73,13 @@ mark,
 audio,
 video,
 ui-view {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
     background: transparent;
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
 }
 
 div,
@@ -112,18 +112,18 @@ nav,
 section,
 summary,
 ui-view {
-    display: block;
     box-sizing: border-box;
+    display: block;
 }
 
 ul,
 ol {
     list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-    -webkit-padding-start: 0px;
-    -webkit-margin-before: 0px;
-    -webkit-margin-after: 0px;
+    margin: 0;
+    padding: 0;
+    -webkit-padding-start: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
 }
 
 input,

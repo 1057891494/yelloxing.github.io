@@ -23,5 +23,11 @@ $.extend({
             "width": winWidth,
             "height": winHeight
         };
+    },
+    //提示信息
+    "notify": function(msg) {
+        Hazy.looper.loop(function() {
+            window.alert(msg);
+        });
     }
 });

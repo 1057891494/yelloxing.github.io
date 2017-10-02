@@ -8,7 +8,7 @@
 * 
 * Sprout 新芽 V2
 * 
-* Date: 2017-09-30
+* Date: 2017-10-02
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -116,7 +116,7 @@ Hazy.prototype.init = function(selector, context, root) {
             }
             return this;
         } else {
-            throw new Error("Illegal argument value！");
+            throw new Error("[" + selector + "]Illegal argument value！");
         }
     }
 
@@ -211,8 +211,14 @@ Hazy.prototype.extend = Hazy.extend = function() {
 
 //一些全局使用的内部对象
 Hazy.innerObject = {};
-//组件对象数组
+//组件对象列表
 Hazy.innerObject.component = {};
+//提供循环执行功能的一个对象
+Hazy.looper = {};
+//记录循环任务数组
+Hazy.looper.task = [];
+//记录是否在轮询
+Hazy.looper.isRun = false;
 //全局唯一一个实现定时的东西
 Hazy.clock = {};
 //当前正在运动的动画的tick函数堆栈
@@ -237,12 +243,14 @@ console.log('%c' + new Date() + '\n\n心叶提示：系统启动成功\n\n', 'co
 Hazy.extend({
     "isHtmlTemplate": function(template) {
         /**
-         * 判断字符串是不是html模板
+         * 判断字符串是不是html模板，非严格判断
          */
         //去掉：换行，换页，回车
         template = template.trim().replace(/[\n\f\r]/g, '');
         //初始化版本简单判断
-        if (/^<([^<> ]+)[^<>]*><\/\1>$/.test(template)) {
+        if (/^<([^<> ]+).*><\/\1>$/.test(template)) {
+            return true;
+        } else if (/^<!--.*-->$/.test(template)) {
             return true;
         }
         return false;
@@ -353,19 +361,27 @@ Hazy.extend({
     /*编译预定义行为的组件，目前只支持元素类型的组件，并且请保证你的指令以hazy-开头*/
     "compiler": function(dom) {
         var components = Hazy.innerObject.component,
-            component, flag, elements;
+            component, flag, elements, element;
         for (component in components) {
             /*
                 element{type:Hazy}
             */
             elements = Hazy(component, dom);
             for (flag = 0; flag < elements.length; flag++) {
-                components[component](Hazy(elements[flag]));
+                element = Hazy(elements[flag]);
+                if (element.attr(component + '-compiler')) {
+                    throw new Error(component + ' had compiler');
+                }
+                components[component](element);
+                element.attr(component + '-compiler', new Date());
+                element.prepend("<!--" + component + " Begin 【走一步 再走一步】-->");
+                element.append("<!--" + component + " End 【走一步 再走一步】-->");
             }
         }
         components = null;
         component = null;
         elements = null;
+        element = null;
     }
 });
 
@@ -976,7 +992,7 @@ Hazy.prototype.extend({
 
                 //以后直接计算，因为此时不会出现问题了，故意捣乱的目前不管
                 unit = loopTimerData[key].unit;
-                value = loopTimerData[key].beginValue - -loopTimerData[key].deep * deep * 0.01;
+                value = loopTimerData[key].beginValue - (-loopTimerData[key].deep * deep * 0.01);
                 $this.css(key, value + "" + unit);
 
             }
@@ -1009,7 +1025,7 @@ Hazy.extend(Hazy.clock, {
 
     //被定时器调用，遍历timers堆栈
     "tick": function() {
-        var createTime, flag, tick, callback, timer, duration, passTime, needStop,
+        var createTime, flag, tick, callback, timer, duration, passTime, needStop,deep,
             timers = Hazy.clock.timers;
         Hazy.clock.timers = [];
         Hazy.clock.timers.length = 0;
@@ -1047,6 +1063,33 @@ Hazy.extend(Hazy.clock, {
         if (Hazy.clock.timerId) {
             window.clearInterval(Hazy.clock.timerId);
             Hazy.clock.timerId = null;
+        }
+    }
+});
+
+Hazy.extend(Hazy.looper, {
+    //推进轮询数组并尝试启动
+    /*
+     *  task:function//执行方法，目前不支持异步，后期可能会思考如何支持
+     */
+    "loop": function(task) {
+        Hazy.looper.task.unshift(task);
+        Hazy.looper.start();
+    },
+
+    "start": function() {
+        if (!Hazy.looper.isRun) {
+            Hazy.looper.isRun = true;
+            Hazy.looper.do();
+        }
+    },
+
+    "do": function() {
+        if (Hazy.looper.task.length <= 0) {
+            Hazy.looper.isRun = false;
+        } else {
+            (Hazy.looper.task.pop())();
+            Hazy.looper.do();
         }
     }
 });
@@ -1103,16 +1146,26 @@ Hazy.extend({
 });
 
 Hazy.extend(Hazy.innerObject.component, {
-    /*提供格式化代码的组件，只支持html,css和javascript语言的格式化*/
-    "hazy-format": function(element) {
-        console.log(element);
-    }
-});
-
-Hazy.extend(Hazy.innerObject.component, {
     /*提供复制代码的组件*/
     "hazy-copy": function(element) {
-        console.log(element);
+        element.prepend("<div class='hazy-copy-button'><!--copy--></div>");
+        element.find('div').filter(function(elem) {
+            if ('hazy-copy-button' === elem.class()) {
+                return true;
+            } else {
+                return false;
+            }
+        }).bind('click', function(e) {
+            //点击执行操作
+            element.clipboard();
+        });
+    }
+});
+Hazy.prototype.extend({
+    "clipboard": function() {
+        var $this = Hazy(this);
+        Hazy.notify('复制功能开发中，请稍后。。。。。。');
+        return $this;
     }
 });
 
@@ -1141,6 +1194,12 @@ $.extend({
             "width": winWidth,
             "height": winHeight
         };
+    },
+    //提示信息
+    "notify": function(msg) {
+        Hazy.looper.loop(function() {
+            window.alert(msg);
+        });
     }
 });
 

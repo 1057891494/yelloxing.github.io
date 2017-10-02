@@ -14,16 +14,16 @@ body {
 
 .notFound {
     @include bg_init($notFoundImg);
-    width: 700px;
+    background-position-y: top;
     margin: auto;
     position: relative;
-    background-position-y: top;
     padding-top: 240px;
+    width: 700px;
     .button {
-        position: absolute;
         line-height: 30px;
-        top: 260px;
+        position: absolute;
         right: 30px;
+        top: 260px;
         a {
             text-decoration: none;
             background-color: $basicInfoColor;
@@ -85,4 +85,26 @@ body {
     width: 100%;
     font-size: 12px;
     color: #6a7677;
+}
+
+
+/*
+复制代码样式
+*/
+
+hazy-copy {
+    position: relative;
+    display: block;
+    .hazy-copy-button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        @include bg-init($copyBeforImg);
+        cursor: pointer;
+        &:hover {
+            background-image: url($copyHoverImg);
+        }
+    }
 }

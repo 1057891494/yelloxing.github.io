@@ -93,7 +93,7 @@ Hazy.prototype.init = function(selector, context, root) {
             }
             return this;
         } else {
-            throw new Error("Illegal argument value！");
+            throw new Error("[" + selector + "]Illegal argument value！");
         }
     }
 
@@ -188,8 +188,14 @@ Hazy.prototype.extend = Hazy.extend = function() {
 
 //一些全局使用的内部对象
 Hazy.innerObject = {};
-//组件对象数组
+//组件对象列表
 Hazy.innerObject.component = {};
+//提供循环执行功能的一个对象
+Hazy.looper = {};
+//记录循环任务数组
+Hazy.looper.task = [];
+//记录是否在轮询
+Hazy.looper.isRun = false;
 //全局唯一一个实现定时的东西
 Hazy.clock = {};
 //当前正在运动的动画的tick函数堆栈

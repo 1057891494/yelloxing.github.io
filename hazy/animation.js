@@ -55,7 +55,7 @@ Hazy.prototype.extend({
 
                 //以后直接计算，因为此时不会出现问题了，故意捣乱的目前不管
                 unit = loopTimerData[key].unit;
-                value = loopTimerData[key].beginValue - -loopTimerData[key].deep * deep * 0.01;
+                value = loopTimerData[key].beginValue - (-loopTimerData[key].deep * deep * 0.01);
                 $this.css(key, value + "" + unit);
 
             }
@@ -88,7 +88,7 @@ Hazy.extend(Hazy.clock, {
 
     //被定时器调用，遍历timers堆栈
     "tick": function() {
-        var createTime, flag, tick, callback, timer, duration, passTime, needStop,
+        var createTime, flag, tick, callback, timer, duration, passTime, needStop,deep,
             timers = Hazy.clock.timers;
         Hazy.clock.timers = [];
         Hazy.clock.timers.length = 0;

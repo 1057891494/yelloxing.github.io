@@ -1,3 +1,70 @@
-.home{
-
+.home {
+    padding: 0 70px 0 70px;
+    &>.about {
+        &>ul {
+            text-align: right;
+            &>li {
+                display: inline-block;
+                line-height: 70px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+        }
+    }
+    &>.cursor {
+        position: relative;
+        color: #f0eff6;
+        &>div {
+            position: absolute;
+            left: 1em;
+            @include bg_init($logoImg);
+            background-position-x: left;
+            padding-left: 40px;
+            &>h1 {
+                display: block;
+                font-size: 14px;
+                line-height: 26px;
+            }
+            &>h5 {
+                display: block;
+                font-size: 12px;
+                line-height: 16px;
+            }
+        }
+        &>ul {
+            text-align: right;
+            &>li {
+                display: inline-block;
+                cursor: pointer;
+                margin-left: 36px;
+            }
+        }
+        border-radius: 50px;
+        line-height: 42px;
+        padding-right: 1em;
+        background: linear-gradient(#5c33ec, #884bea, #9743e1, #7646d2);
+        background-size: 40px;
+    }
+    &>.menu{
+        display: inline-block;
+        background-color: azure;
+        margin: 10px;
+        width: 147px;
+        padding-left: 40px;
+        line-height: 30px;
+        vertical-align: top;
+        &>ul{
+            &>li{
+                cursor: pointer;
+            }
+        }
+    }
+    &>.container{
+        vertical-align: top;
+        background-color: antiquewhite;
+        width: calc(100% - 180px);
+        margin-top: 10px;
+        display: inline-block;
+        height: calc(100vh - 145px);
+    }
 }

@@ -20,6 +20,7 @@
             @include bg_init($logoImg);
             background-position-x: left;
             padding-left: 40px;
+            background-size: 40px auto;
             &>h1 {
                 display: block;
                 font-size: 14px;
@@ -43,7 +44,6 @@
         line-height: 42px;
         padding-right: 1em;
         background: linear-gradient(#5c33ec, #884bea, #9743e1, #7646d2);
-        background-size: 40px;
     }
     &>.menu{
         display: inline-block;

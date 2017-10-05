@@ -1229,4 +1229,8 @@ $.prototype.extend({
 
 });
 
+Hazy(window).bind('hashchange', function() {
+
+});
+
 });

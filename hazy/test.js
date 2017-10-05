@@ -4,7 +4,7 @@ Hazy.extend({
          * 判断字符串是不是html模板，非严格判断
          */
         //去掉：换行，换页，回车
-        template = template.trim().replace(/[\n\f\r]/g, '');
+        template = template.trim().replace(/[\n\f\r ]/g, '');
         //初始化版本简单判断
         if (/^<([^<> ]+).*><\/\1>$/.test(template)) {
             return true;

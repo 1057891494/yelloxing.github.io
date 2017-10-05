@@ -180,3 +180,50 @@ hazy-copy {
         display: none !important;
     }
 }
+
+
+/*
+StepByStep
+*/
+
+.StepByStep {
+    font-size: 0;
+    &>li {
+        display: inline-block;
+        width: 10%;
+        font-size: 16px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        &:nth-child(1) {
+            background-color: #f50547;
+        }
+        &:nth-child(2) {
+            background-color: #faff00;
+        }
+        &:nth-child(3) {
+            background-color: #0fff00;
+        }
+        &:nth-child(4) {
+            background-color: #b500ff;
+        }
+        &:nth-child(5) {
+            background-color: #0707f3;
+        }
+        &:nth-child(6) {
+            background-color: #00e6ff;
+        }
+        &:nth-child(7) {
+            background-color: #f7f7fb;
+        }
+        &:nth-child(8) {
+            background-color: #ff8200;
+        }
+        &:nth-child(9) {
+            background-color: #b80ed5;
+        }
+        &:nth-child(10) {
+            background-color: #795548;
+        }
+    }
+}

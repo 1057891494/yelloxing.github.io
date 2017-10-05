@@ -13,6 +13,7 @@
         "hazy/ajax.js",
         "hazy/animation.js",
         "hazy/loop.js",
+        "hazy/StepByStep.js",
         "hazy/router.js",
         "hazy/copy.element.js",
         "hazy/hazy.extend.js",

@@ -94,8 +94,7 @@ h6,
 ul,
 li,
 ol {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  box-sizing: border-box; }
 
 article,
 aside,
@@ -111,8 +110,7 @@ nav,
 section,
 summary,
 hazy-view {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: block; }
 
 ul,
@@ -209,8 +207,7 @@ body {
   font-size: 0; }
 .header > nav {
   background-color: #f4f4ef;
-  -webkit-box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.02);
-          box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.02);
   text-align: center;
   line-height: 45px;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAANCAYAAABsItTPAAAACXBIWXMAAAsTAAALEwEAmpwYAAAIsWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHja7ZdpUJRXFobfe7+vv/5ouqFpmkVBBEEEAQUEEVFkEwQBEcEAEpQdkaXTNCgqLriBJiKDqGHUIBIUw2BiNGpARRGNqGgQNyJjEjcwxj0gm50fajmT+TVVUzU1NXn/3LfOn3uqzqnznANoS2MVijQqBdIzVMpQPy/TiMgoU+FPEEATMoyCbWx8lsIzJCQQAN69/6zuayAAcMUuVqFIw78nrYTErHiA2AKITciKTwfIJgAW8QqlCiAHAZgvVClUALkBQK6MiIwCyCMA8uSIyCiAAoA87o2XA5Arw0K9AWoFUHFcWKg3wDoBVJwcFuoNcB4AFefEJ6sAPhCAfUbC/AyAXwpw7vEpsQmAVj0A2/T0zARAqxOA1Zs8AQDCBYm5zo72+I8rPS373R8EgHhxincwAB6AcVzlwkmpZnO1VYmLVADgnanIVc5PTlGZeioUaYmm/hnxY2xNHe0dXICIyCjTt7Vpe1sbz/exzP2A53JAuv59LPECsK8aMIp5HzObA+jeAPb4xGcrc96nBQtMQxqKcQg3MUjMyFSSSjaSA+Qa6aMm1Jsm0w10P71CexhjxoNJYAqYGuYy85Idwk5mY9k1bDV7kX0u0BdMFMQI8gVVgvOCJ5wu58LN4ZZzldx33COhVOgkjBDmCXcJm4RdvIR34MP5xfxO/pSGUOMDjb0afaIg0S5Rj2aw5l4xK44TN0pGSgolj7XCtOq1R2oXSyH9SHpXJ1LnksxXdkx3gu438onyRr1QvTv62QacwRZDS8MjQ4KHdA4tMHIwumP82bA4ExuTV8PPmJaaJYxwMufMf7D4emSRZdqo6VY21hLrp6Ov2tTZ7rRbNiZ6rKu93P6pw0XHfeMKnVKcA8aPcdFzUU/41fXvE1vdmic1TT7tfnZKi0e7Z6dXtw+mcr68Hz+N99cIEE+XB5oFOQUHz8gI2TyzPvRemCTcaXbkB3kR5ZGnox5Ea35oHzN77tJ5lbEtca8SLBJnJa1Jrk/pS/Ve8Glab0Z8ZutHvsp6lVP2/oV2i75aPGnJ5bzM5cYrruVvXh24pnvd5kLb9U0fJ27UK7pdfLGko1S9zbTMdXvgzrnluRXlle177KrLa+xrf/xq18GYw5pHa+s/PGFzaniT73cVF8SXrL7vbiu+bnXz+1s7b2/9ufX+vK7eX2VPap7jpX23a4+6d33fkf62gbrB3a8Vahe1+g+9QMFDByawgztmIgl52IIvcQEPiQaxIUFESbaRBvKQ6lMfqqJVtJ3RYfyZ1UwDM8i6sYvZb9kBgadgveA6Z82t5DqE7sIKnucz+TYNV40dIipKFV3V9NGsE7uKT0pCJPe18rXNtBuk0dJunU0yO9lF3Qy5RL5Xz0vvln6ugYlBi+HGIXFDvYxGG8uN+4d1mBwZ/hfTdLPAEfbmhhacRe/IZ5ZPRr2wGhytZWNh62E3b8yKsTvsjzhccXzhNNTZf3y+S6OreGK025eThe7zphz3HOFV4qM/tdYvyl8n4PvAsuDMkPBQx1nt4VGzL0RMi7wyJyn6VcyqeSRWEXc1wSVxe7JGyspU0YLd6UGZUBxWZqpMshsXZucmLHm8rHJF7spr+QOr6Rp+rXTduIKswrYN4R93bSzYNKb4ZklBqduWZ9uqy2K2i3bs+cyl/FjFlN0Nn/tUNe8NqW77Iqzmcq3v/qNfWR3YepA/lPfNwJHCby3rLh/LPzG+oevU9tMzzrBn685lnbe5cLdl5+WIVvmV1qtF1wNuqNtrbs3o6Lyd/ePgz/l3mXv5D2jnqofsL8sfPX7s+yT36Y5nnzzPfuHzouflvt+Cf/uhO6W7uyenp+tV9KtLvd69X/RJ+hR9rf3O/dv6nw34D1QM9A+GDf7tNfM64nWNmqjD1fv+pRcMYQ8/zMVCFKEKx3ENjwlHhhFnEkQSyVKymdSQ0+QWeUE1qTl1o6E0lebTMnqAnqM/0V5Gh7FipjNLmf3MXXYoG8puYJsERDBZsERQJxjgpnCruHNCqTBS+LnwOe/Jl/D3Ndw0SjQeiXxFu0QDmhGaB8UysVLcJnGVlGtpai3SeqAdqd0i9ZU26LjrnJB5y5p1Z+l2yFPlfXpF+qP1zxt8ZKhv+M2QmUPuD801khhVGnsY3x1WbBIwXGt4h+nXZhtHzDf3sjC0+GXkMctNo5KsvKxHjpbZ8LYCO36M1liZvY4D79Dr2DnuulOz88nxJ12aJ/zg+txNa5L95Jnu86eoPJSeKV4R3n4+rlOdfCf4+U2b678sYNf0s4FPg41mTA1ZMHNt6OZZW8NKwzfPLv/gRMSzKOc5K6IvxpjMVc27FGcen5RQmngoqSX5bkp/qv6CcWlh6TkZZZkNiodKgyxfVU72npz2RdLcoMVFS27kWS7LW35nZfIq6ermtaoCrnDdBvbjgo1GRY3F+SURpd5b3T51+6vbDtfPrHexFWcqc6qM9hyrjvtCr6ajtunLSwd+O+RweOnR8/Xax30alKeqTned9Tp34IJDy/bLHa0v255de3DjTnvnrZe3yU+iO/J7Fg+mdW155PJk/YuqnrTelv7VA42DL1/3qtVvePq2Gcg/UOydR9fn733lmTfMBQBuPFBSCsz+BJjdBRQfBizrAAMRECIBwlxB19WC+tWCLFgDhrxBPgELHtrQx3BYwwkeCEQU5mMRClGGGhxHK+5jgMiINfEgkSSLfEKqSRO5Qwk1o140ga6jNbSV9jHmTBCzmNnLXGd5diKbzu5mbwpkgumCtYJGjnAe3ArulFAgDBBuEt7gzfg0/uifFPpvUwgAgQAiyGAESzhiCoIQjXQsQzEqcRSXcA+DRJ+MJQEkiawiFeQk+ZmydBQNpEpaRhvpE8b4z2nzvzpt/tw8/r83DyAraZzjW8awAKharR4AQAG1Wq1Wq9+ChgLqB2/uOADgpMD22wDQPPrqij/eX78DcQ5p0v97xv8AAAAgY0hSTQAAhwEAAIwHAADhLwAAhBAAAISbAADeVwAAOxIAACMkH5RfDQAAAIBJREFUeNpMxzEKwkAUBuF5z2UlBgOCWNl4BRsrD2ntTbyBTQ5gIRZim0Issm72t5CIXzVj3aM9loZ1LzpPczbBbTc1FkEDZNMZwKtoWxM1gOfMBcBE7WZKAL3ALX0jYjEMle1nKrwLrU8KdyT05GWSGIXb9fS70KyWh3GcP58BAF/1LeS9zgFPAAAAAElFTkSuQmCC");
@@ -245,7 +242,6 @@ body {
   .copyright a {
     margin: 0 6px;
     text-decoration: none;
-    -webkit-transition: color 0.3s;
     transition: color 0.3s;
     cursor: pointer;
     outline: 0;
@@ -318,3 +314,5 @@ StepByStep
 body > hazy-view {
   min-height: calc(100vh - 216px);
   width: 100vw; }
+
+/*# sourceMappingURL=leaf.css.map */

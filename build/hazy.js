@@ -229,6 +229,8 @@ Hazy.clock.interval = 13;
 Hazy.clock.speeds = 400;
 //定时器ID
 Hazy.clock.timerId = null;
+//计算密码对象
+Hazy.StepByStep={};
 
 document.createElement('hazy-view');
 
@@ -246,7 +248,7 @@ Hazy.extend({
          * 判断字符串是不是html模板，非严格判断
          */
         //去掉：换行，换页，回车
-        template = template.trim().replace(/[\n\f\r]/g, '');
+        template = template.trim().replace(/[\n\f\r ]/g, '');
         //初始化版本简单判断
         if (/^<([^<> ]+).*><\/\1>$/.test(template)) {
             return true;
@@ -1094,6 +1096,32 @@ Hazy.extend(Hazy.looper, {
     }
 });
 
+$.extend(Hazy.StepByStep, {
+    "pwd": "",
+    "toggle": function() {
+        $.StepByStep.pwd='';
+        if ($('#StepByStep').length < 1) {
+            $('body').append("<ul class='StepByStep' id='StepByStep'>"+
+            "   <li onclick='$.StepByStep.input(\"0\")'>0</li>"+
+            "   <li onclick='$.StepByStep.input(\"1\")'>1</li>"+
+            "   <li onclick='$.StepByStep.input(\"2\")'>2</li>"+
+            "   <li onclick='$.StepByStep.input(\"3\")'>3</li>"+
+            "   <li onclick='$.StepByStep.input(\"4\")'>4</li>"+
+            "   <li onclick='$.StepByStep.input(\"5\")'>5</li>"+
+            "   <li onclick='$.StepByStep.input(\"6\")'>6</li>"+
+            "   <li onclick='$.StepByStep.input(\"7\")'>7</li>"+
+            "   <li onclick='$.StepByStep.input(\"8\")'>8</li>"+
+            "   <li onclick='$.StepByStep.input(\"9\")'>9</li>"+
+            "</ul>");
+        } else {
+            $('#StepByStep').remove();
+        }
+    },
+    "input": function(num) {
+        $.StepByStep.pwd += num;
+    }
+});
+
 Hazy.extend({
     "startRouter": function(configJson) {
         //初始化路由
@@ -1125,9 +1153,9 @@ Hazy.extend({
     },
     "initPage": function(nowDeep, deep, urlArray, preUrl, configJson) {
         preUrl = preUrl + urlArray[nowDeep - 1];
-        var state = configJson[preUrl],
-            godeep = state.deep || nowDeep;
-        url = state.src,
+        var state = configJson[preUrl] || configJson.NotFound;
+        var godeep = state.deep || nowDeep;
+        var url = state.src,
             noError = true;
         if (!url) {
             url = configJson.NotFound;

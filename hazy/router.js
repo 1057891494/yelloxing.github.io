@@ -29,9 +29,9 @@ Hazy.extend({
     },
     "initPage": function(nowDeep, deep, urlArray, preUrl, configJson) {
         preUrl = preUrl + urlArray[nowDeep - 1];
-        var state = configJson[preUrl],
-            godeep = state.deep || nowDeep;
-        url = state.src,
+        var state = configJson[preUrl] || configJson.NotFound;
+        var godeep = state.deep || nowDeep;
+        var url = state.src,
             noError = true;
         if (!url) {
             url = configJson.NotFound;

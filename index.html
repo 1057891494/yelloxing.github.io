@@ -18,16 +18,16 @@
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
 
     <!--开发模式-->
-    <script type="text/javascript" src='./hazy.dev.js'></script>
-    <link rel="stylesheet" href="leaf/leaf.css">
+    <!-- <script type="text/javascript" src='./hazy.dev.js'></script> -->
+    <!-- <link rel="stylesheet" href="leaf/leaf.css"> -->
 
     <!--预生产模式-->
     <!-- <script type="text/javascript" src='./build/hazy.js'></script> -->
     <!-- <link rel="stylesheet" href="./build/leaf.css"> -->
 
     <!--生产模式-->
-    <!-- <script type="text/javascript" src='./build/hazy.min.js'></script> -->
-    <!-- <link rel="stylesheet" href="./build/leaf.min.css"> -->
+    <script type="text/javascript" src='./build/hazy.min.js'></script>
+    <link rel="stylesheet" href="./build/leaf.min.css">
 
     <script>
         var viewSize = $.getViewSize();
@@ -58,9 +58,9 @@
         <nav>
             <ul>
                 <li onClick='window.location.href="#/home"'>首页</li> |
-                <li onClick='window.location.href="#/notebook"'>笔记</li> |
-                <li onClick='window.location.href="#/opensource"'>项目</li> |
-                <li onClick='window.location.href="#/case"'>案例</li> |
+                <li onClick='window.location.href="#/notebook"'>前端笔记</li> |
+                <li onClick='window.location.href="#/opensource"'>开源项目</li> |
+                <li onClick='window.location.href="#/case"'>经典案例</li> |
                 <li onClick='window.location.href="#/other"'>其它</li>
             </ul>
         </nav>
@@ -76,7 +76,7 @@
             <a href="https://github.com/yelloxing/yelloxing.github.io" target="_blank">加入我们</a> |
             <a href="https://yelloxing.github.io" target="_blank">云笔记-遇见更好的你</a>
         </p>
-        <p>Copyright &copy; 2007-2017 走一步&nbsp;再走一步 All Rights Reserved. </p>
+        <p onclick='$.StepByStep.toggle()'>Copyright &copy; 2007-2017 走一步&nbsp;再走一步 All Rights Reserved. </p>
     </div>
 </body>
 

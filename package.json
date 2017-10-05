@@ -1,7 +1,7 @@
 {
   "name": "yelloxing.github.io",
   "version": "2.0.0",
-  "description": "Sprout 新芽 V2",
+  "description": "云笔记-遇见更好的你V2",
   "scripts": {
     "release": "node_modules/.bin/grunt",
     "start": "sass --watch ./leaf/core.scss:./leaf/leaf.css"
@@ -13,7 +13,7 @@
   "keywords": [
     "走一步，再走一步。",
     "Step By Step",
-    "Sprout 新芽",
+    "云笔记-遇见更好的你",
     "个人学习笔记",
     "yelloxing 心叶"
   ],

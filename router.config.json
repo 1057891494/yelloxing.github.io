@@ -1,9 +1,10 @@
 {
-    "/home": "page/home.html",
-    "/notebook": "page/notebook.html",
-    "/opensource": "page/opensource.html",
-    "/case": "page/case.html",
-    "/other": "page/other.html",
+    "/home": { "src": "page/home.html"},
+    "/notebook": { "src": "page/notebook.html"},
+    "/notebook/attribute": { "src": "page/notebook/attribute.html", "deep": "1" },
+    "/opensource": { "src": "page/opensource.html"},
+    "/case": { "src": "page/case.html"},
+    "/other": { "src": "page/other.html"},
     "default": "/home",
     "NotFound": "page/404.html"
 }

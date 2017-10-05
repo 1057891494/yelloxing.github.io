@@ -10,8 +10,9 @@ Hazy.extend({
 
         Hazy(window).bind('hashchange', function() {
             //路由变化时
-            var url = configJson[window.location.hash.slice(1)];
-            var deep = window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
+            var state = configJson[window.location.hash.slice(1)];
+            var url = state.src;
+            var deep = state.deep || window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
             if (!url) {
                 url = configJson.NotFound;
                 deep = 1;
@@ -28,15 +29,18 @@ Hazy.extend({
     },
     "initPage": function(nowDeep, deep, urlArray, preUrl, configJson) {
         preUrl = preUrl + urlArray[nowDeep - 1];
-        var url = configJson[preUrl],
+        var state = configJson[preUrl],
+            godeep = state.deep || nowDeep;
+        url = state.src,
             noError = true;
         if (!url) {
             url = configJson.NotFound;
-            nowDeep = 1;
+            deep = 1;
+            godeep = 1;
             noError = false;
         }
         Hazy.ajax('get', url, function(data) {
-            Hazy("hazy-view").eq(nowDeep - 1).html(data);
+            Hazy("hazy-view").eq(godeep - 1).html(data);
             if (nowDeep < deep && noError) {
                 Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
             } else {

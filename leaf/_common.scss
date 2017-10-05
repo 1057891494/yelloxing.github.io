@@ -86,7 +86,7 @@ body {
         background-repeat: no-repeat;
         background-position: left top, center 10px, right center;
         background-size: auto, auto, auto;
-        font-size: 0px;
+        font-size: 0;
     }
     &>nav {
         background-color: #f4f4ef;
@@ -121,7 +121,6 @@ body {
 */
 
 .copyright {
-    position: fixed;
     bottom: 0;
     text-align: center;
     width: 100%;

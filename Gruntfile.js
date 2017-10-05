@@ -4,7 +4,7 @@ hazy.unshift('./hazy/begin.template');
 hazy.push('./hazy/end.template');
 var infomationHazy = "" +
     "/*!\n" +
-    "* <%= pkg.name %> Sprout<%= pkg.version %> hazy\n" +
+    "* <%= pkg.name %> 云笔记-遇见更好的你 <%= pkg.version %> hazy\n" +
     "* https://yelloxing.github.io\n" +
     "* \n" +
     "* Copyright <%= pkg.author %> and other contributors\n" +

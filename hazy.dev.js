@@ -16,7 +16,8 @@
         "hazy/router.js",
         "hazy/copy.element.js",
         "hazy/hazy.extend.js",
-        "hazy/dom.extend.js"
+        "hazy/dom.extend.js",
+        "hazy/cursor.lister.js"
     ];
 
     if (typeof(exports) != "undefined") {

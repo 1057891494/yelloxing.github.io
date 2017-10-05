@@ -1,5 +1,9 @@
 {
     "/home": "page/home.html",
+    "/notebook": "page/notebook.html",
+    "/opensource": "page/opensource.html",
+    "/case": "page/case.html",
+    "/other": "page/other.html",
     "default": "/home",
     "NotFound": "page/404.html"
 }

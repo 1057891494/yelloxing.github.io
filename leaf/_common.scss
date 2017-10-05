@@ -74,17 +74,71 @@ body {
 
 
 /*
+页眉样式
+*/
+
+.header {
+    &>header {
+        width: 100%;
+        height: 70px;
+        background-color: #5bdfd3;
+        background-image: url($cloudLeftImg), url($cloudTopImg), url($cloudRightImg);
+        background-repeat: no-repeat;
+        background-position: left top, center 10px, right center;
+        background-size: auto, auto, auto;
+        font-size: 0px;
+    }
+    &>nav {
+        background-color: #f4f4ef;
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.02);
+        text-align: center;
+        line-height: 45px;
+        background-image: url($selectLineImg);
+        background-repeat: repeat no-repeat;
+        background-position-y: bottom;
+        &>ul {
+            color: rgba(157, 157, 182, 0.87);
+            &>li {
+                margin-left: 15px;
+                margin-right: 15px;
+                display: inline-block;
+                cursor: pointer;
+                color: #556165;
+                &:hover {
+                    color: #58dfd3;
+                }
+                &.click {
+                    border-bottom: 2px solid #58dfd3;
+                }
+            }
+        }
+    }
+}
+
+
+/*
 页脚样式
 */
 
 .copyright {
     position: fixed;
     bottom: 0;
-    line-height: 20px;
     text-align: center;
     width: 100%;
     font-size: 12px;
-    color: #6a7677;
+    color: #999;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    line-height: 30px;
+    background: linear-gradient(#b0a4a4, #f2ebeb 30px);
+    a {
+        margin: 0 6px;
+        text-decoration: none;
+        transition: color 0.3s;
+        cursor: pointer;
+        outline: 0;
+        color: #999;
+    }
 }
 
 
@@ -106,5 +160,24 @@ hazy-copy {
         &:hover {
             background-image: url($copyHoverImg);
         }
+    }
+}
+
+
+/*
+禁止样式
+*/
+
+@media screen and (max-width: 776px) {
+    .header,
+    .copyright {
+        display: none !important;
+    }
+}
+
+@media screen and (max-height: 499px) {
+    .header,
+    .copyright {
+        display: none !important;
     }
 }

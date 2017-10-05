@@ -18,16 +18,16 @@
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
 
     <!--开发模式-->
-    <script type="text/javascript" src='./hazy.dev.js'></script>
-    <link rel="stylesheet" href="leaf/leaf.css">
+    <!-- <script type="text/javascript" src='./hazy.dev.js'></script> -->
+    <!-- <link rel="stylesheet" href="leaf/leaf.css"> -->
 
     <!--预生产模式-->
     <!-- <script type="text/javascript" src='./build/hazy.js'></script> -->
     <!-- <link rel="stylesheet" href="./build/leaf.css"> -->
 
     <!--生产模式-->
-    <!-- <script type="text/javascript" src='./build/hazy.min.js'></script> -->
-    <!-- <link rel="stylesheet" href="./build/leaf.min.css"> -->
+    <script type="text/javascript" src='./build/hazy.min.js'></script>
+    <link rel="stylesheet" href="./build/leaf.min.css">
 
     <script>
         var viewSize = $.getViewSize();
@@ -51,10 +51,33 @@
 </head>
 
 <body>
+    <section class='header'>
+        <header>
+            云笔记——遇见更好的你
+        </header>
+        <nav>
+            <ul>
+                <li onClick='window.location.href="#/home"'>首页</li> |
+                <li onClick='window.location.href="#/notebook"'>前端笔记</li> |
+                <li onClick='window.location.href="#/opensource"'>开源项目</li> |
+                <li onClick='window.location.href="#/case"'>案例</li> |
+                <li onClick='window.location.href="#/other"'>其它</li>
+            </ul>
+        </nav>
+    </section>
     <hazy-view>
         <!--一级路由-->
     </hazy-view>
-    <div class="copyright">走一步&nbsp;再走一步 &copy;2007-2017 Sprout 新芽 心叶维护 yelloxing@gmail.com </div>
+    <div class="copyright">
+        <p>
+            <a href="/about.html">关于我们</a> |
+            <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache-2.0开放协议</a> |
+            <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）">意见反馈</a> |
+            <a href="https://github.com/yelloxing/yelloxing.github.io" target="_blank">加入我们</a> |
+            <a href="https://yelloxing.github.io" target="_blank">云笔记-遇见更好的你</a>
+        </p>
+        <p>Copyright &copy; 2007-2017 走一步&nbsp;再走一步 All Rights Reserved. </p>
+    </div>
 </body>
 
 </html>

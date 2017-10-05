@@ -276,8 +276,10 @@ hazy-copy {
     padding-left: 40px;
     line-height: 30px;
     vertical-align: top; }
-    .home > .menu > ul > li {
-      cursor: pointer; }
+    .home > .menu > ul {
+      list-style: devanagari; }
+      .home > .menu > ul > li {
+        cursor: pointer; }
   .home > .container {
     vertical-align: top;
     background-color: antiquewhite;

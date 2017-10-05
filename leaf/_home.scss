@@ -2,18 +2,23 @@
     padding: 0 70px 0 70px;
     &>.about {
         &>ul {
+            font-family: cursive;
             text-align: right;
             &>li {
                 display: inline-block;
-                line-height: 70px;
+                line-height: 50px;
                 font-size: 14px;
                 cursor: pointer;
+                &:hover{
+                    color: #58a9db;
+                }
+                margin-right: 20px;
             }
         }
     }
     &>.cursor {
         position: relative;
-        color: #f0eff6;
+        color: #f8f3f8;
         &>div {
             position: absolute;
             left: 1em;
@@ -25,11 +30,13 @@
                 display: block;
                 font-size: 14px;
                 line-height: 26px;
+                color: #f5f3fb;
             }
             &>h5 {
                 display: block;
                 font-size: 12px;
                 line-height: 16px;
+                color: rgb(239, 242, 237);
             }
         }
         &>ul {
@@ -43,28 +50,16 @@
         border-radius: 50px;
         line-height: 42px;
         padding-right: 1em;
-        background: linear-gradient(#5c33ec, #884bea, #9743e1, #7646d2);
+        background-color: #58a9db;
     }
-    &>.menu{
-        display: inline-block;
-        background-color: azure;
-        margin: 10px;
-        width: 147px;
-        padding-left: 40px;
-        line-height: 30px;
-        vertical-align: top;
-        &>ul{
-            &>li{
-                cursor: pointer;
-            }
+    .info{
+        line-height: 200px;
+        text-align: center;
+        font-size: 30px;
+        em{
+            color:darkgoldenrod;
+            text-decoration: firebrick;
+            cursor: pointer;
         }
-    }
-    &>.container{
-        vertical-align: top;
-        background-color: antiquewhite;
-        width: calc(100% - 180px);
-        margin-top: 10px;
-        display: inline-block;
-        height: calc(100vh - 145px);
     }
 }

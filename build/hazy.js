@@ -1,5 +1,5 @@
 /*!
-* yelloxing.github.io 云笔记-遇见更好的你 2.0.0 hazy
+* yelloxing.github.io 云笔记-遇见更好的你 2.0.1 hazy
 * https://yelloxing.github.io
 * 
 * Copyright 心叶 and other contributors
@@ -231,6 +231,8 @@ Hazy.clock.speeds = 400;
 Hazy.clock.timerId = null;
 //计算密码对象
 Hazy.StepByStep={};
+//路由扩展显示对象
+Hazy.routerStyle={};
 
 document.createElement('hazy-view');
 
@@ -1134,7 +1136,7 @@ Hazy.extend({
 
         Hazy(window).bind('hashchange', function() {
             //路由变化时
-            var state = configJson[window.location.hash.slice(1)];
+            var state = configJson[window.location.hash.slice(1)] || configJson[configJson.default];
             var url = state.src;
             var deep = state.deep || window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
             if (!url) {
@@ -1142,8 +1144,13 @@ Hazy.extend({
                 deep = 1;
             }
             Hazy.ajax('get', url, function(data) {
-                Hazy("hazy-view").eq(deep - 1).html(data);
-                Hazy.compiler(Hazy("hazy-view")[deep - 1]);
+                try {
+                    Hazy("hazy-view").eq(deep - 1).html(data);
+                    Hazy.compiler(Hazy("hazy-view")[deep - 1]);
+                    Hazy.routerStyle.changeClick(window.location.hash.slice(1).replace(/^.*\//, ''), window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1);
+                } catch (e) {
+                    window.location.reload();
+                }
             }, function() {
                 throw new Error('Not Accepted Error!');
             });
@@ -1168,6 +1175,7 @@ Hazy.extend({
             if (nowDeep < deep && noError) {
                 Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
             } else {
+                Hazy.routerStyle.initClick(window.location.hash.slice(1));
                 console.log('%c' + new Date() + '\n\n心叶提示：路由恢复成功\n\n', 'color:#daaa65');
                 Hazy.compiler(Hazy("hazy-view")[0]);
             }
@@ -1261,8 +1269,46 @@ $.prototype.extend({
 
 });
 
-Hazy(window).bind('hashchange', function(event) {
-    //todo
+Hazy.extend(Hazy.routerStyle, {
+    "initClick": function(state) {
+        var states = state.replace(/^\//, '').split(/\//),
+            deep;
+        for (deep = 0; deep < states.length; deep++) {
+            Hazy.routerStyle.changeClick(states[deep], deep + 1);
+        };
+    },
+    "changeClick": function(state, deep) {
+        switch (deep) {
+            case 1:
+                {
+                    var eq = {
+                        "home": 1,
+                        "notebook": 2,
+                        "opensource": 3,
+                        "case": 4,
+                        "other": 5
+                    }[state];
+                    if (eq && $("#deeponemenu").length > 0) {
+                        $("#deeponemenu").find('li').removeClass('click').eq(eq - 1).addClass('click');
+                    }
+                    break;
+                }
+            case 2:
+                {
+                    var eq = {
+                        "attribute": 1,
+                        "algorithm": 2,
+                        "tool": 3,
+                        "label": 4,
+                        "other": 5
+                    }[state]
+                    if (eq && $("#deeptwomenu").length > 0) {
+                        $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');
+                    }
+                    break;
+                }
+        }
+    }
 });
 
 });

@@ -18,22 +18,22 @@
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
 
     <!--开发模式-->
-    <!-- <script type="text/javascript" src='./hazy.dev.js'></script> -->
-    <!-- <link rel="stylesheet" href="leaf/leaf.css"> -->
+    <script type="text/javascript" src='./hazy.dev.js'></script>
+    <link rel="stylesheet" href="leaf/leaf.css">
 
     <!--预生产模式-->
     <!-- <script type="text/javascript" src='./build/hazy.js'></script> -->
     <!-- <link rel="stylesheet" href="./build/leaf.css"> -->
 
     <!--生产模式-->
-    <script type="text/javascript" src='./build/hazy.min.js'></script>
-    <link rel="stylesheet" href="./build/leaf.min.css">
+    <!-- <script type="text/javascript" src='./build/hazy.min.js'></script> -->
+    <!-- <link rel="stylesheet" href="./build/leaf.min.css"> -->
 
     <script>
         var viewSize = $.getViewSize();
         var width = viewSize.width;
         var height = viewSize.height;
-        if (width < 777 || height < 500) {
+        if (width < 777 || height < 400) {
             //如果屏幕尺寸不满足要求，现阶段只有拒绝提供服务
             $.ajax("get", "page/refuse.html", function(data) {
                 Hazy("hazy-view").html(data);
@@ -56,7 +56,7 @@
             云笔记——遇见更好的你
         </header>
         <nav>
-            <ul>
+            <ul id='deeponemenu'>
                 <li onClick='window.location.href="#/home"'>首页</li> |
                 <li onClick='window.location.href="#/notebook"'>前端笔记</li> |
                 <li onClick='window.location.href="#/opensource"'>开源项目</li> |
@@ -70,11 +70,11 @@
     </hazy-view>
     <div class="copyright">
         <p>
-            <a href="">关于我们</a> |
+            <a href="tencent://message/?uin=1276327934&site=云笔记-遇见更好的你&menu=yes" title='联系我们'>联系我们</a> |
             <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache-2.0开放协议</a> |
             <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）">意见反馈</a> |
             <a href="https://github.com/yelloxing/yelloxing.github.io" target="_blank">加入我们</a> |
-            <a href="https://yelloxing.github.io" target="_blank">云笔记-遇见更好的你</a>
+            <a href="https://yelloxing.github.io">云笔记-遇见更好的你</a>
         </p>
         <p onclick='$.StepByStep.toggle()'>Copyright &copy; 2007-2017 走一步&nbsp;再走一步 All Rights Reserved. </p>
     </div>

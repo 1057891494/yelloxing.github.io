@@ -10,7 +10,7 @@ Hazy.extend({
 
         Hazy(window).bind('hashchange', function() {
             //路由变化时
-            var state = configJson[window.location.hash.slice(1)];
+            var state = configJson[window.location.hash.slice(1)] || configJson[configJson.default];
             var url = state.src;
             var deep = state.deep || window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
             if (!url) {
@@ -18,8 +18,13 @@ Hazy.extend({
                 deep = 1;
             }
             Hazy.ajax('get', url, function(data) {
-                Hazy("hazy-view").eq(deep - 1).html(data);
-                Hazy.compiler(Hazy("hazy-view")[deep - 1]);
+                try {
+                    Hazy("hazy-view").eq(deep - 1).html(data);
+                    Hazy.compiler(Hazy("hazy-view")[deep - 1]);
+                    Hazy.routerStyle.changeClick(window.location.hash.slice(1).replace(/^.*\//, ''), window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1);
+                } catch (e) {
+                    window.location.reload();
+                }
             }, function() {
                 throw new Error('Not Accepted Error!');
             });
@@ -44,6 +49,7 @@ Hazy.extend({
             if (nowDeep < deep && noError) {
                 Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
             } else {
+                Hazy.routerStyle.initClick(window.location.hash.slice(1));
                 console.log('%c' + new Date() + '\n\n心叶提示：路由恢复成功\n\n', 'color:#daaa65');
                 Hazy.compiler(Hazy("hazy-view")[0]);
             }

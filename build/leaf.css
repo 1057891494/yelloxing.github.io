@@ -226,8 +226,12 @@ body {
       color: #556165; }
       .header > nav > ul > li:hover {
         color: #58dfd3; }
-      .header > nav > ul > li.click {
-        border-bottom: 2px solid #58dfd3; }
+
+/*
+点击样式
+*/
+.click {
+  color: #58dfd3 !important; }
 
 /*
 页脚样式
@@ -278,7 +282,7 @@ hazy-copy {
   .header,
   .copyright {
     display: none !important; } }
-@media screen and (max-height: 499px) {
+@media screen and (max-height: 399px) {
   .header,
   .copyright {
     display: none !important; } }
@@ -315,6 +319,51 @@ StepByStep
     .StepByStep > li:nth-child(10) {
       background-color: #795548; }
 
-body > hazy-view {
-  min-height: calc(100vh - 216px);
-  width: 100vw; }
+.notebook {
+  min-height: calc(100vh - 256px);
+  margin: 20px auto 20px auto;
+  background-color: #f7f4f9;
+  max-width: 1024px;
+  font-size: 0; }
+  .notebook > .cursor {
+    width: 200px;
+    padding: 26px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px; }
+    .notebook > .cursor > ul > li {
+      line-height: 30px;
+      cursor: pointer;
+      color: #546264; }
+      .notebook > .cursor > ul > li:hover {
+        color: #58dfd3; }
+  .notebook > .menu {
+    font-size: 16px;
+    -webkit-box-shadow: 0 0 8px #999;
+            box-shadow: 0 0 8px #999;
+    background-color: white;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 200px);
+    min-height: calc(100vh - 256px); }
+    .notebook > .menu .menu-item {
+      background-color: #f7f4ef;
+      padding: 14px;
+      margin: 20px;
+      cursor: pointer;
+      border-left: 3px solid #58dfd3; }
+      .notebook > .menu .menu-item:hover {
+        background-color: #AFEEE8; }
+      .notebook > .menu .menu-item > .title {
+        line-height: 1.5em;
+        font-size: 18px;
+        color: #58dfd3; }
+      .notebook > .menu .menu-item > .info {
+        text-indent: 2em;
+        line-height: 2em;
+        font-size: 13px;
+        color: #546264; }
+      .notebook > .menu .menu-item > .date {
+        font-size: 14px;
+        font-family: cursive;
+        text-align: right; }

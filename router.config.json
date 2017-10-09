@@ -1,10 +1,15 @@
 {
-    "/home": { "src": "page/home.html"},
-    "/notebook": { "src": "page/notebook.html"},
-    "/notebook/attribute": { "src": "page/notebook/attribute.html", "deep": "1" },
-    "/opensource": { "src": "page/opensource.html"},
-    "/case": { "src": "page/case.html"},
-    "/other": { "src": "page/other.html"},
+    "/home": { "src": "page/home.html" },
+    "/notebook": { "src": "page/notebook.html" },
+    "/notebook/attribute": { "src": "page/cursor/attribute.html" },
+    "/notebook/label": { "src": "page/cursor/label.html" },
+    "/notebook/algorithm": { "src": "page/cursor/algorithm.html" },
+    "/notebook/other": { "src": "page/cursor/other.html" },
+    "/notebook/tool": { "src": "page/cursor/webtool.html" },
+    "/opensource": { "src": "page/opensource.html" },
+    "/case": { "src": "page/case.html" },
+    "/other": { "src": "page/other.html" },
     "default": "/home",
-    "NotFound": "page/404.html"
+    "NotFound": "page/404.html",
+    "/notebook/tool/git": { "src": "page/notebook/git.html", "deep": "1" }
 }

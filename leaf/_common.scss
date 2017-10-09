@@ -107,14 +107,17 @@ body {
                 &:hover {
                     color: #58dfd3;
                 }
-                &.click {
-                    border-bottom: 2px solid #58dfd3;
-                }
             }
         }
     }
 }
 
+/*
+点击样式
+*/
+.click {
+    color:#58dfd3 !important;
+}
 
 /*
 页脚样式
@@ -174,7 +177,7 @@ hazy-copy {
     }
 }
 
-@media screen and (max-height: 499px) {
+@media screen and (max-height: 399px) {
     .header,
     .copyright {
         display: none !important;

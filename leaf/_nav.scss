@@ -1,4 +1,60 @@
-body>hazy-view{
-    min-height: calc(100vh - 216px);
-    width: 100vw;
+//notebook 前端笔记
+.notebook {
+    min-height: calc(100vh - 256px);
+    margin: 20px auto 20px auto;
+    background-color: #f7f4f9;
+    max-width: 1024px;
+    font-size: 0;
+    &>.cursor {
+        width: 200px;
+        padding: 26px;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 16px;
+        &>ul {
+            &>li {
+                line-height: 30px;
+                cursor: pointer;
+                color: #546264;
+                &:hover {
+                    color: #58dfd3;
+                }
+            }
+        }
+    }
+    &>.menu {
+        font-size: 16px;
+        box-shadow: 0 0 8px #999;
+        background-color: white;
+        display: inline-block;
+        vertical-align: top;
+        width: calc(100% - 200px);
+        min-height: calc(100vh - 256px);
+        .menu-item {
+            background-color: #f7f4ef;
+            padding: 14px;
+            margin: 20px;
+            cursor: pointer;
+            border-left: 3px solid #58dfd3;
+            &:hover {
+                background-color: #AFEEE8;
+            }
+            &>.title {
+                line-height: 1.5em;
+                font-size: 18px;
+                color: #58dfd3;
+            }
+            &>.info {
+                text-indent: 2em;
+                line-height: 2em;
+                font-size: 13px;
+                color: #546264;
+            }
+            &>.date {
+                font-size: 14px;
+                font-family: cursive;
+                text-align: right;
+            }
+        }
+    }
 }

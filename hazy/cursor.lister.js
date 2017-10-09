@@ -1,3 +1,3 @@
-Hazy(window).bind('hashchange', function() {
-
+Hazy(window).bind('hashchange', function(event) {
+    //todo
 });

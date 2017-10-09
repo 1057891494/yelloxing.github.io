@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-05
+* Date: 2017-10-09
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -1261,8 +1261,8 @@ $.prototype.extend({
 
 });
 
-Hazy(window).bind('hashchange', function() {
-
+Hazy(window).bind('hashchange', function(event) {
+    //todo
 });
 
 });

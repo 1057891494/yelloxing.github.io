@@ -88,6 +88,13 @@ module.exports = function(grunt) {
                     'build/leaf.min.css': ['build/leaf.css']
                 }
             }
+        },
+        'http-server': {
+            target: {
+                root: './',
+                port: 7070,
+                openBrowser: true,
+            }
         }
     });
 
@@ -98,7 +105,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-http-server');
 
     /*注册任务*/
     grunt.registerTask('default', ['concat:target', 'jshint:afterconcat', 'uglify:target', 'postcss:target', 'csslint:target', 'cssmin:target']);
+    grunt.registerTask('server', ['http-server:target']);
 };

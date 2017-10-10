@@ -17,7 +17,7 @@
                 cursor: pointer;
                 color: #546264;
                 &:hover {
-                    color: #58dfd3;
+                    color: $basicCursorColor;
                 }
             }
         }
@@ -35,14 +35,14 @@
             padding: 14px;
             margin: 20px;
             cursor: pointer;
-            border-left: 3px solid #58dfd3;
+            border-left: 3px solid $basicCursorColor;
             &:hover {
-                background-color: #AFEEE8;
+                background-color: #faf4fc;
             }
             &>.title {
                 line-height: 1.5em;
                 font-size: 18px;
-                color: #58dfd3;
+                color: $basicCursorColor;
             }
             &>.info {
                 text-indent: 2em;

@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-09
+* Date: 2017-10-10
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -229,8 +229,6 @@ Hazy.clock.interval = 13;
 Hazy.clock.speeds = 400;
 //定时器ID
 Hazy.clock.timerId = null;
-//计算密码对象
-Hazy.StepByStep={};
 //路由扩展显示对象
 Hazy.routerStyle={};
 
@@ -1098,32 +1096,6 @@ Hazy.extend(Hazy.looper, {
     }
 });
 
-$.extend(Hazy.StepByStep, {
-    "pwd": "",
-    "toggle": function() {
-        $.StepByStep.pwd='';
-        if ($('#StepByStep').length < 1) {
-            $('body').append("<ul class='StepByStep' id='StepByStep'>"+
-            "   <li onclick='$.StepByStep.input(\"0\")'>0</li>"+
-            "   <li onclick='$.StepByStep.input(\"1\")'>1</li>"+
-            "   <li onclick='$.StepByStep.input(\"2\")'>2</li>"+
-            "   <li onclick='$.StepByStep.input(\"3\")'>3</li>"+
-            "   <li onclick='$.StepByStep.input(\"4\")'>4</li>"+
-            "   <li onclick='$.StepByStep.input(\"5\")'>5</li>"+
-            "   <li onclick='$.StepByStep.input(\"6\")'>6</li>"+
-            "   <li onclick='$.StepByStep.input(\"7\")'>7</li>"+
-            "   <li onclick='$.StepByStep.input(\"8\")'>8</li>"+
-            "   <li onclick='$.StepByStep.input(\"9\")'>9</li>"+
-            "</ul>");
-        } else {
-            $('#StepByStep').remove();
-        }
-    },
-    "input": function(num) {
-        $.StepByStep.pwd += num;
-    }
-});
-
 Hazy.extend({
     "startRouter": function(configJson) {
         //初始化路由
@@ -1296,11 +1268,7 @@ Hazy.extend(Hazy.routerStyle, {
             case 2:
                 {
                     var eq = {
-                        "attribute": 1,
-                        "algorithm": 2,
-                        "tool": 3,
-                        "label": 4,
-                        "other": 5
+                        "tool": 1
                     }[state]
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

@@ -206,8 +206,6 @@ Hazy.clock.interval = 13;
 Hazy.clock.speeds = 400;
 //定时器ID
 Hazy.clock.timerId = null;
-//计算密码对象
-Hazy.StepByStep={};
 //路由扩展显示对象
 Hazy.routerStyle={};
 

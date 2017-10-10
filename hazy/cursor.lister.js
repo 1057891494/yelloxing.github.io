@@ -25,11 +25,7 @@ Hazy.extend(Hazy.routerStyle, {
             case 2:
                 {
                     var eq = {
-                        "attribute": 1,
-                        "algorithm": 2,
-                        "tool": 3,
-                        "label": 4,
-                        "other": 5
+                        "tool": 1
                     }[state]
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

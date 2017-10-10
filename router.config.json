@@ -1,11 +1,7 @@
 {
     "/home": { "src": "page/home.html" },
     "/notebook": { "src": "page/notebook.html" },
-    "/notebook/attribute": { "src": "page/cursor/attribute.html" },
-    "/notebook/label": { "src": "page/cursor/label.html" },
-    "/notebook/algorithm": { "src": "page/cursor/algorithm.html" },
-    "/notebook/other": { "src": "page/cursor/other.html" },
-    "/notebook/tool": { "src": "page/cursor/webtool.html" },
+    "/notebook/tool": { "src": "page/cursor/tool.html" },
     "/opensource": { "src": "page/opensource.html" },
     "/case": { "src": "page/case.html" },
     "/other": { "src": "page/other.html" },

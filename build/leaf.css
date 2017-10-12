@@ -320,6 +320,14 @@ hazy-copy {
     vertical-align: top;
     width: calc(100% - 200px);
     min-height: calc(100vh - 256px); }
+    .notebook > .menu > .logo {
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: auto auto;
+      background-image: url(../source/notebook.png);
+      width: 100%;
+      min-height: calc(100vh - 256px);
+      background-color: #016682; }
     .notebook > .menu .menu-item {
       background-color: #f7f4ef;
       padding: 14px;

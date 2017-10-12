@@ -1,3 +1,228 @@
 <section class='pages'>
+    <header class='title'>
+        Git 快速使用
+    </header>
+    <section class='page'>
+        <header>
+            用户名和邮箱
+        </header>
+        <article>
+            <div class='info'>
+                分别修改用户名和邮箱，其中--global带和不带的区别在于操作文件是.git/config还是~/.gitconfig，如果你使用的是--system则对应的就是/etc/gitconfig文件。
+            </div>
+            <div class="info">
+                对于是否在最后带username或email，区别在于你是设置还是查看。
+            </div>
+            <div class='bash'>
+                git config [--global] user.name [username]
+            </div>
+            <div class='bash'>
+                git config [--global] user.email [email]
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            主机
+        </header>
+        <article>
+            <div class='info'>
+                列出所有远程主机，使用-v选项（即：git remote -v），可以参看远程主机的网址,使用show hostname可以查看主机hostname的详细信息。
+            </div>
+            <div class='bash'>
+                git remote [show hostname]
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                添加连接的远程仓库，其中hostname是给仓库起的名称，uri是仓库地址。
+            </div>
+            <div class='bash'>
+                git remote add hostname uri
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                删除连接的远程仓库，其中hostname是给仓库起的名称。
+            </div>
+            <div class='bash'>
+                git remote rm hostname
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                修改远程主机oldhostname名称为newhostname。
+            </div>
+            <div class='bash'>
+                git remote rename oldhostname newhostname
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            初始化
+        </header>
+        <article>
+            <div class='info'>
+                使用该命令会在目录中创建新的Git仓库，本地化的。
+            </div>
+            <div class='bash'>
+                git init
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                把uri指定的仓库代码克隆到本地来，如果加了可选参数dir，表示克隆到改文件夹下。
+            </div>
+            <div class='bash'>
+                git clone uri [dir]
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            提交
+        </header>
+        <article>
+            <div class='info'>
+                执行该命令可以知道仓库目前的状态，是否是最新代码，有没有修改等。
+            </div>
+            <div class='bash'>
+                git status
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                从远程服务器拉取代码更新，hostname是对应的仓库名称，branchname是分支名称。
+            </div>
+            <div class='bash'>
+                git pull hostname branchname
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                添加文件到缓冲区，你可以指定添加的文件filename，也可以使用-A把文件夹下全部文件添加到缓冲区。
+            </div>
+            <div class='bash'>
+                git add filename|-A
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                提交代码到本地仓库，-m后面的remark表示对这次提交的描述。
+            </div>
+            <div class='bash'>
+                git commit [-m remark]
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                提交代码到远程服务器，hostname是对应的仓库名称，branchname是分支名称。
+            </div>
+            <div class='bash'>
+                git push hostname branchname
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            日志
+        </header>
+        <article>
 
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            回退
+        </header>
+        <article>
+
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            比较
+        </header>
+        <article>
+
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            合并
+        </header>
+        <article>
+
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            暂存
+        </header>
+        <article>
+
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            标签
+        </header>
+        <article>
+
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            分支
+        </header>
+        <article>
+            <div class='info'>
+                查看分支状态，如果使用-r（即：git branch -r）表示查看远程分支状态，-a选项查看所有分支。
+            </div>
+            <div class='bash'>
+                git branch
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                创建一个名称叫branchname的分支，此分支初始化拥有的是你创建此分支时活跃分支。
+            </div>
+            <div class='bash'>
+                git branch branchname
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                切换当前活跃分支为branchname。
+            </div>
+            <div class='bash'>
+                git checkout branchname
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                删除本地指定分支branchname。
+            </div>
+            <div class='bash'>
+                git branch -d branchname
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                删除远程指定分支branchname。
+            </div>
+            <div class='bash'>
+                git push storehouseName --delete branchname
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                修改本地分支oldBranchname的名称为newBranchname。
+            </div>
+            <div class='bash'>
+                git branch -m oldBranchname newBranchname
+            </div>
+        </article>
+    </section>
 </section>

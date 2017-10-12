@@ -1,4 +1,67 @@
 //文章格式
-.pages{
-    min-height: calc(100vh - 216px);
+.pages {
+    .title {
+        font-size: 18px;
+        line-height: 20px;
+        color: $basicCursorColor;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .page {
+        padding: 0 1em;
+        font-family: cursive;
+        font-size: 16px;
+        box-shadow: 0 0 8px #999;
+        background-color: white;
+        display: inline-block;
+        vertical-align: top;
+        width: calc(100% - 200px);
+        min-height: 120px;
+        margin: 20px 100px 20px 100px;
+        position: relative;
+        &>header {
+            color: $basicCursorColor;
+            font-size: 20px;
+            line-height: 1.6em;
+            transform: rotate(-55deg);
+            width: 7em;
+            text-align: center;
+            position: absolute;
+            background-color: aliceblue;
+            top: 23px;
+            left: -50px;
+            opacity: .7;
+            box-shadow: 0 0 8px $basicCursorColor;
+        }
+        &>article {
+            &:nth-child(2){
+                padding: 30px 10px 10px 30px;
+            }
+            padding: 5px 10px 10px 30px;
+            .bash {
+                line-height: 33px;
+                font-size: 18px;
+                color: $basicCursorColor;
+                margin-left: 42px;
+                margin-top: 10px;
+                &:before {
+                    content: "Terminal:~ yelloxing$ ";
+                }
+            }
+            .info {
+                line-height: 26px;
+                margin-bottom: 10px;
+                color: #4367ef;
+                &:before {
+                    display: inline-block;
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 50%;
+                    background-color: #000306;
+                    content: " ";
+                    margin-bottom: 3px;
+                }
+            }
+        }
+    }
 }

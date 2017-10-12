@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-10
+* Date: 2017-10-12
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -374,7 +374,8 @@ Hazy.extend({
                 if (element.attr(component + '-compiler')) {
                     throw new Error(component + ' had compiler');
                 }
-                components[component](element);
+                var data=element.attr('data')||'';
+                components[component](element,data);
                 element.attr(component + '-compiler', new Date());
                 element.prepend("<!--" + component + " Begin 【走一步 再走一步】-->");
                 element.append("<!--" + component + " End 【走一步 再走一步】-->");

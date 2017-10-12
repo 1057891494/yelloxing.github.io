@@ -148,7 +148,8 @@ body {
   margin: auto;
   position: relative;
   padding-top: 240px;
-  width: 700px; }
+  width: 700px;
+  min-height: calc(100vh - 216px); }
   .notFound .button {
     line-height: 30px;
     position: absolute;
@@ -292,32 +293,6 @@ hazy-copy {
   .header,
   .copyright {
     display: none !important; } }
-/*
-StepByStep
-*/
-.StepByStep {
-  font-size: 0;
-  background-color: #f7f7fb; }
-  .StepByStep > li {
-    display: inline-block;
-    width: 14.2%;
-    font-size: 16px;
-    text-align: center;
-    height: 30px;
-    cursor: pointer; }
-    .StepByStep > li:nth-child(1) {
-      background-color: #f50547; }
-    .StepByStep > li:nth-child(2) {
-      background-color: #faff00; }
-    .StepByStep > li:nth-child(3) {
-      background-color: #0fff00; }
-    .StepByStep > li:nth-child(4) {
-      background-color: #b500ff; }
-    .StepByStep > li:nth-child(5) {
-      background-color: #0707f3; }
-    .StepByStep > li:nth-child(6) {
-      background-color: #00e6ff; }
-
 .notebook {
   min-height: calc(100vh - 256px);
   margin: 20px auto 20px auto;
@@ -367,5 +342,61 @@ StepByStep
         font-family: cursive;
         text-align: right; }
 
-.pages {
-  min-height: calc(100vh - 216px); }
+.pages .title {
+  font-size: 18px;
+  line-height: 20px;
+  color: #58dfd3;
+  margin-top: 20px;
+  text-align: center; }
+.pages .page {
+  padding: 0 1em;
+  font-family: cursive;
+  font-size: 16px;
+  -webkit-box-shadow: 0 0 8px #999;
+          box-shadow: 0 0 8px #999;
+  background-color: white;
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 200px);
+  min-height: 120px;
+  margin: 20px 100px 20px 100px;
+  position: relative; }
+  .pages .page > header {
+    color: #58dfd3;
+    font-size: 20px;
+    line-height: 1.6em;
+    -webkit-transform: rotate(-55deg);
+            transform: rotate(-55deg);
+    width: 7em;
+    text-align: center;
+    position: absolute;
+    background-color: aliceblue;
+    top: 23px;
+    left: -50px;
+    opacity: .7;
+    -webkit-box-shadow: 0 0 8px #58dfd3;
+            box-shadow: 0 0 8px #58dfd3; }
+  .pages .page > article {
+    padding: 5px 10px 10px 30px; }
+    .pages .page > article:nth-child(2) {
+      padding: 30px 10px 10px 30px; }
+    .pages .page > article .bash {
+      line-height: 33px;
+      font-size: 18px;
+      color: #58dfd3;
+      margin-left: 42px;
+      margin-top: 10px; }
+      .pages .page > article .bash:before {
+        content: "Terminal:~ yelloxing$ "; }
+    .pages .page > article .info {
+      line-height: 26px;
+      margin-bottom: 10px;
+      color: #4367ef; }
+      .pages .page > article .info:before {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: #000306;
+        content: " ";
+        margin-bottom: 3px; }

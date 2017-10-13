@@ -3,9 +3,34 @@
     .title {
         font-size: 18px;
         line-height: 20px;
-        color: $basicCursorColor;
+        color: lighten($basicCursorColor, 30%);
         margin-top: 20px;
         text-align: center;
+    }
+    .say {
+        padding: 0 1em;
+        font-family: cursive;
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: top;
+        width: calc(100% - 200px);
+        min-height: 120px;
+        margin: 20px 100px 20px 100px;
+        position: relative;
+        .info {
+            line-height: 26px;
+            margin-bottom: 10px;
+            color: #1c6783;
+            &:before {
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background-color: #000306;
+                content: " ";
+                margin-bottom: 3px;
+            }
+        }
     }
     .page {
         padding: 0 1em;
@@ -34,7 +59,7 @@
             box-shadow: 0 0 8px $basicCursorColor;
         }
         &>article {
-            &:nth-child(2){
+            &:nth-child(2) {
                 padding: 30px 10px 10px 30px;
             }
             padding: 5px 10px 10px 30px;

@@ -17,7 +17,7 @@
                 cursor: pointer;
                 color: #546264;
                 &:hover {
-                    color: $basicCursorColor;
+                    color: lighten($basicCursorColor,30%);
                 }
             }
         }
@@ -33,8 +33,8 @@
         &>.logo{
             @include bg_init('../source/notebook.png');
             width: 100%;
-            min-height: calc(100vh - 256px);
-            background-color: #016682;
+            height:480px;
+            background-color: $basicCursorColor;
         }
         .menu-item {
             background-color: #f7f4ef;

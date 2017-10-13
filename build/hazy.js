@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-12
+* Date: 2017-10-13
 */
 (function(global, factory, undefined) {
     'use strict';

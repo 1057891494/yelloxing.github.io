@@ -2,10 +2,12 @@
     "/home": { "src": "page/home.html" },
     "/notebook": { "src": "page/notebook.html" },
     "/notebook/tool": { "src": "page/cursor/tool.html" },
+    "/notebook/ECMAScript": { "src": "page/cursor/es.html" },
     "/opensource": { "src": "page/opensource.html" },
     "/case": { "src": "page/case.html" },
     "/other": { "src": "page/other.html" },
     "default": "/home",
     "NotFound": "page/404.html",
-    "/notebook/tool/git": { "src": "page/notebook/git.html", "deep": "1" }
+    "/notebook/tool/git": { "src": "page/notebook/git.html", "deep": "1" },
+    "/notebook/ECMAScript/RegExp": { "src": "page/notebook/RegExp.html", "deep": "1" }
 }

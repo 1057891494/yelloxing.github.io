@@ -1248,13 +1248,14 @@ Hazy.extend(Hazy.routerStyle, {
             deep;
         for (deep = 0; deep < states.length; deep++) {
             Hazy.routerStyle.changeClick(states[deep], deep + 1);
-        };
+        }
     },
     "changeClick": function(state, deep) {
+        var eq;
         switch (deep) {
             case 1:
                 {
-                    var eq = {
+                    eq = {
                         "home": 1,
                         "notebook": 2,
                         "opensource": 3,
@@ -1268,9 +1269,10 @@ Hazy.extend(Hazy.routerStyle, {
                 }
             case 2:
                 {
-                    var eq = {
-                        "tool": 1
-                    }[state]
+                    eq = {
+                        "tool": 1,
+                        "ECMAScript": 2
+                    }[state];
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');
                     }

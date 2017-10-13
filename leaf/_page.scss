@@ -69,9 +69,15 @@
                 color: $basicCursorColor;
                 margin-left: 42px;
                 margin-top: 10px;
-                &:before {
+                &.terminal:before {
                     content: "Terminal:~ yelloxing$ ";
                 }
+            }
+            .warn{
+                color: #efa646;
+                font-family: cursive;
+                font-size: 12px;
+                line-height: 16px;
             }
             .info {
                 line-height: 26px;

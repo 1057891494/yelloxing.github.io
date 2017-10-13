@@ -416,8 +416,13 @@ hazy-copy {
       color: #146782;
       margin-left: 42px;
       margin-top: 10px; }
-      .pages .page > article .bash:before {
+      .pages .page > article .bash.terminal:before {
         content: "Terminal:~ yelloxing$ "; }
+    .pages .page > article .warn {
+      color: #efa646;
+      font-family: cursive;
+      font-size: 12px;
+      line-height: 16px; }
     .pages .page > article .info {
       line-height: 26px;
       margin-bottom: 10px;

@@ -43,12 +43,12 @@
             cursor: pointer;
             border-left: 3px solid $basicCursorColor;
             &:hover {
-                background-color: #faf4fc;
+                background-color: rgba(244, 242, 245, 0.49);
             }
             &>.title {
                 line-height: 1.5em;
                 font-size: 18px;
-                color: $basicCursorColor;
+                color: lighten($basicCursorColor, 30%);
             }
             &>.info {
                 text-indent: 2em;

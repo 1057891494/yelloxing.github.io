@@ -250,7 +250,7 @@ Hazy.extend({
         //去掉：换行，换页，回车
         template = template.trim().replace(/[\n\f\r ]/g, '');
         //初始化版本简单判断
-        if (/^<([^<> ]+).*><\/\1>$/.test(template)) {
+        if (/^<([^<> ]+).*>.*<\/\1>$/.test(template)) {
             return true;
         } else if (/^<!--.*-->$/.test(template)) {
             return true;
@@ -966,18 +966,18 @@ Hazy.prototype.extend({
                     };
 
                     //处理
-                    if (/^[\d\.]+px$/.test(value) && (!oldValue || beginproto.unit == 'px')) {
+                    if (/^-*[\d\.]+px$/.test(value) && (!oldValue || beginproto.unit == 'px')) {
                         value = value.replace(/px$/, '');
                         unit = "px";
-                    } else if (/^[\d\.]+%$/.test(value) && (!oldValue || beginproto.unit == '%')) {
+                    } else if (/^-*[\d\.]+%$/.test(value) && (!oldValue || beginproto.unit == '%')) {
                         value = value.replace(/%$/, '');
                         unit = "%";
-                    } else if (/^[\d\.]+$/.test(value) && (!oldValue || beginproto.unit == '')) {
+                    } else if (/^-*[\d\.]+$/.test(value) && (!oldValue || beginproto.unit == '')) {
                         unit = "";
-                    } else if (/^[\d\.]+em$/.test(value) && (!oldValue || beginproto.unit == 'em')) {
+                    } else if (/^-*[\d\.]+em$/.test(value) && (!oldValue || beginproto.unit == 'em')) {
                         value = value.replace(/em$/, '');
                         unit = "em";
-                    } else if (/^[\d\.]+rem$/.test(value) && (!oldValue || beginproto.unit == 'rem')) {
+                    } else if (/^-*[\d\.]+rem$/.test(value) && (!oldValue || beginproto.unit == 'rem')) {
                         value = value.replace(/rem$/, '');
                         unit = "rem";
                     } else {
@@ -1170,15 +1170,18 @@ Hazy.extend(Hazy.innerObject.component, {
             }
         }).bind('click', function(e) {
             //点击执行操作
-            element.clipboard();
+            Hazy.clipboard(element.text());
         });
     }
 });
-Hazy.prototype.extend({
-    "clipboard": function() {
-        var $this = Hazy(this);
-        Hazy.notify('复制功能开发中，请稍后。。。。。。');
-        return $this;
+Hazy.extend({
+    "clipboard": function(text) {
+        Hazy('body').append(Hazy('<textarea id="clipboard-textarea">' + text + '</textarea>'));
+        document.getElementById("clipboard-textarea").select();
+        document.execCommand("copy", false, null);
+        Hazy('#clipboard-textarea').remove();
+        Hazy.notify('复制成功，现在可以粘贴了');
+        return this;
     }
 });
 
@@ -1211,7 +1214,17 @@ $.extend({
     //提示信息
     "notify": function(msg) {
         Hazy.looper.loop(function() {
-            window.alert(msg);
+            var unique = new Date().valueOf();
+            Hazy('body').append(Hazy('<div id="notify-' + unique + '" class="notify">' + msg + '</div>'));
+            Hazy('#notify-' + unique).css({
+                "left": "100%"
+            }).animation({
+                "left": "0%"
+            }, 5000, function() {
+                window.setTimeout(function() {
+                    Hazy('#notify-' + unique).remove();
+                }, 1000);
+            });
         });
     }
 });
@@ -1271,7 +1284,8 @@ Hazy.extend(Hazy.routerStyle, {
                 {
                     eq = {
                         "tool": 1,
-                        "ECMAScript": 2
+                        "ECMAScript": 2,
+                        "layout": 3
                     }[state];
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

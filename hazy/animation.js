@@ -26,18 +26,18 @@ Hazy.prototype.extend({
                     };
 
                     //处理
-                    if (/^[\d\.]+px$/.test(value) && (!oldValue || beginproto.unit == 'px')) {
+                    if (/^-*[\d\.]+px$/.test(value) && (!oldValue || beginproto.unit == 'px')) {
                         value = value.replace(/px$/, '');
                         unit = "px";
-                    } else if (/^[\d\.]+%$/.test(value) && (!oldValue || beginproto.unit == '%')) {
+                    } else if (/^-*[\d\.]+%$/.test(value) && (!oldValue || beginproto.unit == '%')) {
                         value = value.replace(/%$/, '');
                         unit = "%";
-                    } else if (/^[\d\.]+$/.test(value) && (!oldValue || beginproto.unit == '')) {
+                    } else if (/^-*[\d\.]+$/.test(value) && (!oldValue || beginproto.unit == '')) {
                         unit = "";
-                    } else if (/^[\d\.]+em$/.test(value) && (!oldValue || beginproto.unit == 'em')) {
+                    } else if (/^-*[\d\.]+em$/.test(value) && (!oldValue || beginproto.unit == 'em')) {
                         value = value.replace(/em$/, '');
                         unit = "em";
-                    } else if (/^[\d\.]+rem$/.test(value) && (!oldValue || beginproto.unit == 'rem')) {
+                    } else if (/^-*[\d\.]+rem$/.test(value) && (!oldValue || beginproto.unit == 'rem')) {
                         value = value.replace(/rem$/, '');
                         unit = "rem";
                     } else {

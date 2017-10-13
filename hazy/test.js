@@ -6,7 +6,7 @@ Hazy.extend({
         //去掉：换行，换页，回车
         template = template.trim().replace(/[\n\f\r ]/g, '');
         //初始化版本简单判断
-        if (/^<([^<> ]+).*><\/\1>$/.test(template)) {
+        if (/^<([^<> ]+).*>.*<\/\1>$/.test(template)) {
             return true;
         } else if (/^<!--.*-->$/.test(template)) {
             return true;

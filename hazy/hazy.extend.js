@@ -27,7 +27,17 @@ $.extend({
     //提示信息
     "notify": function(msg) {
         Hazy.looper.loop(function() {
-            window.alert(msg);
+            var unique = new Date().valueOf();
+            Hazy('body').append(Hazy('<div id="notify-' + unique + '" class="notify">' + msg + '</div>'));
+            Hazy('#notify-' + unique).css({
+                "left": "100%"
+            }).animation({
+                "left": "0%"
+            }, 5000, function() {
+                window.setTimeout(function() {
+                    Hazy('#notify-' + unique).remove();
+                }, 1000);
+            });
         });
     }
 });

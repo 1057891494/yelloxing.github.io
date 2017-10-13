@@ -10,14 +10,17 @@ Hazy.extend(Hazy.innerObject.component, {
             }
         }).bind('click', function(e) {
             //点击执行操作
-            element.clipboard();
+            Hazy.clipboard(element.text());
         });
     }
 });
-Hazy.prototype.extend({
-    "clipboard": function() {
-        var $this = Hazy(this);
-        Hazy.notify('复制功能开发中，请稍后。。。。。。');
-        return $this;
+Hazy.extend({
+    "clipboard": function(text) {
+        Hazy('body').append(Hazy('<textarea id="clipboard-textarea">' + text + '</textarea>'));
+        document.getElementById("clipboard-textarea").select();
+        document.execCommand("copy", false, null);
+        Hazy('#clipboard-textarea').remove();
+        Hazy.notify('复制成功，现在可以粘贴了');
+        return this;
     }
 });

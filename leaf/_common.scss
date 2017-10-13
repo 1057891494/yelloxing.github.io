@@ -106,7 +106,7 @@ body {
                 cursor: pointer;
                 color: #556165;
                 &:hover {
-                    color: lighten($basicCursorColor,30%);
+                    color: lighten($basicCursorColor, 30%);
                 }
             }
         }
@@ -119,7 +119,7 @@ body {
 */
 
 .click {
-    color: lighten($basicCursorColor,30%) !important;
+    color: lighten($basicCursorColor, 30%) !important;
 }
 
 
@@ -178,6 +178,21 @@ hazy-copy {
 
 
 /*
+提示样式
+*/
+
+.notify {
+    box-shadow: 0 0 20px #03A9F4;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(3, 169, 244, 0.32);
+    padding: 10px;
+    color: #fdfdfd;
+    width: 260px;
+}
+
+
+/*
 禁止样式
 */
 
@@ -194,4 +209,3 @@ hazy-copy {
         display: none !important;
     }
 }
-

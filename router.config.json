@@ -3,6 +3,7 @@
     "/notebook": { "src": "page/notebook.html" },
     "/notebook/tool": { "src": "page/cursor/tool.html" },
     "/notebook/ECMAScript": { "src": "page/cursor/es.html" },
+    "/notebook/layout": { "src": "page/cursor/css.html" },
     "/opensource": { "src": "page/opensource.html" },
     "/case": { "src": "page/case.html" },
     "/other": { "src": "page/other.html" },

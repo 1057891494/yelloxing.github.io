@@ -15,8 +15,10 @@ Hazy.extend(Hazy.routerStyle, {
                         "home": 1,
                         "notebook": 2,
                         "opensource": 3,
-                        "case": 4,
-                        "other": 5
+                        "gouache": 4,
+                        "AI": 5,
+                        "English": 6,
+                        "CompilerPrinciple": 7
                     }[state];
                     if (eq && $("#deeponemenu").length > 0) {
                         $("#deeponemenu").find('li').removeClass('click').eq(eq - 1).addClass('click');
@@ -28,7 +30,8 @@ Hazy.extend(Hazy.routerStyle, {
                     eq = {
                         "tool": 1,
                         "ECMAScript": 2,
-                        "layout": 3
+                        "layout": 3,
+                        "model": 4
                     }[state];
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

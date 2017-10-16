@@ -363,6 +363,28 @@ hazy-copy {
         font-family: cursive;
         text-align: right; }
 
+.home {
+  min-height: calc(100vh - 256px);
+  margin: 20px auto 20px auto;
+  max-width: 1024px;
+  font-size: 16px; }
+  .home > .title {
+    padding-left: 276px;
+    min-height: 300px;
+    width: 625px;
+    margin: auto;
+    background-image: url("../source/url.png");
+    background-position-x: left;
+    background-repeat: no-repeat;
+    padding-top: 36px; }
+    .home > .title > .name {
+      font-size: 36px;
+      line-height: 84px; }
+    .home > .title > .info {
+      font-family: cursive;
+      text-indent: 2em;
+      line-height: 26px; }
+
 .pages .title {
   font-size: 18px;
   line-height: 20px;

@@ -8,13 +8,16 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-15
+* Date: 2017-10-16
 */
 (function(global, factory, undefined) {
     'use strict';
 
     if (global && global.document) {
+        var start=new Date().getTime();
         factory(global);
+        var usetime=new Date().getTime() - start;
+        console.log('%c' + new Date() + '\n\n心叶提示：系统启动用时为：'+usetime+'毫秒\n\n', 'color:#daaa65');
     } else {
         throw new Error("Hazy requires a window with a document!");
     }
@@ -1275,7 +1278,7 @@ Hazy.extend(Hazy.routerStyle, {
                         "gouache": 4,
                         "AI": 5,
                         "English": 6,
-                        "CompilerPrinciple": 7
+                        "Cuper": 7
                     }[state];
                     if (eq && $("#deeponemenu").length > 0) {
                         $("#deeponemenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

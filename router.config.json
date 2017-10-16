@@ -9,9 +9,10 @@
     "/gouache": { "src": "page/gouache.html" },
     "/AI": { "src": "page/ArtificialIntelligent.html" },
     "/English": { "src": "page/English.html" },
-    "/CompilerPrinciple": { "src": "page/CompilerPrinciple.html" },
+    "/Cuper": { "src": "page/CompilerPrinciple.html" },
     "default": "/home",
     "NotFound": "page/404.html",
     "/notebook/tool/git": { "src": "page/notebook/git.html", "deep": "1" },
-    "/notebook/ECMAScript/RegExp": { "src": "page/notebook/RegExp.html", "deep": "1" }
+    "/notebook/ECMAScript/RegExp": { "src": "page/notebook/RegExp.html", "deep": "1" },
+    "/notebook/ECMAScript/Function": { "src": "page/notebook/function.html", "deep": "1" }
 }

@@ -17,7 +17,7 @@
                 cursor: pointer;
                 color: #546264;
                 &:hover {
-                    color: lighten($basicCursorColor,30%);
+                    color: lighten($basicCursorColor, 30%);
                 }
             }
         }
@@ -30,10 +30,10 @@
         vertical-align: top;
         width: calc(100% - 200px);
         min-height: calc(100vh - 256px);
-        &>.logo{
+        &>.logo {
             @include bg_init('../source/notebook.png');
             width: 100%;
-            height:480px;
+            height: 480px;
             background-color: $basicCursorColor;
         }
         .menu-item {
@@ -61,6 +61,33 @@
                 font-family: cursive;
                 text-align: right;
             }
+        }
+    }
+}
+
+//home
+.home {
+    min-height: calc(100vh - 256px);
+    margin: 20px auto 20px auto;
+    max-width: 1024px;
+    font-size: 16px;
+    &>.title {
+        padding-left: 276px;
+        min-height: 300px;
+        width: 625px;
+        margin: auto;
+        background-image: url('../source/url.png');
+        background-position-x: left;
+        background-repeat: no-repeat;
+        padding-top: 36px;
+        &>.name {
+            font-size: 36px;
+            line-height: 84px;
+        }
+        &>.info {
+            font-family: cursive;
+            text-indent: 2em;
+            line-height: 26px;
         }
     }
 }

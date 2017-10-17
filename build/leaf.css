@@ -386,6 +386,13 @@ hazy-copy {
       text-indent: 2em;
       line-height: 26px; }
 
+.outline {
+  text-align: center;
+  line-height: calc(100vh - 216px);
+  font-size: 80px;
+  color: #4cbee3;
+  font-family: cursive; }
+
 .pages .title {
   font-size: 18px;
   line-height: 20px;

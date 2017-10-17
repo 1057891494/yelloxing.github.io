@@ -1223,7 +1223,7 @@ $.extend({
                 "left": "100%"
             }).animation({
                 "left": "0%"
-            }, 5000, function() {
+            }, 20000, function() {
                 window.setTimeout(function() {
                     Hazy('#notify-' + unique).remove();
                 }, 1000);
@@ -1275,9 +1275,7 @@ Hazy.extend(Hazy.routerStyle, {
                         "home": 1,
                         "notebook": 2,
                         "algorithm": 3,
-                        "gouache": 4,
-                        "English": 5,
-                        "Cuper": 6
+                        "opensource": 4
                     }[state];
                     if (eq && $("#deeponemenu").length > 0) {
                         $("#deeponemenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

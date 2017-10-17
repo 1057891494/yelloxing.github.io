@@ -15,9 +15,7 @@ Hazy.extend(Hazy.routerStyle, {
                         "home": 1,
                         "notebook": 2,
                         "algorithm": 3,
-                        "gouache": 4,
-                        "English": 5,
-                        "Cuper": 6
+                        "opensource": 4
                     }[state];
                     if (eq && $("#deeponemenu").length > 0) {
                         $("#deeponemenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

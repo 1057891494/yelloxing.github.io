@@ -79,6 +79,16 @@
                 font-size: 12px;
                 line-height: 16px;
             }
+            .code {
+                font-size: 14px;
+                color: #1d668f;
+                background-color: #f7f4ef;
+                padding: 10px 20px 10px 30px;
+                display: inline-block;
+                border-radius: 24px;
+                line-height: 26px;
+                margin: 16px 16px 0px 16px;
+            }
             .info {
                 line-height: 26px;
                 margin-bottom: 10px;
@@ -91,15 +101,6 @@
                     background-color: #000306;
                     content: " ";
                     margin-bottom: 3px;
-                }
-                &>.code {
-                    font-size: 14px;
-                    color: #1d668f;
-                    background-color: #f7f4ef;
-                    padding: 10px 85px 10px 30px;
-                    display: inline-block;
-                    border-radius: 24px;
-                    margin: 16px 16px 0px 16px;
                 }
                 &>.list {
                     &>li {

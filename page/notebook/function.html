@@ -17,7 +17,7 @@
                 没有块作用域，只有函数会创建新的作用域，而函数的上下文不是定义时确定的，是调用时确定的，不同的调用机制决定了不同的函数上下文：
                 <ul class="list">
                     <li>作为普通函数进行调用时，其上下文是全局对象</li>
-                    <li>作为方法调用时，其上下文是拥有改方法的对象</li>
+                    <li>作为方法调用时，其上下文是拥有该方法的对象</li>
                     <li>作为构造器调用时，其上下文是新分配的对象</li>
                     <li>通过函数的apply()或call()方法进行调用时，其上下文可以设置为任意值</li>
                 </ul>
@@ -31,8 +31,13 @@
         <article>
             <div class="info">
                 作用域之外的所有变量，即便是函数声明之后的那些声明，也都包含在闭包中（见:闭包-example1）。
-                <br />
-                <pre class="code"><hazy-copy>/*闭包-example1*/
+            </div>
+            <div class="info">
+                对于点击事件等，有时候上下文不是本来期望的，合理修改上下文是闭包一个有用的使用场景（见:闭包-example2）。
+            </div>
+        </article>
+        <article>
+            <pre class="code">【 闭包-example1 】<hazy-copy>
 var outFun;
 function outerFunction() {
     function innerFunction() {
@@ -43,7 +48,20 @@ function outerFunction() {
 var later = '喉咙深处';
 outerFunction();
 outFun();</hazy-copy></pre>
-            </div>
+            <pre class="code">【 闭包-example2 】<hazy-copy>
+var clickEvent = {
+    'isClick': false,
+    'fun': function() {
+        this.isClick = true;
+        console.log(clickEvent.isClick);
+    }
+};
+document.getElementById("btn")
+.addEventListener('click', (function() {
+    return function() {
+        clickEvent.fun.apply(clickEvent);
+    };
+})(), false);</hazy-copy></pre>
         </article>
     </section>
 </section>

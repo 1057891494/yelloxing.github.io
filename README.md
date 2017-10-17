@@ -10,7 +10,7 @@
 ### 加入我们
 ------
 *   主要是前端web开发相关的笔记，如果你有兴趣，可以加入我们，一起维护，欢迎你的加入。
-*   加入我们请先和我们取得联系，邮件或QQ:1276327934。
+*   加入我们请先和我们取得联系，<a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）">GMail</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" title='联系我们' class='qq' target="_blank">QQ</a>。
 
 ### 免责声明
 ------

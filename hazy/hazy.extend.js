@@ -33,7 +33,7 @@ $.extend({
                 "left": "100%"
             }).animation({
                 "left": "0%"
-            }, 5000, function() {
+            }, 20000, function() {
                 window.setTimeout(function() {
                     Hazy('#notify-' + unique).remove();
                 }, 1000);

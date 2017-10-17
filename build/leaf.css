@@ -270,8 +270,8 @@ hazy-copy {
   display: block; }
   hazy-copy .hazy-copy-button {
     position: absolute;
-    right: -60px;
-    top: 10px;
+    right: 0px;
+    top: -12px;
     width: 40px;
     height: 40px;
     background-repeat: no-repeat;
@@ -386,13 +386,6 @@ hazy-copy {
       text-indent: 2em;
       line-height: 26px; }
 
-.outline {
-  text-align: center;
-  line-height: calc(100vh - 216px);
-  font-size: 80px;
-  color: #4cbee3;
-  font-family: cursive; }
-
 .pages .title {
   font-size: 18px;
   line-height: 20px;
@@ -466,6 +459,15 @@ hazy-copy {
       font-family: cursive;
       font-size: 12px;
       line-height: 16px; }
+    .pages .page > article .code {
+      font-size: 14px;
+      color: #1d668f;
+      background-color: #f7f4ef;
+      padding: 10px 20px 10px 30px;
+      display: inline-block;
+      border-radius: 24px;
+      line-height: 26px;
+      margin: 16px 16px 0px 16px; }
     .pages .page > article .info {
       line-height: 26px;
       margin-bottom: 10px;
@@ -478,14 +480,6 @@ hazy-copy {
         background-color: #000306;
         content: " ";
         margin-bottom: 3px; }
-      .pages .page > article .info > .code {
-        font-size: 14px;
-        color: #1d668f;
-        background-color: #f7f4ef;
-        padding: 10px 85px 10px 30px;
-        display: inline-block;
-        border-radius: 24px;
-        margin: 16px 16px 0px 16px; }
       .pages .page > article .info > .list > li {
         color: #1c6783;
         list-style-type: cjk-ideographic;

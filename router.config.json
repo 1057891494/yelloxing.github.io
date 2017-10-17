@@ -3,8 +3,6 @@
     "/notebook": { "src": "page/notebook.html" },
     "/notebook/tool": { "src": "page/cursor/tool.html" },
     "/notebook/ECMAScript": { "src": "page/cursor/es.html" },
-    "/notebook/layout": { "src": "page/cursor/css.html" },
-    "/notebook/model": { "src": "page/cursor/algorithm.html" },
     "/algorithm": { "src": "page/algorithm.html" },
     "/gouache": { "src": "page/outline.html" },
     "/AI": { "src": "page/ArtificialIntelligent.html" },

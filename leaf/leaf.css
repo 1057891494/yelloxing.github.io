@@ -266,7 +266,7 @@ hazy-copy {
   display: block; }
   hazy-copy .hazy-copy-button {
     position: absolute;
-    right: 10px;
+    right: -60px;
     top: 10px;
     width: 40px;
     height: 40px;
@@ -361,7 +361,8 @@ hazy-copy {
   min-height: calc(100vh - 256px);
   margin: 20px auto 20px auto;
   max-width: 1024px;
-  font-size: 16px; }
+  font-size: 16px;
+  padding-top: 116px; }
   .home > .title {
     padding-left: 276px;
     min-height: 300px;
@@ -461,5 +462,21 @@ hazy-copy {
         background-color: #000306;
         content: " ";
         margin-bottom: 3px; }
+      .pages .page > article .info > .code {
+        font-size: 14px;
+        color: #1d668f;
+        background-color: #f7f4ef;
+        padding: 10px 85px 10px 30px;
+        display: inline-block;
+        border-radius: 24px;
+        margin: 16px 16px 0px 16px; }
+      .pages .page > article .info > .list > li {
+        color: #1c6783;
+        list-style-type: cjk-ideographic;
+        margin-left: 4em; }
+        .pages .page > article .info > .list > li:last-child::after {
+          content: "。"; }
+        .pages .page > article .info > .list > li::after {
+          content: "；"; }
 
 /*# sourceMappingURL=leaf.css.map */

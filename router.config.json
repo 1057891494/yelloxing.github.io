@@ -5,7 +5,7 @@
     "/notebook/ECMAScript": { "src": "page/cursor/es.html" },
     "/notebook/layout": { "src": "page/cursor/css.html" },
     "/notebook/model": { "src": "page/cursor/algorithm.html" },
-    "/opensource": { "src": "page/opensource.html" },
+    "/algorithm": { "src": "page/algorithm.html" },
     "/gouache": { "src": "page/gouache.html" },
     "/AI": { "src": "page/ArtificialIntelligent.html" },
     "/English": { "src": "page/English.html" },

@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-17
+* Date: 2017-10-18
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -233,7 +233,12 @@ Hazy.clock.speeds = 400;
 //定时器ID
 Hazy.clock.timerId = null;
 //路由扩展显示对象
-Hazy.routerStyle={};
+Hazy.routerStyle = {};
+//提供给笔记使用（和hazy关系不大的）
+Hazy.fly = {
+    "inner": {}, //笔记本身使用
+    "outer": {} //笔记外不确定使用
+};
 
 document.createElement('hazy-view');
 
@@ -1163,8 +1168,10 @@ Hazy.extend({
 
 Hazy.extend(Hazy.innerObject.component, {
     /*提供复制代码的组件*/
-    "hazy-copy": function(element) {
+    "hazy-copy": function(element, data) {
         element.prepend("<div class='hazy-copy-button'><!--copy--></div>");
+        data = JSON.parse(data);
+        var $node = Hazy(data.selector);
         element.find('div').filter(function(elem) {
             if ('hazy-copy-button' === elem.class()) {
                 return true;
@@ -1173,7 +1180,9 @@ Hazy.extend(Hazy.innerObject.component, {
             }
         }).bind('click', function(e) {
             //点击执行操作
-            Hazy.clipboard(element.text());
+            Hazy.clipboard((function(elem, type) {
+                return elem[type]();
+            })($node, data.type));
         });
     }
 });
@@ -1274,7 +1283,7 @@ Hazy.extend(Hazy.routerStyle, {
                     eq = {
                         "home": 1,
                         "notebook": 2,
-                        "algorithm": 3,
+                        "example": 3,
                         "opensource": 4
                     }[state];
                     if (eq && $("#deeponemenu").length > 0) {
@@ -1286,7 +1295,9 @@ Hazy.extend(Hazy.routerStyle, {
                 {
                     eq = {
                         "tool": 1,
-                        "ECMAScript": 2
+                        "ECMAScript": 2,
+                        "css": 3,
+                        "enhanceCss": 4
                     }[state];
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');
@@ -1295,6 +1306,18 @@ Hazy.extend(Hazy.routerStyle, {
                 }
         }
     }
+});
+
+Hazy.extend(Hazy.fly.inner, {
+    "apply": function() {
+        console.log('apply开发中');
+    },
+    "reset": function() {
+        console.log('reset开发中');
+    }
+});
+Hazy.extend(Hazy.fly.outer, {
+    //todo
 });
 
 });

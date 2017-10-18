@@ -73,6 +73,14 @@
                     content: "Terminal:~ yelloxing$ ";
                 }
             }
+            .flag {
+                font-size: 20px;
+                line-height: 52px;
+                background-color: #7b99f2;
+                padding: 10px;
+                margin-bottom: 20px;
+                border-radius: 10px;
+            }
             .warn {
                 color: #efa646;
                 font-family: cursive;

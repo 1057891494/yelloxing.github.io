@@ -3,11 +3,16 @@
     "/notebook": { "src": "page/notebook.html" },
     "/notebook/tool": { "src": "page/cursor/tool.html" },
     "/notebook/ECMAScript": { "src": "page/cursor/es.html" },
-    "/algorithm": { "src": "page/algorithm.html" },
+    "/notebook/css": { "src": "page/cursor/style.html" },
+    "/notebook/enhanceCss": { "src": "page/cursor/enhanceCss.html" },
+    "/example": { "src": "page/example.html" },
     "/opensource": { "src": "page/opensource.html" },
     "default": "/home",
     "NotFound": "page/404.html",
     "/notebook/tool/git": { "src": "page/notebook/git.html", "deep": "1" },
     "/notebook/ECMAScript/RegExp": { "src": "page/notebook/RegExp.html", "deep": "1" },
-    "/notebook/ECMAScript/Function": { "src": "page/notebook/function.html", "deep": "1" }
+    "/notebook/css/tranform": { "src": "page/notebook/tranform.html", "deep": "1" },
+    "/notebook/enhanceCss/margin": { "src": "page/notebook/margin.html", "deep": "1" },
+    "/notebook/enhanceCss/dot": { "src": "page/notebook/dot.html", "deep": "1" },
+    "/notebook/enhanceCss/z-index": { "src": "page/notebook/zIndex.html", "deep": "1" }
 }

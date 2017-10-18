@@ -266,8 +266,8 @@ hazy-copy {
   display: block; }
   hazy-copy .hazy-copy-button {
     position: absolute;
-    right: 0px;
-    top: -12px;
+    right: 10px;
+    top: 10px;
     width: 40px;
     height: 40px;
     background-repeat: no-repeat;
@@ -445,6 +445,13 @@ hazy-copy {
       margin-top: 10px; }
       .pages .page > article .bash.terminal:before {
         content: "Terminal:~ yelloxing$ "; }
+    .pages .page > article .flag {
+      font-size: 20px;
+      line-height: 52px;
+      background-color: #7b99f2;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px; }
     .pages .page > article .warn {
       color: #efa646;
       font-family: cursive;
@@ -479,5 +486,45 @@ hazy-copy {
           content: "。"; }
         .pages .page > article .info > .list > li::after {
           content: "；"; }
+
+.example {
+  font-size: 0;
+  margin: 10px; }
+  .example .code-frame {
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+    width: 50%; }
+    .example .code-frame .code {
+      width: calc(100% - 20px);
+      height: calc(100vh - 276px);
+      outline: none;
+      border-width: 0;
+      background-color: #f5eceb;
+      color: #080101;
+      font-size: 16px;
+      padding: 10px;
+      resize: none; }
+    .example .code-frame .btn {
+      position: absolute;
+      bottom: 10px;
+      width: 70px;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+      font-size: 14px; }
+      .example .code-frame .btn.apply {
+        right: 10px; }
+      .example .code-frame .btn.reset {
+        right: 90px; }
+  .example .view {
+    font-size: 16px;
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+    height: calc(100vh - 256px);
+    background-color: #fff;
+    overflow: scroll;
+    border: 10px solid #f5eceb; }
 
 /*# sourceMappingURL=leaf.css.map */

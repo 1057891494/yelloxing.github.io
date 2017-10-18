@@ -207,7 +207,12 @@ Hazy.clock.speeds = 400;
 //定时器ID
 Hazy.clock.timerId = null;
 //路由扩展显示对象
-Hazy.routerStyle={};
+Hazy.routerStyle = {};
+//提供给笔记使用（和hazy关系不大的）
+Hazy.fly = {
+    "inner": {}, //笔记本身使用
+    "outer": {} //笔记外不确定使用
+};
 
 document.createElement('hazy-view');
 

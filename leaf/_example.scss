@@ -1,0 +1,48 @@
+.example {
+    $bgColor: #f5eceb;
+    font-size: 0;
+    margin: 10px;
+    .code-frame {
+        vertical-align: top;
+        display: inline-block;
+        position: relative;
+        width: 50%;
+        .code {
+            width: calc(100% - 20px);
+            height: calc(100vh - 276px);
+            outline: none;
+            border-width: 0;
+            background-color: $bgColor;
+            color: #080101;
+            font-size: 16px;
+            padding: 10px;
+            resize: none;
+        }
+        .btn {
+            position: absolute;
+            bottom: 10px;
+            $width: 70px;
+            width: $width;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            font-size: 14px;
+            &.apply {
+                right: 10px;
+            }
+            &.reset {
+                right: 20px + $width;
+            }
+        }
+    }
+    .view {
+        font-size: 16px;
+        vertical-align: top;
+        display: inline-block;
+        width: 50%;
+        height: calc(100vh - 256px);
+        background-color: #fff;
+        overflow: scroll;
+        border: 10px solid $bgColor;
+    }
+}

@@ -14,7 +14,7 @@ Hazy.extend(Hazy.routerStyle, {
                     eq = {
                         "home": 1,
                         "notebook": 2,
-                        "algorithm": 3,
+                        "example": 3,
                         "opensource": 4
                     }[state];
                     if (eq && $("#deeponemenu").length > 0) {
@@ -26,7 +26,9 @@ Hazy.extend(Hazy.routerStyle, {
                 {
                     eq = {
                         "tool": 1,
-                        "ECMAScript": 2
+                        "ECMAScript": 2,
+                        "css": 3,
+                        "enhanceCss": 4
                     }[state];
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

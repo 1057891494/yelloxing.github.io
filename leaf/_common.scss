@@ -164,8 +164,8 @@ hazy-copy {
     display: block;
     .hazy-copy-button {
         position: absolute;
-        right: 0px;
-        top: -12px;
+        right: 10px;
+        top: 10px;
         width: 40px;
         height: 40px;
         @include bg-init($copyBeforImg);

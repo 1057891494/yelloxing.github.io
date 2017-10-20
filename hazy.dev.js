@@ -14,6 +14,7 @@
         "hazy/animation.js",
         "hazy/loop.js",
         "hazy/router.js",
+        "hazy/scope.js",
         "hazy/hazy.framework.js",
         "scripts/directives/hazy-copy.js",
         "scripts/directives/hazy-onLazyJs.js",

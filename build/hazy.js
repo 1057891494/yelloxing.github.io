@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-20
+* Date: 2017-10-21
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -1212,6 +1212,7 @@ Hazy.extend({
         });
     }
 });
+
 
 //提供的控制器方法
 Hazy.extend({

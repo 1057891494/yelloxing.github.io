@@ -4,6 +4,9 @@ Hazy.extend(Hazy.fly.inner, {
     },
     "reset": function() {
         console.log('reset开发中');
+    },
+    "doParam":function(urlArray,param){
+
     }
 });
 Hazy.extend(Hazy.fly.outer, {

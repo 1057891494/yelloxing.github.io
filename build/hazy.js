@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-18
+* Date: 2017-10-20
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -1108,18 +1108,23 @@ Hazy.extend(Hazy.looper, {
 Hazy.extend({
     "startRouter": function(configJson) {
         //初始化路由
-        var urlArray = window.location.hash.slice(1).match(/\/[^\/]+/g);
+        var urlSrc = (window.location.hash + '').split('?');
+        var urlArray = urlSrc[0].slice(1).match(/\/[^\/]+/g);
+        var param = urlSrc[1] || '';
         if (!urlArray) {
             window.location.href = "/#" + configJson.default;
         } else {
-            Hazy.initPage(1, urlArray.length, urlArray, '', configJson);
+            Hazy.initPage(1, urlArray.length, urlArray, '', configJson, param);
         }
 
         Hazy(window).bind('hashchange', function() {
             //路由变化时
-            var state = configJson[window.location.hash.slice(1)] || configJson[configJson.default];
+            var urlSrc = (window.location.hash + '').split('?');
+            var state = configJson[urlSrc[0].slice(1)] || configJson[configJson.default];
+            var urlArray = urlSrc[0].slice(1).match(/\/[^\/]+/g);
             var url = state.src;
-            var deep = state.deep || window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
+            var param = urlSrc[1] || '';
+            var deep = state.deep || urlSrc[0].slice(1).replace(/[^\/]/g, '').length || 1;
             if (!url) {
                 url = configJson.NotFound;
                 deep = 1;
@@ -1128,7 +1133,8 @@ Hazy.extend({
                 try {
                     Hazy("hazy-view").eq(deep - 1).html(data);
                     Hazy.compiler(Hazy("hazy-view")[deep - 1]);
-                    Hazy.routerStyle.changeClick(window.location.hash.slice(1).replace(/^.*\//, ''), window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1);
+                    Hazy.fly.inner.doParam(urlArray,param);
+                    Hazy.routerStyle.changeClick(urlSrc[0].slice(1).replace(/^.*\//, ''), urlSrc[0].slice(1).replace(/[^\/]/g, '').length || 1);
                 } catch (e) {
                     window.location.reload();
                 }
@@ -1139,7 +1145,7 @@ Hazy.extend({
         });
 
     },
-    "initPage": function(nowDeep, deep, urlArray, preUrl, configJson) {
+    "initPage": function(nowDeep, deep, urlArray, preUrl, configJson, param) {
         preUrl = preUrl + urlArray[nowDeep - 1];
         var state = configJson[preUrl] || configJson.NotFound;
         var godeep = state.deep || nowDeep;
@@ -1154,11 +1160,13 @@ Hazy.extend({
         Hazy.ajax('get', url, function(data) {
             Hazy("hazy-view").eq(godeep - 1).html(data);
             if (nowDeep < deep && noError) {
-                Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
+                Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson,param);
             } else {
-                Hazy.routerStyle.initClick(window.location.hash.slice(1));
+                var urlSrc = (window.location.hash + '').split('?');
+                Hazy.routerStyle.initClick(urlSrc[0].slice(1));
                 console.log('%c' + new Date() + '\n\n心叶提示：路由恢复成功\n\n', 'color:#daaa65');
                 Hazy.compiler(Hazy("hazy-view")[0]);
+                Hazy.fly.inner.doParam(urlArray, param);
             }
         }, function() {
             throw new Error('Not Accepted Error!');
@@ -1314,6 +1322,9 @@ Hazy.extend(Hazy.fly.inner, {
     },
     "reset": function() {
         console.log('reset开发中');
+    },
+    "doParam":function(urlArray,param){
+
     }
 });
 Hazy.extend(Hazy.fly.outer, {

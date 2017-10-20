@@ -144,13 +144,13 @@ body {
         cursor: pointer;
         outline: 0;
         color: #999;
-        &.qq {
-            background-image: url($qqImg);
-            background-position: left center;
-            background-repeat: no-repeat;
-            padding-left: 20px;
-            background-size: 17px auto;
-        }
+    }
+    .qq {
+        background-image: url($qqImg);
+        background-position: left center;
+        background-repeat: no-repeat;
+        padding-left: 20px;
+        background-size: 17px auto;
     }
 }
 

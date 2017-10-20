@@ -15,10 +15,10 @@
         "hazy/loop.js",
         "hazy/router.js",
         "hazy/copy.element.js",
+        "hazy/onLazyJs.element.js",
         "hazy/hazy.extend.js",
         "hazy/dom.extend.js",
-        "hazy/cursor.lister.js",
-        "hazy/fly.extend.js"
+        "hazy/cursor.lister.js"
     ];
 
     if (typeof(exports) != "undefined") {

@@ -14,11 +14,15 @@
         "hazy/animation.js",
         "hazy/loop.js",
         "hazy/router.js",
-        "hazy/copy.element.js",
+        "hazy/scope.js",
+        "hazy/hazy.framework.js",
+        "scripts/directives/hazy-copy.js",
+        "scripts/directives/hazy-onLazyJs.js",
+        "scripts/directives/hazy-controller.js",
+        "scripts/directives/xy-click.js",
         "hazy/hazy.extend.js",
         "hazy/dom.extend.js",
-        "hazy/cursor.lister.js",
-        "hazy/fly.extend.js"
+        "hazy/cursor.lister.js"
     ];
 
     if (typeof(exports) != "undefined") {

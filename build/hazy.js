@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-18
+* Date: 2017-10-21
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -102,6 +102,18 @@ Hazy.prototype.init = function(selector, context, root) {
                 } else {
                     this.length = 0;
                 }
+            } else if (/\*/.test(selector)) {
+                var elems = context.getElementsByTagName("*");
+                flag = 0;
+                len = 0;
+                for (; flag < elems.length; flag++) {
+                    elem = elems[flag];
+                    if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
+                        this[len] = elem;
+                        len += 1;
+                    }
+                }
+                this.length = len;
             } else if (/^[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //标签选择器或者*
                 //不区分大小写
@@ -116,6 +128,21 @@ Hazy.prototype.init = function(selector, context, root) {
                     }
                 }
                 this.length = len;
+            } else if (/^\[.+\]$/.test(selector)) {
+                //如果是属性
+                var allElems = context.getElementsByTagName('*');
+                selector = selector.replace(/^\[/, '').replace(/\]$/, '');
+                this.length = 0;
+                var flag = 0;
+                for (; flag < allElems.length; flag++) {
+                    elem = allElems[flag];
+                    if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
+                        if (Hazy(elem).attr(selector) == '' || Hazy(elem).attr(selector)) {
+                            this[this.length] = elem;
+                            this.length += 1;
+                        }
+                    }
+                }
             }
             return this;
         } else {
@@ -234,11 +261,6 @@ Hazy.clock.speeds = 400;
 Hazy.clock.timerId = null;
 //路由扩展显示对象
 Hazy.routerStyle = {};
-//提供给笔记使用（和hazy关系不大的）
-Hazy.fly = {
-    "inner": {}, //笔记本身使用
-    "outer": {} //笔记外不确定使用
-};
 
 document.createElement('hazy-view');
 
@@ -270,8 +292,13 @@ Hazy.extend({
          *  初始化版本只提供下面简单的选择器：
          *  1.#id
          *  2.element
+         *  3.[attr]
          */
         if (/^#?[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
+            return true;
+        } else if (/^\[.+\]$/.test(selector)) {
+            return true;
+        } else if (/\*/.test(selector)) {
             return true;
         } else {
             return false;
@@ -376,14 +403,30 @@ Hazy.extend({
             /*
                 element{type:Hazy}
             */
-            elements = Hazy(component, dom);
+            switch (components[component][0].selector + '') {
+                case 'E':
+                    {
+                        elements = Hazy(component, dom);
+                        break;
+                    }
+                case 'A':
+                    {
+                        elements = Hazy('[' + component + ']', dom);
+                        break;
+                    }
+                default:
+                    {
+                        elements = Hazy(component, dom);
+                    }
+            }
+
             for (flag = 0; flag < elements.length; flag++) {
                 element = Hazy(elements[flag]);
                 if (element.attr(component + '-compiler')) {
                     throw new Error(component + ' had compiler');
                 }
-                var data=element.attr('data')||'';
-                components[component](element,data);
+                var data = element.attr('data') || '';
+                components[component][1](element, data);
                 element.attr(component + '-compiler', new Date());
                 element.prepend("<!--" + component + " Begin 【走一步 再走一步】-->");
                 element.append("<!--" + component + " End 【走一步 再走一步】-->");
@@ -1108,7 +1151,8 @@ Hazy.extend(Hazy.looper, {
 Hazy.extend({
     "startRouter": function(configJson) {
         //初始化路由
-        var urlArray = window.location.hash.slice(1).match(/\/[^\/]+/g);
+        var urlSrc = (window.location.hash + '').split('?');
+        var urlArray = urlSrc[0].slice(1).match(/\/[^\/]+/g);
         if (!urlArray) {
             window.location.href = "/#" + configJson.default;
         } else {
@@ -1117,9 +1161,11 @@ Hazy.extend({
 
         Hazy(window).bind('hashchange', function() {
             //路由变化时
-            var state = configJson[window.location.hash.slice(1)] || configJson[configJson.default];
+            var urlSrc = (window.location.hash + '').split('?');
+            var state = configJson[urlSrc[0].slice(1)] || configJson[configJson.default];
+            var urlArray = urlSrc[0].slice(1).match(/\/[^\/]+/g);
             var url = state.src;
-            var deep = state.deep || window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1;
+            var deep = state.deep || urlSrc[0].slice(1).replace(/[^\/]/g, '').length || 1;
             if (!url) {
                 url = configJson.NotFound;
                 deep = 1;
@@ -1128,7 +1174,7 @@ Hazy.extend({
                 try {
                     Hazy("hazy-view").eq(deep - 1).html(data);
                     Hazy.compiler(Hazy("hazy-view")[deep - 1]);
-                    Hazy.routerStyle.changeClick(window.location.hash.slice(1).replace(/^.*\//, ''), window.location.hash.slice(1).replace(/[^\/]/g, '').length || 1);
+                    Hazy.routerStyle.changeClick(urlSrc[0].slice(1).replace(/^.*\//, ''), urlSrc[0].slice(1).replace(/[^\/]/g, '').length || 1);
                 } catch (e) {
                     window.location.reload();
                 }
@@ -1156,7 +1202,8 @@ Hazy.extend({
             if (nowDeep < deep && noError) {
                 Hazy.initPage(nowDeep + 1, deep, urlArray, preUrl, configJson);
             } else {
-                Hazy.routerStyle.initClick(window.location.hash.slice(1));
+                var urlSrc = (window.location.hash + '').split('?');
+                Hazy.routerStyle.initClick(urlSrc[0].slice(1));
                 console.log('%c' + new Date() + '\n\n心叶提示：路由恢复成功\n\n', 'color:#daaa65');
                 Hazy.compiler(Hazy("hazy-view")[0]);
             }
@@ -1166,35 +1213,76 @@ Hazy.extend({
     }
 });
 
-Hazy.extend(Hazy.innerObject.component, {
-    /*提供复制代码的组件*/
-    "hazy-copy": function(element, data) {
-        element.prepend("<div class='hazy-copy-button'><!--copy--></div>");
-        data = JSON.parse(data);
-        var $node = Hazy(data.selector);
-        element.find('div').filter(function(elem) {
-            if ('hazy-copy-button' === elem.class()) {
-                return true;
-            } else {
-                return false;
-            }
-        }).bind('click', function(e) {
-            //点击执行操作
-            Hazy.clipboard((function(elem, type) {
-                return elem[type]();
-            })($node, data.type));
-        });
+
+//提供的控制器方法
+Hazy.extend({
+    "controller": function() {
+
     }
 });
+
+//提供的指令的方法
 Hazy.extend({
-    "clipboard": function(text) {
-        Hazy('body').append(Hazy('<textarea id="clipboard-textarea">' + text + '</textarea>'));
-        document.getElementById("clipboard-textarea").select();
-        document.execCommand("copy", false, null);
-        Hazy('#clipboard-textarea').remove();
-        Hazy.notify('复制成功，现在可以粘贴了');
-        return this;
+    "directive": function(name, callback) {
+        var directive = callback();
+        var tempObj = {};
+        tempObj[name] = [{
+            "selector": directive.restrict
+        }, directive.compile];
+        Hazy.extend(Hazy.innerObject.component, tempObj);
     }
+});
+
+Hazy.directive("hazy-copy", function() {
+    return {
+        'restrict': 'E',
+        'compile': function(element, data) {
+            element.prepend("<div class='hazy-copy-button'><!--copy--></div>");
+            data = JSON.parse(data);
+            var $node = Hazy(data.selector);
+            element.find('div').filter(function(elem) {
+                if ('hazy-copy-button' === elem.class()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }).bind('click', function(e) {
+                //点击执行操作
+                Hazy.clipboard((function(elem, type) {
+                    return elem[type]();
+                })($node, data.type));
+            });
+        }
+    };
+});
+
+Hazy.directive("hazy-onLazyJs", function() {
+    return {
+        'restrict': 'E',
+        'compile': function(element, src) {
+            Hazy.ajax('get', src, function(script) {
+                window["eval"].call(window, script);
+            });
+        }
+    };
+});
+
+Hazy.directive("hazy-controller", function() {
+    return {
+        'restrict': 'E',
+        'compile': function(element, src) {
+
+        }
+    };
+});
+
+Hazy.directive("xy-click", function() {
+    return {
+        'restrict': 'A',
+        'compile': function(element, callback) {
+
+        }
+    };
 });
 
 $.extend({
@@ -1238,6 +1326,15 @@ $.extend({
                 }, 1000);
             });
         });
+    },
+    //复制到剪切板
+    "clipboard": function(text) {
+        Hazy('body').append(Hazy('<textarea id="clipboard-textarea">' + text + '</textarea>'));
+        document.getElementById("clipboard-textarea").select();
+        document.execCommand("copy", false, null);
+        Hazy('#clipboard-textarea').remove();
+        Hazy.notify('复制成功，现在可以粘贴了');
+        return this;
     }
 });
 
@@ -1306,18 +1403,6 @@ Hazy.extend(Hazy.routerStyle, {
                 }
         }
     }
-});
-
-Hazy.extend(Hazy.fly.inner, {
-    "apply": function() {
-        console.log('apply开发中');
-    },
-    "reset": function() {
-        console.log('reset开发中');
-    }
-});
-Hazy.extend(Hazy.fly.outer, {
-    //todo
 });
 
 });

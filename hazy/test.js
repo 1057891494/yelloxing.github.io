@@ -18,8 +18,13 @@ Hazy.extend({
          *  初始化版本只提供下面简单的选择器：
          *  1.#id
          *  2.element
+         *  3.[attr]
          */
         if (/^#?[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
+            return true;
+        } else if (/^\[.+\]$/.test(selector)) {
+            return true;
+        } else if (/\*/.test(selector)) {
             return true;
         } else {
             return false;

@@ -102,6 +102,18 @@ Hazy.prototype.init = function(selector, context, root) {
                 } else {
                     this.length = 0;
                 }
+            } else if (/\*/.test(selector)) {
+                var elems = context.getElementsByTagName("*");
+                flag = 0;
+                len = 0;
+                for (; flag < elems.length; flag++) {
+                    elem = elems[flag];
+                    if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
+                        this[len] = elem;
+                        len += 1;
+                    }
+                }
+                this.length = len;
             } else if (/^[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //标签选择器或者*
                 //不区分大小写
@@ -116,6 +128,21 @@ Hazy.prototype.init = function(selector, context, root) {
                     }
                 }
                 this.length = len;
+            } else if (/^\[.+\]$/.test(selector)) {
+                //如果是属性
+                var allElems = context.getElementsByTagName('*');
+                selector = selector.replace(/^\[/, '').replace(/\]$/, '');
+                this.length = 0;
+                var flag = 0;
+                for (; flag < allElems.length; flag++) {
+                    elem = allElems[flag];
+                    if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
+                        if (Hazy(elem).attr(selector) == '' || Hazy(elem).attr(selector)) {
+                            this[this.length] = elem;
+                            this.length += 1;
+                        }
+                    }
+                }
             }
             return this;
         } else {
@@ -234,11 +261,6 @@ Hazy.clock.speeds = 400;
 Hazy.clock.timerId = null;
 //路由扩展显示对象
 Hazy.routerStyle = {};
-//提供给笔记使用（和hazy关系不大的）
-Hazy.fly = {
-    "inner": {}, //笔记本身使用
-    "outer": {} //笔记外不确定使用
-};
 
 document.createElement('hazy-view');
 
@@ -270,8 +292,13 @@ Hazy.extend({
          *  初始化版本只提供下面简单的选择器：
          *  1.#id
          *  2.element
+         *  3.[attr]
          */
         if (/^#?[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
+            return true;
+        } else if (/^\[.+\]$/.test(selector)) {
+            return true;
+        } else if (/\*/.test(selector)) {
             return true;
         } else {
             return false;
@@ -376,14 +403,30 @@ Hazy.extend({
             /*
                 element{type:Hazy}
             */
-            elements = Hazy(component, dom);
+            switch (components[component][0].selector + '') {
+                case 'E':
+                    {
+                        elements = Hazy(component, dom);
+                        break;
+                    }
+                case 'A':
+                    {
+                        elements = Hazy('[' + component + ']', dom);
+                        break;
+                    }
+                default:
+                    {
+                        elements = Hazy(component, dom);
+                    }
+            }
+
             for (flag = 0; flag < elements.length; flag++) {
                 element = Hazy(elements[flag]);
                 if (element.attr(component + '-compiler')) {
                     throw new Error(component + ' had compiler');
                 }
-                var data=element.attr('data')||'';
-                components[component](element,data);
+                var data = element.attr('data') || '';
+                components[component][1](element, data);
                 element.attr(component + '-compiler', new Date());
                 element.prepend("<!--" + component + " Begin 【走一步 再走一步】-->");
                 element.append("<!--" + component + " End 【走一步 再走一步】-->");
@@ -1170,44 +1213,75 @@ Hazy.extend({
     }
 });
 
-Hazy.extend(Hazy.innerObject.component, {
-    /*提供复制代码的组件*/
-    "hazy-copy": function(element, data) {
-        element.prepend("<div class='hazy-copy-button'><!--copy--></div>");
-        data = JSON.parse(data);
-        var $node = Hazy(data.selector);
-        element.find('div').filter(function(elem) {
-            if ('hazy-copy-button' === elem.class()) {
-                return true;
-            } else {
-                return false;
-            }
-        }).bind('click', function(e) {
-            //点击执行操作
-            Hazy.clipboard((function(elem, type) {
-                return elem[type]();
-            })($node, data.type));
-        });
-    }
-});
+//提供的控制器方法
 Hazy.extend({
-    "clipboard": function(text) {
-        Hazy('body').append(Hazy('<textarea id="clipboard-textarea">' + text + '</textarea>'));
-        document.getElementById("clipboard-textarea").select();
-        document.execCommand("copy", false, null);
-        Hazy('#clipboard-textarea').remove();
-        Hazy.notify('复制成功，现在可以粘贴了');
-        return this;
+    "controller": function() {
+
     }
 });
 
-Hazy.extend(Hazy.innerObject.component, {
-    /*提供复制代码的组件*/
-    "hazy-onLazyJs": function(element, src) {
-        Hazy.ajax('get', src, function(script) {
-            window["eval"].call(window, script);
-        });
+//提供的指令的方法
+Hazy.extend({
+    "directive": function(name, callback) {
+        var directive = callback();
+        var tempObj = {};
+        tempObj[name] = [{
+            "selector": directive.restrict
+        }, directive.compile];
+        Hazy.extend(Hazy.innerObject.component, tempObj);
     }
+});
+
+Hazy.directive("hazy-copy", function() {
+    return {
+        'restrict': 'E',
+        'compile': function(element, data) {
+            element.prepend("<div class='hazy-copy-button'><!--copy--></div>");
+            data = JSON.parse(data);
+            var $node = Hazy(data.selector);
+            element.find('div').filter(function(elem) {
+                if ('hazy-copy-button' === elem.class()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }).bind('click', function(e) {
+                //点击执行操作
+                Hazy.clipboard((function(elem, type) {
+                    return elem[type]();
+                })($node, data.type));
+            });
+        }
+    };
+});
+
+Hazy.directive("hazy-onLazyJs", function() {
+    return {
+        'restrict': 'E',
+        'compile': function(element, src) {
+            Hazy.ajax('get', src, function(script) {
+                window["eval"].call(window, script);
+            });
+        }
+    };
+});
+
+Hazy.directive("hazy-controller", function() {
+    return {
+        'restrict': 'E',
+        'compile': function(element, src) {
+
+        }
+    };
+});
+
+Hazy.directive("xy-click", function() {
+    return {
+        'restrict': 'A',
+        'compile': function(element, callback) {
+
+        }
+    };
 });
 
 $.extend({
@@ -1251,6 +1325,15 @@ $.extend({
                 }, 1000);
             });
         });
+    },
+    //复制到剪切板
+    "clipboard": function(text) {
+        Hazy('body').append(Hazy('<textarea id="clipboard-textarea">' + text + '</textarea>'));
+        document.getElementById("clipboard-textarea").select();
+        document.execCommand("copy", false, null);
+        Hazy('#clipboard-textarea').remove();
+        Hazy.notify('复制成功，现在可以粘贴了');
+        return this;
     }
 });
 

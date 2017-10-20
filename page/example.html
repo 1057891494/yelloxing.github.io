@@ -1,12 +1,13 @@
-<hazy-onLazyJs data='scripts/example.js'>
+<hazy-onLazyJs data='scripts/controller/example.js'></hazy-onLazyJs>
+<hazy-controller data='ExampleCtrl'>
     <section class='example'>
         <article id='exampleView' class='view'></article>
         <article class='code-frame'>
             <hazy-copy data='{"selector":"#exampleCode","type":"val"}'>
                 <textarea name="exampleCode" class='code' id="exampleCode"></textarea>
             </hazy-copy>
-            <button class='btn apply' onclick='apply()'>应用</button>
-            <button class='btn reset' onclick='reset()'>恢复</button>
+            <button class='btn apply' xy-click='$scope.apply()'>应用</button>
+            <button class='btn reset' xy-click='$scope.reset()'>恢复</button>
         </article>
     </section>
-</hazy-onLazyJs>
+</hazy-controller>

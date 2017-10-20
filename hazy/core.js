@@ -76,6 +76,18 @@ Hazy.prototype.init = function(selector, context, root) {
                 } else {
                     this.length = 0;
                 }
+            } else if (/\*/.test(selector)) {
+                var elems = context.getElementsByTagName("*");
+                flag = 0;
+                len = 0;
+                for (; flag < elems.length; flag++) {
+                    elem = elems[flag];
+                    if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
+                        this[len] = elem;
+                        len += 1;
+                    }
+                }
+                this.length = len;
             } else if (/^[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //标签选择器或者*
                 //不区分大小写
@@ -90,6 +102,21 @@ Hazy.prototype.init = function(selector, context, root) {
                     }
                 }
                 this.length = len;
+            } else if (/^\[.+\]$/.test(selector)) {
+                //如果是属性
+                var allElems = context.getElementsByTagName('*');
+                selector = selector.replace(/^\[/, '').replace(/\]$/, '');
+                this.length = 0;
+                var flag = 0;
+                for (; flag < allElems.length; flag++) {
+                    elem = allElems[flag];
+                    if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
+                        if (Hazy(elem).attr(selector) == '' || Hazy(elem).attr(selector)) {
+                            this[this.length] = elem;
+                            this.length += 1;
+                        }
+                    }
+                }
             }
             return this;
         } else {
@@ -208,11 +235,6 @@ Hazy.clock.speeds = 400;
 Hazy.clock.timerId = null;
 //路由扩展显示对象
 Hazy.routerStyle = {};
-//提供给笔记使用（和hazy关系不大的）
-Hazy.fly = {
-    "inner": {}, //笔记本身使用
-    "outer": {} //笔记外不确定使用
-};
 
 document.createElement('hazy-view');
 

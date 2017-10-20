@@ -7,14 +7,30 @@ Hazy.extend({
             /*
                 element{type:Hazy}
             */
-            elements = Hazy(component, dom);
+            switch (components[component][0].selector + '') {
+                case 'E':
+                    {
+                        elements = Hazy(component, dom);
+                        break;
+                    }
+                case 'A':
+                    {
+                        elements = Hazy('[' + component + ']', dom);
+                        break;
+                    }
+                default:
+                    {
+                        elements = Hazy(component, dom);
+                    }
+            }
+
             for (flag = 0; flag < elements.length; flag++) {
                 element = Hazy(elements[flag]);
                 if (element.attr(component + '-compiler')) {
                     throw new Error(component + ' had compiler');
                 }
-                var data=element.attr('data')||'';
-                components[component](element,data);
+                var data = element.attr('data') || '';
+                components[component][1](element, data);
                 element.attr(component + '-compiler', new Date());
                 element.prepend("<!--" + component + " Begin 【走一步 再走一步】-->");
                 element.append("<!--" + component + " End 【走一步 再走一步】-->");

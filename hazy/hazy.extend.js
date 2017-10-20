@@ -39,5 +39,14 @@ $.extend({
                 }, 1000);
             });
         });
+    },
+    //复制到剪切板
+    "clipboard": function(text) {
+        Hazy('body').append(Hazy('<textarea id="clipboard-textarea">' + text + '</textarea>'));
+        document.getElementById("clipboard-textarea").select();
+        document.execCommand("copy", false, null);
+        Hazy('#clipboard-textarea').remove();
+        Hazy.notify('复制成功，现在可以粘贴了');
+        return this;
     }
 });

@@ -2,8 +2,9 @@
 Hazy.directive("hazy-controller", function() {
     return {
         'restrict': 'E',
-        'compile': function(element, src) {
-
+        'compile': function(element, scopeId) {
+            element.attr('scope', scopeId);
+            Hazy.scope.initScope(scopeId);
         }
     };
 });

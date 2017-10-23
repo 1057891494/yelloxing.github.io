@@ -30,7 +30,17 @@ Hazy.extend({
                     throw new Error(component + ' had compiler');
                 }
                 var data = element.attr('data') || '';
-                components[component][1](element, data);
+                components[component][1](element, data, (function() {
+                    var ctrlElems = element.parents(),
+                        flg, ctrlName;
+                    for (flg = 0; flg < ctrlElems.length; flg++) {
+                        ctrlName = Hazy(ctrlElems[flg]).attr('scope');
+                        if (ctrlName && Hazy(ctrlElems[flg]).attr('hazy-controller-compiler')) {
+                            return ctrlName;
+                        }
+                    }
+                    return undefined;
+                })());
                 element.attr(component + '-compiler', new Date());
                 element.prepend("<!--" + component + " Begin 【走一步 再走一步】-->");
                 element.append("<!--" + component + " End 【走一步 再走一步】-->");

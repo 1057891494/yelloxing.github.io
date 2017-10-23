@@ -235,6 +235,8 @@ Hazy.clock.speeds = 400;
 Hazy.clock.timerId = null;
 //路由扩展显示对象
 Hazy.routerStyle = {};
+//scope对象
+Hazy.scope = {};
 
 document.createElement('hazy-view');
 

@@ -1,7 +1,12 @@
 //提供的控制器方法
 Hazy.extend({
-    "controller": function() {
-
+    "controller": function(name, callback) {
+        Hazy("[scope]").filter(function(node) {
+            if (Hazy(node).attr("scope") == name) {
+                var $scope = Hazy.scope.data[name];
+                callback($scope);
+            }
+        });
     }
 });
 

@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-21
+* Date: 2017-10-23
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -261,6 +261,8 @@ Hazy.clock.speeds = 400;
 Hazy.clock.timerId = null;
 //路由扩展显示对象
 Hazy.routerStyle = {};
+//scope对象
+Hazy.scope = {};
 
 document.createElement('hazy-view');
 
@@ -426,7 +428,17 @@ Hazy.extend({
                     throw new Error(component + ' had compiler');
                 }
                 var data = element.attr('data') || '';
-                components[component][1](element, data);
+                components[component][1](element, data, (function() {
+                    var ctrlElems = element.parents(),
+                        flg, ctrlName;
+                    for (flg = 0; flg < ctrlElems.length; flg++) {
+                        ctrlName = Hazy(ctrlElems[flg]).attr('scope');
+                        if (ctrlName && Hazy(ctrlElems[flg]).attr('hazy-controller-compiler')) {
+                            return ctrlName;
+                        }
+                    }
+                    return undefined;
+                })());
                 element.attr(component + '-compiler', new Date());
                 element.prepend("<!--" + component + " Begin 【走一步 再走一步】-->");
                 element.append("<!--" + component + " End 【走一步 再走一步】-->");
@@ -1213,11 +1225,28 @@ Hazy.extend({
     }
 });
 
+Hazy.extend(Hazy.scope, {
+    "data": {},
+    "initScope": function(scopeId) {
+        this.data[scopeId] = {};
+    },
+    "setScope":function(scopeId,key,value){
+        this.data[scopeId][key]=value;
+    },
+    "getScope":function(scopeId,key){
+        return this.data[scopeId][key];
+    }
+});
 
 //提供的控制器方法
 Hazy.extend({
-    "controller": function() {
-
+    "controller": function(name, callback) {
+        Hazy("[scope]").filter(function(node) {
+            if (Hazy(node).attr("scope") == name) {
+                var $scope = Hazy.scope.data[name];
+                callback($scope);
+            }
+        });
     }
 });
 
@@ -1270,8 +1299,9 @@ Hazy.directive("hazy-onLazyJs", function() {
 Hazy.directive("hazy-controller", function() {
     return {
         'restrict': 'E',
-        'compile': function(element, src) {
-
+        'compile': function(element, scopeId) {
+            element.attr('scope', scopeId);
+            Hazy.scope.initScope(scopeId);
         }
     };
 });
@@ -1279,8 +1309,11 @@ Hazy.directive("hazy-controller", function() {
 Hazy.directive("xy-click", function() {
     return {
         'restrict': 'A',
-        'compile': function(element, callback) {
-
+        'compile': function(element, data, scopename) {
+            var callback = element.attr("xy-click").trim().replace(/\(.*\)$/, '').replace('$scope.', '');
+            element.bind('click', function() {
+                Hazy.scope.data[scopename][callback]();
+            });
         }
     };
 });

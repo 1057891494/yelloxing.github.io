@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-10-23
+* Date: 2017-10-24
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -91,7 +91,7 @@ Hazy.prototype.init = function(selector, context, root) {
             return this;
         } else if (Hazy.isCssSelect(selector)) {
             this.isTouch = true;
-            var elem;
+            var elem,elems;
             //如果是css选择器
             if (/^#[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //Id选择器
@@ -103,7 +103,7 @@ Hazy.prototype.init = function(selector, context, root) {
                     this.length = 0;
                 }
             } else if (/\*/.test(selector)) {
-                var elems = context.getElementsByTagName("*");
+                elems = context.getElementsByTagName("*");
                 flag = 0;
                 len = 0;
                 for (; flag < elems.length; flag++) {
@@ -117,7 +117,7 @@ Hazy.prototype.init = function(selector, context, root) {
             } else if (/^[_\w$](?:[_\w\d$]|-)*$/.test(selector)) {
                 //标签选择器或者*
                 //不区分大小写
-                var elems = context.getElementsByTagName(selector);
+                elems = context.getElementsByTagName(selector);
                 flag = 0;
                 len = 0;
                 for (; flag < elems.length; flag++) {
@@ -133,7 +133,7 @@ Hazy.prototype.init = function(selector, context, root) {
                 var allElems = context.getElementsByTagName('*');
                 selector = selector.replace(/^\[/, '').replace(/\]$/, '');
                 this.length = 0;
-                var flag = 0;
+                flag = 0;
                 for (; flag < allElems.length; flag++) {
                     elem = allElems[flag];
                     if (elem.nodeType === 1 || elem.nodeType === 11 || elem.nodeType === 9) {
@@ -1368,6 +1368,28 @@ $.extend({
         Hazy('#clipboard-textarea').remove();
         Hazy.notify('复制成功，现在可以粘贴了');
         return this;
+    },
+    //取消默认事件
+    "cancelTabDafaultEvent": function(elem, event) {
+        event = event || window.event;
+        var code = event.keyCode || event.which;
+        if (code == 9) {
+            //取消默认事件
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+                return false;
+            }
+            //阻止冒泡
+            event.stopPropagation();
+            //添加四个空格
+            Hazy.addTextSpace(elem);
+        }
+    },
+    //添加四个空格
+    "addTextSpace": function(elem) {
+        //推迟开发
     }
 });
 
@@ -1439,3 +1461,6 @@ Hazy.extend(Hazy.routerStyle, {
 });
 
 });
+/*!
+走一步 再走一步
+*/

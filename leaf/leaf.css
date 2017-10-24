@@ -497,7 +497,7 @@ hazy-copy {
     width: 50%; }
     .example .code-frame .code {
       width: calc(100% - 20px);
-      height: calc(100vh - 276px);
+      height: calc(100vh - 256px);
       outline: none;
       border-width: 0;
       background-color: #f5eceb;
@@ -512,7 +512,9 @@ hazy-copy {
       border-radius: 5px;
       outline: none;
       cursor: pointer;
-      font-size: 14px; }
+      font-size: 14px;
+      border-width: 0;
+      color: #f8ecec; }
       .example .code-frame .btn.apply {
         right: 10px; }
       .example .code-frame .btn.reset {
@@ -522,9 +524,9 @@ hazy-copy {
     vertical-align: top;
     display: inline-block;
     width: 50%;
-    height: calc(100vh - 256px);
-    background-color: #fff;
+    height: calc(100vh - 236px);
+    background-color: #f5eceb;
     overflow: scroll;
-    border: 10px solid #f5eceb; }
+    border-right: 10px solid #fffefe; }
 
 /*# sourceMappingURL=leaf.css.map */

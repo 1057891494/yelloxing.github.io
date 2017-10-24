@@ -48,5 +48,27 @@ $.extend({
         Hazy('#clipboard-textarea').remove();
         Hazy.notify('复制成功，现在可以粘贴了');
         return this;
+    },
+    //取消默认事件
+    "cancelTabDafaultEvent": function(elem, event) {
+        event = event || window.event;
+        var code = event.keyCode || event.which;
+        if (code == 9) {
+            //取消默认事件
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+                return false;
+            }
+            //阻止冒泡
+            event.stopPropagation();
+            //添加四个空格
+            Hazy.addTextSpace(elem);
+        }
+    },
+    //添加四个空格
+    "addTextSpace": function(elem) {
+        //推迟开发
     }
 });

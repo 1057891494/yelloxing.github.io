@@ -9,7 +9,7 @@
         width: 50%;
         .code {
             width: calc(100% - 20px);
-            height: calc(100vh - 276px);
+            height: calc(100vh - 256px);
             outline: none;
             border-width: 0;
             background-color: $bgColor;
@@ -27,6 +27,8 @@
             outline: none;
             cursor: pointer;
             font-size: 14px;
+            border-width: 0;
+            color: #f8ecec;
             &.apply {
                 right: 10px;
             }
@@ -40,9 +42,9 @@
         vertical-align: top;
         display: inline-block;
         width: 50%;
-        height: calc(100vh - 256px);
-        background-color: #fff;
+        height: calc(100vh - 236px);
+        background-color: $bgColor;
         overflow: scroll;
-        border: 10px solid $bgColor;
+        border-right: 10px solid #fffefe;
     }
 }

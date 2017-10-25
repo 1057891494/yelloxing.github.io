@@ -1,6 +1,4 @@
 Authors ordered by first contribution
 
 心叶 <yelloxing@gmail.com>
--------------------------------------------------------
-任务：负责全部的开发和维护
 

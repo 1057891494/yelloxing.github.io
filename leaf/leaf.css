@@ -301,6 +301,12 @@ hazy-copy {
   .header,
   .copyright {
     display: none !important; } }
+/*
+点击例子按钮样式
+*/
+.example-src {
+  color: #0af0e4; }
+
 .notebook {
   min-height: calc(100vh - 256px);
   margin: 20px auto 20px auto;

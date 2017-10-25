@@ -8,7 +8,7 @@ Hazy.controller("ExampleCtrl", function($scope) {
         <style>
             /*这里填写你要的样式*/
         </style>
-        <div>
+        <div class='unique-example'>
             <!--你可以在这里写例子代码！-->
         </div>
     `;
@@ -23,7 +23,7 @@ Hazy.controller("ExampleCtrl", function($scope) {
 
     //恢复代码
     $scope.reset = function() {
-        $scope.apply($scope.initCode);
+        Hazy("#exampleView").html($scope.initCode);
         Hazy("#exampleCode").val($scope.initCode);
     };
 
@@ -32,11 +32,28 @@ Hazy.controller("ExampleCtrl", function($scope) {
         if (!code) return '';
         var scripts = (code + "").trim().replace(/[\n\f\r ]/g, '').match(/<script>.*<\/script>/g),
             flag, resultStr = '';
+        if (!scripts) return '';
         for (flag = 0; flag < scripts.length; flag++) {
             resultStr += (Hazy("<div>" + scripts[flag] + "</div>").text() + "");
         }
         return resultStr;
     };
+
+    //初始化
+    var params = (window.location.hash + '').split('?')[1];
+    if (params) {
+        var href = (params + "").trim().replace(/^code=['"]/, '').replace(/['"]$/, '');
+        if (href) {
+            $.ajax('get', href, function(data) {
+                $scope.initCode = data;
+                $scope.reset();
+            });
+        } else {
+            $scope.reset();
+        }
+    } else {
+        $scope.reset();
+    }
 
 
 });

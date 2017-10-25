@@ -506,7 +506,7 @@ hazy-copy {
       height: calc(100vh - 256px);
       outline: none;
       border-width: 0;
-      background-color: #f5eceb;
+      background-color: rgba(245, 236, 235, 0.28);
       color: #080101;
       font-size: 12px;
       padding: 10px;
@@ -531,7 +531,7 @@ hazy-copy {
     display: inline-block;
     width: 50%;
     height: calc(100vh - 236px);
-    background-color: #f5eceb;
+    background-color: rgba(245, 236, 235, 0.28);
     overflow: scroll;
     border-right: 10px solid #fffefe; }
 

@@ -48,7 +48,7 @@
         </article>
         <article>
             <div class='info'>
-                语法：stringObject.replace(regexp/substr,replacement)，如果 regexp 具有全局标志 g，那么 replace() 方法将替换所有匹配的子串。否则，它只替换第一个匹配子串。
+                语法：stringObject.replace(regexp/substr,replacement|function)，如果 regexp 具有全局标志 g，那么 replace() 方法将替换所有匹配的子串。否则，它只替换第一个匹配子串。其中function传递进去的是匹配的字符串，return返回的是最后替换成的，类似管道的写法。
             </div>
             <div class='bash'>
                 replace【替换与正则表达式匹配的子串。】

@@ -392,6 +392,9 @@ hazy-copy {
       text-indent: 2em;
       line-height: 26px; }
 
+.opensource {
+  min-height: calc(100vh - 216px); }
+
 .pages .title {
   font-size: 18px;
   line-height: 20px;

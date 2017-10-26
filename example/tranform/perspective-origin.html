@@ -1,0 +1,30 @@
+<div class="demo-frame demo-1">
+    <img src="/source/example/logo.png">
+</div>
+
+<div class="demo-frame demo-2">
+    <img src="/source/example/logo.png">
+</div>
+
+<style>
+    .demo-frame {
+        background-color: #21e5f3;
+        width: 300px;
+        height: 100px;
+        margin-bottom: 20px;
+        padding-left: 100px;
+        perspective: 300px;
+    }
+
+    .demo-frame>img {
+        transform: rotateX(45deg);
+    }
+
+    .demo-1 {
+        perspective-origin: 50% 50%;
+    }
+
+    .demo-2 {
+        perspective-origin: 50% 270%;
+    }
+</style>

@@ -1,0 +1,30 @@
+<div class='demo-1 demo'>
+    <img src="/source/example/logo.png">
+</div>
+
+<div class='demo-2 demo'>
+    <img src="/source/example/logo.png">
+</div>
+
+<style>
+    .demo {
+        background-color: rgb(16, 158, 240);
+        margin-bottom: 20px;
+        width: 100px;
+        height: 100px;
+        transform: rotateX(120deg);
+    }
+
+    .demo img {
+        transform: rotateX(-45deg);
+        margin-left: 50px;
+    }
+
+    .demo-1 {
+        transform-style: flat;
+    }
+
+    .demo-2 {
+        transform-style: preserve-3d;
+    }
+</style>

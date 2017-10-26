@@ -1,0 +1,54 @@
+<div class="demo-frame demo-1">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="demo-frame demo-2">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<style>
+    .demo-frame {
+        background-color: #e8e7a4;
+        width: 300px;
+        height: 100px;
+        margin-top: 20px;
+    }
+
+    .demo-frame>div {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 26px;
+    }
+
+    .demo-frame>div:nth-child(1) {
+        background-color: #62c1d4;
+    }
+
+    .demo-frame>div:nth-child(2) {
+        background-color: #4cf36d;
+    }
+
+    .demo-frame>div:nth-child(3) {
+        background-color: #e745ce;
+    }
+
+    .demo-1 {
+        perspective: 200px;
+    }
+
+    .demo-1>div {
+        transform: rotateY(45deg);
+    }
+    /*把整个看成一个舞台*/
+
+    .demo-2>div {
+        transform: perspective(200px) rotateY(45deg);
+    }
+    /*每一个都是一个舞台*/
+</style>

@@ -387,7 +387,7 @@ hazy-copy {
       line-height: 26px; }
 
 .opensource {
-  min-height: calc(100vh - 216px); }
+  min-height: calc(100vh - 256px); }
   .opensource .item {
     background-color: #c1e9f1;
     box-shadow: 0 0 10px #c1eaf3;

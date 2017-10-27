@@ -388,6 +388,41 @@ hazy-copy {
 
 .opensource {
   min-height: calc(100vh - 216px); }
+  .opensource .item {
+    background-color: #c1e9f1;
+    box-shadow: 0 0 10px #c1eaf3;
+    margin: 20px;
+    line-height: 30px;
+    border-radius: 10px;
+    position: relative; }
+    .opensource .item:hover {
+      box-shadow: 0 0 14px #51757d; }
+    .opensource .item .code {
+      text-decoration: none;
+      width: 120px;
+      line-height: 50px;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      background-color: darkcyan;
+      top: 0;
+      border-radius: 0 10px 10px 0;
+      font-size: 14px; }
+      .opensource .item .code:hover {
+        font-size: 16px;
+        background-color: #0bcaca; }
+    .opensource .item .api {
+      color: darkgreen;
+      text-decoration: none;
+      line-height: 50px;
+      display: inline-block;
+      width: calc(100% - 120px);
+      position: relative;
+      left: 0;
+      top: 0;
+      padding-left: 20px; }
+      .opensource .item .api:hover {
+        color: #08baf0; }
 
 .pages .title {
   font-size: 18px;

@@ -96,16 +96,24 @@
 //开源项目
 .opensource {
     min-height: calc(100vh - 256px);
-    &>section{
+    &>section {
+        &:hover {
+            background-color: #1c6783;
+            color: #f8f9fb;
+            box-shadow: 0 0 7px #1c6783;
+        }
+        transition: all 0.5s ease-in;
+        box-shadow: 3px 4px 17px rgb(109, 108, 105);
+        border-radius: 10px;
         cursor: pointer;
         margin: 50px auto 50px auto;
         width:700px;
         background-color: #f7f4ef;
         padding: 50px;
-        &>header{
+        &>header {
             font-size: 26px;
         }
-        &>p{
+        &>p {
             line-height: 50px;
         }
     }

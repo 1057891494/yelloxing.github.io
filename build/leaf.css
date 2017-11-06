@@ -394,6 +394,16 @@ hazy-copy {
 
 .opensource {
   min-height: calc(100vh - 256px); }
+  .opensource > section {
+    cursor: pointer;
+    margin: 50px auto 50px auto;
+    width: 700px;
+    background-color: #f7f4ef;
+    padding: 50px; }
+    .opensource > section > header {
+      font-size: 26px; }
+    .opensource > section > p {
+      line-height: 50px; }
 
 .pages .title {
   font-size: 18px;

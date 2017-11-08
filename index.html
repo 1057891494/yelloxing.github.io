@@ -39,6 +39,7 @@
                 Hazy("hazy-view").html(data);
                 console.log('%c' + new Date() + '\n\n心叶提示：您的访问被拒绝了\n\n', 'color:#daaa65');
             });
+
         } else {
             $(function() {
                 $.ajax("get", "router.config.json", function(data) {

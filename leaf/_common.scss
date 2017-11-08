@@ -71,6 +71,15 @@ body {
         list-style-type: circle;
         margin-left: 4em;
     }
+    .phone {
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        bottom: 20px;
+        cursor: pointer;
+        color: $basicInfoColor;
+    }
 }
 
 
@@ -210,9 +219,31 @@ hazy-copy {
     }
 }
 
+
 /*
 点击例子按钮样式
 */
-.example-src{
-    color:rgb(10, 240, 228);
+
+.example-src {
+    color: rgb(10, 240, 228);
+}
+
+.github{
+    position: absolute;
+    top: 80px;
+    right: -57px;
+    transform: rotate(45deg);
+    background-color: #577ecb;
+    border: 4px dashed #b3bebd;
+    outline: 6px solid #577ecb;
+    height: 25px;
+    line-height: 30px;
+    font-family: fantasy;
+    cursor: pointer;
+    color: aliceblue;
+    width:300px;
+    text-align: center;
+    display: inline-block;
+    padding:0;
+    text-decoration: none;
 }

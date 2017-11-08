@@ -195,6 +195,14 @@ body {
     line-height: 20px;
     list-style-type: circle;
     margin-left: 4em; }
+  .refuse .phone {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 20px;
+    cursor: pointer;
+    color: #daaa65; }
 
 /*
 页眉样式
@@ -312,6 +320,26 @@ hazy-copy {
 .example-src {
   color: #0af0e4; }
 
+.github {
+  position: absolute;
+  top: 80px;
+  right: -57px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  background-color: #577ecb;
+  border: 4px dashed #b3bebd;
+  outline: 6px solid #577ecb;
+  height: 25px;
+  line-height: 30px;
+  font-family: fantasy;
+  cursor: pointer;
+  color: aliceblue;
+  width: 300px;
+  text-align: center;
+  display: inline-block;
+  padding: 0;
+  text-decoration: none; }
+
 .notebook {
   min-height: calc(100vh - 256px);
   margin: 20px auto 20px auto;
@@ -413,7 +441,12 @@ hazy-copy {
     .opensource > section > header {
       font-size: 26px; }
     .opensource > section > p {
-      line-height: 50px; }
+      line-height: 32px;
+      padding-top: 20px; }
+  .opensource.phone {
+    min-height: auto; }
+    .opensource.phone > section {
+      width: 90%; }
 
 .pages .title {
   font-size: 18px;

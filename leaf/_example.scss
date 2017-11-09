@@ -14,7 +14,7 @@
             border-width: 0;
             background-color: $bgColor;
             color: #080101;
-            font-size: 12px;
+            font-size: 16px;
             padding: 10px;
             resize: none;
         }
@@ -29,6 +29,11 @@
             font-size: 14px;
             border-width: 0;
             color: #f8ecec;
+            transition: all .5s ease-in;
+            &:hover{
+                background-color: #1c6783;
+                color: #f9f6f2;
+            }
             &.apply {
                 right: 10px;
             }

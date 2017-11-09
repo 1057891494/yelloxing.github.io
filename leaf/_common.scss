@@ -114,6 +114,7 @@ body {
                 display: inline-block;
                 cursor: pointer;
                 color: #556165;
+                transition: all .3s ease-in;
                 &:hover {
                     color: lighten($basicCursorColor, 30%);
                 }

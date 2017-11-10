@@ -418,31 +418,55 @@ hazy-copy {
       line-height: 26px; }
 
 .opensource {
-  min-height: calc(100vh - 256px); }
+  margin: 10px;
+  text-align: center;
+  font-size: 0; }
+  .opensource:after {
+    display: inline-block;
+    width: 340px;
+    height: 0;
+    content: "";
+    margin: 10px 10px 10px 10px;
+    vertical-align: middle; }
+  .opensource > .balance-layout {
+    display: inline-block;
+    width: 340px;
+    height: 1px;
+    margin: 10px 10px 10px 10px;
+    vertical-align: middle; }
   .opensource > section {
+    text-align: left;
+    font-size: 14px;
+    vertical-align: middle;
     transition: all 0.5s ease-in;
     box-shadow: 3px 4px 17px #6d6c69;
     border-radius: 10px;
     cursor: pointer;
-    margin: 50px auto 50px auto;
-    width: 700px;
+    margin: 10px 10px 10px 10px;
+    width: 340px;
     background-color: #f7f4ef;
-    padding: 40px;
+    padding: 12px;
     padding-left: 20px;
-    padding-right: 20px; }
+    padding-right: 20px;
+    height: 160px;
+    display: inline-block; }
     .opensource > section:hover {
       background-color: #1c6783;
       color: #f8f9fb;
       box-shadow: 0 0 7px #1c6783; }
     .opensource > section > header {
-      font-size: 26px; }
+      font-size: 24px;
+      line-height: 36px; }
     .opensource > section > p {
       line-height: 32px;
-      padding-top: 20px; }
+      padding-top: 10px; }
   .opensource.phone {
-    min-height: auto; }
+    min-height: auto;
+    margin-left: auto;
+    margin-right: auto; }
     .opensource.phone > section {
-      width: 90%; }
+      width: 90%;
+      height: auto; }
 
 .pages .title {
   font-size: 18px;

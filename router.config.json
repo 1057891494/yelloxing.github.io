@@ -12,6 +12,7 @@
     "NotFound": "page/404.html",
     "/notebook/tool/git": { "src": "page/notebook/git.html", "deep": "1" },
     "/notebook/ECMAScript/RegExp": { "src": "page/notebook/RegExp.html", "deep": "1" },
+    "/notebook/ECMAScript/Position": { "src": "page/notebook/Position.html", "deep": "1" },
     "/notebook/css/tranform": { "src": "page/notebook/tranform.html", "deep": "1" },
     "/notebook/enhanceCss/margin": { "src": "page/notebook/margin.html", "deep": "1" },
     "/notebook/enhanceCss/dot": { "src": "page/notebook/dot.html", "deep": "1" },

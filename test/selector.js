@@ -1,4 +1,0 @@
-describe('lazy selector', function() {
-
-
-});

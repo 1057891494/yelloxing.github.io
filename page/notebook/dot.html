@@ -1,0 +1,75 @@
+<section class='pages'>
+    <header class='title'>
+        小点记录
+    </header>
+    <section class='page'>
+        <header>
+            行内盒子模型
+        </header>
+        <article>
+            <div class='info'>
+                内容区域（content area）：一种围绕着文字看不见的盒子，大小和font-size有关。
+            </div>
+            <div class='info'>
+                内联盒子（inline boxes）：不好表达，举例子解释一下，被inline水平标签（em、a和span等）包含的称为"内联盒子"，如果是光秃秃的文字就称为"匿名内联盒子"。
+            </div>
+            <div class='info'>
+                行框盒子（line boxes）：一行就是一个行框盒子，里面由一个个内联盒子组成，应该不是太难理解。
+            </div>
+            <div class='info'>
+                包含盒子（containing box）：由一行行的行框盒子组成，比如"&lt;p&gt;单纯的文字&lt;em&gt;被inline水平标签包含的文字&lt;/em&gt;&lt;/p&gt;"
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            行高
+        </header>
+        <article>
+            <div class='info'>
+                行高定义的是二行文字基线（baseline）的距离（不一定准确，更严格说应该是行框盒子的实际高度，不是高度），内容区域（content area）高度+行间距(vertical spacing)=行高，行高由于继承，无处不在，包括单行文本也不例外；其次，高度的表现不是行高而是内容区域高度+行间距，而且内容区域高度只与字号和字体有关，和行高没有任何关系。
+            </div>
+            <div class='info'>
+                简单的说就是：行高决定了内联盒子高度，行间距可大可小、可正可负，始终保证行高等于高。
+            </div>
+            <div class='info'>
+                内容区域高度不一定是font-size，还取决于字体，不同字体不一样，在simsum下二者是一样的。
+            </div>
+            <div class='info'>
+                line-height取值数字时所有可继承根据font-size重新计算，而取百分百和em时，当前元素根据font-size计算之后把计算的结果继承给下面元素，区别有点大。
+            </div>
+            <div class='info'>
+                替换元素比较特别，一般有内在尺寸和宽高比，不可以简单的去理解，遇到要小心，后期关于元素会专门去讨论。
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            垂直对齐
+        </header>
+        <article>
+            <div class='info'>
+                垂直对齐方式是用来设置垂直对齐方式，所有垂直对齐的元素都会影响行高，修改的是自己的什么线垂直对齐父元素的什么线，比如默认自己的基线对齐父元素的基线；如果取值百分百，计算是相对行高计算的。
+            </div>
+            <div class='info'>
+                其是一个inline-block、table-cell（比如td元素）或inline依赖型元素。
+            </div>
+            <div class='info'>
+                inline-block的基线是正常流中最后一个line box的基线，除非，这个line box里面既没有line boxes或者本身overflow属性的计算值而不是visible，这种情况下基线是margin底边缘。
+            </div>
+            <div class='info'>
+                如果设置为数值，百分百或em等单位，表示的是在默认基础上偏移的对齐。
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            实用经验
+        </header>
+        <article>
+            <div class='info'>
+                在使用display:inline-block使元素位于一行时元素之间有间隙是由于字体间距（解决方法是对外壳设置font-size:0px，里面小格子再恢复font-size为需要的值，当然别的方法也有，不过这个感觉好用些）。
+            </div>
+        </article>
+    </section>
+</section>

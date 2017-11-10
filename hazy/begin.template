@@ -1,0 +1,13 @@
+(function(global, factory, undefined) {
+    'use strict';
+
+    if (global && global.document) {
+        var start=new Date().getTime();
+        factory(global);
+        var usetime=new Date().getTime() - start;
+        console.log('%c' + new Date() + '\n\n心叶提示：系统启动用时为：'+usetime+'毫秒\n\n', 'color:#daaa65');
+    } else {
+        throw new Error("Hazy requires a window with a document!");
+    }
+
+})(window, function(window) {

@@ -1,0 +1,250 @@
+/*
+全局样式
+*/
+
+body {
+    background-color: #fefdfc;
+    font-size: 16px;
+}
+
+
+/*
+404页面样式
+*/
+
+.notFound {
+    @include bg_init($notFoundImg);
+    background-position-y: top;
+    margin: auto;
+    position: relative;
+    padding-top: 240px;
+    width: 700px;
+    min-height: calc(100vh - 216px);
+    .button {
+        line-height: 30px;
+        position: absolute;
+        right: 30px;
+        top: 260px;
+        a {
+            text-decoration: none;
+            background-color: $basicInfoColor;
+            color: #fbf6fb;
+            padding: 5px;
+            border-radius: 8px;
+            margin-left: 26px;
+        }
+    }
+    .info {
+        position: relative;
+        border-top: 2px solid $basicInfoColor;
+        padding-top: 10px;
+        line-height: 30px;
+        color: $basicInfoColor;
+    }
+}
+
+
+/*
+拒绝服务页面样式
+*/
+
+.refuse {
+    @include bg_init($refuseImg);
+    padding-top: 100px;
+    width: 100%;
+    background-position-y: top;
+    margin-top: 100px;
+    padding-left: 2em;
+    line-height: 36px;
+    color: $basicInfoColor;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    .title {
+        font-size: 20px;
+    }
+    .info {
+        font-size: 14px;
+    }
+    .reason {
+        line-height: 20px;
+        list-style-type: circle;
+        margin-left: 4em;
+    }
+    .phone {
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        bottom: 20px;
+        cursor: pointer;
+        color: $basicInfoColor;
+    }
+}
+
+
+/*
+页眉样式
+*/
+
+.header {
+    &>header {
+        width: 100%;
+        height: 70px;
+        background-color: $basicCursorColor;
+        background-image: url($cloudLeftImg), url($cloudTopImg), url($cloudRightImg);
+        background-repeat: no-repeat;
+        background-position: left top, center 10px, right center;
+        background-size: auto, auto, auto;
+        font-size: 0;
+    }
+    &>nav {
+        background-color: #f4f4ef;
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.02);
+        text-align: center;
+        line-height: 45px;
+        background-image: url($selectLineImg);
+        background-repeat: repeat no-repeat;
+        background-position-y: bottom;
+        &>ul {
+            color: rgba(157, 157, 182, 0.87);
+            &>li {
+                margin-left: 15px;
+                margin-right: 15px;
+                display: inline-block;
+                cursor: pointer;
+                color: #556165;
+                transition: all .3s ease-in;
+                &:hover {
+                    color: lighten($basicCursorColor, 30%);
+                }
+            }
+        }
+    }
+}
+
+
+/*
+点击样式
+*/
+
+.click {
+    color: lighten($basicCursorColor, 30%) !important;
+}
+
+
+/*
+页脚样式
+*/
+
+.copyright {
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    color: #999;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    line-height: 30px;
+    background: linear-gradient(#b0a4a4, #f2ebeb 30px);
+    a {
+        margin: 0 6px;
+        text-decoration: none;
+        transition: color 0.3s;
+        cursor: pointer;
+        outline: 0;
+        color: #999;
+    }
+    .qq {
+        background-image: url($qqImg);
+        background-position: left center;
+        background-repeat: no-repeat;
+        padding-left: 20px;
+        background-size: 17px auto;
+    }
+}
+
+
+/*
+复制代码样式
+*/
+
+hazy-copy {
+    position: relative;
+    display: block;
+    .hazy-copy-button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        @include bg-init($copyBeforImg);
+        cursor: pointer;
+        &:hover {
+            background-image: url($copyHoverImg);
+        }
+    }
+}
+
+
+/*
+提示样式
+*/
+
+.notify {
+    box-shadow: 0 0 20px #03A9F4;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(3, 169, 244, 0.32);
+    padding: 10px;
+    color: #fdfdfd;
+    width: 260px;
+}
+
+
+/*
+禁止样式
+*/
+
+@media screen and (max-width: 776px) {
+    .header,
+    .copyright {
+        display: none !important;
+    }
+}
+
+@media screen and (max-height: 399px) {
+    .header,
+    .copyright {
+        display: none !important;
+    }
+}
+
+
+/*
+点击例子按钮样式
+*/
+
+.example-src {
+    color: rgb(10, 240, 228);
+}
+
+.github{
+    position: absolute;
+    top: 80px;
+    right: -57px;
+    transform: rotate(45deg);
+    background-color: #577ecb;
+    border: 4px dashed #b3bebd;
+    outline: 6px solid #577ecb;
+    height: 25px;
+    line-height: 30px;
+    font-family: fantasy;
+    cursor: pointer;
+    color: aliceblue;
+    width:300px;
+    text-align: center;
+    display: inline-block;
+    padding:0;
+    text-decoration: none;
+}

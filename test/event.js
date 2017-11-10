@@ -1,4 +1,0 @@
-describe('lazy event', function() {
-
-
-});

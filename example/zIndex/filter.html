@@ -1,0 +1,37 @@
+<div class='demo-frame'>
+
+    <div class="demo-list">
+        <div class="box">
+            <img src="/source/example/logo.png">
+        </div>
+    </div>
+
+    <div class="demo-list">
+        <div class="box filter">
+            <img src="/source/example/logo.png">
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .demo-frame .demo-list .box {
+        background-color: rgb(10, 195, 241);
+        border-radius: 50%;
+        margin-bottom: 70px;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+    }
+
+    .demo-frame .demo-list .box img {
+        position: relative;
+        z-index: -1;
+    }
+    /*由于图片设置了position:relative具有层叠上下文，z-index:-1生效，因此嵌套的div覆盖了图片的一部分。*/
+
+    .demo-frame .demo-list .box.filter {
+        filter: blur(5px);
+    }
+    /*设置了嵌套的div滤镜filter: blur(5px)使其也具有了层叠上下文，根据层叠顺序的规则，背景比负z-index更远离用户眼睛，因此图片跑到背景上面了。*/
+</style>

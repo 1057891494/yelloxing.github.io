@@ -1,0 +1,17 @@
+//清除浮动
+@mixin cleanBoth {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+//设置背景图片
+@mixin bg_init($url) {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto auto;
+    background-image: url(#{$url});
+}

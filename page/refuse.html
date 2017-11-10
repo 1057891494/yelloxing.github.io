@@ -1,0 +1,13 @@
+<section class='refuse'>
+    <h1 class='title'>非常抱歉，您的访问被拒绝了!</h1>
+    <h2 class='info'>可能是以下原因：</h2>
+    <ul class='reason'>
+        <li>屏幕宽度小于777px</li>
+        <li>屏幕高度小于400px</li>
+    </ul>
+    <a class='phone' href='javascript:void(0)' onclick='$.ajax("get", "page/cursor/only-phone.html", function(data) {
+        Hazy("hazy-view").html(data);
+    });'>
+        你可以访问手机用例
+    </a>
+</section>

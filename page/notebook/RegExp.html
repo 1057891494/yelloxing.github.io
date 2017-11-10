@@ -1,0 +1,183 @@
+<section class='pages'>
+    <header class='title'>
+        正则表达式
+    </header>
+    <section class='page'>
+        <header>
+            正则对象方法
+        </header>
+        <article>
+            <div class='info'>
+                exec如果匹配到，返回格式如下： { 0:'匹配的字符串', 1;'匹配的第一个元祖，如果有的话', 2:'以此类推，第二个元祖', ...... index:'匹配文本的第一个字符的位置', input:'输入的匹配的原来字符串', length:'0,1,2,...的个数' } exec如果匹配不到，返回null。
+            </div>
+            <div class='warn'>
+                重要事项：如果在一个字符串中完成了一次模式匹配之后要开始检索新的字符串，就必须手动地把 lastIndex 属性重置为 0。
+            </div>
+            <div class='bash'>
+                exec【检索字符串中指定的值。返回找到的值，并确定其位置。】
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                如果字符串 string 中含有与 RegExpObject 匹配的文本，则返回 true，否则返回 false。
+            </div>
+            <div class='bash'>
+                test【检索字符串中指定的值。返回 true 或 false。】
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            字符串对象方法
+        </header>
+        <article>
+            <div class='info'>
+                返回stringObject 中第一个与 regexp 相匹配的子串的起始位置，如果没有找到返回-1；search() 方法不执行全局匹配，它将忽略标志 g。它同时忽略 regexp 的 lastIndex 属性，并且总是从字符串的开始进行检索，这意味着它总是返回 stringObject 的第一个匹配的位置。
+            </div>
+            <div class='bash'>
+                search【检索与正则表达式相匹配的值。】
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                返回匹配的字符串数组。
+            </div>
+            <div class='bash'>
+                match【找到一个或多个正则表达式的匹配。】
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                语法：stringObject.replace(regexp/substr,replacement|function)，如果 regexp 具有全局标志 g，那么 replace() 方法将替换所有匹配的子串。否则，它只替换第一个匹配子串。其中function传递进去的是匹配的字符串，return返回的是最后替换成的，类似管道的写法。
+            </div>
+            <div class='bash'>
+                replace【替换与正则表达式匹配的子串。】
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                返回切割后的数组
+            </div>
+            <div class='bash'>
+                split【把字符串分割为字符串数组。】
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            懒惰限定符
+        </header>
+        <article>
+            <div class='info'>
+                代码：'1-name-2-name-2'.match(/1.*?2/)=》结果：1-name-2
+            </div>
+            <div class='info'>
+                代码：'1-name-2-name-2'.match(/1.*2/)=》结果：1-name-2-name-2
+            </div>
+            <div class='bash'>
+                "*?"【重复任意次，但尽可能少重复】
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                【重复1次或更多次，但尽可能少重复】
+            </div>
+            <div class='bash'>
+                +?
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                重复0次或1次，但尽可能少重复】
+            </div>
+            <div class='bash'>
+                ??
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                【重复n到m次，但尽可能少重复】
+            </div>
+            <div class='bash'>
+                {n,m}?
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                【重复n次以上，但尽可能少重复】
+            </div>
+            <div class='bash'>
+                {n,}?
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            捕获分组
+        </header>
+        <article>
+            <div class='info'>
+                匹配exp,并捕获文本到自动命名的组里
+            </div>
+            <div class='bash'>
+                (exp)
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                匹配exp,并捕获文本到名称为name的组里[亲自测试JavaScript中不支持]
+            </div>
+            <div class='bash'>
+                (?&lt;name&gt;exp)
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                匹配exp,不捕获匹配的文本，也不给此分组分配组号
+            </div>
+            <div class='bash'>
+                (?:exp)
+            </div>
+        </article>
+    </section>
+    <section class='page'>
+        <header>
+            零宽断言
+        </header>
+        <article>
+            <div class='info'>
+                代码："1-name-2-valueing-2-text-heeeing".match(/([a-z]+(?:ing))/g);=》结果： ["valueing", "heeeing"]
+            </div>
+            <div class='info'>
+                代码："1-name-2-valueing-2-text-heeeing".match(/([a-z]+(?=ing))/g);=》结果：["value", "heee"]
+            </div>
+            <div class='bash'>
+                "(?=exp)" 【匹配exp前面的位置】
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                匹配exp后面的位置[亲自测试JavaScript中不支持]
+            </div>
+            <div class='bash'>
+                (?
+                <=exp) </div>
+        </article>
+        <article>
+            <div class='info'>
+                代码："123abc223--".match(/(\d{3}(?!-))/g);=》结果：["123"]
+            </div>
+            <div class='bash'>
+                "(?!exp)" 【匹配后面跟的不是exp的位置】
+            </div>
+        </article>
+        <article>
+            <div class='info'>
+                如 "abc123 " 正则 "(?&lt;![0-9])123" 匹配"123"前面是非数字的结果也可写成"(?!&lt;\d)123"
+            </div>
+            <div class='bash'>
+                "(?&lt;!exp)" 匹配前面不是exp的位置[亲自测试JavaScript中不支持]
+            </div>
+        </article>
+    </section>
+</section>

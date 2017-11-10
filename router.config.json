@@ -4,6 +4,7 @@
     "/notebook/tool": { "src": "page/cursor/tool.html" },
     "/notebook/ECMAScript": { "src": "page/cursor/es.html" },
     "/notebook/css": { "src": "page/cursor/style.html" },
+    "/notebook/html": { "src": "page/cursor/html5.html" },
     "/notebook/enhanceCss": { "src": "page/cursor/enhanceCss.html" },
     "/example": { "src": "page/example.html" },
     "/opensource": { "src": "page/opensource.html" },
@@ -11,8 +12,10 @@
     "NotFound": "page/404.html",
     "/notebook/tool/git": { "src": "page/notebook/git.html", "deep": "1" },
     "/notebook/ECMAScript/RegExp": { "src": "page/notebook/RegExp.html", "deep": "1" },
+    "/notebook/ECMAScript/Position": { "src": "page/notebook/Position.html", "deep": "1" },
     "/notebook/css/tranform": { "src": "page/notebook/tranform.html", "deep": "1" },
     "/notebook/enhanceCss/margin": { "src": "page/notebook/margin.html", "deep": "1" },
     "/notebook/enhanceCss/dot": { "src": "page/notebook/dot.html", "deep": "1" },
-    "/notebook/enhanceCss/z-index": { "src": "page/notebook/zIndex.html", "deep": "1" }
+    "/notebook/enhanceCss/z-index": { "src": "page/notebook/zIndex.html", "deep": "1" },
+    "/notebook/ECMAScript6": { "src": "page/cursor/es6.html" }
 }

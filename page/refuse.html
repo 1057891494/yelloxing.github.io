@@ -5,4 +5,9 @@
         <li>屏幕宽度小于777px</li>
         <li>屏幕高度小于400px</li>
     </ul>
+    <a class='phone' href='javascript:void(0)' onclick='$.ajax("get", "page/cursor/only-phone.html", function(data) {
+        Hazy("hazy-view").html(data);
+    });'>
+        你可以访问手机用例
+    </a>
 </section>

@@ -112,8 +112,8 @@
     &>.balance-layout {
         display: inline-block;
         width: 340px;
-        height: 1px;
-        margin: 10px 10px 10px 10px;
+        height: 0;
+        margin: 0 10px 0 10px;
         vertical-align: middle;
     }
     &>section {

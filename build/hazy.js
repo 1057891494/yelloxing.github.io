@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-11-09
+* Date: 2017-11-12
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -1451,7 +1451,8 @@ Hazy.extend(Hazy.routerStyle, {
                         "css": 3,
                         "enhanceCss": 4,
                         "html": 5,
-                        "ECMAScript6": 6
+                        "ECMAScript6": 6,
+                        "html4": 7
                     }[state];
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

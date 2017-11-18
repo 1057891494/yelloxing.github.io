@@ -429,34 +429,92 @@ hazy-copy {
       line-height: 26px; }
 
 .opensource {
-  min-height: calc(100vh - 256px); }
+  margin: 10px;
+  text-align: center;
+  font-size: 0; }
+  .opensource:after {
+    display: inline-block;
+    width: 340px;
+    height: 0;
+    content: "";
+    margin: 10px 10px 10px 10px;
+    vertical-align: middle; }
+  .opensource > .balance-layout {
+    display: inline-block;
+    width: 340px;
+    height: 0;
+    margin: 0 10px 0 10px;
+    vertical-align: middle; }
   .opensource > section {
+    text-align: left;
+    font-size: 14px;
+    vertical-align: middle;
     -webkit-transition: all 0.5s ease-in;
     transition: all 0.5s ease-in;
     -webkit-box-shadow: 3px 4px 17px #6d6c69;
             box-shadow: 3px 4px 17px #6d6c69;
     border-radius: 10px;
     cursor: pointer;
-    margin: 50px auto 50px auto;
-    width: 700px;
+    margin: 10px 10px 10px 10px;
+    width: 340px;
     background-color: #f7f4ef;
-    padding: 40px;
+    padding: 12px;
     padding-left: 20px;
-    padding-right: 20px; }
+    padding-right: 20px;
+    height: 160px;
+    display: inline-block; }
     .opensource > section:hover {
       background-color: #1c6783;
       color: #f8f9fb;
       -webkit-box-shadow: 0 0 7px #1c6783;
               box-shadow: 0 0 7px #1c6783; }
     .opensource > section > header {
-      font-size: 26px; }
+      font-size: 24px;
+      line-height: 36px; }
     .opensource > section > p {
       line-height: 32px;
-      padding-top: 20px; }
+      padding-top: 10px; }
   .opensource.phone {
-    min-height: auto; }
+    min-height: auto;
+    margin-left: auto;
+    margin-right: auto; }
     .opensource.phone > section {
-      width: 90%; }
+      width: 90%;
+      height: auto; }
+
+/*工具样式*/
+.tool {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  background-image: url("../source/example/logo.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center; }
+  .tool:hover .items {
+    display: block;
+    color: #000007; }
+  .tool .items {
+    position: absolute;
+    width: 100px;
+    left: -62px;
+    color: gray;
+    display: none;
+    cursor: pointer;
+    -webkit-transition: all 10s ease-in;
+    transition: all 10s ease-in;
+    line-height: 30px;
+    background-color: #f8f4ef;
+    bottom: 50px;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #bdbdca; }
+    .tool .items .item {
+      color: #7c7373; }
+      .tool .items .item:hover {
+        color: #f33909; }
 
 .pages .title {
   font-size: 18px;

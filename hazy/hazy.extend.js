@@ -70,5 +70,23 @@ $.extend({
     //添加四个空格
     "addTextSpace": function(elem) {
         //推迟开发
+    },
+    /**
+     * 全屏
+     * @param element 需要全屏显示的页面部分
+     */
+    "launchFullScreen": function(element) {
+        if (element.requestFullScreen) {
+            element.requestFullScreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen();
+        }
+    },
+    "exitFullScreen":function(){
+        document.exitFullscreen?document.exitFullscreen():
+        document.mozCancelFullScreen?document.mozCancelFullScreen():
+        document.webkitExitFullscreen?document.webkitExitFullscreen():'';
     }
 });

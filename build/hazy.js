@@ -1,5 +1,5 @@
 /*!
-* yelloxing.github.io 云笔记-遇见更好的你 2.0.1 hazy
+* yelloxing.github.io 云笔记-遇见更好的你 2.1.2 hazy
 * https://yelloxing.github.io
 * 
 * Copyright 心叶 and other contributors
@@ -8,7 +8,7 @@
 * 
 * 云笔记-遇见更好的你V2
 * 
-* Date: 2017-11-10
+* Date: 2017-11-17
 */
 (function(global, factory, undefined) {
     'use strict';
@@ -1390,6 +1390,24 @@ $.extend({
     //添加四个空格
     "addTextSpace": function(elem) {
         //推迟开发
+    },
+    /**
+     * 全屏
+     * @param element 需要全屏显示的页面部分
+     */
+    "launchFullScreen": function(element) {
+        if (element.requestFullScreen) {
+            element.requestFullScreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen();
+        }
+    },
+    "exitFullScreen":function(){
+        document.exitFullscreen?document.exitFullscreen():
+        document.mozCancelFullScreen?document.mozCancelFullScreen():
+        document.webkitExitFullscreen?document.webkitExitFullscreen():'';
     }
 });
 

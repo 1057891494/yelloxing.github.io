@@ -18,5 +18,6 @@
     "/notebook/enhanceCss/margin": { "src": "page/notebook/margin.html", "deep": "1" },
     "/notebook/enhanceCss/dot": { "src": "page/notebook/dot.html", "deep": "1" },
     "/notebook/enhanceCss/z-index": { "src": "page/notebook/zIndex.html", "deep": "1" },
-    "/notebook/ECMAScript6": { "src": "page/cursor/es6.html" }
+    "/notebook/ECMAScript6": { "src": "page/cursor/es6.html" },
+    "/notebook/html/webSql": { "src": "page/notebook/webSql.html", "deep": "1" }
 }

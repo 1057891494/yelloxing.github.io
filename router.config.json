@@ -19,5 +19,6 @@
     "/notebook/enhanceCss/dot": { "src": "page/notebook/dot.html", "deep": "1" },
     "/notebook/enhanceCss/z-index": { "src": "page/notebook/zIndex.html", "deep": "1" },
     "/notebook/ECMAScript6": { "src": "page/cursor/es6.html" },
-    "/notebook/html/webSql": { "src": "page/notebook/webSql.html", "deep": "1" }
+    "/notebook/html/webSql": { "src": "page/notebook/webSql.html", "deep": "1" },
+    "/notebook/html/WebWorkers": { "src": "page/notebook/WebWorkers.html", "deep": "1" }
 }

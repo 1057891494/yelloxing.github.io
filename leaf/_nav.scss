@@ -193,11 +193,39 @@
         padding: 14px;
         border-radius: 10px;
         border: 1px solid #bdbdca;
-        .item{
-            color:rgb(124, 115, 115);
-            &:hover{
+        .item {
+            color: rgb(124, 115, 115);
+            &:hover {
                 color: #f33909;
             }
+        }
+    }
+}
+
+
+/*
+api特殊样式
+*/
+
+.api {
+    a {
+        text-decoration: none;
+        font-size: 18px;
+        /* 未访问的链接 */
+        &:link {
+            color: #196782;
+        }
+        /* 已访问的链接 */
+        &:visited {
+            color: #196782;
+        }
+        /* 鼠标移动到链接上 */
+        &:hover {
+            color: #196782;
+        }
+        /* 选定的链接 */
+        &:active {
+            color: #196782;
         }
     }
 }

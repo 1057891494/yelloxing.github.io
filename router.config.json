@@ -73,5 +73,9 @@
     "/notebook/ECMAScript6/es6-lead": {
         "src": "page/notebook/es6.html",
         "deep": "1"
+    },
+    "/notebook/tool/api": {
+        "src": "page/notebook/api-link.html",
+        "deep": "1"
     }
 }

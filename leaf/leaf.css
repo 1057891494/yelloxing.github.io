@@ -501,6 +501,25 @@ hazy-copy {
       .tool .items .item:hover {
         color: #f33909; }
 
+/*
+api特殊样式
+*/
+.api a {
+  text-decoration: none;
+  font-size: 18px;
+  /* 未访问的链接 */
+  /* 已访问的链接 */
+  /* 鼠标移动到链接上 */
+  /* 选定的链接 */ }
+  .api a:link {
+    color: #196782; }
+  .api a:visited {
+    color: #196782; }
+  .api a:hover {
+    color: #196782; }
+  .api a:active {
+    color: #196782; }
+
 .pages .title {
   font-size: 18px;
   line-height: 20px;

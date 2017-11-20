@@ -31,7 +31,8 @@ Hazy.extend(Hazy.routerStyle, {
                         "enhanceCss": 4,
                         "html": 5,
                         "ECMAScript6": 6,
-                        "html4": 7
+                        "html4": 7,
+                        "framework": 8
                     }[state];
                     if (eq && $("#deeptwomenu").length > 0) {
                         $("#deeptwomenu").find('li').removeClass('click').eq(eq - 1).addClass('click');

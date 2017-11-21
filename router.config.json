@@ -84,5 +84,9 @@
     "/notebook/framework/angularjs": {
         "src": "page/notebook/angularjs.html",
         "deep": "1"
+    },
+    "/notebook/framework/angular": {
+        "src": "page/notebook/angular-cli.html",
+        "deep": "1"
     }
 }

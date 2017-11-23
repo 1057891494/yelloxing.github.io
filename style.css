@@ -59,8 +59,8 @@ only screen and (max-device-width:750px) {
     }
 }
 
-@media only screen and (max-width: 700px),
-only screen and (max-device-width:700px) {
+@media only screen and (max-width: 720px),
+only screen and (max-device-width:720px) {
     body {
         overflow-x: hidden;
     }
@@ -68,49 +68,23 @@ only screen and (max-device-width:700px) {
     article,
     footer,
     body {
-        transform: scale(0.8);
-        -ms-transform: scale(0.8);
+        transform: scale(0.5);
+        -ms-transform: scale(0.5);
         /* IE 9 */
-        -moz-transform: scale(0.8);
+        -moz-transform: scale(0.5);
         /* Firefox */
-        -webkit-transform: scale(0.8);
+        -webkit-transform: scale(0.5);
         /* Safari 和 Chrome */
-        -o-transform: scale(0.8);
+        -o-transform: scale(0.5);
         /* Opera */
-        transform-origin: 30vw 0;
+        transform-origin: 6.3vw 0;
     }
     footer {
-        transform-origin: -10vw 120vh;
-        width: 140vw !important;
+        transform-origin: 5vw 200vh;
+        width: 360vw !important;
     }
     article {
-        width: 120vw !important;
-    }
-}
-
-@media only screen and (max-width: 400px),
-only screen and (max-device-width:400px) {
-    header,
-    article,
-    footer,
-    body {
-        transform: scale(0.6);
-        -ms-transform: scale(0.6);
-        /* IE 9 */
-        -moz-transform: scale(0.6);
-        /* Firefox */
-        -webkit-transform: scale(0.6);
-        /* Safari 和 Chrome */
-        -o-transform: scale(0.6);
-        /* Opera */
-        transform-origin: 10vw 0;
-    }
-    footer {
-        transform-origin: 5vw 160vh;
-        width: 240vw !important;
-    }
-    article {
-        width: 240vw !important;
+        width: 360vw !important;
     }
 }
 

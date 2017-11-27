@@ -17,7 +17,11 @@
     <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
-
+    <script>
+        function goto(target) {
+            window.open("https://yelloxing.github.io/" + target, '_target');
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -30,7 +34,8 @@
             <h4>Web开发相关</h4>
             <nav>
                 <ul>
-                    <li style='background-image:url("./source/html5.png")' onclick='window.location.href="https://yelloxing.github.io/html5"'>H5 学习笔记</li>
+                    <li style='background-image:url("./source/html5.png")' onclick='goto("html5")'>H5 学习笔记</li>
+                    <li style='background-image:url("./source/css.png")' onclick='goto("CSS")'>CSS 深入理解笔札</li>
                 </ul>
             </nav>
         </section>

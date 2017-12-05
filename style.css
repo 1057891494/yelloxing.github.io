@@ -6,6 +6,9 @@ body {
     min-height: 100vh;
     font-size: 0.1rem;
     background-color: #e6e5e5;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
 }
 
 html {
@@ -37,7 +40,6 @@ only screen and (max-device-width:860px) {
 only screen and (max-device-width:750px) {
     header,
     article,
-    footer,
     body {
         transform: scale(0.9);
         -ms-transform: scale(0.9);
@@ -50,41 +52,32 @@ only screen and (max-device-width:750px) {
         /* Opera */
         transform-origin: 50vw 0;
     }
-    footer {
-        transform-origin: 0 100vh;
-        width: 120vw !important;
-    }
     article {
         width: 100vw !important;
+    }
+    footer {
+        display: none;
     }
 }
 
 @media only screen and (max-width: 720px),
 only screen and (max-device-width:720px) {
-    body {
-        overflow-x: hidden;
-    }
     header,
     article,
-    footer,
     body {
-        transform: scale(0.5);
-        -ms-transform: scale(0.5);
+        transform: scale(0.7);
+        -ms-transform: scale(0.7);
         /* IE 9 */
-        -moz-transform: scale(0.5);
+        -moz-transform: scale(0.7);
         /* Firefox */
-        -webkit-transform: scale(0.5);
+        -webkit-transform: scale(0.7);
         /* Safari 和 Chrome */
-        -o-transform: scale(0.5);
+        -o-transform: scale(0.7);
         /* Opera */
         transform-origin: 6.3vw 0;
     }
-    footer {
-        transform-origin: 5vw 200vh;
-        width: 360vw !important;
-    }
     article {
-        width: 360vw !important;
+        width: 190vw !important;
     }
 }
 
@@ -121,6 +114,7 @@ article {
     background-color: #fefefe;
     border-style: solid;
     border-width: 0.005rem;
+    margin-bottom: 0.25rem;
 }
 
 article>section:first-child>h4 {
@@ -128,7 +122,7 @@ article>section:first-child>h4 {
 }
 
 h4 {
-    margin:0;
+    margin: 0;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
     -webkit-margin-start: 0;
@@ -140,7 +134,7 @@ h4 {
 }
 
 ul {
-    margin:0;
+    margin: 0;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
     -webkit-margin-start: 0;
@@ -148,13 +142,14 @@ ul {
     -webkit-padding-start: 0;
     list-style-type: none;
     font-size: 0;
-    padding: 0.2rem 0.512rem 0 0.512rem;
+    padding: 0.2rem 0.01rem 0 0.01rem;
 }
 
 nav {
     border-color: #d5d7ec;
     border-style: solid;
     border-width: 0.005rem 0 0.005rem 0;
+    text-align: center;
 }
 
 article>section:last-child>nav {
@@ -183,4 +178,10 @@ li:hover {
     background-size: auto 0.512rem;
     color: rgb(255, 51, 0);
     font-size: 0.1rem
+}
+
+li.helper {
+    height: 0;
+    line-height: 0;
+    padding: 0;
 }

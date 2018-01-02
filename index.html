@@ -17,158 +17,20 @@
     <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
-    <script>
-        function goto(target) {
-            window.open("https://yelloxing.github.io/" + target, '_target');
-        }
-    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
+    <p class='home pre-version' onclick='window.location.href="./V3/index.html"'>
+        温馨提示：对于原来的V3版本笔记，请点击此处查看！
+    </p>
+    <header class='home title'>
         云笔记-遇见更好的你
     </header>
-    <article>
-        <section>
-            <h4>前端核心</h4>
-            <nav>
-                <ul>
-                    <li style='background-image:url("./source/html5.png")' onclick='goto("html5")'>H5 学习笔记</li>
-                    <li style='background-image:url("./source/css.png")' onclick='goto("CSS")'>CSS 学习笔记</li>
-                    <li style='background-image:url("./source/javascript.jpg")' onclick='goto("JavaScript")'>JavaScript 学习笔记</li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                </ul>
-            </nav>
-        </section>
-        <section>
-            <h4>前端高效开发</h4>
-            <nav>
-                <ul>
-                    <li style='background-image:url("./source/web-component.png")' onclick='goto("ReadBook/#webComponent")'>常用小组件</li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                </ul>
-            </nav>
-        </section>
-        <section>
-            <h4>开发语言学习</h4>
-            <nav>
-                <ul>
-                    <li style='background-image:url("./source/python3.jpg")' onclick='goto("ReadBook/#python3")'>Python3</li>
-                    <li style='background-image:url("./source/c.png")' onclick='goto("ReadBook/#c")'>C 语言</li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                </ul>
-            </nav>
-        </section>
-        <section>
-            <h4>核心课程</h4>
-            <nav>
-                <ul>
-                    <li style='background-image:url("./source/algorithm.jpg")' onclick='goto("ReadBook/#Algorithm")'>算法设计与分析</li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                </ul>
-            </nav>
-        </section>
-        <section>
-            <h4>兴趣爱好</h4>
-            <nav>
-                <ul>
-                    <li style='background-image:url("./source/SketchBasic.jpg")' onclick='goto("ReadBook/#SketchBasic")'>素描</li>
-                    <li style='background-image:url("./source/Gouache.png")' onclick='alert("温馨提示：尚未开始")'>水粉</li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                </ul>
-            </nav>
-        </section>
-        <section>
-            <h4>工具类</h4>
-            <nav>
-                <ul>
-                    <li style='background-image:url("./source/git.jpeg")' onclick='goto("tool/#git")'>Git 命令快速查询</li>
-                    <li style='background-image:url("./source/mac.jpg")' onclick='goto("tool/#mac")'>Mac 帮助笔记</li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                    <li class='helper'></li>
-                </ul>
-            </nav>
-        </section>
+    <article class='home webview'>
+        开发中......
     </article>
-    <footer>
+    <footer class='home footer'>
         Copyright &copy; 2007-2017 走一步&nbsp;再走一步 All Rights Reserved.
     </footer>
 </body>

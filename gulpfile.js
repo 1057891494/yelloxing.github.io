@@ -3,7 +3,7 @@ connect = require('gulp-connect');
 
 gulp.task('webserver', function() {
 connect.server({
-    livereload: true,
+    livereload: false,
     port: 20000
 });
 });

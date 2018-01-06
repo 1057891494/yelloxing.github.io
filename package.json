@@ -5,9 +5,10 @@
   "main": "script.js",
   "scripts": {
     "webpack_cli": "node_modules/.bin/webpack",
-    "start": "npm run webpack_cli",
+    "prod": "npm run webpack_cli",
     "gulp_cli":"node_modules/.bin/gulp",
-    "server":"npm run gulp_cli"
+    "server":"npm run gulp_cli",
+    "start":"npm run prod"
   },
   "repository": {
     "type": "git",

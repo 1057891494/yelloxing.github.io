@@ -29,17 +29,8 @@
                 <li>
                     前端
                     <ul>
-                        <li style='background-image:url("./image/nav/html5.png")'>H5笔记</li>
+                        <li style='background-image:url("./image/nav/html5.png")' onclick='openBook("page/web/html5/nav.html")'>H5笔记</li>
                         <li style='background-image:url("./image/nav/css.png")'>CSS笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
                         <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
                     </ul>
                 </li>
@@ -77,9 +68,10 @@
             </div>
         </nav>
     </header>
-    <section style='text-align:center;line-height:calc(100vh - .4rem);font-size:30px;'>
-        维护中ing...
-    </section>
+    <section id='book-content'></section>
+    <script>
+        window.openBook("page/web/html5/nav.html");
+    </script>
 </body>
 
 </html>

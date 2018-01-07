@@ -1,41 +1,41 @@
 body {
     &>header {
-        line-height: 0.4rem;
-        background-color: #876f03;
-        color: #279aba;
+        line-height: .4rem;
+        background-color: #000000;
+        color: #607D8B;
         min-width: 10.24rem;
         &>nav {
             position: relative;
             width: 10.24rem;
             margin: auto;
-            padding-left: 0.3rem;
+            padding-left: .3rem;
             background-image: url('../logo.png');
             background-repeat: no-repeat;
             background-position: left center;
-            background-size: 0.28rem auto;
+            background-size: .28rem auto;
             &>ul {
                 color: rgb(255, 255, 255);
                 display: inline-block;
                 &>li {
                     cursor: pointer;
                     display: inline-block;
-                    padding-left: 0.14rem;
-                    padding-right: 0.26rem;
+                    padding-left: .14rem;
+                    padding-right: .26rem;
                     position: relative;
                     &::after {
                         content: " ";
                         width: 0;
                         height: 0;
                         font-size: 0;
-                        border-width: 0.03rem;
+                        border-width: .03rem;
                         border-style: solid dashed dashed dashed;
                         border-left-color: transparent;
                         border-right-color: transparent;
                         border-bottom-color: transparent;
                         position: absolute;
-                        top: 0.2rem;
-                        right: 0.16rem;
-                        margin-left: 0.03rem;
+                        top: .2rem;
+                        right: .16rem;
+                        margin-left: .03rem;
                     }
                     &>ul {
                         position: absolute;
@@ -43,20 +43,20 @@ body {
                         background: white;
                         color: #886e28;
                         width: 4.1rem;
-                        padding: 0.3rem;
+                        padding: .3rem;
                         font-size: 0;
                         left: 0;
-                        border-radius: 0 0 0.1rem 0.1rem;
+                        border-radius: 0 0 .1rem .1rem;
                         &>li {
                             cursor: pointer;
                             background-repeat: no-repeat;
                             display: inline-block;
-                            width: 0.7rem;
-                            padding-top: 0.7rem;
-                            background-position: center 0.3rem;
-                            font-size: 0.14rem;
+                            width: .7rem;
+                            padding-top: .4rem;
+                            background-position: center 0;
+                            font-size: .14rem;
                             text-align: center;
-                            background-size: 0.4rem;
+                            background-size: .4rem;
                         }
                     }
                     &:hover {
@@ -72,9 +72,9 @@ body {
                 display: inline-block;
                 background-repeat: no-repeat;
                 background-position: left center;
-                background-size: 0.2rem auto;
+                background-size: .2rem auto;
                 background-image: url('../yelloxing.jpg');
-                padding-left: 0.25rem;
+                padding-left: .25rem;
                 right: 0;
                 position: absolute;
                 color: #2196F3;

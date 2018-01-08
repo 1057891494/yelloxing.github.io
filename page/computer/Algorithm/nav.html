@@ -1,0 +1,16 @@
+<nav>
+    <div style='background-image:url("image/nav/algorithm.png")'>
+        算法设计与分析
+    </div>
+    <ul>
+        <li id='algorithm' onclick='openContent(this,"page/computer/Algorithm/content/RecursionTactics.html");'>递归与分治策略</li>
+        <li onclick='openContent(this,"page/computer/Algorithm/content/DynamicPlan.html");'>动态规划</li>
+        <li onclick='openContent(this,"page/computer/Algorithm/content/GreedyAlgorithm.html");'>贪心算法</li>
+        <li onclick='openContent(this,"page/computer/Algorithm/content/Backtrack.html");'>回溯法</li>
+        <li onclick='openContent(this,"page/computer/Algorithm/content/BranchLimit.html");'>分支限界法</li>
+    </ul>
+</nav>
+<div id='content'></div>
+<script>
+    window.openContent(document.getElementById('algorithm'),'page/computer/Algorithm/content/RecursionTactics.html');
+</script>

@@ -18,7 +18,14 @@ window.openBook = function(url) {
         window.bookContentDom.innerHTML = "通信错误";
     });
 };
-window.openContent = function(url) {
+window.openContent = function(target, url) {
+    var select = document.getElementsByClassName('select');
+    if (select.length > 0) {
+        select[0].setAttribute('class', '');
+    }
+    if (target) {
+        target.setAttribute('class', 'select');
+    }
     window.location.hash = window.bookname + "/" + url.match(/\/([A-Za-z0-9]+)\./)[0].replace(/\//, '').replace(/\./, '');
     if (!window.contentDom) {
         window.contentDom = document.getElementById('content');

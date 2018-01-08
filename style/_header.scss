@@ -3,10 +3,10 @@ body {
         line-height: .4rem;
         background-color: #000000;
         color: #607D8B;
-        min-width: 10.24rem;
+        min-width: $content-width;
         &>nav {
             position: relative;
-            width: 10.24rem;
+            width: $content-width;
             margin: auto;
             padding-left: .3rem;
             background-image: url('../logo.png');
@@ -46,7 +46,7 @@ body {
                         padding: .3rem;
                         font-size: 0;
                         left: 0;
-                        border-radius: 0 0 .1rem .1rem;
+                        box-shadow: 0 0.02rem 0.02rem black;
                         &>li {
                             cursor: pointer;
                             background-repeat: no-repeat;
@@ -60,7 +60,7 @@ body {
                         }
                     }
                     &:hover {
-                        background: white;
+                        background-color: white;
                         color: #886e28;
                         &>ul {
                             display: block;

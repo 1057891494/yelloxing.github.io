@@ -1,0 +1,229 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class="title-flag block">
+            基本思想
+        </p>
+        <p class="block">
+            说的直白点就是深度优先方式系统搜索问题的算法。
+        </p>
+    </section>
+    <section class='section'>
+        <p class="title-flag block">
+            算法使用例子
+        </p>
+        <p class="block little-flag">
+            题目
+        </p>
+        <p class="block">
+            有一批共n个集装箱要装上两艘载重方别为c1和c2的轮船上，其中集装箱i的重量为wi，且全部集装箱重量不大于两艘载重之和，问是否有一个装载方案完成装载。
+        </p>
+        <p class="block little-flag">
+            思路
+        </p>
+        <p class="block">
+            对第一艘船，构造一个0/1树，0代表不选择，1代表选择，然后分别去从根节点试图爬到叶节点，去一一记录下来可行的，选择最小的为解，余下的判断第二艘船是否装的下即可。
+        </p>
+        <p class="block little-flag">
+            代码实现
+        </p>
+        <p class="block demo">
+            <span onclick='showCode("javaCode")'>Java代码</span>
+            <span onclick='showCode("pythonCode")'>Python代码</span>
+            <span onclick='showCode("javascriptCode")'>JavaScript代码</span>
+            <span onclick='showCode("cCode")'>C语言代码</span>
+            <pre id='javaCode'>public class LoadQuestion{
+
+        static int weight1=30;//第一艘船载重
+        static int weight2=10;//第二艘船载重
+        static int w[]={1,9,9,4,4,9};//集装箱
+
+        static int nowW1=0;//当前载重
+        static int nowBest1=0;//当前最优装载
+        static int n=w.length;//集装箱个数
+
+        public static void main(String [] args){
+            Loading(1);
+            int firstLoad=nowBest1;
+            int all=0;
+            for(int i=0;i&lt;w.length;i++){
+                all+=w[i];
+            }
+            System.out.println("第一艘载重："+firstLoad);
+            if(all&gt;weight2+firstLoad){
+                System.out.println("失败");
+            }else{
+                System.out.println("成功");
+            }
+        }
+
+        public static void Loading(int deep){
+            if(deep>n){//如果到达根
+                if(nowW1&gt;nowBest1) nowBest1=nowW1;
+                return;
+            }
+            if(nowW1+w[deep-1]&lt;=weight1){//如果1分支可以
+                nowW1+=w[deep-1];
+                Loading(deep+1);
+                nowW1-=w[deep-1];
+            }
+            //0分支
+            Loading(deep+1);
+        }
+    }</pre>
+            <pre id='pythonCode' class='default'>#!/usr/bin/python
+    # coding=utf
+
+    weight1 = 30;             #第一艘船载重
+    weight2 = 10;             #第二艘船载重
+    w = [1, 9, 9, 4, 4, 9]; #集装箱
+
+    nowW1 = 0;    #当前载重
+    nowBest1 = 0; #当前最优装载
+    n = len(w); #集装箱个数
+
+    def Loading(deep):
+        global nowW1;
+        global nowBest1;
+        if (deep &gt; n):
+        #如果到达根
+            if (nowW1 &gt; nowBest1):
+                nowBest1 = nowW1;
+            return;
+
+        if (nowW1 + w[deep - 1] &lt;= weight1):
+            #如果1分支可以
+            nowW1 += w[deep - 1];
+            Loading(deep + 1);
+            nowW1 -= w[deep - 1];
+
+        #0分支
+        Loading(deep + 1);
+
+    def main():
+        Loading(1);
+        firstLoad = nowBest1;
+        all = 0;
+        for i in range(n):
+
+            all += w[i];
+
+        print "第一艘载重" ,firstLoad;
+        if (all &gt; weight2 + firstLoad):
+
+            print "失败\n";
+
+        else:
+            print "成功\n";
+
+    main();</pre>
+            <pre id='javascriptCode' class='default'>var weight1 = 30; //第一艘船载重
+    var weight2 = 10; //第二艘船载重
+    var w = [1, 9, 9, 4, 4, 9]; //集装箱
+
+    var nowW1 = 0; //当前载重
+    var nowBest1 = 0; //当前最优装载
+    var n = w.length; //集装箱个数
+
+    function Loading(deep) {
+        if (deep &gt; n) { //如果到达根
+            if (nowW1 &gt; nowBest1)
+                nowBest1 = nowW1;
+            return;
+        }
+        if (nowW1 + w[deep - 1] &lt;= weight1) { //如果1分支可以
+            nowW1 += w[deep - 1];
+            Loading(deep + 1);
+            nowW1 -= w[deep - 1];
+        }
+        //0分支
+        Loading(deep + 1);
+    }
+
+    function main() {
+        Loading(1);
+        var firstLoad = nowBest1;
+        var all = 0;
+        for (var i = 0; i &lt; n; i++) {
+            all += w[i];
+        }
+        console.log("第一艘载重：" + firstLoad + "\n");
+        if (all &gt; weight2 + firstLoad) {
+            console.log("失败\n");
+        } else {
+            console.log("成功\n");
+        }
+    }
+
+    main();</pre>
+            <pre id='cCode' class='default'>#include &lt;stdio.h&gt;
+
+    int weight1 = 30;             //第一艘船载重
+    int weight2 = 10;             //第二艘船载重
+    int w[] = {1, 9, 9, 4, 4, 9}; //集装箱
+
+    int nowW1 = 0;    //当前载重
+    int nowBest1 = 0; //当前最优装载
+    int n = sizeof(w)/sizeof(int); //集装箱个数
+
+    void Loading(int deep)
+    {
+        if (deep &gt; n)
+            { //如果到达根
+                if (nowW1 &gt; nowBest1)
+                    nowBest1 = nowW1;
+                return;
+            }
+        if (nowW1 + w[deep - 1] &lt;= weight1)
+        { //如果1分支可以
+            nowW1 += w[deep - 1];
+            Loading(deep + 1);
+            nowW1 -= w[deep - 1];
+        }
+        //0分支
+        Loading(deep + 1);
+    }
+
+    int main()
+    {
+        Loading(1);
+        int firstLoad = nowBest1;
+        int all = 0;
+        for (int i = 0; i &lt; n; i++)
+        {
+            all += w[i];
+        }
+        printf("第一艘载重：%d\n" ,firstLoad);
+        if (all &gt; weight2 + firstLoad)
+        {
+            printf("失败\n");
+        }
+        else
+        {
+            printf("成功\n");
+        }
+    }</pre>
+        </p>
+    </section>
+</article>
+<style>
+    .default {
+        display: none;
+    }
+
+    .block.demo span {
+        color: #f6f8f8;
+        background-color: #03A9F4;
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+<script>
+    function showCode(id) {
+        document.getElementById('javaCode').style.display = 'none';
+        document.getElementById('pythonCode').style.display = 'none';
+        document.getElementById('javascriptCode').style.display = 'none';
+        document.getElementById('cCode').style.display = 'none';
+        document.getElementById(id).style.display = 'block';
+    }
+</script>

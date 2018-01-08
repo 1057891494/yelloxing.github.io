@@ -1,0 +1,35 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class="block">
+            一个隔离的渲染区域，容器里面的子元素不会在布局上影响到外面的元素，反之也是如此。
+        </p>
+        <p class='block title-flag'>
+            如何产生BFC?
+        </p>
+        <p class="block">
+            1.float的值不为none。
+        </p>
+        <p class="block">
+            2.overflow的值不为visible。
+        </p>
+        <p class="block">
+            3.position的值不为relative和static。
+        </p>
+        <p class="block">
+            4.display的值为table-cell、table-caption、inline-block和block中的任何一个。
+        </p>
+    </section>
+    <section class="section">
+        <p class="block title-flag">
+            布局规则
+        </p>
+        <p class="block">
+            <span class="list">1.内部的Box会在垂直方向，一个接一个地放置。</span>
+            <span class="list">2.Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。</span>
+            <span class="list">3.每个元素的左外边缘（margin-left)， 与包含块的左边（contain box left）相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。除非这个元素自己形成了一个新的BFC。</span>
+            <span class="list">4.BFC的区域不会与float box重叠。</span>
+            <span class="list">5.BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</span>
+            <span class="list">6.计算BFC的高度时，浮动元素也参与计算。</span>
+        </p>
+    </section>
+</article>

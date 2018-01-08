@@ -31,7 +31,7 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin("style.css"),
-        // new UglifyJSPlugin(), //压缩js代码
+        new UglifyJSPlugin(), //压缩js代码
         new OptimizeCssAssetsPlugin() //压缩css代码
     ]
 }

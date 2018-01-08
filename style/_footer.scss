@@ -1,0 +1,28 @@
+body{
+    &>footer{
+        background: #453015;
+        &>div{
+            width: $content-width;
+            margin: auto;
+            color:rgb(242, 242, 248);
+            line-height: .5rem;
+            position: relative;
+            &>.info{
+                position: relative;
+                top:0;
+                left: 0;
+            }
+            &>.nav{
+                position: absolute;
+                top:0;
+                right: 0;
+                padding-right: .5rem;
+                background-image: url('../image/github.png');
+                background-repeat: no-repeat;
+                background-size: 0.4rem auto;
+                background-position: right center;
+                cursor: pointer;
+            }
+        }
+    }
+}

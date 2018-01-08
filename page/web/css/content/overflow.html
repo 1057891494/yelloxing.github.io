@@ -1,0 +1,63 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class='block title-flag'>
+            第一步：overflow:hidden
+        </p>
+        <p class="block little-flag">
+            并不隐藏所有溢出的子元素
+        </p>
+        <p class="block">
+            设置了overflow:hidden内部包裹的内容如果会溢出，需要满足下面二个条件：
+            <span class="list">
+                1.拥有overflow:hidden样式的块元素不具有position:relative和position:absolute样式；
+            </span>
+            <span class="list">
+                2.内部溢出的元素是通过position:absolute绝对定位或position:fixed固定定位。
+            </span>
+        </p>
+        <p class="block">
+            也就是说，如果不同时满足上面二个条件，就不会溢出，满足就会溢出。不过，上面都只是表象，如果想清楚应该就明白，可能不只是上面这么简单，下面我们再来看看为什么有时候会溢出，有时候不会溢出。
+        </p>
+        <p class="block little-flag">
+            溢出定义
+        </p>
+        <p class="block">
+            当内部的内容超过盒模型边界的时候会对其进行剪裁，此属性影响被应用元素的所有内容的剪裁，但如果内部元素（或说后代）的包含块是整个视图或者是该容器（定义了overflow的元素）的父级元素时，则不受影响（就是不会对其剪裁）。
+        </p>
+        <p class="block">
+            因此明白了，重点在看包含块，因此确定了设置了该属性的某个内部元素的包含块是谁，和设置了该属性的关系就可以很容易明确是否会剪裁。
+        </p>
+        <p class="block little-flag">
+            包含块
+        </p>
+        <p class="block">
+            一个绝对定位（其实是包含固定定位的）的元素，其包含块是最近的拥有relative或者absolute定位属性的祖先元素，如果任何一级祖先元素都不符合，则其包含块是body元素。
+        </p>
+        <p class="block">
+            因此前面说的二个条件为什么是这样的就很清楚了，关于包含块的更具体说明，请查看包含块一节。
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第二步：清除浮动造成的影响
+        </p>
+        <p class="block">
+            还有一个值得说明的就是关于浮动的清除，具体的计划在float一节说明，这里就简单聊聊为什么可以清除浮动造成的影响。
+        </p>
+        <p class="block">
+            一个有趣的现象是：一个没有设置高度的父元素包裹一个子元素，父元素应该会被子元素撑起来，也就是有高了，不过如果你给子元素设置了浮动，显然原来父元素撑起来的高就塌了，到这里好像都很正常；接着，你给父元素加了一个overflow:hidden，发现父元素的高又有了，好像浮动被清除了一样，为什么会这样？
+        </p>
+        <p class="block">
+            在解释为什么之前，先说几个前置知识（更具体的相关知识可以点击左侧对应菜单查看）：
+            <span class="list">
+                1.overflow的值不为visible会创建一个BFC；
+            </span>
+            <span class="list">
+                2.计算BFC的高度时，浮动元素也参与计算。
+            </span>
+        </p>
+        <p class="block">
+            现在应该很清楚为什么了，其实浮动并没有消除，只是由于创建了一个BFC，而BFC在计算高度的时候浮动元素会计算进去。
+        </p>
+    </section>
+</article>

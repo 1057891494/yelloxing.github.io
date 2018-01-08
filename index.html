@@ -30,35 +30,28 @@
                     前端
                     <ul>
                         <li style='background-image:url("./image/nav/html5.png")' onclick='openBook("page/web/html5/nav.html")'>H5笔记</li>
-                        <li style='background-image:url("./image/nav/css.png")'>CSS笔记</li>
-                        <li style='background-image:url("./image/nav/javascript.jpg")'>ES笔记</li>
+                        <li style='background-image:url("./image/nav/css.png")' onclick='openBook("page/web/css/nav.html")'>CSS笔记</li>
+                        <li style='background-image:url("./image/nav/javascript.png")' onclick='openBook("page/web/javascript/nav.html")'>ES笔记</li>
                     </ul>
                 </li>
                 <li>
                     开发语言
                     <ul>
-                        <li style='background-image:url("./image/nav/python3.jpg")'>Python3</li>
-                        <li style='background-image:url("./image/nav/c.png")'>C语言</li>
+                        <li style='background-image:url("./image/nav/python3.png")' onclick='openBook("page/devLanguage/python3/nav.html")'>Python3</li>
+                        <li style='background-image:url("./image/nav/c.png")' onclick='openBook("page/devLanguage/c/nav.html")'>C语言</li>
                     </ul>
                 </li>
                 <li>
                     计算机
                     <ul>
-                        <li style='background-image:url("./image/nav/algorithm.jpg")'>算法设计</li>
-                    </ul>
-                </li>
-                <li>
-                    兴趣爱好
-                    <ul>
-                        <li style='background-image:url("./image/nav/SketchBasic.jpg")'>素描</li>
-                        <li style='background-image:url("./image/nav/Gouache.png")'>水粉</li>
+                        <li style='background-image:url("./image/nav/algorithm.png")'  onclick='openBook("page/computer/Algorithm/nav.html")'>算法设计</li>
                     </ul>
                 </li>
                 <li>
                     工具
                     <ul>
-                        <li style='background-image:url("./image/nav/git.jpeg")'>Git命令</li>
-                        <li style='background-image:url("./image/nav/mac.jpg")'>Mac使用</li>
+                        <li style='background-image:url("./image/nav/git.png")'  onclick='openBook("page/tool/git/nav.html")'>Git命令</li>
+                        <li style='background-image:url("./image/nav/mac.png")'  onclick='openBook("page/tool/mac/nav.html")'>Mac使用</li>
                     </ul>
                 </li>
                 <li>其它</li>
@@ -69,6 +62,17 @@
         </nav>
     </header>
     <section id='book-content'></section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by yelloxing | 本网站由心叶支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+
+    </footer>
     <script>
         window.openBook("page/web/html5/nav.html");
     </script>

@@ -1,0 +1,78 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class="title-flag block">
+            定义
+        </p>
+        <p class="block">
+            指针是一个变量，其值是另一个变量的地址，地址代表的是在内存中的位置。
+            <span class="warn">
+                需要记住的是，数组变量本身就是一个指针。
+            </span>
+        </p>
+    </section>
+    <section class='section'>
+        <p class="title-flag block">
+            地址的类型
+        </p>
+        <p class="block">
+            地址是存在类型的，是不是感觉好奇怪，指针不是代表一个地址的吗，地址还有类型吗？看一个例子：
+        </p>
+        <pre>int    *ip;    /* 一个整型的指针 */
+    double *dp;    /* 一个 double 型的指针 */
+    float  *fp;    /* 一个浮点型的指针 */
+    char   *ch;     /* 一个字符型的指针 */</pre>
+        <p class="block">
+            其实指针永远都只是一个代表一个地址的十六进制数，所谓的类型，指的是指针指向的变量的类型。
+        </p>
+    </section>
+    <section class='section'>
+        <p class="title-flag block">
+            使用指针
+        </p>
+        <p class="block">
+            如何定义一个指针，前面的例子应该知道了，那么如何打印那个十六进制的地址是多少和或者指针指向的数据是多少：
+        </p>
+        <pre>//通过&运算符获取了i的地址并保存到intP中去
+    int *intP; = &i;
+    printf("intP存储的地址为：%p，存储的地址指向的数据为：%d\n", intP, *intP);</pre>
+        <p class="block little-flag">
+            指针可以进行运算：++、--、+、-
+            <span class="warn">
+                此外，指针还可以用关系运算符进行比较，如 ==、&lt; 和 &gt;
+            </span>
+        </p>
+        <pre>int intArr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    //先定义一个指针执行数组第一个元素
+    int *intArrP = &intArr[0];
+    printf("此时intArrP存储的地址为：%p，数据为：%d\n", intArrP, *intArrP);
+
+    //自增一下看看结果（每增加一次，它都将指向下一个整数位置）
+    intArrP++;
+    printf("自增以后intArrP存储的地址为：%p，数据为：%d\n", intArrP, *intArrP);</pre>
+        <p class="block  little-flag">
+            指针还可以指向指针
+        </p>
+        <pre>int data = 5201314;
+    int *p1 = &data;
+    int **p2 = &p1;
+    printf("%d\n", data); //都是5201314
+    printf("%d\n", *p1);
+    printf("%d\n", **p2);</pre>
+    </section>
+    <section  class='section'>
+        <p class="block title-flag">
+            结构体和指针
+        </p>
+        <pre>struct Node
+    {
+        int val;
+    };
+    //先建立一个结构体数据
+    struct Node node;
+    node.val = 1;
+    struct Node *nodeP; //创建一个指向刚刚的结构体的指针
+    nodeP = &node;
+    printf("%d\n", nodeP-&gt;val);//指向结构体的指针用-&gt;
+    printf("%d\n", node.val);//结构体自身用.</pre>
+    </section>
+</article>

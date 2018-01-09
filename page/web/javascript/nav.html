@@ -3,10 +3,15 @@
         JavaScript 笔记
     </div>
     <ul>
-        <li id='es' onclick='openContent(this,"page/web/javascript/content/RegExp.html");'>RegExp 正则表达式</li>
+        <li id='RegExp' onclick='openContent(this,"page/web/javascript/content/RegExp.html");'>RegExp 正则表达式</li>
     </ul>
 </nav>
 <div id='content'></div>
 <script>
-    window.openContent(document.getElementById('es'),'page/web/javascript/content/RegExp.html');
+    var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
+    if (hashArray.length >= 3) {
+        window.openContent(document.getElementById(hashArray[2]), 'page/' + hashArray[0] + '/' + hashArray[1] + '/content/' + hashArray[2] + '.html');
+    } else {
+        window.openContent(document.getElementById('RegExp'), 'page/web/javascript/content/RegExp.html');
+    }
 </script>

@@ -3,16 +3,21 @@
         CSS 笔记
     </div>
     <ul>
-        <li id='css' onclick='openContent(this,"page/web/css/content/margin.html");'>margin 外边距</li>
-        <li onclick='openContent(this,"page/web/css/content/verticalAlign.html");'>vertical-align 垂直对齐方式</li>
-        <li onclick='openContent(this,"page/web/css/content/zIndex.html");'>层叠上下文和层叠水平</li>
-        <li onclick='openContent(this,"page/web/css/content/overflow.html");'>overflow 溢出</li>
-        <li onclick='openContent(this,"page/web/css/content/ContainerBlock.html");'>包含块</li>
-        <li onclick='openContent(this,"page/web/css/content/IFC.html");'>IFC内联格式化上下文</li>
-        <li onclick='openContent(this,"page/web/css/content/BFC.html");'>BFC块级排版上下文</li>
+        <li id='margin' onclick='openContent(this,"page/web/css/content/margin.html");'>margin 外边距</li>
+        <li id='verticalAlign' onclick='openContent(this,"page/web/css/content/verticalAlign.html");'>vertical-align 垂直对齐方式</li>
+        <li id='zIndex' onclick='openContent(this,"page/web/css/content/zIndex.html");'>层叠上下文和层叠水平</li>
+        <li id='overflow' onclick='openContent(this,"page/web/css/content/overflow.html");'>overflow 溢出</li>
+        <li id='ContainerBlock' onclick='openContent(this,"page/web/css/content/ContainerBlock.html");'>包含块</li>
+        <li id='IFC' onclick='openContent(this,"page/web/css/content/IFC.html");'>IFC内联格式化上下文</li>
+        <li id='BFC' onclick='openContent(this,"page/web/css/content/BFC.html");'>BFC块级排版上下文</li>
     </ul>
 </nav>
 <div id='content'></div>
 <script>
-    window.openContent(document.getElementById('css'),'page/web/css/content/margin.html');
+    var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
+    if (hashArray.length >= 3) {
+        window.openContent(document.getElementById(hashArray[2]), 'page/' + hashArray[0] + '/' + hashArray[1] + '/content/' + hashArray[2] + '.html');
+    } else {
+        window.openContent(document.getElementById('margin'), 'page/web/css/content/margin.html');
+    }
 </script>

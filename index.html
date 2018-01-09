@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     <meta charset='utf-8'>
     <title>云笔记-遇见更好的你</title>
     <link rel="icon" href="favicon.ico" />
@@ -78,10 +77,16 @@
                 Fork me on Github
             </div>
         </div>
-
     </footer>
     <script>
-        window.openBook("page/web/html5/nav.html");
+        var hash = window.location.hash;
+        var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
+        if (hashArray.length >= 2) {
+            window.openBook("page/" + hashArray[0] + "/" + hashArray[1] + "/nav.html");
+            window.location.hash = hash;
+        } else {
+            window.openBook("page/web/html5/nav.html");
+        }
     </script>
 </body>
 

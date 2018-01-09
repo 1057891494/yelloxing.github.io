@@ -1,0 +1,92 @@
+@media only screen and (max-width: 1100px),
+only screen and (max-device-width:1100px) {
+    html {
+        font-size: 90px;
+    }
+}
+
+@media only screen and (max-width: 1000px),
+only screen and (max-device-width:1000px) {
+    html {
+        font-size: 80px;
+    }
+}
+
+@media only screen and (max-width: 850px),
+only screen and (max-device-width:850px) {
+    html {
+        font-size: 70px;
+    }
+}
+
+@media only screen and (max-width: 750px),
+only screen and (max-device-width:750px) {
+    body {
+        transform: scale(0.9);
+        transform-origin: 0 0;
+    }
+    header,
+    footer {
+        width: 111vw;
+    }
+}
+
+@media only screen and (max-width: 660px),
+only screen and (max-device-width:660px) {
+    body {
+        transform: scale(0.8);
+        transform-origin: 0 0;
+    }
+    header,
+    footer {
+        width: 125vw;
+    }
+}
+
+@media only screen and (max-width: 600px),
+only screen and (max-device-width:600px) {
+    body {
+        transform: scale(0.7);
+        transform-origin: 0 0;
+    }
+    header,
+    footer {
+        width: 143vw;
+    }
+}
+
+@media only screen and (max-width: 510px),
+only screen and (max-device-width:510px) {
+    body {
+        transform: scale(0.6);
+        transform-origin: 0 0;
+    }
+    header,
+    footer {
+        width: 166.7vw;
+    }
+}
+
+@media only screen and (max-width: 440px),
+only screen and (max-device-width:440px) {
+    body {
+        transform: scale(0.5);
+        transform-origin: 0 0;
+    }
+    header,
+    footer {
+        width: 200vw;
+    }
+}
+
+@media only screen and (max-width: 370px),
+only screen and (max-device-width:370px) {
+    body {
+        transform: scale(0.46);
+        transform-origin: 0 0;
+    }
+    header,
+    footer {
+        width: 217.4vw;
+    }
+}

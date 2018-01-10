@@ -245,12 +245,6 @@
                 </section>
             </article>
         </div>
-        <script>
-            var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
-            if (hashArray.length >= 3) {
-                window.openContent(document.getElementById(hashArray[2]), 'page/' + hashArray[0] + '/' + hashArray[1] + '/content/' + hashArray[2] + '.html');
-            }
-        </script>
 
     </section>
     <footer>
@@ -270,6 +264,9 @@
             window.openBook("page/" + hashArray[0] + "/" + hashArray[1] + "/nav.html");
             window.location.hash = hash;
         } else {
+            window.bookname = '#web/html5';
+            window.location.hash = '#web/html5/IndexDB';
+            //最初的代码
             // window.openBook("page/web/html5/nav.html");
         }
     </script>

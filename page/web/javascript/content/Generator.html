@@ -42,14 +42,14 @@
             yield特殊使用
         </p>
         <p class="block">
-            yield除了上面的例子单独成为一个语句，还可以用于表达式，函数参数和赋值表达式的右边等。
+            除了上面的例子yield单独成为一个语句，其还可以用于表达式，函数参数和赋值表达式的右边等。
             <span class="warn">需要注意的是，yield要明确归属，用小括号包裹，小括号不是必须的，是在归属关系不明确的时候才是必须的，例如：console.log('My name is : '+(yield '心叶'))；</span>
         </p>
         <p class="block little-flag">
             next()方法带参数时
         </p>
         <p class="block">
-            yield本身不会返回值，或者说是undefined，不过next()方法如果带参数情况就不一样了，此时就好返回yield带的参数，如下例子说明：
+            yield本身不会返回值，或者说是undefined，不过next()方法如果带参数情况就不一样了，此时就会返回yield带的参数，如下例子说明：
         </p>
         <pre>function* secondYieldFun() {
         console.log(yield '心叶');

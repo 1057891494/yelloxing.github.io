@@ -61,5 +61,9 @@
                 2.存在至少一个失败时，会在遇见第一个失败时候返回失败，余下的会继续执行完毕但不会改变状态了。
             </span>
         </p>
+        <pre>var pro1 = new Promise((resolve, reject) => setTimeout(() => resolve('第一条'), 3000));
+    var pro2 = new Promise((resolve, reject) => setTimeout(() => resolve('第二条'), 1000));
+    var proAll = Promise.all([pro1, pro2]);
+    proAll.then(val => console.log(val)); // ["第一条", "第二条"]</pre>
     </section>
 </article>

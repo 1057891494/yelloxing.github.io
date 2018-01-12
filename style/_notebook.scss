@@ -45,6 +45,11 @@
              :not(:first-child) {
                 margin-top: 0.06rem;
             }
+            &.gramer {
+                background-color: #f0eeee;
+                padding: 0.03rem;
+                border-left: 0.04rem solid blue;
+            }
         }
         .list {
             display: block;

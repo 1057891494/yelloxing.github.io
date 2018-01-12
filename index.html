@@ -80,7 +80,7 @@
                 <li id='dropUpload' onclick='openContent(this,"page/web/html5/content/dropUpload.html");'>拖拽上传文件</li>
             </ul>
         </nav>
-        <div id='content'>
+        <div id='content' style='display:none;'>
             <article class='notebook content'>
                 <section class='section'>
                     <p class='block'>
@@ -91,19 +91,19 @@
                     <p class='block title-flag'>
                         第一步：打开数据库，关闭数据库和删除数据库。
                     </p>
-                    <pre>var database,indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-                var request = indexedDB.open("databaseName",1);
-                //下面注册回调方法
-                request.onerror = function(e) {
-                    console.log(e.target.errorCode);
-                };
-                request.onsuccess = function(e) {
-                    database = e.target.result;
-                    console.log('创建或打开数据库成功');
-                };
-                request.onupgradeneeded = function(e) {
-                    database = e.target.result;
-                };</pre>
+                    <pre class='code'>var database,indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        var request = indexedDB.open("databaseName",1);
+        //下面注册回调方法
+        request.onerror = function(e) {
+            console.log(e.target.errorCode);
+        };
+        request.onsuccess = function(e) {
+            database = e.target.result;
+            console.log('创建或打开数据库成功');
+        };
+        request.onupgradeneeded = function(e) {
+            database = e.target.result;
+        };</pre>
                     <p class="blcok">
                         最终返回的request是一个IDBOpenDBRequest对象，通过在其注册需要的回调方法来在其中提示错误或获取数据库连接对象。
                     </p>
@@ -128,13 +128,13 @@
                     <p class="block">
                         对象存储空间就相当于关系型数据库里面的表，为了可以使用它，我们需要如下面这样来先定义它：
                     </p>
-                    <pre>request.onupgradeneeded = function(e) {
-                    database = e.target.result;
-                    //创建一个对象存储空间，并且用username作为主键
-                    var store = database.createObjectStore("students",{keyPath:"username"});
-                    //另一种设置主键的方法
-                    //var store = database.createObjectStore("students",{autoIncrement:true});
-                };</pre>
+                    <pre class='code'>request.onupgradeneeded = function(e) {
+            database = e.target.result;
+            //创建一个对象存储空间，并且用username作为主键
+            var store = database.createObjectStore("students",{keyPath:"username"});
+            //另一种设置主键的方法
+            //var store = database.createObjectStore("students",{autoIncrement:true});
+        };</pre>
                 </section>
                 <section class="section">
                     <p class="block title-flag">
@@ -146,7 +146,7 @@
                     <p class="block">
                         上面第二步是设置对象存储空间，我们会发现最后返回了这个对象，通过这个对象，我们就可以存储这个"表"了，那如果后续我们不是创建的时候，如果想修改对象存储空间里面的数据的时候，如何获取这个对象滴，如下所示：
                     </p>
-                    <pre>var transaction= database.transaction(["students"],'readwrite');
+                    <pre class='code'>var transaction= database.transaction(["students"],'readwrite');
                 var store=transaction.objectStore("students");</pre>
                     <span class="warn">
                         transaction()中传入的第一个参数表示事务准备管理的对象存储空间，上面用的是数组，可以用很多个，用哪个下面第二行这样就取哪个，如果和这里一样就一个，也可以直接传递字符串；transaction()中传入的第二个参数为对该空间操作的方式，默认为readonly只读操作，代码中传入的是readwrite读写操作。
@@ -162,25 +162,25 @@
                     <p class="block">
                         添加数据用的是add方法（调用的时候保证主键和需要更新的一样就会实现更新），下面是例子：
                     </p>
-                    <pre>//需要添加进去的二条数据
-                const studentsData = [
-                    {username: "Alice",  age: 15, hobby: "绘画" },
-                    { username: "Tom",  age: 12, hobby: "跳舞" }
-                ];
-                //添加数据，重复添加会报错
-                store.add(studentsData[0]);
-                store.add(studentsData[1]);</pre>
+                    <pre class='code'>//需要添加进去的二条数据
+        const studentsData = [
+            {username: "Alice",  age: 15, hobby: "绘画" },
+            { username: "Tom",  age: 12, hobby: "跳舞" }
+        ];
+        //添加数据，重复添加会报错
+        store.add(studentsData[0]);
+        store.add(studentsData[1]);</pre>
                     <p class="block">
                         余下的修改、获取和删除等类似，用一个例子给出，如下所示：
                     </p>
-                    <pre>//添加数据，重复添加会更新原有数据
-                store.put(studentsData[0]);
-                //根据存储空间的键找到对应数据
-                var data=store.get('Tom');
-                //删除某一条记录
-                store.delete(key);
-                //删除存储空间全部记录
-                store.clear();</pre>
+                    <pre class='code'>//添加数据，重复添加会更新原有数据
+        store.put(studentsData[0]);
+        //根据存储空间的键找到对应数据
+        var data=store.get('Tom');
+        //删除某一条记录
+        store.delete(key);
+        //删除存储空间全部记录
+        store.clear();</pre>
                 </section>
                 <section class="section">
                     <p class="block title-flag">
@@ -189,7 +189,7 @@
                     <p class="block">
                         在indexedDB中有两种索引，一种是自增长的int值，一种是keyPath：自己指定索引列，下面说的是第二种keyPath。
                     </p>
-                    <pre>request.onupgradeneeded = function(e) {
+                    <pre class='code'>request.onupgradeneeded = function(e) {
                     database = e.target.result;
                     store=db.createObjectStore('students',{keyPath: 'username'});
                     store.createIndex('nameIndex','name',{unique:true});
@@ -204,12 +204,12 @@
                     <p class="block">
                         我们知道索引存在的目的是迅速定位数据，提高搜索速度，接着我们来通过刚刚新建立的索引来获取数据。
                     </p>
-                    <pre>//获取指定的索引
-                var index = store.index("nameIndex");
-                //获取数据
-                index.get('Tom').onsuccess=function(e){
-                    var student=e.target.result;
-                }</pre>
+                    <pre class='code'>//获取指定的索引
+        var index = store.index("nameIndex");
+        //获取数据
+        index.get('Tom').onsuccess=function(e){
+            var student=e.target.result;
+        }</pre>
                     <span class="warn">
                         这样我们可以利用索引快速获取数据，name的索引是唯一的没问题，但是对于age索引只会取到第一个匹配值，要想得到所有age符合条件的值就需要使用游标了
                     </span>
@@ -221,17 +221,17 @@
                     <p class="block">
                         如果你想遍历每个值，你可以使用游标，下面是例子代码：
                     </p>
-                    <pre>var request=index.openCursor();
-                //var IDBKeyRange = window.IDBKeyRange ||window.webkitIDBKeyRange ||window.msIDBKeyRange;
-                //var request=index.openCursor(IDBKeyRange.only(26));
-                request.onsuccess=function(e){
-                    var cursor=e.target.result;
-                    //这里的判断是必须的，必须的，if也没有写错，不是while
-                    if(cursor){
-                        var student=cursor.value;
-                        cursor.continue();
-                    }
-                }</pre>
+                    <pre class='code'>var request=index.openCursor();
+        //var IDBKeyRange = window.IDBKeyRange ||window.webkitIDBKeyRange ||window.msIDBKeyRange;
+        //var request=index.openCursor(IDBKeyRange.only(26));
+        request.onsuccess=function(e){
+            var cursor=e.target.result;
+            //这里的判断是必须的，必须的，if也没有写错，不是while
+            if(cursor){
+                var student=cursor.value;
+                cursor.continue();
+            }
+        }</pre>
                     <p class="block">
                         这里还需要提一点的是，openCursor()或openKeyCursor()这个方法可以传递一个参数，实现对搜索进行筛选，具体有下面这些筛选方法：
                         <span class="list">1.IDBKeyRange.only(value):只获取指定数据；</span>
@@ -264,6 +264,7 @@
             window.openBook("page/" + hashArray[0] + "/" + hashArray[1] + "/nav.html");
             window.location.hash = hash;
         } else {
+            document.getElementById("")
             window.bookname = '#web/html5';
             window.location.hash = '#web/html5/IndexDB';
             //最初的代码

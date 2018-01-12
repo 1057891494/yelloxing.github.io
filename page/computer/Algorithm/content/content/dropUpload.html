@@ -37,17 +37,17 @@
         <p class="block">
             如果被拖拽的内容是页面内的，情况就和上面有点不同了，不过大同小异，这里就简单说明一下。
         </p>
-        <pre>&lt;div draggable="true" ondragstart="drag(event)"&gt;这是一段可移动的段落。&lt;/div&gt;</pre>
+        <pre class='code'>&lt;div draggable="true" ondragstart="drag(event)"&gt;这是一段可移动的段落。&lt;/div&gt;</pre>
         <p class="block">
             拖拽的元素需要定义属性draggable="true"，上面还注册了ondragstart事件，我们可以通过修改DataTransfer对象来实现数据传递：
         </p>
-        <pre>function drag(event){
+        <pre class='code'>function drag(event){
         ev.dataTransfer.setData("Text",event.target.innerText);
     }</pre>
         <p class="block">
             这样就可以和第一个例子里面获取图片地址一样，在拖拽进去放开以后通过dataTransfer再获取这个数据：
         </p>
-        <pre>var data=event.dataTransfer.getData("Text");</pre>
+        <pre class='code'>var data=event.dataTransfer.getData("Text");</pre>
     </section>
     <section class='section'>
         <p class='block title-flag'>

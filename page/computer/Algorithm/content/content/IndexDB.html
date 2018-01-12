@@ -8,7 +8,7 @@
         <p class='block title-flag'>
             第一步：打开数据库，关闭数据库和删除数据库。
         </p>
-        <pre>var database,indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        <pre class='code'>var database,indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
     var request = indexedDB.open("databaseName",1);
     //下面注册回调方法
     request.onerror = function(e) {
@@ -45,7 +45,7 @@
         <p class="block">
             对象存储空间就相当于关系型数据库里面的表，为了可以使用它，我们需要如下面这样来先定义它：
         </p>
-        <pre>request.onupgradeneeded = function(e) {
+        <pre class='code'>request.onupgradeneeded = function(e) {
         database = e.target.result;
         //创建一个对象存储空间，并且用username作为主键
         var store = database.createObjectStore("students",{keyPath:"username"});
@@ -63,7 +63,7 @@
         <p class="block">
             上面第二步是设置对象存储空间，我们会发现最后返回了这个对象，通过这个对象，我们就可以存储这个"表"了，那如果后续我们不是创建的时候，如果想修改对象存储空间里面的数据的时候，如何获取这个对象滴，如下所示：
         </p>
-        <pre>var transaction= database.transaction(["students"],'readwrite');
+        <pre class='code'>var transaction= database.transaction(["students"],'readwrite');
     var store=transaction.objectStore("students");</pre>
         <span class="warn">
             transaction()中传入的第一个参数表示事务准备管理的对象存储空间，上面用的是数组，可以用很多个，用哪个下面第二行这样就取哪个，如果和这里一样就一个，也可以直接传递字符串；transaction()中传入的第二个参数为对该空间操作的方式，默认为readonly只读操作，代码中传入的是readwrite读写操作。
@@ -79,7 +79,7 @@
         <p class="block">
             添加数据用的是add方法（调用的时候保证主键和需要更新的一样就会实现更新），下面是例子：
         </p>
-        <pre>//需要添加进去的二条数据
+        <pre class='code'>//需要添加进去的二条数据
     const studentsData = [
         {username: "Alice",  age: 15, hobby: "绘画" },
         { username: "Tom",  age: 12, hobby: "跳舞" }
@@ -90,7 +90,7 @@
         <p class="block">
             余下的修改、获取和删除等类似，用一个例子给出，如下所示：
         </p>
-        <pre>//添加数据，重复添加会更新原有数据
+        <pre class='code'>//添加数据，重复添加会更新原有数据
     store.put(studentsData[0]);
     //根据存储空间的键找到对应数据
     var data=store.get('Tom');
@@ -106,7 +106,7 @@
         <p class="block">
             在indexedDB中有两种索引，一种是自增长的int值，一种是keyPath：自己指定索引列，下面说的是第二种keyPath。
         </p>
-        <pre>request.onupgradeneeded = function(e) {
+        <pre class='code'>request.onupgradeneeded = function(e) {
         database = e.target.result;
         store=db.createObjectStore('students',{keyPath: 'username'});
         store.createIndex('nameIndex','name',{unique:true});
@@ -121,7 +121,7 @@
         <p class="block">
             我们知道索引存在的目的是迅速定位数据，提高搜索速度，接着我们来通过刚刚新建立的索引来获取数据。
         </p>
-        <pre>//获取指定的索引
+        <pre class='code'>//获取指定的索引
     var index = store.index("nameIndex");
     //获取数据
     index.get('Tom').onsuccess=function(e){
@@ -138,7 +138,7 @@
         <p class="block">
             如果你想遍历每个值，你可以使用游标，下面是例子代码：
         </p>
-        <pre>var request=index.openCursor();
+        <pre class='code'>var request=index.openCursor();
     //var IDBKeyRange = window.IDBKeyRange ||window.webkitIDBKeyRange ||window.msIDBKeyRange;
     //var request=index.openCursor(IDBKeyRange.only(26));
     request.onsuccess=function(e){

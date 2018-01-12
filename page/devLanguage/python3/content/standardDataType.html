@@ -58,7 +58,7 @@
         <p class="block">
             和ES一样，可以使用方括号来截图字符串，例子如下：
         </p>
-        <pre>val_str='yelloxing'
+        <pre class='code'>val_str='yelloxing'
     print(val_str[0]) #y
     print(val_str[1:3]) #el
     print(val_str[:3]) #yel
@@ -72,7 +72,7 @@
         <p class="block little-flag">
             字符串格式化
         </p>
-        <pre>temp="我叫 %s 今年 %d 岁!" % ('心叶', 7)
+        <pre class='code'>temp="我叫 %s 今年 %d 岁!" % ('心叶', 7)
     print('['+temp+']') #[我叫 心叶 今年 7 岁!]</pre>
         <p class="block">
             如上所示，字符串支持格式化，当然，出来上面用到的%s和%d以外，还有一些别的，具体看文档；是不是感觉有点C语言的味道。
@@ -103,7 +103,7 @@
         <p class="block">
             下面用一个例子来展示一些常见的运算：
         </p>
-        <pre>val_arr=['Made','in','China']
+        <pre class='code'>val_arr=['Made','in','China']
     del val_arr[1]
     print(val_arr) #['Made', 'China']
     print(len(val_arr)) #2
@@ -120,7 +120,7 @@
         <p class="block">
             再来看一个有用的例子：
         </p>
-        <pre>cols=3
+        <pre class='code'>cols=3
     rows=2
     list_2d = [[0 for col in range(cols)] for row in range(rows)]
     print(list_2d) #[[0, 0, 0], [0, 0, 0]]</pre>
@@ -130,7 +130,7 @@
         <p class="block">
             使用嵌套列表即在列表里创建其它列表，例如：
         </p>
-        <pre>loop_arr=['yelloxing','心叶']
+        <pre class='code'>loop_arr=['yelloxing','心叶']
     result_arr=[loop_arr,'同级别']
     print(result_arr) #[['yelloxing', '心叶'], '同级别']</pre>
         <p class="block">
@@ -150,7 +150,7 @@
                     元组中只包含一个元素时，需要在元素后面添加逗号，否则括号会被当作运算符使用
             </span>
         </p>
-        <pre>tup1 = ('Google', 'Runoob', 1997, 2000);
+        <pre class='code'>tup1 = ('Google', 'Runoob', 1997, 2000);
     tup2 = (1, 2, 3, 4, 5 );
     tup3 = "a", "b", "c", "d";
 

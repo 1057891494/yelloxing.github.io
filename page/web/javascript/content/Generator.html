@@ -16,7 +16,7 @@
             <span class="list">2.以后每次调用yield时候（具体看下面例子，直到遇到yield或return时停止继续执行），会返回yield数据，有点类似return；</span>
             <span class="list">3.返回的数据格式从下面的例子应该就明白了，没有yield或return语句会发生什么应该也明白了。</span>
         </p>
-        <pre>function *firstYieldFun(){
+        <pre class='code'>function *firstYieldFun(){
         yield 'yello';
         yield 'xing';
         return 'name:';
@@ -51,7 +51,7 @@
         <p class="block">
             yield本身不会返回值，或者说是undefined，不过next()方法如果带参数情况就不一样了，此时就会返回yield带的参数，如下例子说明：
         </p>
-        <pre>function* secondYieldFun() {
+        <pre class='code'>function* secondYieldFun() {
         console.log(yield '心叶');
     }
     var fun = secondYieldFun();

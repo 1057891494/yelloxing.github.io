@@ -16,7 +16,7 @@
                 Symbol是一个方法，会返回一个唯一的symbol，可以带参数，比如：var sy=Symbol('sy-name')，不过这只是为了方便查看，加不加目前没有区别。
             </span>
         </p>
-        <pre>var sy1=Symbol(),sy2=Symbol();
+        <pre class='code'>var sy1=Symbol(),sy2=Symbol();
     console.log(sy1===sy2);//false
     var obj={[sy1]:'这是数据一'};
     obj[sy2]='这是数据二';
@@ -32,7 +32,7 @@
                 注意：只有该方法建立的Symbol会登记在全局，Symbol()方法建立的不会登记在全局
             </span>
         </p>
-        <pre>var sy1 = Symbol.for(),sy2 = Symbol.for();
+        <pre class='code'>var sy1 = Symbol.for(),sy2 = Symbol.for();
     console.log(sy1 === sy2);//true
     var sy3 = Symbol.for('info1'),sy4 = Symbol.for('info1');
     console.log(sy3 === sy4);//true

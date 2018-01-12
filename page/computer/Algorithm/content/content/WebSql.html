@@ -17,7 +17,7 @@
         <p class="block title-flag">
             第一步：连接数据库。
         </p>
-        <pre>var dataBase = openDatabase("hobby", "1.0", "个人业余爱好储存数据库", 1024 * 1024,
+        <pre class='code'>var dataBase = openDatabase("hobby", "1.0", "个人业余爱好储存数据库", 1024 * 1024,
         function() {
             console.log('数据库创建成功');
         }
@@ -43,7 +43,7 @@
             <span class="list">2.成功回调函数（可选）；</span>
             <span class="list">3.失败回调函数（可选）。</span>
         </p>
-        <pre>dataBase.transaction(function(context){
+        <pre class='code'>dataBase.transaction(function(context){
         context.executeSql('sql语句一');
         context.executeSql('sql语句二');
         context.executeSql('sql语句三');

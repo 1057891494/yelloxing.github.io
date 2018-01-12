@@ -17,22 +17,22 @@
         <p class="block">
             1.把value存储到key字段：.setItem( key, value)。
         </p>
-        <pre>sessionStorage.setItem("key", "value");
+        <pre class='code'>sessionStorage.setItem("key", "value");
     localStorage.setItem("key", "value");</pre>
         <p class="block">
             2.获取指定key本地存储的值：.getItem(key)。
         </p>
-        <pre>var value=sessionStorage.getItem("key");
+        <pre class='code'>var value=sessionStorage.getItem("key");
     var value=localStorage.getItem("key");</pre>
         <p class="block">
             3.删除指定key本地存储的值：.removeItem( key)。
         </p>
-        <pre>sessionStorage.removeItem("key");
+        <pre class='code'>sessionStorage.removeItem("key");
     localStorage.removeItem("key");</pre>
         <p class="block">
             4.清除所有的key/value：.clear()。
         </p>
-        <pre>sessionStorage.clear();
+        <pre class='code'>sessionStorage.clear();
     localStorage.clear();</pre>
     </section>
     <section class="section">
@@ -42,14 +42,14 @@
         <p class="block">
             storage除了可以用上面说到的方法获取和存储数据，还可以和普通的对象一样，使用点操作和[]来控制数据（下面以localStorage为例子）：
         </p>
-        <pre>var storage = window.localStorage;
+        <pre class='code'>var storage = window.localStorage;
     storage.info='通过点设置数据';
     //通过[]获取数据
     var infoValue=storage['info'];</pre>
         <p class="block">
             可以通过storage的key()和length实现数据的遍历：
         </p>
-        <pre>var storage = window.localStorage;
+        <pre class='code'>var storage = window.localStorage;
     for (var i = 0, len = storage.length; i < len; i++) {
         var key = storage.key(i);
         var value = storage.getItem(key);
@@ -63,7 +63,7 @@
         <p class="block">
             localStorage提供了一个事件storage，当键值改变或者clear的时候，就可以触发storage事件（注册storage和改变值要在不跨域的情况下存在于二个页面），如下面的例子：
         </p>
-        <pre>//页面A.html里面的js代码（为了简化代码，注册事件没有考虑兼容性）
+        <pre class='code'>//页面A.html里面的js代码（为了简化代码，注册事件没有考虑兼容性）
     window.addEventListener("storage", function (event) {
         alert(event.newValue);
     });

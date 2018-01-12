@@ -17,7 +17,7 @@
         <p class="block">
             调用Worker()构造函数，指定一个要在worker线程内运行的脚本的URI，例子是当前页面指定worker线程执行的脚步为script-worker.js。
         </p>
-        <pre>var myWorker = new Worker("script-worker.js");</pre>
+        <pre class='code'>var myWorker = new Worker("script-worker.js");</pre>
         <p class="block">
             在script-worker.js里面我们可以执行额外的代码，这些代码的执行不会影响页面去干别的你想干的事情，这听起来很棒。
         </p>
@@ -29,12 +29,12 @@
         <p class="block">
             页面可以和worker交互传递数据，这样worker在不影响页面干有意义的事情的情况下可以默默去计算，好了告诉一下页面，使用这些数据。
         </p>
-        <pre>[主页面代码]myWorker.postMessage("data-from-mainpage");
+        <pre class='code'>[主页面代码]myWorker.postMessage("data-from-mainpage");
     [worker代码]onmessage = function (oEvent) {console.log("主页面发送过来的数据是："+oEvent.data));};</pre>
         <p class="block">
             上面是【主页面发送数据给worker脚本】的情况，是的，你看见了非常亲切的postMessage，好吧，我喜欢这个东西。
         </p>
-        <pre>[主页面代码]myWorker.onmessage = function (oEvent) {console.log("worker脚本发送过来的数据是："+oEvent.data));};
+        <pre class='code'>[主页面代码]myWorker.onmessage = function (oEvent) {console.log("worker脚本发送过来的数据是："+oEvent.data));};
     [worker代码]postMessage("data-from-mainpage");</pre>
         <p class="block">
             上面是【worker脚本发送数据给主页面】的情况，依旧很简单，不过这些只是API，关键在于巧妙的使用才是有益的。

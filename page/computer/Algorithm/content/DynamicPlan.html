@@ -57,7 +57,7 @@
             <span onclick='showCode("pythonCode")'>Python代码</span>
             <span onclick='showCode("javascriptCode")'>JavaScript代码</span>
             <span onclick='showCode("cCode")'>C语言代码</span>
-            <pre id='javaCode'>import java.util.Arrays;
+            <pre id='javaCode' class='code'>import java.util.Arrays;
 
     public class MatrixMultiply{
         public static void main(String [] args){
@@ -106,7 +106,7 @@
 
         }
     }</pre>
-            <pre id='pythonCode' class='default'>#!/usr/bin/python
+            <pre id='pythonCode' class='code default'>#!/usr/bin/python
     # coding=utf-8
 
     '''
@@ -143,7 +143,7 @@
                     minNum[j-1][i+j-2]=splitMin;
 
     print "最优次数:",minNum;</pre>
-            <pre id='javascriptCode' class='default'>/**
+            <pre id='javascriptCode' class='code default'>/**
     * 初始化数据
     */
     var P = [30, 35, 15, 5, 10, 20, 25]; //记录了矩阵的大小
@@ -184,7 +184,7 @@
 
     console.log("最优次数:");
     console.log(minNum);</pre>
-            <pre id='cCode' class='default'>#include &lt;stdio.h&gt;
+            <pre id='cCode' class='code default'>#include &lt;stdio.h&gt;
     int main()
     {
         /**

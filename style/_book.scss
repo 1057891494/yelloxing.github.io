@@ -29,7 +29,7 @@
         }
     }
     &>#content {
-        min-height: calc(100vh - .9rem);
+        // min-height: calc(100vh - .9rem);
         vertical-align: top;
         width:#{$content-width - $left-width};
         background-color: white;

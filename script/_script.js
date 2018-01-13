@@ -2,7 +2,11 @@ window.bookContentDom = undefined;
 window.contentDom = undefined;
 window.bookname = "";
 window.doClipboard = function(node) {
-    window.clipboard(node.parentNode.innerText);
+    window.clipboard(node.parentNode.innerText, function() {
+        alert('复制成功，现在可以粘贴了.');
+    }, function() {
+        alert('非常抱歉，复制失败！');
+    });
 };
 window.addClipboard = function() {
     var codeNodes = document.getElementsByClassName('code');

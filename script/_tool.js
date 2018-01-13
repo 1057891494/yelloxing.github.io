@@ -14,7 +14,7 @@ window.prepend = function(targetNode, node) {
 /**
  * 在被选元素内部的结尾插入内容
  */
-window.append=function(targetNode, node){
+window.append = function(targetNode, node) {
     if (node.nodeType === 1 || node.nodeType === 11 || node.nodeType === 9) {
         targetNode.appendChild(node);
     } else if (typeof node == 'string') {
@@ -45,9 +45,14 @@ window.remove = function(node) {
 /**
  * 把指定文字复制到剪切板
  */
-window.clipboard = function(text) {
+window.clipboard = function(text, callback, errorback) {
     window.prepend(document.getElementsByTagName('body')[0], window.stringToDom('<textarea id="clipboard-textarea">' + text + '</textarea>'));
     document.getElementById("clipboard-textarea").select();
-    document.execCommand("copy", false, null);
+    try {
+        document.execCommand("copy", false, null);
+        callback();
+    } catch (e) {
+        errorback();
+    }
     window.remove(document.getElementById('clipboard-textarea'));
 };

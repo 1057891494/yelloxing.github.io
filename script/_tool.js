@@ -50,9 +50,10 @@ window.clipboard = function(text, callback, errorback) {
     document.getElementById("clipboard-textarea").select();
     try {
         document.execCommand("copy", false, null);
+        window.remove(document.getElementById('clipboard-textarea'));
         callback();
     } catch (e) {
+        window.remove(document.getElementById('clipboard-textarea'));
         errorback();
     }
-    window.remove(document.getElementById('clipboard-textarea'));
 };

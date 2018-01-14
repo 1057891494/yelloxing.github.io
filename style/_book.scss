@@ -2,7 +2,7 @@
     width: $content-width;
     margin: auto;
     font-size: 0;
-    min-height: calc(100vh - .9rem);
+    min-height: calc(100vh - 2.3rem);
     &>nav {
         vertical-align: top;
         display: inline-block;
@@ -29,7 +29,7 @@
         }
     }
     &>#content {
-        // min-height: calc(100vh - .9rem);
+        min-height: calc(100vh - 2.3rem);
         vertical-align: top;
         width:#{$content-width - $left-width};
         background-color: white;

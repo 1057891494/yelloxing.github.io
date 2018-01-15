@@ -4,14 +4,9 @@
 # ===========================
 #
 
-node_modules
-.sass-cache
 .git
 .DS_Store
 .project
-nginx.conf
-nginx
-npm-debug.log
-sprout.psd
-jshint.debug.txt
-trash
+style.css.map
+.sass-cache
+node_modules

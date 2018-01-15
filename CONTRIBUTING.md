@@ -1,4 +1,4 @@
-# 贡献列表
+Authors ordered by first contribution
 
-* 负责全部的开发和维护（心叶）
+心叶 <yelloxing@gmail.com>
 

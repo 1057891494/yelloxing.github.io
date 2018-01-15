@@ -1,0 +1,49 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class="block">
+            <span class="warn">
+                注意：此为ECMAScript6新特性。
+            </span>
+        </p>
+    </section>
+    <section class='section'>
+        <p class="block title-flag">
+            第一步：基本使用
+        </p>
+        <p class="block">
+            简单的说，Symbol就是一个绝对唯一的key值，类似之前obj['key']='value'这种操作的字符串'key'，好处是绝对不会重复，避免覆盖之前的值。
+            <span class="warn">
+                Symbol是一个方法，会返回一个唯一的symbol，可以带参数，比如：var sy=Symbol('sy-name')，不过这只是为了方便查看，加不加目前没有区别。
+            </span>
+        </p>
+        <pre class='code'>var sy1=Symbol(),sy2=Symbol();
+    console.log(sy1===sy2);//false
+    var obj={[sy1]:'这是数据一'};
+    obj[sy2]='这是数据二';
+    console.log(obj);//{Symbol(): "这是数据一", Symbol(): "这是数据二"}</pre>
+    </section>
+    <section class='section'>
+        <p class="block title-flag">
+            第二步：有用的方法
+        </p>
+        <p class="block">
+            1.Symbol.for():接受一个字符串作为参数，然后在全局搜索有没有以改字符串作为名称的Symbol值，如果有就返回，没有就新建一个返回。
+            <span class="warn">
+                注意：只有该方法建立的Symbol会登记在全局，Symbol()方法建立的不会登记在全局
+            </span>
+        </p>
+        <pre class='code'>var sy1 = Symbol.for(),sy2 = Symbol.for();
+    console.log(sy1 === sy2);//true
+    var sy3 = Symbol.for('info1'),sy4 = Symbol.for('info1');
+    console.log(sy3 === sy4);//true
+    var sy5=Symbol('info2'),sy6 = Symbol.for('info2');
+    console.log(sy3 === sy6);//false
+    console.log(sy5 === sy6);//false</pre>
+        <p class="block">
+            2.Symbol.keyFor()
+        </p>
+        <p class="block">
+            该方法是配合上面的方法来使用的，接受一个Symbol作为参数，会在全局搜索该Symbol对象，返回该对象名称，如果没有就返回undefined。
+        </p>
+    </section>
+</article>

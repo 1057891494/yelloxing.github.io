@@ -1,0 +1,17 @@
+<nav>
+    <div style='background-image:url("image/nav/mac.png")'>
+        Mac 使用
+    </div>
+    <ul>
+        <li id='quick' onclick='openContent(this,"page/tool/mac/content/quick.html");'>快速使用</li>
+    </ul>
+</nav>
+<div id='content'></div>
+<script>
+    var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
+    if (hashArray.length >= 3) {
+        window.openContent(document.getElementById(hashArray[2]), 'page/' + hashArray[0] + '/' + hashArray[1] + '/content/' + hashArray[2] + '.html');
+    } else {
+        window.openContent(document.getElementById('quick'), 'page/tool/mac/content/quick.html');
+    }
+</script>

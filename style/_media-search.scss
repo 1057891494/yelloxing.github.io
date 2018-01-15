@@ -1,0 +1,131 @@
+@media only screen and (max-width: 1100px),
+only screen and (max-device-width:1100px) {
+    html {
+        font-size: 90px;
+    }
+}
+
+@media only screen and (max-width: 1000px),
+only screen and (max-device-width:1000px) {
+    html {
+        font-size: 80px;
+    }
+}
+
+@media only screen and (max-width: 850px),
+only screen and (max-device-width:850px) {
+    html {
+        font-size: 70px;
+    }
+}
+
+@media only screen and (max-width: 750px),
+only screen and (max-device-width:750px) {
+    body {
+        transform: scale(0.9);
+        transform-origin: 0 0;
+        &>header {
+            background-position: 0 0, 55vw 0.6rem, calc(111vw - 0.8rem) 0.4rem;
+        }
+    }
+    body,
+    header,
+    footer {
+        width: 111vw;
+    }
+    #book-content>#content {
+        min-height: calc(111vh - 2.3rem);
+    }
+}
+
+@media only screen and (max-width: 660px),
+only screen and (max-device-width:660px) {
+    body {
+        transform: scale(0.8);
+        transform-origin: 0 0;
+        &>header {
+            background-position: 0 0, 66vw 0.6rem, calc(125vw - 0.8rem) 0.4rem;
+        }
+    }
+    body,
+    header,
+    footer {
+        width: 125vw;
+    }
+    #book-content>#content {
+        min-height: calc(125vh - 2.3rem);
+    }
+}
+
+@media only screen and (max-width: 600px),
+only screen and (max-device-width:600px) {
+    body {
+        transform: scale(0.7);
+        transform-origin: 0 0;
+        &>header {
+            background-position: 0 0, 71vw 0.6rem, calc(143vw - 0.8rem) 0.4rem;
+        }
+    }
+    body,
+    header,
+    footer {
+        width: 143vw;
+    }
+    #book-content>#content {
+        min-height: calc(143vh - 2.3rem);
+    }
+}
+
+@media only screen and (max-width: 510px),
+only screen and (max-device-width:510px) {
+    body {
+        transform: scale(0.6);
+        transform-origin: 0 0;
+        &>header {
+            background-position: 0 0, 83.5vw 0.6rem, calc(166.7vw - 0.8rem) 0.4rem;
+        }
+    }
+    body,
+    header,
+    footer {
+        width: 166.7vw;
+    }
+    #book-content>#content {
+        min-height: calc(166.7vh - 2.3rem);
+    }
+}
+
+@media only screen and (max-width: 440px),
+only screen and (max-device-width:440px) {
+    body {
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        &>header {
+            background-position: 0 0, 100vw 0.6rem, calc(200vw - 0.8rem) 0.4rem;
+        }
+    }
+    body,
+    header,
+    footer {
+        width: 200vw;
+    }
+    #book-content>#content {
+        min-height: calc(200vh - 2.3rem);
+    }
+}
+
+@media only screen and (max-width: 370px),
+only screen and (max-device-width:370px) {
+    body {
+        transform: scale(0.46);
+        transform-origin: 0 0;
+        &>header {
+            background-position: 0 0, 110vw 0.6rem, calc(217.4vw - 0.8rem) 0.4rem;
+        }
+    }
+    body,
+    header,
+    footer {
+        width: 217.4vw;
+    }
+}

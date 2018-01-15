@@ -1,0 +1,93 @@
+.notebook {
+    &.content {
+        text-indent: 2em;
+        margin-bottom: 0.3rem;
+        li {
+            text-indent: 0;
+        }
+        pre {
+            &.code {
+                position: relative;
+                padding: 0.5rem 1em 0.5rem 0;
+                div {
+                    &.clipboard {
+                        cursor: pointer;
+                        position: absolute;
+                        top: 0.1rem;
+                        right: 0.1rem;
+                        width: 0.3rem;
+                        height: 0.3rem;
+                        background-position: center center;
+                        background-size: 100% auto;
+                        background-repeat: no-repeat;
+                        background-image: url(#{$copyBeforImg});
+                        &:hover {
+                            background-image: url(#{$copyHoverImg});
+                        }
+                    }
+                }
+            }
+        }
+        .warn {
+            color: #c99512;
+            font-size: 0.14rem;
+            display: block;
+            margin: 0.1rem 0 0.1rem 0;
+        }
+        .error {
+            color: #881f1f;
+            font-size: 0.14rem;
+            display: block;
+            margin: 0.1rem 0 0.1rem 0;
+        }
+        .section {
+            margin: 0.16rem;
+            font-size: 0.18rem;
+            font-weight: 700;
+            .block {
+                -webkit-margin-before: 0;
+                -webkit-margin-after: 0;
+                -webkit-margin-start: 0;
+                -webkit-margin-end: 0;
+                -webkit-padding-start: 0;
+                margin-top: .1rem;
+            }
+        }
+        pre {
+            line-height: 0.2rem;
+            margin: 0.1rem 0 0.1rem 0;
+            font-size: 0.14rem;
+            color: #2196F3;
+            font-weight: 400;
+            overflow-x: scroll;
+            background-color: #f0eeee;
+            padding: 0.10rem 0 0.10rem 0;
+        }
+        .block {
+            line-height: 0.22rem;
+             :not(:first-child) {
+                margin-top: 0.06rem;
+            }
+            &.gramer {
+                background-color: #f0eeee;
+                padding: 0.03rem;
+                border-left: 0.04rem solid blue;
+            }
+        }
+        .list {
+            display: block;
+            font-size: 0.16rem;
+            line-height: 0.24rem;
+            font-weight: 600;
+            margin-top: 0;
+        }
+        .title-flag {
+            color: red;
+            line-height: 0.4rem;
+        }
+        .little-flag {
+            color: #afaf18;
+            line-height: 0.3rem;
+        }
+    }
+}

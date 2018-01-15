@@ -1,0 +1,21 @@
+<nav>
+    <div style='background-image:url("image/nav/javascript.png")'>
+        JavaScript 笔记
+    </div>
+    <ul>
+        <li id='RegExp' onclick='openContent(this,"page/web/javascript/content/RegExp.html");'>RegExp 正则表达式</li>
+        <li id='Symbol' onclick='openContent(this,"page/web/javascript/content/Symbol.html");'>Symbol</li>
+        <li id='Generator' onclick='openContent(this,"page/web/javascript/content/Generator.html");'>Generator 函数</li>
+        <li id='Promise' onclick='openContent(this,"page/web/javascript/content/Promise.html");'>Promise</li>
+        <li id='BinaryArray' onclick='openContent(this,"page/web/javascript/content/BinaryArray.html");'>二进制数组</li>
+    </ul>
+</nav>
+<div id='content'></div>
+<script>
+    var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
+    if (hashArray.length >= 3) {
+        window.openContent(document.getElementById(hashArray[2]), 'page/' + hashArray[0] + '/' + hashArray[1] + '/content/' + hashArray[2] + '.html');
+    } else {
+        window.openContent(document.getElementById('RegExp'), 'page/web/javascript/content/RegExp.html');
+    }
+</script>

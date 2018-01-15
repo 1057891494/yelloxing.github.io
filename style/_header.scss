@@ -90,14 +90,12 @@ body {
                 &>div {
                     &.yelloxing {
                         position: absolute;
-                        right: 0;
-                        top: 0;
                         display: inline-block;
                         background-repeat: no-repeat;
                         background-position: left center;
                         background-size: 100% auto;
                         background-image: url('../yelloxing.jpg');
-                        right: 1.1rem;
+                        right: 1.6rem;
                         position: absolute;
                         color: #2196F3;
                         border-radius: 50%;
@@ -107,7 +105,7 @@ body {
                         cursor: pointer;
                         font-size: 0;
                         z-index: 2;
-                        border:0.02rem solid #95ccc5;
+                        border: 0.02rem solid #95ccc5;
                         box-shadow: 0 0 0.03rem #95ccc5;
                         transition-property: all;
                         transition-duration: 0.8s;

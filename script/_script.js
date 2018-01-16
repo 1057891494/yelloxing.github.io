@@ -30,7 +30,7 @@ window.openBook = function(url) {
             window["eval"].call(window, script[0].innerText);
         }
     }, function() {
-        window.bookContentDom.innerHTML = "通信错误";
+        window.bookContentDom.innerHTML = "<div class='errorpage'><input type='button' value='返回首页' onclick=\"window.location.href='/'\"><input type='button' value='查看源码' onclick=\"window.location.href='https://github.com/yelloxing/yelloxing.github.io'\"></div>";
     });
 };
 window.openContent = function(target, url) {
@@ -53,6 +53,6 @@ window.openContent = function(target, url) {
             window["eval"].call(window, script[0].innerText);
         }
     }, function() {
-        window.contentDom.innerHTML = "通信错误";
+        window.contentDom.innerHTML = "<div class='errorpage'><input type='button' value='返回首页' onclick=\"window.location.href='/'\"><input type='button' value='查看源码' onclick=\"window.location.href='https://github.com/yelloxing/yelloxing.github.io'\"></div>";
     });
 };

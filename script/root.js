@@ -1,4 +1,5 @@
-window.Core={};
+window.Core = {};
 require('./_ajax.js');
-require('./_script.js');
+require('./_dom.js');
 require('./_tool.js');
+require('./_script.js');

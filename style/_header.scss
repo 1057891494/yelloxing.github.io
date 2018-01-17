@@ -66,7 +66,7 @@ body {
                             background: white;
                             color: #886e28;
                             padding: .3rem;
-                            width: 4.1rem;
+                            width: 3.6rem;
                             font-size: 0;
                             left: 0;
                             &>li {
@@ -80,6 +80,20 @@ body {
                                 line-height: .7rem;
                                 width: 50%;
                                 display: inline-block;
+                                &.type {
+                                    display: block;
+                                    width: 3rem;
+                                    position: relative;
+                                    line-height: .3rem;
+                                    font-size: .16rem;
+                                    padding-left: 0.05rem;
+                                    text-align: left;
+                                    color: #e44e42;
+                                    margin-bottom: .1rem;
+                                    cursor: default;
+                                    border-left: .07rem solid red;
+                                    background-color: #f0eeee;
+                                }
                             }
                         }
                         &:hover {
@@ -153,6 +167,7 @@ body {
                         width: 6em;
                         text-align: center;
                         cursor: pointer;
+                        z-index: 1;
                         &>div {
                             background-color: #c9e1ec;
                             border-radius: 0 0 0.1rem 0.1rem;

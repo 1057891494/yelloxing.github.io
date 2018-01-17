@@ -1,0 +1,37 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class="block">
+            Angular CLI是一个命令行界面工具，它可以创建项目、添加文件以及执行一大堆开发任务，比如测试、打包和发布，这里的快速开始就是基于这个命令。
+            <span class="warn">
+                开始项目前，你需要先安装node和npm，然后执行npm install -g @angular/cli安装Angular CLI。
+            </span>
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第一步：用命令行新建一个项目
+        </p>
+        <pre class="code">ng new newApp --skip-install
+    cd newApp
+    cnpm install
+    ng serve --open</pre>
+        <p class="block">
+            执行上面的命令就会自动新建一个Angualr项目，并启动了项目。
+            <span class="warn">
+                其中--skip-install表示node包先不安装，我们接着使用cnpm install安装会快多了。
+            </span>
+        </p>
+        <p class="block little-flag">
+            目录结构
+        </p>
+        <p class="block">
+            现在来看看ng命令帮助我们生成了什么，也就是项目的目录结构，里面都是干什么的，先有个大致了解，你可以不知道全部，不过先记住下面几个个人感觉重要的：
+            <span class="list">1.src：应用代码存放的地方；</span>
+            <span class="list">2.src/app：你的代码主要存放的地方，这样说也许不合适，不过你开发的时候，大部分时间都是在修改这里的代码；</span>
+            <span class="list">3.src/assets：图片等存放的地方，构建时会复制到发布包里；</span>
+            <span class="list">4.src/main.js：你基本不会修改它，它是程序的主入口；</span>
+            <span class="list">5.src/styles.css：特别用的样式写在对应的地方，后面会说，对于公共的样式就会写在这里；</span>
+            <span class="list">6.karma.conf.js：给Karma的单元测试配置，当运行ng test时会用到它。</span>
+        </p>
+    </section>
+</article>

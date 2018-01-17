@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-目的只有一个，就是为了【走一步 再走一步 V25】期间学习笔记记录而存在。
+目的只有一个，就是【走一步 再走一步】计划当下学习笔记记录而存在。
 
 ## 2. Expected Behavior
 
@@ -11,7 +11,6 @@
 ## 3. Unacceptable Behavior
 
 不期望不负责任的修改和补充。
-
 
 ## 4. Contact info
 

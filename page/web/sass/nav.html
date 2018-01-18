@@ -1,0 +1,17 @@
+<nav>
+    <div style='background-image:url("image/nav/sass.png")'>
+        SASS使用
+    </div>
+    <ul>
+        <li id='basic' onclick='openContent(this,"page/web/sass/content/basic.html");'>基础语法</li>
+    </ul>
+</nav>
+<div id='content'></div>
+<script>
+    var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
+    if (hashArray.length >= 3) {
+        window.openContent(document.getElementById(hashArray[2]), 'page/' + hashArray[0] + '/' + hashArray[1] + '/content/' + hashArray[2] + '.html');
+    } else {
+        window.openContent(document.getElementById('basic'), 'page/web/sass/content/basic.html');
+    }
+</script>

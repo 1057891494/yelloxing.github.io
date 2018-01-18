@@ -1,0 +1,113 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class='block'>
+            我们这里假设有很多的js代码需要我们先合并、语法检查最后压缩混淆为例。
+            <span class="warn">
+                在开始使用前请先确定你已经安装好了node.js
+            </span>
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第一步：初始化一般环境
+        </p>
+        <p class="block">
+            首先，假设package.json已经初始化好了，我们现在通过命令行安装需要的东西：
+        </p>
+        <pre class='code'>npm install --save-dev grunt</pre>
+        <p class="block">
+            然后再初始化Gruntfile.js的内容如下：
+        </p>
+        <pre class='code'>module.exports = function(grunt) {
+        /*配置插件*/
+        grunt.initConfig({
+            pkg: grunt.file.readJSON('package.json'),
+            ......//配置使用的各个插件的地方
+        });
+        /*加载插件*/
+        grunt.loadNpmTasks('插件名称');
+        /*注册任务*/
+        grunt.registerTask('任务名称', ['插件名称:任务']);
+    };</pre>
+        <p class="block">
+            一般用时都可以从这里开始，下一步就会根据需求来决定配置不同的插件。
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第二步：针对需求修改设置和安装
+        </p>
+        <p class="block">
+            先安装我们需要的插件：
+        </p>
+        <pre class='code'>npm install --save-dev grunt-contrib-concat grunt-contrib-jshint grunt-contrib-uglify</pre>
+        <p class="block">
+            接着，根据插件手册配置插件（Gruntfile.js）：
+        </p>
+        <pre class='code'>'use strict';
+    module.exports = function(grunt) {
+        /*配置插件*/
+        grunt.initConfig({
+            pkg: grunt.file.readJSON('package.json'),
+            concat: { //合并hazy代码
+                options: {
+                    separator: '\n', //文件连接分隔符，表示连接的文件用指定的separator分割。
+                    stripBanners: true, //如果为true，去除代码中的块注释，默认为false
+                    banner: '/*合并以后在头部的说明内容*/\n'
+                },
+                target: {
+                    src: ['hazy/ajax.js', 'hazy/core.js'],
+                    dest: 'build/hazy.js'
+                }
+            },
+            jshint: { //hazy语法检查
+                options: {//语法检查配置
+                    '-W064': true,
+                    "strict": true,
+                    "eqnull": true,
+                    "undef": true,
+                    "globals": {
+                        "$": true,
+                        "window": true,
+                        "document": true,
+                        "console": true
+                    },
+                    "force": true, // 强制执行，即使出现错误也会执行下面的任务
+                    "reporterOutput": 'jshint.debug.txt' //将jshint校验的结果输出到文件
+                },
+                afterconcat: "build/hazy.js" // 合并之后检测
+            },
+            uglify: { //压缩hazy代码
+                options: {
+                    banner: '/*合并以后在头部的说明内容*/\n'
+                },
+                target: {
+                    options: {
+                        mangle: true
+                    },
+                    files: [{
+                        'build/hazy.min.js': ['build/hazy.js']
+                    }]
+                }
+            }
+        });
+
+        /*加载插件*/
+        grunt.loadNpmTasks('grunt-contrib-concat');
+        grunt.loadNpmTasks('grunt-contrib-jshint');
+        grunt.loadNpmTasks('grunt-contrib-uglify');
+
+        /*注册任务*/
+        grunt.registerTask('default', ['concat:target', 'jshint:afterconcat', 'uglify:target']);
+    };</pre>
+        <p class="block">
+            然后，在package.json的执行脚步中加入一行："runGrunt": "node_modules/.bin/grunt",
+        </p>
+        <p class="block">
+            现在在命令行执行：npm run runGrunt。
+        </p>
+        <p class="block">
+            这样打包的过程就结束了，它会把['hazy/ajax.js', 'hazy/core.js']二份js文件最终合并成'build/hazy.js'，压缩混淆的是'build/hazy.min.js'。
+        </p>
+    </section>
+</article>

@@ -68,6 +68,7 @@ body {
                             &.none {
                                 display: none;
                             }
+                            $width:4.6rem;
                             box-shadow: 0 0.055rem 0.05rem #cce1de;
                             border-radius: 0 0 0.1rem 0.1rem;
                             top: 0.4rem;
@@ -75,9 +76,10 @@ body {
                             display: none;
                             background: white;
                             color: #886e28;
-                            padding: .3rem;
-                            width: 3.6rem;
+                            padding: .1rem;
+                            width: $width;
                             font-size: 0;
+                            box-sizing: content-box;
                             left: 0;
                             &>li {
                                 cursor: pointer;
@@ -88,11 +90,11 @@ body {
                                 text-align: left;
                                 background-size: .4rem;
                                 line-height: .7rem;
-                                width: 50%;
+                                width: $width/3;
                                 display: inline-block;
                                 &.type {
                                     display: block;
-                                    width: 3rem;
+                                    width: 100%;
                                     position: relative;
                                     line-height: .3rem;
                                     font-size: .16rem;
@@ -108,6 +110,19 @@ body {
                         }
                     }
                 }
+                &>a{
+                    &.opensource{
+                        position: absolute;
+                        right: 0.96rem;
+                        width:1rem;
+                        text-align: center;
+                        text-decoration: none;
+                        color: #009688;
+                        &:hover{
+                            color: #034e43;
+                        }
+                    }
+                }
                 &>div {
                     &.yelloxing {
                         position: absolute;
@@ -116,7 +131,7 @@ body {
                         background-position: left center;
                         background-size: 100% auto;
                         background-image: url('../yelloxing.jpg');
-                        right: 1.1rem;
+                        right: 1.96rem;
                         position: absolute;
                         color: #2196F3;
                         border-radius: 50%;

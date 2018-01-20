@@ -16,7 +16,13 @@ window.addClipboard = function() {
         window.append(codeNode, window.stringToDom('<div class="clipboard" onclick="doClipboard(this)"></div>'));
     }
 };
-window.openBook = function(url) {
+window.openBook = function(target, url) {
+    if (window.parent(target)) {
+        window.parent(target).setAttribute('class', 'none');
+        setTimeout(function() {
+            window.parent(target).setAttribute('class', '');
+        }, 100);
+    }
     window.bookname = url.split(/\//)[1] + "/" + url.split(/\//)[2];
     window.location.hash = url.split(/\//)[1] + "/" + url.split(/\//)[2];
     if (!window.bookContentDom) {

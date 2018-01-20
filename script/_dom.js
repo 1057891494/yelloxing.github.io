@@ -25,6 +25,13 @@ window.append = function(targetNode, node) {
 };
 
 /**
+ * 获取父亲节点
+ */
+window.parent = function(node) {
+    return node.parentNode;
+};
+
+/**
  * 字符串变成dom,必须有一个大的包裹
  */
 window.stringToDom = function(nodeString) {

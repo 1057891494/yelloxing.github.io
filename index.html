@@ -30,37 +30,37 @@
                         前端
                         <ul>
                             <li class='type'>基础核心知识</li>
-                            <li style='background-image:url("./image/nav/html5.png")' onclick='openBook("page/web/html5/nav.html")'>HTML5</li>
-                            <li style='background-image:url("./image/nav/css.png")' onclick='openBook("page/web/css/nav.html")'>CSS</li>
-                            <li style='background-image:url("./image/nav/javascript.png")' onclick='openBook("page/web/javascript/nav.html")'>ES</li>
+                            <li style='background-image:url("./image/nav/html5.png")' onclick='openBook(this,"page/web/html5/nav.html")'>HTML5</li>
+                            <li style='background-image:url("./image/nav/css.png")' onclick='openBook(this,"page/web/css/nav.html")'>CSS</li>
+                            <li style='background-image:url("./image/nav/javascript.png")' onclick='openBook(this,"page/web/javascript/nav.html")'>ES</li>
                             <li class="type">框架学习辅助笔记</li>
-                            <li style='background-image:url("./image/nav/angularjs.png")' onclick='openBook("page/web/angularjs/nav.html")'>AngularJS</li>
-                            <li style='background-image:url("./image/nav/angular.png")' onclick='openBook("page/web/angular/nav.html")'>Angular</li>
+                            <li style='background-image:url("./image/nav/angularjs.png")' onclick='openBook(this,"page/web/angularjs/nav.html")'>AngularJS</li>
+                            <li style='background-image:url("./image/nav/angular.png")' onclick='openBook(this,"page/web/angular/nav.html")'>Angular</li>
                             <li class="type">扩展语言</li>
-                            <li style='background-image:url("./image/nav/sass.png")' onclick='openBook("page/web/sass/nav.html")'>SASS</li>
+                            <li style='background-image:url("./image/nav/sass.png")' onclick='openBook(this,"page/web/sass/nav.html")'>SASS</li>
                         </ul>
                     </li>
                     <li>
                         开发语言
                         <ul>
-                            <li style='background-image:url("./image/nav/python3.png")' onclick='openBook("page/devLanguage/python3/nav.html")'>Python3</li>
-                            <li style='background-image:url("./image/nav/c.png")' onclick='openBook("page/devLanguage/c/nav.html")'>C语言</li>
+                            <li style='background-image:url("./image/nav/python3.png")' onclick='openBook(this,"page/devLanguage/python3/nav.html")'>Python3</li>
+                            <li style='background-image:url("./image/nav/c.png")' onclick='openBook(this,"page/devLanguage/c/nav.html")'>C语言</li>
                         </ul>
                     </li>
                     <li>
                         计算机
                         <ul>
-                            <li style='background-image:url("./image/nav/algorithm.png")' onclick='openBook("page/computer/Algorithm/nav.html")'>算法设计</li>
+                            <li style='background-image:url("./image/nav/algorithm.png")' onclick='openBook(this,"page/computer/Algorithm/nav.html")'>算法设计</li>
                         </ul>
                     </li>
                     <li>
                         工具
                         <ul>
                             <li class='type'>日常工具</li>
-                            <li style='background-image:url("./image/nav/git.png")' onclick='openBook("page/tool/git/nav.html")'>Git命令</li>
-                            <li style='background-image:url("./image/nav/mac.png")' onclick='openBook("page/tool/mac/nav.html")'>Mac使用</li>
+                            <li style='background-image:url("./image/nav/git.png")' onclick='openBook(this,"page/tool/git/nav.html")'>Git命令</li>
+                            <li style='background-image:url("./image/nav/mac.png")' onclick='openBook(this,"page/tool/mac/nav.html")'>Mac使用</li>
                             <li class='type'>前端打包工具</li>
-                            <li style='background-image:url("./image/nav/grunt.png")' onclick='openBook("page/tool/grunt/nav.html")'>Grunt</li>
+                            <li style='background-image:url("./image/nav/grunt.png")' onclick='openBook(this,"page/tool/grunt/nav.html")'>Grunt</li>
                         </ul>
                     </li>
                     <li>
@@ -72,7 +72,7 @@
                     <li>
                         其它
                         <ul>
-                            <li style='background-image:url("./image/nav/sketch.png")' onclick='openBook("page/other/sketch/nav.html")'>素描</li>
+                            <li style='background-image:url("./image/nav/sketch.png")' onclick='openBook(this,"page/other/sketch/nav.html")'>素描</li>
                         </ul>
                     </li>
                 </ul>
@@ -114,10 +114,10 @@
         var hash = window.location.hash;
         var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
         if (hashArray.length >= 2) {
-            window.openBook("page/" + hashArray[0] + "/" + hashArray[1] + "/nav.html");
+            window.openBook(this,"page/" + hashArray[0] + "/" + hashArray[1] + "/nav.html");
             window.location.hash = hash;
         } else {
-            window.openBook("page/web/html5/nav.html");
+            window.openBook(this,"page/web/html5/nav.html");
         }
     </script>
 </body>

@@ -57,7 +57,17 @@ body {
                             right: .16rem;
                             margin-left: .03rem;
                         }
+                        &:hover {
+                            background-color: white;
+                            color: #886e28;
+                            &>ul {
+                                display: block;
+                            }
+                        }
                         &>ul {
+                            &.none {
+                                display: none;
+                            }
                             box-shadow: 0 0.055rem 0.05rem #cce1de;
                             border-radius: 0 0 0.1rem 0.1rem;
                             top: 0.4rem;
@@ -94,13 +104,6 @@ body {
                                     border-left: .07rem solid red;
                                     background-color: #f0eeee;
                                 }
-                            }
-                        }
-                        &:hover {
-                            background-color: white;
-                            color: #886e28;
-                            &>ul {
-                                display: block;
                             }
                         }
                     }

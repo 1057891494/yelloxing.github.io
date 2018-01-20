@@ -9,8 +9,8 @@
 
 ### 本地访问
 ------
-*   把代码下载或clone到本地以后，你需要在命令行切换到包括package.json目录下，先npm install安装必要的node包，然后npm run server就可以在本地浏览器打开localhost:20000访问本地的笔记。
-*   如果你修改了代码（此处指js或scss代码），运行npm start然后再访问就会生效，html修改后可以直接访问。
+*   把代码下载或clone到本地以后，你需要在命令行切换到包括package.json目录下，先npm install安装必要的node包，然后npm run server就可以在本地浏览器打开localhost:20000访问本地的笔记，启动成功之后笔记内容的修改浏览器会自动刷新。
+*   如果你修改了代码（此处指js或scss代码），运行npm start然后再访问就会生效（只需要运行一次，后期自己监听到修改会自己编译），html修改后可以直接访问。
 
 ### 加入我们
 ------

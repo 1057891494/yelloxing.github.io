@@ -6,9 +6,9 @@
   "scripts": {
     "webpack_cli": "node_modules/.bin/webpack",
     "prod": "npm run webpack_cli",
-    "gulp_cli":"node_modules/.bin/gulp",
-    "server":"npm run gulp_cli",
-    "start":"npm run prod"
+    "gulp_cli": "node_modules/.bin/gulp",
+    "server": "npm run gulp_cli",
+    "start": "npm run prod"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "file-loader": "^0.11.2",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.2.0",
+    "gulp-livereload": "^3.8.1",
     "node-sass": "^4.5.3",
     "optimize-css-assets-webpack-plugin": "^3.0.0",
     "postcss-loader": "^2.0.6",

@@ -13,3 +13,16 @@ window.clipboard = function(text, callback, errorback) {
         errorback();
     }
 };
+/**
+ * 判断是不是手机访问
+ */
+window.isPhone = function() {
+    var userinfo = navigator.userAgent;
+    if (/Android/.test(userinfo) || /iPhone/.test(userinfo)) { //如果是安卓或苹果手机
+        return true;
+    } else if (/PlayBook/.test(userinfo) || /BB\d{1,}/.test(userinfo)) { //如果是黑莓手机
+        return true;
+    } else {
+        return false;
+    }
+};

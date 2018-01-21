@@ -62,3 +62,10 @@ window.openContent = function(target, url) {
         window.contentDom.innerHTML = "<div class='errorpage'><input type='button' value='返回首页' onclick=\"window.location.href='/'\"><input type='button' value='查看源码' onclick=\"window.location.href='https://github.com/yelloxing/yelloxing.github.io'\"></div>";
     });
 };
+window.openGamePage = function() {
+    if (window.isPhone()) {
+        alert('非常抱歉，手机不支持访问！');
+    } else {
+        alert('开发中，目前没有可玩游戏！');
+    }
+};

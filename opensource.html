@@ -21,12 +21,109 @@
             document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
         }
     </script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            -webkit-padding-start: 0;
+            -webkit-margin-before: 0;
+            -webkit-margin-after: 0;
+            list-style: none;
+        }
+
+        header {
+            line-height: 70px;
+            text-align: center;
+            background-color: #607D8B;
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+        section {
+            min-height: calc(100vh - 100px);
+            box-sizing: border-box;
+            padding: 30px
+        }
+
+        footer {
+            text-align: center;
+            line-height: 30px;
+            font-size: 12px;
+            background-color: #efeaea;
+            color: gray;
+        }
+
+        ul>li {
+            margin: 30px;
+            background-color: #eef1f2;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        ul>li:hover>div:first-child {
+            color: #F44336;
+        }
+
+        ul>li:hover {
+            background-color: #c9d8ec;
+        }
+
+        .name {
+            padding-left: 10px;
+            line-height: 30px;
+            color: #00070a;
+            font-size: 16px;
+        }
+
+        .info {
+            text-indent: 2em;
+            margin: 10px;
+            font-size: 15px;
+        }
+
+        .list>div {
+            display: inline-block;
+            display: inline-block;
+            padding: 5px 10px 5px 10px;
+        }
+    </style>
 </head>
 
-<body style='background-color: #eef3f5;margin:0;'>
-    <div style='width:100vw;line-height:100vh;text-align:center;color: #795548;font-size:20px;'>
-        目前还没有需要展示的信息，你可以<a href="/" style='padding:0 0.6rem 0 0.6rem;color: #E91E63;'>返回首页</a>?
-    </div>
+<body>
+    <header>
+        开源项目
+    </header>
+    <section>
+        <nav>
+            <ul>
+                <li onclick='window.location.href="https://github.com/yelloxing/WebGame"'>
+                    <div class="name">
+                        WebGame 页面游戏
+                    </div>
+                    <div class="info">
+                        静态页面的一些小游戏项目，建立的主要目的是练习前端细节知识、加强快速开发能力和日常生活娱乐，希望日常的小点子可以带来快乐和有趣的声音。
+                    </div>
+                    <div class="list">
+                        <div>
+                            心叶
+                        </div>
+                        <div>
+                            yelloxing@gmail.com
+                        </div>
+                        <div>
+                            MIT
+                        </div>
+                        <div>
+                            2018-01-21
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <footer>Copyright © 2007-2018 走一步 再走一步 All Rights Reserved.</footer>
 </body>
 
 </html>

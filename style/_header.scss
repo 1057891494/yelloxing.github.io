@@ -23,7 +23,7 @@ body {
             left: 0;
             width: 100%;
             &>nav {
-                color: #319788;
+                color: #9E9E9E;
                 position: relative;
                 width: $content-width;
                 margin: auto;
@@ -111,13 +111,19 @@ body {
                     }
                 }
                 &>a{
+                    position: absolute;
+                    width:1rem;
+                    text-align: center;
+                    text-decoration: none;
+                    color: #009688;
                     &.opensource{
-                        position: absolute;
+                        right: 1.96rem;
+                        &:hover{
+                            color: #034e43;
+                        }
+                    }
+                    &.webgame{
                         right: 0.96rem;
-                        width:1rem;
-                        text-align: center;
-                        text-decoration: none;
-                        color: #009688;
                         &:hover{
                             color: #034e43;
                         }
@@ -131,7 +137,7 @@ body {
                         background-position: left center;
                         background-size: 100% auto;
                         background-image: url('../yelloxing.jpg');
-                        right: 1.96rem;
+                        right: 2.96rem;
                         position: absolute;
                         color: #2196F3;
                         border-radius: 50%;

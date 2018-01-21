@@ -16,112 +16,44 @@
     <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="style.css" class="style">
     <script>
         if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
             document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
         }
     </script>
-    <style>
-        body {
-            margin: 0;
-        }
-
-        ul {
-            -webkit-padding-start: 0;
-            -webkit-margin-before: 0;
-            -webkit-margin-after: 0;
-            list-style: none;
-        }
-
-        header {
-            line-height: 70px;
-            text-align: center;
-            background-color: #607D8B;
-            color: #ffffff;
-            font-size: 18px;
-        }
-
-        section {
-            min-height: calc(100vh - 100px);
-            box-sizing: border-box;
-            padding: 30px
-        }
-
-        footer {
-            text-align: center;
-            line-height: 30px;
-            font-size: 12px;
-            background-color: #efeaea;
-            color: gray;
-        }
-
-        ul>li {
-            margin: 30px;
-            background-color: #eef1f2;
-            border-radius: 7px;
-            cursor: pointer;
-        }
-
-        ul>li:hover>div:first-child {
-            color: #F44336;
-        }
-
-        ul>li:hover {
-            background-color: #c9d8ec;
-        }
-
-        .name {
-            padding-left: 10px;
-            line-height: 30px;
-            color: #00070a;
-            font-size: 16px;
-        }
-
-        .info {
-            text-indent: 2em;
-            margin: 10px;
-            font-size: 15px;
-        }
-
-        .list>div {
-            display: inline-block;
-            display: inline-block;
-            padding: 5px 10px 5px 10px;
-        }
-    </style>
 </head>
 
-<body>
+<body class='opensource'>
     <header>
-        开源项目
-    </header>
-    <section>
-        <nav>
-            <ul>
-                <li onclick='window.location.href="https://github.com/yelloxing/WebGame"'>
-                    <div class="name">
-                        WebGame 页面游戏
-                    </div>
-                    <div class="info">
-                        静态页面的一些小游戏项目，建立的主要目的是练习前端细节知识、加强快速开发能力和日常生活娱乐，希望日常的小点子可以带来快乐和有趣的声音。
-                    </div>
-                    <div class="list">
-                        <div>
-                            心叶
-                        </div>
-                        <div>
-                            yelloxing@gmail.com
-                        </div>
-                        <div>
-                            MIT
-                        </div>
-                        <div>
-                            2018-01-21
-                        </div>
-                    </div>
+        <div>
+            <div class="title">
+                <div></div>
+                开源项目
+            </div>
+            <ul class="contact">
+                <li>
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                    QQ
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                        邮箱
+                    </a>
                 </li>
             </ul>
-        </nav>
+        </div>
+    </header>
+    <section>
+        <div onclick='window.location.href="https://github.com/yelloxing/WebGame"' style="background-image:url('../image/opensource/webgame.png');background-color: #CDDC39;">
+            <div class="hover">
+                网页游戏
+            </div>
+        </div>
+        <div class='helper'></div>
+        <div class='helper'></div>
+        <div class='helper'></div>
     </section>
     <footer>Copyright © 2007-2018 走一步 再走一步 All Rights Reserved.</footer>
 </body>

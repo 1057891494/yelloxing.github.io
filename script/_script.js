@@ -66,6 +66,6 @@ window.openGamePage = function() {
     if (window.isPhone()) {
         alert('非常抱歉，手机不支持访问！');
     } else {
-        alert('开发中，目前没有可玩游戏！');
+        window.location.href = 'https://yelloxing.github.io/WebGame/index.html';
     }
 };

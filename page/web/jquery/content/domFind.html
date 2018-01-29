@@ -1,0 +1,146 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class='block'>
+            jquery查找元素的快速查询手册
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第一步：sizzle选择器
+        </p>
+        <p class="block">
+            基于元素的id、类、类型、属性、属性值等"查找"（或选择）HTML元素，简单的说是基于css选择器，除此之外还有一些特定的选择器。
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第二步：查询祖先
+        </p>
+        <p class="block little-flag">
+            parent()
+        </p>
+        <p class="block">
+            返回被选元素的直接父元素，该方法只会向上一级对 DOM 树进行遍历
+        </p>
+        <p class="block little-flag">
+            parents()
+            <span class="warn">
+                可以使用可选参数来过滤对父元素的搜索
+            </span>
+        </p>
+        <p class="block">
+            返回被选元素的所有祖先元素，它一路向上直到文档的根元素
+        </p>
+        <p class="block little-flag">
+            parentsUntil()
+        </p>
+        <p class="block">
+            返回介于两个给定元素之间的所有祖先元素，下面是例子：
+        </p>
+        <pre class='code'>$(document).ready(function(){
+        //会返回span开始到div为止的祖先元素
+        $("span").parentsUntil("div");
+    });</pre>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第三步：查询子孙
+        </p>
+        <p class="block little-flag">
+            children()
+            <span class="warn">
+                可以使用可选参数来过滤对子元素的搜索
+            </span>
+        </p>
+        <p class="block">
+            返回被选元素的所有直接子元素，该方法只会向下一级对 DOM 树进行遍历
+        </p>
+        <p class="block little-flag">
+            find()
+            <span class="warn">
+                可以使用可选参数来过滤对元素的搜索
+            </span>
+        </p>
+        <p class="block">
+            返回被选元素的后代元素，一路向下直到最后一个后代
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第四步：查询同胞
+        </p>
+        <p class="block little-flag">
+            siblings()
+        </p>
+        <p class="block">
+            返回被选元素的所有同胞元素
+        </p>
+        <p class="block little-flag">
+            next()
+        </p>
+        <p class="block">
+            返回被选元素的下一个同胞元素
+        </p>
+        <p class="block little-flag">
+            nextAll()
+        </p>
+        <p class="block">
+            返回被选元素的之后的全部同胞元素
+        </p>
+        <p class="block little-flag">
+            nextUntil()
+        </p>
+        <p class="block">
+            返回介于两个给定参数之间的所有跟随的同胞元素
+        </p>
+        <pre class="code">$(document).ready(function(){
+        //返回介于 &lt;h2&gt;与&lt;h6&gt;元素之间的所有同胞元素
+        $("h2").nextUntil("h6");
+    });</pre>
+        <p class="block little-flag">
+            prev()、prevAll() 和 prevUntil()
+        </p>
+        <p class="block">
+            prev()、prevAll()以及prevUntil()方法的工作方式与上面的方法类似，只不过方向相反而已：它们返回的是前面的同胞元素（在 DOM 树中沿着同胞之前元素遍历，而不是之后元素遍历）。
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第五步：查询时添加过滤
+        </p>
+        <p class="block little-flag">
+            first()
+        </p>
+        <p class="block">
+            返回选择的元素中的首个元素
+        </p>
+        <p class="block little-flag">
+            last()
+        </p>
+        <p class="block">
+            返回选择的元素中的最后一个元素
+        </p>
+        <p class="block little-flag">
+            eq()
+        </p>
+        <p class="block">
+            返回被选元素中带有指定索引号的元素，这个很容易理解，举例就是：$(element[flag])和element.eq(flag)结果一样
+        </p>
+        <p class="block little-flag">
+            filter()
+        </p>
+        <p class="block">
+            对查询结果进行过滤，和下面not()类似，作用相反
+        </p>
+        <p class="block little-flag">
+            not()
+        </p>
+        <p class="block">
+            返回不匹配标准的所有元素
+        </p>
+        <pre class="code">$(document).ready(function(){
+        //返回不带有类名"target"的所有p元素
+        $("p").not(".target");
+    });</pre>
+    </section>
+</article>

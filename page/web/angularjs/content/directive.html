@@ -66,7 +66,7 @@
         </p>
         <p class="block">
             <span class="list">
-                1.根据输入框是否合法来设置true或false：ctrl.$setValidity('input', boolean);
+                1.根据输入框是否合法来设置true或false：ctrl.$setValidity(errorType, boolean);//errorType表示错误类别，可以自定义
             </span>
             <span class="list">
                 2.设置监听指定的一个model值，当然还有监听集合等方法：$scope.$watch(attrs['ngModel'], function(newValue, oldValue) {});

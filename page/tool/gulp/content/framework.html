@@ -62,14 +62,27 @@
         });
     });
     gulp.task('default', ['webserver', 'watch']);</pre>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第三步：开始编译
+        </p>
         <p class="block">
-            然后，在package.json的执行脚步中加入一行："runGulp": "node_modules/.bin/gulp",
+            现在，在package.json的执行脚步中加入一行："runGulp": "node_modules/.bin/gulp",
         </p>
         <p class="block">
             现在在命令行执行：npm run runGulp
         </p>
         <p class="block">
             这样你在浏览器访问localhost:20000，如果监听的文件改变，就会自动刷新页面了。
+            <span class="warn">
+                自动刷新比较特殊，你需要在浏览器安装对应的插件，或者在页面head标签中加入下面代码也可以：
+            </span>
         </p>
+        <pre class="code">&lt;script&gt;
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('&lt;script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"&gt;&lt;/' + 'script&gt;')
+        }
+    &lt;/script&gt;</pre>
     </section>
 </article>

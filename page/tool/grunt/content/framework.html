@@ -100,8 +100,13 @@
         /*注册任务*/
         grunt.registerTask('default', ['concat:target', 'jshint:afterconcat', 'uglify:target']);
     };</pre>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第三步：开始编译
+        </p>
         <p class="block">
-            然后，在package.json的执行脚步中加入一行："runGrunt": "node_modules/.bin/grunt",
+            现在，在package.json的执行脚步中加入一行："runGrunt": "node_modules/.bin/grunt",
         </p>
         <p class="block">
             现在在命令行执行：npm run runGrunt。

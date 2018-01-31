@@ -1,0 +1,34 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class='block'>
+            使用grunt-postcss插件对CSS进行后处理
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第一步：安装
+        </p>
+        <pre class="code">cnpm insall --save-dev grunt-postcss autoprefixer</pre>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第二步：Gruntfile.js插件配置部分
+        </p>
+        <pre class="code">postcss: {
+        options: {
+            processors: [
+                require('autoprefixer')()
+            ]
+        },
+        target: {
+            src: 'style.css',
+            dest: 'style.postcss.css'
+        }
+    }</pre>
+        <p class="block">
+            <span class="warn">
+                不需要使用grunt.loadNpmTasks()方法加载autoprefixer
+            </span>
+        </p>
+    </section>
+</article>

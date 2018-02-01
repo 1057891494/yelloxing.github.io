@@ -68,6 +68,52 @@ body.opensource {
         font-size: 0;
         text-align: center;
         padding: .3rem 0 .3rem 0;
+        &>ul {
+            &>div {
+                &.help {
+                    width: 2.6rem;
+                    height: 0;
+                    margin: .1rem;
+                    display: inline-block;
+                }
+            }
+            &>li {
+                width: 2.6rem;
+                height: 2rem;
+                background-image: url('../image/opensource/luna.png');
+                background-position: center top;
+                background-size: 100% auto;
+                position: relative;
+                cursor: pointer;
+                border: .05rem solid #acacac;
+                transition-property: all;
+                transition-duration: 0.8s;
+                transition-timing-function: cubic-bezier(0.02, 0.94, 1, 1);
+                display: inline-block;
+                margin: .1rem;
+                &>label {
+                    font-size: .18rem;
+                    position: absolute;
+                    transition-property: all;
+                    transition-duration: 0.8s;
+                    transition-timing-function: cubic-bezier(0.02, 0.94, 1, 1);
+                    bottom: 0;
+                    width: 100%;
+                    background-color: hsla(0, 0%, 62%, 0.85);
+                    left: 0;
+                    cursor: pointer;
+                    line-height: .5rem;
+                    color: white;
+                }
+                &:hover {
+                    border: .05rem solid hsl(0, 0%, 0%);
+                    &>label {
+                        color: #9E9E9E;
+                        background-color: hsl(0, 0%, 0%);
+                    }
+                }
+            }
+        }
     }
     &>footer {
         background-color: white;

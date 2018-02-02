@@ -1,0 +1,25 @@
+<article class='notebook content'>
+    <section class='section'>
+        <p class='block title-flag'>
+            第一步：发生情况
+        </p>
+        <p class="block">
+            转发的时候，如果只是host、端口转换，则session不会丢失，如果路径也变化了，则需要设置cookie的路径转换，不然session会发送丢失。
+        </p>
+    </section>
+    <section class='section'>
+        <p class='block title-flag'>
+            第二步：解决方案
+        </p>
+        <p class="block">
+            通过设置cookie的路径转换就可以解决了，具体例子如下：
+        </p>
+        <pre class="code">location /pre-url/ {
+        proxy_pass http://serverProxy/new-url;
+        proxy_cookie_path  /new-url /pre-url;
+    }</pre>
+        <p class="block">
+            由pre-url转发到new-url的时候这样设置就可以了。
+        </p>
+    </section>
+</article>

@@ -91,6 +91,8 @@ body.opensource {
                 transition-timing-function: cubic-bezier(0.02, 0.94, 1, 1);
                 display: inline-block;
                 margin: .1rem;
+                background-repeat: no-repeat;
+                background-position: center top;
                 &>label {
                     font-size: .18rem;
                     position: absolute;

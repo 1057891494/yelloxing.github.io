@@ -5,6 +5,8 @@
 [![yelloxing.github.io Code](https://github.com/yelloxing/yelloxing.github.io/blob/master/SVG/code.svg)](https://github.com/yelloxing/yelloxing.github.io)
 [![license](https://github.com/yelloxing/yelloxing.github.io/blob/master/SVG/license.svg)](https://github.com/yelloxing/yelloxing.github.io/blob/master/LICENSE)
 
+<img align="right" height="100" src="https://yelloxing.github.io/logo.png">
+
 项目搭建的目的是测试一些东西和快速查询笔记，如果可以为他人带来帮助，表示非常乐意，不过初衷只是私人使用，因此不会在设计上考虑太多之外的东西，不要期待太多。
 
 ****

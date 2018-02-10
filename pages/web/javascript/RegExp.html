@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="javascript:void(0)" onclick='alert("非常抱歉，目前没有可以演示的特效！")' class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/javascript.png")'>
+                JavaScript 笔记
+            </div>
+            <ul>
+                <li><a href='RegExp.html' class='select'>RegExp 正则表达式</a></li>
+                <li><a href='Symbol.html'>Symbol</a></li>
+                <li><a href='Generator.html'>Generator 函数</a></li>
+                <li><a href='Promise.html'>Promise</a></li>
+                <li><a href='BinaryArray.html'>二进制数组</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class="block">
+                        这里不是正则表达式深入学习笔记，仅仅是快速查询笔记，如果以后深入学习，会单独整理。
+                    </p>
+                </section>
+                <section class="section">
+                    <p class="block title-flag">
+                        第一步：正则对象方法。
+                    </p>
+                    <p class="block">
+                        1.【exec：检索字符串中指定的值。返回找到的值，并确定其位置。】如果匹配到，返回格式如下： { 0:'匹配的字符串', 1;'匹配的第一个元祖，如果有的话', 2:'以此类推，第二个元祖', ...... index:'匹配文本的第一个字符的位置', input:'输入的匹配的原来字符串', length:'0,1,2,...的个数' } exec如果匹配不到，返回null。
+                        <span class="warn">
+                重要事项：如果在一个字符串中完成了一次模式匹配之后要开始检索新的字符串，就必须手动地把 lastIndex 属性重置为 0。
+            </span>
+                    </p>
+                    <p class="block">
+                        2.【test：检索字符串中指定的值。返回 true 或 false。】如果字符串 string 中含有与 RegExpObject 匹配的文本，则返回 true，否则返回 false。
+                    </p>
+                </section>
+                <section class="section">
+                    <p class="block title-flag">
+                        第二步：字符串对象方法。
+                    </p>
+                    <p class="block">
+                        1.【search：检索与正则表达式相匹配的值。】返回stringObject 中第一个与 regexp 相匹配的子串的起始位置，如果没有找到返回-1；search() 方法不执行全局匹配，它将忽略标志 g。它同时忽略 regexp 的 lastIndex 属性，并且总是从字符串的开始进行检索，这意味着它总是返回 stringObject 的第一个匹配的位置。
+                    </p>
+                    <p class="block">
+                        2.【match：找到一个或多个正则表达式的匹配。】返回匹配的字符串数组。
+                    </p>
+                    <p class="block">
+                        3.【replace：替换与正则表达式匹配的子串。】
+                        <span class="warn">
+                语法：stringObject.replace(regexp/substr,replacement|function)，如果 regexp 具有全局标志 g，那么 replace() 方法将替换所有匹配的子串。否则，它只替换第一个匹配子串。其中function传递进去的是匹配的字符串，return返回的是最后替换成的，类似管道的写法。
+            </span>
+                    </p>
+                    <p class="block">
+                        4.【split：把字符串分割为字符串数组。】返回切割后的数组。
+                    </p>
+                </section>
+                <section class="section">
+                    <p class="block title-flag">
+                        第三步：懒惰限定符。
+                    </p>
+                    <p class="block">
+                        1."*?"【重复任意次，但尽可能少重复】
+                        <span class="list">
+                代码：'1-name-2-name-2'.match(/1.*?2/)=》结果：1-name-2
+            </span>
+                        <span class="list">
+                代码：'1-name-2-name-2'.match(/1.*2/)=》结果：1-name-2-name-2
+            </span>
+                    </p>
+                    <p class="block">
+                        2.+?【重复1次或更多次，但尽可能少重复】
+                    </p>
+                    <p class="block">
+                        3.??【重复0次或1次，但尽可能少重复】
+                    </p>
+                    <p class="block">
+                        4.{n,m}?【重复n到m次，但尽可能少重复】
+                    </p>
+                    <p class="block">
+                        5.{n,}?【重复n次以上，但尽可能少重复】
+                    </p>
+                </section>
+                <section class="section">
+                    <p class="block title-flag">
+                        第四步：捕获分组。
+                    </p>
+                    <p class="block">
+                        1.(exp)【匹配exp,并捕获文本到自动命名的组里】
+                    </p>
+                    <p class="block">
+                        2.(?&lt;name&gt;exp)【匹配exp,并捕获文本到名称为name的组里[亲自测试JavaScript中不支持]】
+                    </p>
+                    <p class="block">
+                        3.(?:exp)【匹配exp,不捕获匹配的文本，也不给此分组分配组号】
+                    </p>
+                </section>
+                <section class="section">
+                    <p class="block title-flag">
+                        第五步：零宽断言。
+                    </p>
+                    <p class="block">
+                        1."(?=exp)" 【匹配exp前面的位置】
+                        <span class="list">
+                代码："1-name-2-valueing-2-text-heeeing".match(/([a-z]+(?:ing))/g);=》结果： ["valueing", "heeeing"]
+            </span>
+                        <span class="list">
+                代码："1-name-2-valueing-2-text-heeeing".match(/([a-z]+(?=ing))/g);=》结果：["value", "heee"]
+            </span>
+                    </p>
+                    <p class="block">
+                        2.(?
+                        <=exp)【 匹配exp后面的位置[亲自测试JavaScript中不支持]】 </p>
+                            <p class="block">
+                                3."(?!exp)" 【匹配后面跟的不是exp的位置】
+                                <span class="list">
+                代码："123abc223--".match(/(\d{3}(?!-))/g);=》结果：["123"]
+            </span>
+                            </p>
+                            <p class="block">
+                                4."(?&lt;!exp)"【匹配前面不是exp的位置[亲自测试JavaScript中不支持]】
+                                <span class="list">
+                如 "abc123 " 正则 "(?&lt;![0-9])123" 匹配"123"前面是非数字的结果也可写成"(?!&lt;\d)123"
+            </span>
+                            </p>
+                </section>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

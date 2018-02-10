@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="javascript:void(0)" onclick='alert("非常抱歉，目前没有可以演示的特效！")' class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/sass.png")'>
+                SASS使用
+            </div>
+            <ul>
+                <li><a href='basic.html' class='select'>基础语法</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class='block'>
+                        sass分为二类，其中一种是SCSS（Sassy CSS），是一个 CSS3 语法的扩充版本，本笔记就是选择这种。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第一步：Ruby版本的安装和使用
+                    </p>
+                    <pre class='code'>//先安装好ruby以后，直接在命令行运行下面的命令就可以完成安装工作了。
+    gem install sass
+    //下面的第一条命令表示编译sass文件为css文件（其中param可选参数有：nested：嵌套缩进的css代码，它是默认值；expanded：没有缩进的、扩展的css代码；compact：简洁格式的css代码；compressed：压缩后的css代码），第二条是一个例子，第三条表示监听文件变化，改变立即编译。
+    sass [--style param] sourceFile.scss targetFile.css
+    sass --style compressed test.scss test.css
+    sass --style compressed --watch test.scss:test.css</pre>
+                </section>
+                <section class='section'>
+                    <p class="block title-flag">
+                        第二步：基础使用
+                    </p>
+                    <p class="block little-flag">
+                        变量
+                    </p>
+                    <p class="block">sass可以使用变量，就像下面这样，以$开头：</p>
+                    <pre class='code'>$btn_bgcolor:#222222;
+    input.btn{
+        background-color:$btn_bgcolor;
+    }</pre>
+                    <p class="block">如果变量是用在字符串中，你需要用#{}包裹一下：</p>
+                    <pre class='code'>$direction:top;
+    input.btn{
+        margin-#{$direction}:10px;
+    }</pre>
+                    <p class="block little-flag">
+                        计算
+                    </p>
+                    <p class="block">sass支持的计算使用起来也很简单，就是编程语言类似的样子（不是一定必须的，不过运算符之间留空格是好的习惯）：</p>
+                    <pre class='code'>div{
+        padding:(14px / 2);
+        right: $var * 10%;
+    }</pre>
+                    <p class="block little-flag">
+                        嵌套
+                    </p>
+                    <p class="block">个人使用总结，嵌套就二种，分离的和合并的（自己起的名字），合并的比分离的多了一个&，下面分别举例：</p>
+                    <pre class='code'>//[分离的]源代码
+    div{
+        .btn{
+            //Todo
+        }
+    }
+    //[分离的]编译后
+    div .btn{
+        //Todo
+    }
+
+    //[合并的]源代码
+    div{
+        &.btn{
+            //Todo
+        }
+    }
+    //[合并的]编译后
+    div.btn{
+        //Todo
+    }</pre>
+                    <p class="block little-flag">
+                        注释
+                    </p>
+                    <p class='block'>
+                        <span class="list">/*会保留到编译后*/</span>
+                        <span class="list">//只出现在源文件</span>
+                        <span class="list">/*!即使是压缩了也会保留*/</span>
+                    </p>
+                    <p class="block little-flag">
+                        继承
+                    </p>
+                    <p class="block">现在有了一个公共的按钮样式：</p>
+                    <pre class='code'>.btn{//按钮的公共样式}</pre>
+                    <p class="block">你现在要写一个提交按钮，为了在基础按钮基础上开发，你可以写这样的代码：</p>
+                    <pre class='code'>.btn-submit{
+        @extend .btn;
+        //你对提交按钮的特殊样式
+    }</pre>
+                    <p class="block little-flag">
+                        插入文件
+                    </p>
+                    <p class="block">编译一般编译主文件，别的文件由主文件引入，比如现在有主文件root.scss，还有一个重置文件_reset.scss（开头的下划线表示这是一个局部文件，并不需要生成对应的独立css文件），你只需要在主文件中添加一行：</p>
+                    <pre class='code'>@import "./src/reset";</pre>
+                </section>
+                <section class='section'>
+                    <p class="block title-flag">
+                        第三步：高级语法
+                    </p>
+                    <p class="block little-flag">
+                        Mixin
+                    </p>
+                    <p class="block">说的简单点就是代码模板预定义：</p>
+                    <pre class='code'>@mixin bgQuick($url,$bgcolor:red){
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto auto;
+        background-image:url($url);
+        background-color:$bgcolor;
+    }</pre>
+                    <p class="block">使用的时候，传递参数（有缺省值的可以传入也可以不传入）：</p>
+                    <pre class='code'>div{@include bgQuick('image/smile.png');}</pre>
+                    <p class="block little-flag">
+                        函数
+                    </p>
+                    <p class="block">函数也很好用，看个例子：</p>
+                    <pre class='code'>@function double($size) {
+        @return $size * 2;
+    }
+    #sidebar {
+        width: double(5px);
+    }</pre>
+                    <p class="block little-flag">
+                        if
+                    </p>
+                    <p class="block">sass的@if用not,or,and分别表示非，或，与。</p>
+                    <pre class='code'>$flag:1;
+    div{
+        @if $flag == 1 {
+            //Todo
+        } @else if($flag > 1 and $flag < 10){
+            //Todo
+        } @else {
+            //Todo
+        }
+    }</pre>
+                    <p class="block little-flag">
+                        for
+                    </p>
+                    <pre class='code'>@for $i from 0 to $home_nav_num {
+        .nav li:nth-child(#{$i + 1}) {
+            background-position-y: (0 - $i)*70px - 20px;
+        }
+    }</pre>
+                    <p class="block little-flag">
+                        while
+                    </p>
+                    <pre class='code'>$i:0;
+    @while $i <  $home_nav_num {
+        .nav li:nth-child(#{$i + 1}) {
+            background-position-y: (0 - $i)*70px - 20px;
+        }
+    }</pre>
+                    <p class="block little-flag">
+                        each
+                    </p>
+                    <pre class='code'>@each $i in 1, 2, 3 {
+        .nav li:nth-child(#{$i + 1}) {
+            background-position-y: (0 - $i)*70px - 20px;
+        }
+    }</pre>
+                </section>
+                <section class='section'>
+                    <p class="block title-flag">
+                        第四步：Compass 样式库
+                    </p>
+                    <p class="block">
+                        最后提一下样式库Compass，sass本身是一个语言，借助这个库，会大大提高开发速度，立柱于css深入理解解决问题，借助工具加速开发。
+                    </p>
+                </section>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

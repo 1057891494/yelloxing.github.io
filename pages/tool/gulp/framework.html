@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="javascript:void(0)" onclick='alert("非常抱歉，目前没有可以演示的特效！")' class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/gulp.png")'>
+                gulp 手册
+            </div>
+            <ul>
+                <li><a href='framework.html' class='select'>整体配置</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class='block'>
+                        我们这里演示一下用gulp启动一个本地http服务，然后监听文件变换会自动刷新页面。
+                        <span class="warn">
+                在开始使用前请先确定你已经安装好了node.js
+            </span>
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第一步：初始化一般环境
+                    </p>
+                    <p class="block">
+                        首先，假设package.json已经初始化好了，我们现在通过命令行安装需要的东西：
+                    </p>
+                    <pre class='code'>npm install --save-dev gulp</pre>
+                    <p class="block">
+                        然后再初始化gulpfile.js的内容如下：
+                    </p>
+                    <pre class='code'>var gulp = require('gulp');//请求需要的插件
+
+    gulp.task('自定义的任务名称一', function() {
+        //这里写上具体的任务
+    });
+    gulp.task('自定义的任务名称二', function() {
+        //这里写上具体的任务
+    });
+
+    //default名称的任务和grunt一样，比较特殊，可以启动的时候缺省任务名称
+    gulp.task('default', ['自定义的任务名称一', '自定义的任务名称二']);</pre>
+                    <p class="block">
+                        一般用时都可以从这里开始，下一步就会根据需求来决定配置不同的插件。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第二步：针对需求修改设置和安装
+                    </p>
+                    <p class="block">
+                        先安装我们需要的插件：
+                    </p>
+                    <pre class='code'>npm install --save-dev gulp-connect gulp-livereload</pre>
+                    <p class="block">
+                        接着，根据插件手册配置插件（gulpfile.js）：
+                    </p>
+                    <pre class='code'>var gulp = require('gulp'),
+    connect = require('gulp-connect'),
+    livereload = require('gulp-livereload');
+
+    gulp.task('webserver', function() {
+        connect.server({
+            livereload: true,
+            port: 20000
+        });
+    });
+    gulp.task('watch', function() {
+        livereload.listen();
+        //下面表示监听page下全部文件和index.html文件如果改变就会刷新页面
+        gulp.watch(['page/**/*.*', 'index.html'], function(event) {
+            livereload.changed(event.path);
+        });
+    });
+    gulp.task('default', ['webserver', 'watch']);</pre>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第三步：开始编译
+                    </p>
+                    <p class="block">
+                        现在，在package.json的执行脚步中加入一行："runGulp": "node_modules/.bin/gulp",
+                    </p>
+                    <p class="block">
+                        现在在命令行执行：npm run runGulp
+                    </p>
+                    <p class="block">
+                        这样你在浏览器访问localhost:20000，如果监听的文件改变，就会自动刷新页面了。
+                        <span class="warn">
+                自动刷新比较特殊，你需要在浏览器安装对应的插件，或者在页面head标签中加入下面代码也可以：
+            </span>
+                    </p>
+                    <pre class="code">&lt;script&gt;
+        document.write('&lt;script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"&gt;&lt;/' + 'script&gt;')
+    &lt;/script&gt;</pre>
+                </section>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

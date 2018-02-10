@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="javascript:void(0)" onclick='alert("非常抱歉，目前没有可以演示的特效！")' class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/css.png")'>
+                CSS 笔记
+            </div>
+            <ul>
+                <li><a href='margin.html'>margin 外边距</a></li>
+                <li><a href='verticalAlign.html'>vertical-align 垂直对齐</a></li>
+                <li><a href='TranformTransitionsAnimation.html' class='select'>动画，转换和过渡</a></li>
+                <li><a href='zIndex.html'>层叠上下文和层叠水平</a></li>
+                <li><a href='overflow.html'>overflow 溢出</a></li>
+                <li><a href='ContainerBlock.html'>包含块</a></li>
+                <li><a href='IFC.html'>IFC内联格式化上下文</a></li>
+                <li><a href='BFC.html'>BFC块级排版上下文</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class="block">
+                        下面涉及的具体细节在稍后章节会更仔细的单独一个个说明和学习，这里是在整体和api上关于大致的快速使用。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        Tranform 转换
+                    </p>
+                    <p class="block">
+                        一些常用的属性：
+                        <span class="list">transform: none | transform-functions;【通过设置该属性的值，我们可以对元素使用转换，具体的属性值在下面会专门介绍。】</span>
+                        <span class="list">transform-origin: x-axis y-axis z-axis;【设置元素转换的中心点，最直观的例子旋转图片，改变图片选择依赖的旋转中心。】</span>
+                        <span class="list">transform-style: flat | preserve-3d;【定义里面转换的元素是在2D平面呈现还是在3D空间呈现，讲的直白些，就是这个元素里面的空间维度是二维还是三维。】</span>
+                        <span class="list">perspective: number | none;【属性是定义3D元素距试图的距离，设置以后，其子元素会获得透视效果，需要注意的是该值只对3D转换有效，这也是很容易理解的。此外，还可以通过Transform的属性值的方式设置，二者是有一定区别的，你可以认为，前者是把整个看成一个舞台，后者是每一个都是一个舞台。】</span>
+                        <span class="list">perspective-origin: x-axis y-axis;【必须和perspective一起使用，只对3D转换元素有效，简单的理解就是你的眼睛看的焦点。】</span>
+                        <span class="list">backface-visibility:hidden | visible;【这个很简单，设置当元素背对着屏幕时候，是否是可见的。】</span>
+                    </p>
+                    <p class="block">
+                        上面介绍的属性transform: none | transform-functions;其中有很多方法可以使用，具体的请查看文件API，这里没有列举出来的意义，其中perspective(n)方法是为3D转换元素定义透视视图，需要稍微留意一下，其中一些方法比较特殊，以后会单独去介绍。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        Transitions 过渡
+                    </p>
+                    <p class="block">
+                        transition: property duration timing-function delay;
+                        <span class="warn">
+                请始终设置 transition-duration 属性，否则时长为 0，就不会产生过渡效果。上面是统一设置，也可以分别设置各个属性。
+            </span>
+                    </p>
+                    <p class="block">
+                        一些常用的属性：
+                        <span class="list">1.transition-property：规定设置过渡效果的 CSS 属性的名称；</span>
+                        <span class="list">2.transition-duration：规定完成过渡效果需要多少秒或毫秒；</span>
+                        <span class="list">3.transition-timing-function：规定速度效果的速度曲线；</span>
+                        <span class="list">4.transition-delay：定义过渡效果何时开始。</span>
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        Animation 动画
+                    </p>
+                    <p class="block">
+                        animation: name duration timing-function delay iteration-count direction;
+                        <span class="warn">
+                请始终规定 animation-duration 属性，否则时长为 0，就不会播放动画了。上面是统一设置，也可以分别设置各个属性。
+            </span>
+                    </p>
+                    <p class="block">
+                        一些常用的属性：
+                        <span class="list">1.animation-name：规定需要绑定到选择器的 keyframe 名称；</span>
+                        <span class="list">2.animation-duration：规定完成动画所花费的时间，以秒或毫秒计；</span>
+                        <span class="list">3.animation-timing-function： 规定动画的速度曲线；</span>
+                        <span class="list">4.animation-delay：规定在动画开始之前的延迟；</span>
+                        <span class="list">5.animation-iteration-count：规定动画应该播放的次数；</span>
+                        <span class="list">6.animation-direction：规定是否应该轮流反向播放动画；</span>
+                        <span class="list">7.animation-fill-mode (可以设置为none | forwards | backwards | both)：规定动画在播放之前或之后，其动画效果是否可见；</span>
+                        <span class="list">8.animation-play-state（可以设置为paused|running）：规定动画正在运行还是暂停，可以在 JavaScript 中使用该属性，这样就能在播放过程中暂停动画；</span>
+                        <span class="list">9.@keyframes animName{from {} to {}}：定义动画名称为animName的动画关键帧。</span>
+                    </p>
+                </section>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="javascript:void(0)" onclick='alert("非常抱歉，目前没有可以演示的特效！")' class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/html5.png")'>
+                H5 笔记
+            </div>
+            <ul>
+                <li><a href='IndexDB.html'>IndexDB 索引数据库</a></li>
+                <li><a href='WebSql.html'>Web Sql 关系数据库</a></li>
+                <li><a href='Storage.html'>Storage 存储</a></li>
+                <li><a href='WebWorkers.html'>Web Workers</a></li>
+                <li><a href='dropUpload.html'>拖拽上传文件</a></li>
+                <li><a href='SVG.html'  class='select'>SVG 画图</a></li>
+                <li><a href='BezierSvg.html'>SVG 贝塞尔曲线</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class="block">
+                        首先说明一下：SVG只是一个用类似Canvas的感觉，通过有点像CSS的方法去实现矢量图绘制的XML文件。
+                    </p>
+                    <p class='block title-flag'>
+                        第一步：基本概念
+                    </p>
+                    <p class="block little-flag">
+                        画板 viewport
+                    </p>
+                    <p class="block">
+                        你把SVG看成一个普通的标签，viewport就是代表这个标签的实际大小。
+                    </p>
+                    <p class="block little-flag">
+                        画布 viewbox=(x,y,width,height)
+                    </p>
+                    <p class="block">
+                        你可以认为viewport是画板，viewbox是画布，你是在画布上画画的，可是画布需要固定在画板上，通过svg上面的viewBox属性可以设置画布位置和大小。
+                    </p>
+                    <p class="block">
+                        默认情况下画布大小和画板是一样的，画布里面的具体画的东西的尺寸和这里的设置有关，比如画布大小是200px*200px，画布大小是100px*100px，那么你在里面画一条长度为10（不可以带单位）的线条，实际长度就是20px，以此类推。
+                    </p>
+                    <p class="block">
+                        还有一点需要注意的是，viewbox设置的位置，也就是前二个参数，它是确定画纸移动一下，保证画布的（0,0)位置和自己的（x,y）位置对齐，注意这里的单位采用的是svg内部尺寸计算方法。
+                    </p>
+                    <p class="block little-flag">
+                        preserveAspectRatio=&lt;align&gt; [&lt;meetOrSlice&gt;]
+                    </p>
+                    <p class="block">
+                        定义画布和画布的相互对齐方式，好吧，我想起了垂直对齐，因此你应该明白这个是干什么的了，不明白的可以去看看本笔记css部分中的vertical-align。
+                    </p>
+                    <p class="block">
+                        align(默认值为 xMidYMid，即为中点重合): 定义viewport和viewbox的对齐方式，分为x和y轴两个方向。X轴方向有三种方式：左边重合（xMin），x轴中点重合（xMid），右边重合（xMax）。同理，Y轴也有顶边重合（YMin），y轴中点重合（YMid），底边边重合（YMax）
+                    </p>
+                    <p class="block">
+                        meetOrSlice:meet||slice||none，即：meet会让画布尽力显示在画板中，slice是让画布尽力铺满画板。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第二步：重要概念
+                    </p>
+                    <p class="block">
+                        SVG的具体使用其实和canvas大同小异，只不过一个是位图，一个是矢图，下面再介绍一下感觉有必要提一下的东西（本文不是详细的教程，想学习具体方法的可以去查文档）：
+                        <span class="list">1.画板没有设置大小的时候，svg图片会自适应大小；</span>
+                        <span class="list">2.g标签表示一个分组，有点类似PS中的图层，分组的一个意义在于你可以在g标签上面定义动画效果很方便。</span>
+                    </p>
+                    <p class="block">
+                        <span class="warn">
+                更多关于svg的东西已经没有了，余下的就是一些API和使用技巧，这需要经验积累，祝你好运！
+            </span>
+                    </p>
+                </section>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="javascript:void(0)" onclick='alert("非常抱歉，目前没有可以演示的特效！")' class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/algorithm.png")'>
+                算法设计与分析
+            </div>
+            <ul>
+                <li>
+                    <a href='RecursionTactics.html'>递归与分治策略</a>
+                </li>
+                <li>
+                    <a href='DynamicPlan.html'>动态规划</a>
+                </li>
+                <li>
+                    <a href='GreedyAlgorithm.html'>贪心算法</a>
+                </li>
+                <li>
+                    <a href='Backtrack.html'>回溯法</a>
+                </li>
+                <li>
+                    <a href='BranchLimit.html' class='select'>分支限界法</a>
+                </li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class="title-flag block">
+                        基本思想
+                    </p>
+                    <p class="block">
+                        对比回溯法就很容易思考，用广度优先的办法，不断扩大当前节点的孩子为当前节点，主要是求解一个最优解，算法相比回溯法要简单些。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class="title-flag block">
+                        算法使用例子
+                    </p>
+                    <p class="block little-flag">
+                        题目
+                    </p>
+                    <p class="block">
+                        有一批共n个集装箱要装上两艘载重方别为c1和c2的轮船上，其中集装箱i的重量为wi，且全部集装箱重量不大于两艘载重之和，问是否有一个装载方案完成装载。
+                    </p>
+                    <p class="block little-flag">
+                        思路
+                    </p>
+                    <p class="block">
+                        借助队列，一层层来检查，找到最优解。
+                    </p>
+                    <p class="block little-flag">
+                        代码实现
+                    </p>
+                    <p class="block demo">
+                        <span onclick='showCode("javaCode")'>Java代码</span>
+                        <span onclick='showCode("pythonCode")'>Python代码</span>
+                        <span onclick='showCode("javascriptCode")'>JavaScript代码</span>
+                        <span onclick='showCode("cCode")'>C语言代码</span>
+                        <pre id='javaCode' class='code'>import java.util.Arrays;
+    import java.util.ArrayList;
+
+    public class LoadQuestion{
+        static class Item{
+            int deep;
+            int weight;
+            Item(int deep,int weight){
+                this.deep=deep;
+                this.weight=weight;
+            }
+        }
+        public static void main(String [] args){
+            int weight1 = 30; //第一艘船载重
+            int weight2 = 10; //第二艘船载重
+            int w[] = {1, 9, 9, 4, 4, 9}; //集装箱
+
+            int nowBest1 = 0; //当前最优装载
+            int n = w.length; //集装箱个数
+
+            ArrayList&lt;Item&gt; arrayFIFO=new ArrayList&lt;Item&gt;();
+
+            arrayFIFO.add(new Item(1,1)); //deep,此时已经载重
+            arrayFIFO.add(new Item(1, 0));
+
+            nowBest1 = 1;
+
+            while (arrayFIFO.size() &gt; 0) {
+                Item nowNode= arrayFIFO.remove(0);
+                int currentDeep = nowNode.deep;
+                int currentWeight = nowNode.weight;
+                if (currentDeep &gt;= n) {
+                    if (currentWeight &gt; nowBest1) {
+                        nowBest1 = currentWeight;
+                    }
+                } else {
+                    arrayFIFO.add(new Item(currentDeep + 1, currentWeight));
+                    if (currentWeight + w[currentDeep] &lt; weight1) {
+                        arrayFIFO.add(new Item(currentDeep + 1, currentWeight + w[currentDeep]));
+                    }
+                }
+            }
+            int allW = 0;
+            for (int val = 0; val &lt; w.length; val++) {
+                allW += w[val];
+            }
+            System.out.println("第一艘船载重：" + nowBest1);
+
+            if (allW &lt;= nowBest1 + weight2) {
+                System.out.println("成功");
+            } else {
+                System.out.println("失败");
+            }
+        }
+    }</pre>
+                        <pre id='pythonCode' class='code default'>#!/usr/bin/python
+    # coding=utf
+
+    weight1 = 30;             #第一艘船载重
+    weight2 = 10;             #第二艘船载重
+    w = [1, 9, 9, 4, 4, 9]; #集装箱
+
+    nowBest1 = 0; #当前最优装载
+    n = len(w); #集装箱个数
+
+    arrayFIFO=[];
+
+    arrayFIFO.append([1,1]);#deep,此时已经载重
+    arrayFIFO.append([1,0]);
+
+    nowBest1=1;
+
+    while(len(arrayFIFO)&gt;0):
+        nowNode=arrayFIFO[0];
+        arrayFIFO.remove(nowNode);
+        currentDeep=nowNode[0];
+        currentWeight=nowNode[1];
+        if(currentDeep&gt;=n):
+            if(currentWeight&gt;nowBest1):
+                nowBest1=currentWeight;
+        else:
+            arrayFIFO.append([currentDeep+1,currentWeight]);
+            if(currentWeight+w[currentDeep]&lt;weight1):
+                arrayFIFO.append([currentDeep+1,currentWeight+w[currentDeep]]);
+
+    allW=0;
+    for val in w:
+        allW+=val;
+
+    print "第一艘船载重：",nowBest1;
+
+    if(allW&lt;=nowBest1+weight2):
+        print "成功";
+    else:
+        print "失败";</pre>
+                        <pre id='javascriptCode' class=' code default'>var weight1 = 30; //第一艘船载重
+    var weight2 = 10; //第二艘船载重
+    var w = [1, 9, 9, 4, 4, 9]; //集装箱
+
+    var nowBest1 = 0; //当前最优装载
+    var n = w.length; //集装箱个数
+
+    var arrayFIFO = [];
+
+    arrayFIFO.push([1, 1]); //deep,此时已经载重
+    arrayFIFO.push([1, 0]);
+
+    var nowBest1 = 1;
+
+    while (arrayFIFO.length &gt; 0) {
+        var nowNode= arrayFIFO.shift();
+        currentDeep = nowNode[0];
+        currentWeight = nowNode[1];
+        if (currentDeep &gt;= n) {
+            if (currentWeight &gt; nowBest1) {
+                nowBest1 = currentWeight;
+            }
+        } else {
+            arrayFIFO.push([currentDeep + 1, currentWeight]);
+            if (currentWeight + w[currentDeep] &lt; weight1) {
+                arrayFIFO.push([currentDeep + 1, currentWeight + w[currentDeep]]);
+            }
+        }
+    }
+    allW = 0;
+    for (val = 0; val &lt; w.length; val++) {
+        allW += w[val];
+    }
+    console.log("第一艘船载重：" + nowBest1);
+
+    if (allW &lt;= nowBest1 + weight2) {
+        console.log("成功");
+    } else {
+        console.log("失败");
+    }</pre>
+                        <pre id='cCode' class='code default'>#include &lt;stdio.h&gt;
+    #include &lt;stdlib.h&gt;
+    #include &lt;sys/malloc.h&gt;
+
+    //队列元素结构
+    struct Item
+    {
+        int deep;          //层次
+        int weight;        //当前重量
+        struct Item *next; //下一个节点
+    };
+
+    struct Item *firstP;
+    struct Item *lastP;
+
+    int itemLength = 0;
+
+    void push(int deep, int weight)
+    {
+        struct Item *item = (struct Item *)malloc(sizeof(struct Item));
+        item-&gt;deep = deep;
+        item-&gt;weight = weight;
+        item-&gt;next = NULL;
+        if (itemLength == 0)
+        {
+            firstP = item;
+            lastP = item;
+        }
+        else
+        {
+            lastP-&gt;next = item;
+            lastP = item;
+        }
+        itemLength++;
+    }
+
+    struct Item *shift()
+    {
+        struct Item *item = firstP;
+        firstP = firstP-&gt;next;
+        itemLength--;
+        return item;
+    }
+
+    void printItemList()
+    {
+        struct Item *flag = firstP;
+        while (flag != NULL)
+        {
+            printf("{'deep':%d,'weight':%d}\n", flag-&gt;deep, flag-&gt;weight);
+            flag = flag-&gt;next;
+        }
+    }
+
+    int main()
+    {
+        int weight1 = 30;             //第一艘船载重
+        int weight2 = 10;             //第二艘船载重
+        int w[] = {1, 9, 9, 4, 4, 9}; //集装箱
+
+        int nowBest1 = 0;                //当前最优装载
+        int n = sizeof(w) / sizeof(int); //集装箱个数
+
+        push(1, 1); //deep,此时已经载重
+        push(1, 0);
+
+        nowBest1 = 1;
+
+        int currentDeep;
+        int currentWeight;
+
+        while (itemLength &gt; 0)
+        {
+            struct Item *nowNode = shift();
+            currentDeep = nowNode-&gt;deep;
+            currentWeight = nowNode-&gt;weight;
+            if (currentDeep &gt;= n)
+            {
+                if (currentWeight &gt; nowBest1)
+                {
+                    nowBest1 = currentWeight;
+                }
+            }
+            else
+            {
+                push(currentDeep + 1, currentWeight);
+                if (currentWeight + w[currentDeep] &lt; weight1)
+                {
+                    push(currentDeep + 1, currentWeight + w[currentDeep]);
+                }
+            }
+        }
+        int allW = 0;
+        int val;
+        for (val = 0; val &lt; n; val++)
+        {
+            allW += w[val];
+        }
+        printf("第一艘船载重：%d\n", nowBest1);
+
+        if (allW &lt;= nowBest1 + weight2)
+        {
+            printf("成功\n");
+        }
+        else
+        {
+            printf("失败\n");
+        }
+    }</pre>
+                    </p>
+                </section>
+            </article>
+            <style>
+                .default {
+                    display: none;
+                }
+
+                .block.demo span {
+                    color: #f6f8f8;
+                    background-color: #03A9F4;
+                    padding: 5px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            </style>
+            <script>
+                function showCode(id) {
+                    document.getElementById('javaCode').style.display = 'none';
+                    document.getElementById('pythonCode').style.display = 'none';
+                    document.getElementById('javascriptCode').style.display = 'none';
+                    document.getElementById('cCode').style.display = 'none';
+                    document.getElementById(id).style.display = 'block';
+                }
+            </script>
+    </section>
+
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <title>云笔记-遇见更好的你</title>
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="../../../favicon.ico" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
     <meta name="format-detection" content="telephone=no" />
@@ -16,8 +16,8 @@
     <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
-    <link rel="stylesheet" href="./style.css" class="style">
-    <script src="./script.js"></script>
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
     <script>
         if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
             document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
@@ -31,18 +31,18 @@
             <nav>
                 云笔记-遇见更好的你
                 <ul>
-                    <li><a href="pages/web.html">前端</a></li>
-                    <li><a href="pages/devLanguage.html">开发语言</a></li>
-                    <li><a href="pages/computer.html">计算机</a></li>
-                    <li><a href="pages/tool.html">工具</a></li>
-                    <li><a href="pages/other.html">其它</a></li>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
                 </ul>
-                <div class='yelloxing' onclick="window.location.href='/stepbystep.html'">
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
                     <div>心叶
                         <div></div>
                     </div>
                 </div>
-                <a href="./opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
                 <a href="javascript:void(0)" onclick='alert("非常抱歉，目前没有可以演示的特效！")' class='online'>在线演示</a>
                 <div class='contact'>
                     联系我们
@@ -62,10 +62,51 @@
         </div>
     </header>
     <section id='book-content'>
-        <div class='home'>
-            <script>
-                window.location.href = 'pages/web.html';
-            </script>
+        <nav>
+            <div style='background-image:url("../../../image/nav/grunt.png")'>
+                Grunt 手册
+            </div>
+            <ul>
+                <li><a href='framework.html'>常用命令</a></li>
+                <li><a href='csslint.html'>CSS语法检查</a></li>
+                <li><a href='postcss.html' class='select'>CSS后处理</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class='block'>
+                        使用grunt-postcss插件对CSS进行后处理
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第一步：安装
+                    </p>
+                    <pre class="code">cnpm insall --save-dev grunt-postcss autoprefixer</pre>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第二步：Gruntfile.js插件配置部分
+                    </p>
+                    <pre class="code">postcss: {
+        options: {
+            processors: [
+                require('autoprefixer')()
+            ]
+        },
+        target: {
+            src: 'style.css',
+            dest: 'style.postcss.css'
+        }
+    }</pre>
+                    <p class="block">
+                        <span class="warn">
+                不需要使用grunt.loadNpmTasks()方法加载autoprefixer
+            </span>
+                    </p>
+                </section>
+            </article>
         </div>
     </section>
     <footer>
@@ -83,7 +124,7 @@
 </html>
 
 <!--
-    =================================================
-    走一步，再走一步。
-    =================================================
+=================================================
+走一步，再走一步。
+=================================================
 -->

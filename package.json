@@ -28,7 +28,7 @@
     "gulp": "^3.9.1",
     "gulp-connect": "^5.2.0",
     "gulp-livereload": "^3.8.1",
-    "luna-library": "^1.0.2",
+    "luna-library": "^1.0.3",
     "node-sass": "^4.5.3",
     "optimize-css-assets-webpack-plugin": "^3.0.0",
     "postcss-loader": "^2.0.6",

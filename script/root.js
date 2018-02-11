@@ -3,6 +3,7 @@
 // 引入Luna.js
 require('../node_modules/luna-library/luna.js');
 
+// 对页面添加复制功能
 $(function() {
     $('pre.code').append('<div class="clipboard"></div>');
     $('div.clipboard').bind('click', function() {

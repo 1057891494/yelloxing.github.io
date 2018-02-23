@@ -25,10 +25,10 @@
     </script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-7416565268644863",
-        enable_page_level_ads: true
-      });
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7416565268644863",
+            enable_page_level_ads: true
+        });
     </script>
 </head>
 
@@ -75,8 +75,8 @@
             </div>
             <ul>
                 <li><a href='directive.html'>自定义指令</a></li>
-                <li><a href='ngClass.html' class='select'>ngClass</a></li>
-                <li><a href='detail.html'>杂碎知识</a></li>
+                <li><a href='ngClass.html'>ngClass</a></li>
+                <li><a href='detail.html' class='select'>杂碎知识</a></li>
             </ul>
         </nav>
         <div id='content'>
@@ -84,45 +84,23 @@
                 <section class='section'>
                     <p class="block">
                         <span class='warn'>
-                温馨提示：ng-class对于动态修改class，从而实现样式的改变非常好用。
-            </span>
+                            温馨提示：一些杂乱的笔记内容。
+                        </span>
                     </p>
                 </section>
                 <section class='section'>
                     <p class='block title-flag'>
-                        第一步：通过对象数组。
+                        第一步：常用方法或服务。
                     </p>
                     <p class="block">
-                        如下面的例子，根据className的true还是false来决定div的class是哪个。
+                        解析一段字符串（可能是属性也可能是方法）的方法有二个，直接看下面例子：
                     </p>
-                    <pre class="code">&lt;div ng-controller="myController"&gt;
-        &lt;div ng-class="{true:'change1',false:'change2'}[className]"&gt;&lt;/div&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-        var app=angular.module("myModule",[])
-        app.controller('myController',function($scope){
-            $scope.className=true;
-        });
-    &lt;/script&gt;</pre>
-                </section>
-                <section class='section'>
-                    <p class='block title-flag'>
-                        第二步：通过key/value。
-                    </p>
-                    <p class="block">
-                        如下面的例子，select1、select2和select3是true还是false各种控制自己对应的class是否添加到div中去。
-                    </p>
-                    <pre class="code">&lt;div ng-controller="myController"&gt;
-        &lt;div ng-class="{'change1':select1,'change2':select2,'change3':select3}"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-        var app=angular.module("myModule",[])
-        app.controller('myController',function($scope){
-            $scope.select1=true;
-            $scope.select2=false;
-            $scope.select3=true;
-        });
-    &lt;/script&gt;</pre>
+                    <pre class="code">$scope.getInfo=function(){console.log('这是执行了函数的表现');};
+    var funName="getInfo()";
+    //执行方法一：
+    $scope.$eval(funName);
+    //执行方法二：
+    $parse(funName)($scope);</pre>
                 </section>
             </article>
         </div>

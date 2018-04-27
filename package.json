@@ -2,13 +2,13 @@
   "name": "yelloxing.github.io",
   "version": "4.0.0",
   "description": "项目搭建的目的是测试一些东西和快速查询笔记，如果可以为他人带来帮助，表示非常乐意，不过初衷只是私人使用，因此不会在设计上考虑太多之外的东西，不要期待太多。",
-  "main": "script.js",
+  "main": "listern.js",
   "scripts": {
     "webpack_cli": "node_modules/.bin/webpack",
     "prod": "npm run webpack_cli",
-    "gulp_cli":"node_modules/.bin/gulp",
-    "server":"npm run gulp_cli",
-    "start":"npm run prod"
+    "gulp_cli": "node_modules/.bin/gulp",
+    "server": "npm run gulp_cli",
+    "start": "node listern.js"
   },
   "repository": {
     "type": "git",
@@ -17,19 +17,23 @@
   "author": "心叶",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/yelloxing/yelloxing.github.io/issues"
+    "email": "yelloxing@gmail.com"
   },
   "homepage": "https://github.com/yelloxing/yelloxing.github.io#readme",
   "devDependencies": {
+    "chokidar": "^2.0.0",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.2.0",
+    "gulp-livereload": "^3.8.1",
+    "luna-library": "^1.0.3",
     "node-sass": "^4.5.3",
     "optimize-css-assets-webpack-plugin": "^3.0.0",
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
+    "shelljs": "^0.8.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.5.9",
     "webpack": "^3.4.1"

@@ -14,20 +14,18 @@ module.exports = {
         filename: 'script.js'
     },
     module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'css-loader',
-                    use: ['postcss-loader', 'sass-loader']
-                })
-            }, {
+        rules: [{
+            test: /\.scss$/,
+            use: ExtractTextPlugin.extract({
+                fallback: 'css-loader',
+                use: ['postcss-loader', 'sass-loader']
+            })
+        }, {
 
-                test: /\.(png)|(jpg)$/,
-                loader: "url-loader"
+            test: /\.(png)|(jpg)$/,
+            loader: "url-loader"
 
-            }
-        ]
+        }]
     },
     plugins: [
         new ExtractTextPlugin("style.css"),

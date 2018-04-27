@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7416565268644863",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="https://yelloxing.github.io/webpage/index.html"  class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/css.png")'>
+                CSS 笔记
+            </div>
+            <ul>
+                <li><a href='margin.html' class='select'>margin 外边距</a></li>
+                <li><a href='verticalAlign.html'>vertical-align 垂直对齐</a></li>
+                <li><a href='TranformTransitionsAnimation.html'>动画，转换和过渡</a></li>
+                <li><a href='zIndex.html'>层叠上下文和层叠水平</a></li>
+                <li><a href='overflow.html'>overflow 溢出</a></li>
+                <li><a href='ContainerBlock.html'>包含块</a></li>
+                <li><a href='IFC.html'>IFC内联格式化上下文</a></li>
+                <li><a href='BFC.html'>BFC块级排版上下文</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第一步：基础说明。
+                    </p>
+                    <p class="block">
+                        margin的意思很容易明白，就是外边距，用更通俗的话说，就是二个盒子之间间距的设置。
+                    </p>
+                    <p class="block">
+                        margin有许多需要注意的地方，比如块级元素垂直相邻外边距会合并，行内元素实际上不占上下外边距，左右外边距也不会合并，浮动元素的外边距也不会合并。
+                    </p>
+                    <p class="block">
+                        普通元素的margin百分百是按照父级元素的宽来计算的，而绝对定位的元素的margin百分比是按照第一个定位元素（relative，absolute和fixed）的宽来计算的。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第二步：block元素重叠。
+                    </p>
+                    <p class="block">
+                        block元素（不考虑float和absolute）在垂直方向发生margin重叠（不考虑writing-mode改变书写方式）；margin三种重叠：1.相邻兄弟元素；2.父亲元素和第一个或最后一个孩子元素；3.空的block元素。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第三步：重叠条件。
+                    </p>
+                    <p class="block">
+                        父子元素重叠条件（margin-top）
+                        <span class="list">1.父元素非块状格式上下文元素；</span>
+                        <span class="list">2.父元素和第一个子元素之间没有inline元素分割；</span>
+                        <span class="list">3.父元素没有border-top或padding-top设置。</span>
+                    </p>
+                    <p class="block">
+                        父子元素重叠条件（margin-bottom）
+                        <span class="list">1.父元素非块状格式上下文元素；</span>
+                        <span class="list">2.父元素没有border-bottom或padding-bottom设置；</span>
+                        <span class="list">3.父元素和最后一个子元素之间没有inline元素分割；</span>
+                        <span class="list">4.父元素没有height,min-height和max-height的限制。</span>
+                    </p>
+                    <p class="block">
+                        空的block元素重叠
+                        <span class="list">1.元素没有border或padding或inline设置；</span>
+                        <span class="list">2.没有height或者min-height设置。</span>
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第四步：有价值的细节。
+                    </p>
+                    <p class="block">
+                        重叠计算方法：正正取最大、负负取最小和正负相加。
+                    </p>
+                    <p class="block">
+                        在书写方向的垂直方向，margin:auto会自动分配剩余空间（剩余空间的意思简单的可以理解为：在没有设置宽之前的长度去掉你设置的宽余下的那段距离）。
+                    </p>
+                    <p class="block">
+                        绝对定位元素的非定位方向margin无效（貌似是的，不过描述不准确，其实一直有效，只不过现在只可以影响自己，无法改变兄弟了，因此看起来失效了）。
+                    </p>
+                    <p class="block">
+                        最后一个题外话，margin-collapse可以设置重叠方式（collapse默认，重叠、discard取消margin,等于margin:0和separate分隔，就是不发生重叠）。
+                    </p>
+                </section>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

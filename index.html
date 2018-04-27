@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
     <meta charset='utf-8'>
@@ -16,267 +16,75 @@
     <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
-    <link rel="stylesheet" href="style.css" class="style">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="./style.css" class="style">
+    <script src="./script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-7416565268644863",
-            enable_page_level_ads: true
-        });
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7416565268644863",
+        enable_page_level_ads: true
+      });
     </script>
 </head>
 
-<body>
+<body class='home'>
     <header>
         <div>
             <nav>
                 云笔记-遇见更好的你
                 <ul>
-                    <li>
-                        前端
-                        <ul>
-                            <li style='background-image:url("./image/nav/html5.png")' onclick='openBook("page/web/html5/nav.html")'>H5笔记</li>
-                            <li style='background-image:url("./image/nav/css.png")' onclick='openBook("page/web/css/nav.html")'>CSS笔记</li>
-                            <li style='background-image:url("./image/nav/javascript.png")' onclick='openBook("page/web/javascript/nav.html")'>ES笔记</li>
-                        </ul>
-                    </li>
-                    <li>
-                        开发语言
-                        <ul>
-                            <li style='background-image:url("./image/nav/python3.png")' onclick='openBook("page/devLanguage/python3/nav.html")'>Python3</li>
-                            <li style='background-image:url("./image/nav/c.png")' onclick='openBook("page/devLanguage/c/nav.html")'>C语言</li>
-                        </ul>
-                    </li>
-                    <li>
-                        计算机
-                        <ul>
-                            <li style='background-image:url("./image/nav/algorithm.png")' onclick='openBook("page/computer/Algorithm/nav.html")'>算法设计</li>
-                        </ul>
-                    </li>
-                    <li>
-                        工具
-                        <ul>
-                            <li style='background-image:url("./image/nav/git.png")' onclick='openBook("page/tool/git/nav.html")'>Git命令</li>
-                            <li style='background-image:url("./image/nav/mac.png")' onclick='openBook("page/tool/mac/nav.html")'>Mac使用</li>
-                        </ul>
-                    </li>
-                    <li>其它</li>
+                    <li><a href="pages/web.html">前端</a></li>
+                    <li><a href="pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="pages/computer.html">计算机</a></li>
+                    <li><a href="pages/tool.html">工具</a></li>
+                    <li><a href="pages/other.html">其它</a></li>
                 </ul>
-                <div class='yelloxing'>
-                    心叶
+                <div class='yelloxing' onclick="window.location.href='/stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
                 </div>
-                <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
-                    yelloxing@gmail.com
-                </a>
+                <a href="./opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="https://yelloxing.github.io/webpage/index.html"  class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
     <section id='book-content'>
-        <nav>
-            <div style='background-image:url("image/nav/html5.png")'>
-                H5 笔记
-            </div>
-            <ul>
-                <li id='IndexDB' class='select' onclick='openContent(this,"page/web/html5/content/IndexDB.html");'>IndexDB 索引数据库</li>
-                <li id='WebSql' onclick='openContent(this,"page/web/html5/content/WebSql.html");'>Web Sql 关系数据库</li>
-                <li id='Storage' onclick='openContent(this,"page/web/html5/content/Storage.html");'>Storage 存储</li>
-                <li id='WebWorkers' onclick='openContent(this,"page/web/html5/content/WebWorkers.html");'>Web Workers</li>
-                <li id='dropUpload' onclick='openContent(this,"page/web/html5/content/dropUpload.html");'>拖拽上传文件</li>
-            </ul>
-        </nav>
-        <div id='content'>
-            <article class='notebook content'>
-                <section class='section'>
-                    <p class='block'>
-                        IndexDB采用对象保存数据，和平时使用的关系型数据库的操作有比较大的区别，下面从简单使用出发来慢慢学习它。
-                    </p>
-                </section>
-                <section class='section'>
-                    <p class='block title-flag'>
-                        第一步：打开数据库，关闭数据库和删除数据库。
-                    </p>
-                    <pre class='code'>var database,indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-    var request = indexedDB.open("databaseName",1);
-    //下面注册回调方法
-    request.onerror = function(e) {
-        console.log(e.target.errorCode);
-    };
-    request.onsuccess = function(e) {
-        database = e.target.result;
-        console.log('创建或打开数据库成功');
-    };
-    request.onupgradeneeded = function(e) {
-        database = e.target.result;
-    };</pre>
-                    <p class="blcok">
-                        最终返回的request是一个IDBOpenDBRequest对象，通过在其注册需要的回调方法来在其中提示错误或获取数据库连接对象。
-                    </p>
-                    <p class="block">
-                        其中需要注意的是，onsuccess和onupgradeneeded的区别在于，前者是成功回调，后者是在打开的数据库不是我们期望的最新版本时触发，简单的说触发只有二种情况：
-                        <span class="list">1.数据库不存在，第一次建立时；</span>
-                        <span class="list">2.indexedDB.open的第二个参数高于现在的数据库版本号时。</span>
-                        <span class="warn">
-                            indexedDB.open的第二个参数请始终使用整数，不要使用小数，可能会有问题，其次onupgradeneeded是我们唯一可以修改数据库结构（对象存储空间结构）的地方。
-                        </span>
-                    </p>
-                    <p class="block">
-                        还有二个关于数据库的操作：
-                        <span class="list">1.删除数据库：indexedDB.deleteDatabase("databaseName");</span>
-                        <span class="list">2.关闭数据库：database.close();</span>
-                    </p>
-                </section>
-                <section class="section">
-                    <p class="block title-flag">
-                        第二步：对象存储空间（类似表）。
-                    </p>
-                    <p class="block">
-                        对象存储空间就相当于关系型数据库里面的表，为了可以使用它，我们需要如下面这样来先定义它：
-                    </p>
-                    <pre class='code'>request.onupgradeneeded = function(e) {
-        database = e.target.result;
-        //创建一个对象存储空间，并且用username作为主键
-        var store = database.createObjectStore("students",{keyPath:"username"});
-        //另一种设置主键的方法
-        //var store = database.createObjectStore("students",{autoIncrement:true});
-    };</pre>
-                </section>
-                <section class="section">
-                    <p class="block title-flag">
-                        第三步：事务。
-                    </p>
-                    <p class="block">
-                        创建对象存储空间之后，数据库中的增删改查都是通过事务transaction来完成的，在数据库对象上面调用transaction()方法就可以创建事务对象了。
-                    </p>
-                    <p class="block">
-                        上面第二步是设置对象存储空间，我们会发现最后返回了这个对象，通过这个对象，我们就可以存储这个"表"了，那如果后续我们不是创建的时候，如果想修改对象存储空间里面的数据的时候，如何获取这个对象滴，如下所示：
-                    </p>
-                    <pre class='code'>var transaction= database.transaction(["students"],'readwrite');
-                var store=transaction.objectStore("students");</pre>
-                    <span class="warn">
-                        transaction()中传入的第一个参数表示事务准备管理的对象存储空间，上面用的是数组，可以用很多个，用哪个下面第二行这样就取哪个，如果和这里一样就一个，也可以直接传递字符串；transaction()中传入的第二个参数为对该空间操作的方式，默认为readonly只读操作，代码中传入的是readwrite读写操作。
-                    </span>
-                    <p class="block">
-                        第二步和第三步例子里面返回的store其实是对象存储空间，操作'表'的方法就由它提供。
-                    </p>
-                </section>
-                <section class="section">
-                    <p class="block title-flag">
-                        第四步：操作对象存储空间。
-                    </p>
-                    <p class="block">
-                        添加数据用的是add方法（调用的时候保证主键和需要更新的一样就会实现更新），下面是例子：
-                    </p>
-                    <pre class='code'>//需要添加进去的二条数据
-    const studentsData = [
-        {username: "Alice",  age: 15, hobby: "绘画" },
-        { username: "Tom",  age: 12, hobby: "跳舞" }
-    ];
-    //添加数据，重复添加会报错
-    store.add(studentsData[0]);
-    store.add(studentsData[1]);</pre>
-                    <p class="block">
-                        余下的修改、获取和删除等类似，用一个例子给出，如下所示：
-                    </p>
-                    <pre class='code'>//添加数据，重复添加会更新原有数据
-    store.put(studentsData[0]);
-    //根据存储空间的键找到对应数据
-    var data=store.get('Tom');
-    //删除某一条记录
-    store.delete(key);
-    //删除存储空间全部记录
-    store.clear();</pre>
-                </section>
-                <section class="section">
-                    <p class="block title-flag">
-                        第五步：索引。
-                    </p>
-                    <p class="block">
-                        在indexedDB中有两种索引，一种是自增长的int值，一种是keyPath：自己指定索引列，下面说的是第二种keyPath。
-                    </p>
-                    <pre class='code'>request.onupgradeneeded = function(e) {
-                    database = e.target.result;
-                    store=db.createObjectStore('students',{keyPath: 'username'});
-                    store.createIndex('nameIndex','name',{unique:true});
-                    store.createIndex('ageIndex','age',{unique:false});
-                };</pre>
-                    <p class="block">
-                        这样我们就创建了二个索引nameIndex和ageIndex。
-                        <span class="warn">
-                            createIndex方法的三个参数方便表示索引名称、索引属性字段名和索引属性值是否唯一。
-                        </span>
-                    </p>
-                    <p class="block">
-                        我们知道索引存在的目的是迅速定位数据，提高搜索速度，接着我们来通过刚刚新建立的索引来获取数据。
-                    </p>
-                    <pre class='code'>//获取指定的索引
-    var index = store.index("nameIndex");
-    //获取数据
-    index.get('Tom').onsuccess=function(e){
-        var student=e.target.result;
-    }</pre>
-                    <span class="warn">
-                        这样我们可以利用索引快速获取数据，name的索引是唯一的没问题，但是对于age索引只会取到第一个匹配值，要想得到所有age符合条件的值就需要使用游标了
-                    </span>
-                </section>
-                <section class="section">
-                    <p class="block title-flag">
-                        第六步：游标。
-                    </p>
-                    <p class="block">
-                        如果你想遍历每个值，你可以使用游标，下面是例子代码：
-                    </p>
-                    <pre class='code'>var request=index.openCursor();
-    //var IDBKeyRange = window.IDBKeyRange ||window.webkitIDBKeyRange ||window.msIDBKeyRange;
-    //var request=index.openCursor(IDBKeyRange.only(26));
-    request.onsuccess=function(e){
-        var cursor=e.target.result;
-        //这里的判断是必须的，必须的，if也没有写错，不是while
-        if(cursor){
-            var student=cursor.value;
-            cursor.continue();
-        }
-    }</pre>
-                    <p class="block">
-                        这里还需要提一点的是，openCursor()或openKeyCursor()这个方法可以传递一个参数，实现对搜索进行筛选，具体有下面这些筛选方法：
-                        <span class="list">1.IDBKeyRange.only(value):只获取指定数据；</span>
-                        <span class="list">2.IDBKeyRange.lowerBound(value,isOpen)：获取最小是value的数据，第二个参数用来指示是否排除value值本身，也就是数学中的是否是开区间；</span>
-                        <span class="list">3.IDBKeyRange.upperBound(value,isOpen)：和上面类似，用于获取最大值是value的数据；</span>
-                        <span class="list">4.IDBKeyRange.bound(value1,value2,isOpen1,isOpen2)：参考上面的说明应该不言而喻了吧。</span>
-                        <span class="warn">
-                            需要明白的是，这里的筛选范围，指的是index而言的，就是说索引用的是哪个，改索引建立指定的字段，该字段的值是坐标，是对它进行筛选。
-                        </span>
-                    </p>
-                </section>
-            </article>
+        <div class='home'>
+            <script>
+                window.location.href = 'pages/web.html';
+            </script>
         </div>
-
     </section>
     <footer>
         <div>
             <div class='info'>
-                yelloxing.github.io is sponsored by yelloxing | 本网站由心叶支持
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
             </div>
             <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
                 Fork me on Github
             </div>
         </div>
     </footer>
-    <script>
-        var hash = window.location.hash;
-        var hashArray = window.location.hash.replace(/^#/, '').trim().split('/');
-        if (hashArray.length >= 2) {
-            window.openBook("page/" + hashArray[0] + "/" + hashArray[1] + "/nav.html");
-            window.location.hash = hash;
-        } else {
-            document.getElementById("")
-            window.bookname = '#web/html5';
-            window.location.hash = '#web/html5/IndexDB';
-            window.addClipboard();
-            //最初的代码
-            // window.openBook("page/web/html5/nav.html");
-        }
-    </script>
 </body>
 
 </html>

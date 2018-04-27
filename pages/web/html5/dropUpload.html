@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7416565268644863",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="https://yelloxing.github.io/webpage/index.html"  class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/html5.png")'>
+                H5 笔记
+            </div>
+            <ul>
+                <li><a href='IndexDB.html'>IndexDB 索引数据库</a></li>
+                <li><a href='WebSql.html'>Web Sql 关系数据库</a></li>
+                <li><a href='Storage.html'>Storage 存储</a></li>
+                <li><a href='WebWorkers.html'>Web Workers</a></li>
+                <li><a href='dropUpload.html' class='select'>拖拽上传文件</a></li>
+                <li><a href='SVG.html'>SVG 画图</a></li>
+                <li><a href='BezierSvg.html'>SVG 贝塞尔曲线</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class='block'>
+                        废话不多，我们先不说如何实现的，请先看一个实现的例子，你可以拖拽上传，点击选择上传（这里演示的是上传图片，支持一次选择多张和拖拽多张）：
+                    </p>
+                    <p class="block dropView" id='dropView'>
+                        <label class='btn' for='imgsrc' ondragenter='handler()' ondragover='handler()' ondrop='dropImg()'></label>
+                        <span class='helper'></span>
+                        <span class='helper'></span>
+                        <span class='helper'></span>
+                        <input type='file' accept="image/*" id='imgsrc' class='imgsrc' multiple onchange='addImg()' />
+                    </p>
+                    <p class="block">
+                        好了，演示的例子已经搞定了，是不是非常简单，是的，不过我喜欢简单的东西，越是简单越可以看清楚本质，毕竟笔记的东西还是简单的比较好。接下来，我们来一点点聊聊拖拽上传的细节问题，不过在这之前，还是先来说明一下大致的过程。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第一步：释放目标时触发的事件。
+                    </p>
+                    <p class="block">
+                        这里我们只关心拿到file对象，至于数据的问题，这里演示了一种方式，更多的方式看后面关于file对象的说明，其实关于拖拽方面，我们就关心了几个关键事件：
+                        <span class='list'>1.ondragenter：当被鼠标拖动的对象进入其容器范围内时触发此事件；</span>
+                        <span class='list'>2.ondragover：当某被拖动的对象在另一对象容器范围内拖动时触发此事件；</span>
+                        <span class='list'>3.ondrop：在一个拖动过程中，释放鼠标键时触发此事件；</span>
+                        <span class='list'>4.ondragleave：当被鼠标拖动的对象离开其容器范围内时触发此事件。</span>
+                    </p>
+                    <p class="block">
+                        对于实现拖拽上传（不是完整的拖拽知识）方面，还有一个对象需要关心一下：
+                        <span class='list'>DataTransfer对象：拖拽对象用来传递的媒介，使用一般为Event.dataTransfer</span></p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第二步：页面内元素拖拽。
+                    </p>
+                    <p class="block">
+                        如果被拖拽的内容是页面内的，情况就和上面有点不同了，不过大同小异，这里就简单说明一下。
+                    </p>
+                    <pre class='code'>&lt;div draggable="true" ondragstart="drag(event)"&gt;这是一段可移动的段落。&lt;/div&gt;</pre>
+                    <p class="block">
+                        拖拽的元素需要定义属性draggable="true"，上面还注册了ondragstart事件，我们可以通过修改DataTransfer对象来实现数据传递：
+                    </p>
+                    <pre class='code'>function drag(event){
+        ev.dataTransfer.setData("Text",event.target.innerText);
+    }</pre>
+                    <p class="block">
+                        这样就可以和第一个例子里面获取图片地址一样，在拖拽进去放开以后通过dataTransfer再获取这个数据：
+                    </p>
+                    <pre class='code'>var data=event.dataTransfer.getData("Text");</pre>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第三步：在拖动目标上触发事件 (源元素)。
+                    </p>
+                    <p class="block">
+                        下面是针对自定义拖拽对象上面可以注册的事件：
+                        <span class='list'>1.ondragstart：用户开始拖动元素时触发；</span>
+                        <span class='list'>2.ondrag：元素正在拖动时触发；</span>
+                        <span class='list'>3.ondragend：用户完成元素拖动后触发。</span>
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第四步：属性。
+                    </p>
+                    <p class="block">
+                        除了上面说的，还有二个属性，event.dataTransfer.dropEffect属性和event.dataTransfer.effectAllowed属性。
+                        <span class='list'>1.通过dropEffect属性可以知道被拖动的元素能够执行哪种行为;</span>
+                        <span class="warn">
+                none：不能把拖动的元素放在这里；move：应该把拖动的元素移动到放置目标；copy：应该把拖动的元素复制到放置目标；link：放置目标会打开拖动的元素(但拖动的元素必须是个链接，有URL地址)。
+            </span>
+                        <span class='list'>2.effectAllowed属性表示允许拖动元素的哪种行为(dropEffect)。</span>
+                        <span class="warn">
+                uninitialized：没有给被拖动元素设置任何放置行为；none：被拖动的元素不能有任何行为；copy：只允许值为”copy”的dropEffect；link：只允许值为”link”的dropEffect；move：只允许值为”move”的dropEffect；copyLink：允许值为”copy”和”link”的dropEffect；copyMove：允许值为”copy”和”move”的dropEffect；linkMove：允许值为”link”和”move”的dropEffect；all：允许任意dropEffect。
+            </span>
+                        <span class="error">
+                要设置effectAllowed属性必须在ondragstart事件处理程序中设置
+            </span>
+                    </p>
+                </section>
+            </article>
+            <script>
+                /**
+                 *拖拽上传
+                 */
+                function dropImg(event) {
+                    var targetDom = document.getElementById('dropView');
+                    var event = event || window.event;
+                    handler(event);
+                    var files = event.dataTransfer.files;
+                    loadImgFile(targetDom, files);
+                }
+
+                /**
+                 * 阻止默认事件和冒泡
+                 */
+                function handler(event) {
+                    var event = event || window.event;
+                    event.preventDefault ? event.preventDefault() : event.returnValue = false;
+                    event.stopPropagation ? event.stopPropagation() : event.cancelBubble = true;
+                }
+
+                /**
+                 * 点击选择上传
+                 */
+                function addImg(event) {
+                    var targetDom = document.getElementById('dropView');
+                    event = event || window.event;
+                    loadImgFile(targetDom, event.target.files);
+                }
+
+                /**
+                 * 通过file加载图片，关于file的细节后面文章会单独学习交流
+                 */
+                function loadImgFile(targetDom, files) {
+                    for (var flag = 0; flag < files.length; flag++) {
+                        (function(flag) {
+                            var reader = new FileReader();
+                            reader.onload = (function(file) {
+                                return function(event) {
+                                    var base64 = this.result; //这个就是base64的数据了
+                                    var frameDiv = document.createElement("div");
+                                    var image = new Image();
+                                    image.onload = function() {
+                                        var width = image.width; //获取选择的图片大小，数字，单位是px
+                                        var height = image.height;
+                                        var bgset = "";
+                                        if (width <= 300 && height <= 240) {
+                                            bgset = "background-size: auto auto;";
+                                        } else if (width <= 300) {
+                                            bgset = "background-size: auto 100%;";
+                                        } else if (height <= 240) {
+                                            bgset = "background-size: 100% auto";
+                                        } else {
+                                            height = height * 0.8;
+                                            if (width > height) {
+                                                bgset = "background-size: 100% auto";
+                                            } else {
+                                                bgset = "background-size: auto 100%;";
+                                            }
+                                        }
+                                        frameDiv.innerHTML = "<span style='background-image:url(" + base64 + ");" + bgset + "'></span>";
+                                        window.prepend(targetDom, frameDiv.childNodes[0]);
+                                    };
+                                    image.src = base64;
+                                    // FileReader 的 result 可以有 3 种形式, 它取决于具体调用读取的方法
+                                    // 调用 reader. readAsArrayBuffer, 则 result 为 ArrayBuffer 对象
+                                    // 调用 reader. readAsText, 则 result 为 字符串
+                                    // 调用reader. readAsDataURL, 则 result 为 DataURL, DataURL 可直接 赋值给 img.src
+                                };
+                            })(files[flag]);
+                            reader.readAsDataURL(files[flag]);
+                        })(flag);
+                    }
+                }
+            </script>
+            <style>
+                .dropView {
+                    text-indent: 0;
+                    text-align: center;
+                    font-size: 0;
+                }
+
+                .dropView>span,
+                .dropView>.btn {
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    display: inline-block;
+                    width: 300px;
+                    height: 240px;
+                    background-color: rgb(255, 255, 255);
+                }
+
+                .dropView>label.btn {
+                    cursor: pointer;
+                    box-sizing: border-box;
+                    background-image: url('data:image/png;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAAwADIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKAPxt/aa8UeIPFv7QPjLVfEmrz3k6+Jb2GN55C2yJJ3RI1z91VUAADgAVw8UskMizQyMjowKspwQR0INdT8d/wDkuHjP/sa9R/8ASmSuUoA/YL9jzxHrni39mHwT4g8SanLeXtxoUXn3Vw5aSUqSoZmPLHCjJPJPJr0qvKP2Gv8Ak0nwH/2A1/8AQ2r1egAooooA/HnxP+1z+0x4q8QXfiG7+Oniu2e7naQ22na/cW8EWTnakcbhUUdAAKof8NM/tIf9HA+N/wDwq7z/AOOVxU0MtvK0E8TI6MVdHGCpHBBHY02gCW+vr3VL2bU9TvJbi5uJWluLieQu8rscszMeWJJJJPJJqKiigDrdE+Pnx18M6TBoPhv40+LdPsbVNltZWPiO6iihX+6qLIAo9gKtj9pr9pFSGH7QXjfIPH/FV3n/AMcrh6KAPojSv+CoH7Vul6XbaYfE1jcfZrdIvtFzp0byS7VA3O2OWOMk9yaK8Fh8MeI7iJZ4NBvHR1DI62zEMDyCDjkUUAfr14i/ZK/Zo8Wa3c+I/EPwR8PXN9eSmW6uW09VaVzyXbbjLE8k9SeTVL/hij9k/wD6IL4d/wDAL/69eo0UAfit8YtL0/Q/i74q0XSLRLe0s/Ed9BawRjCxRpcOqqB6AAD8K5yu6/aa8L+IPCX7QPjLSvEmkT2c7eJb2aNJ4yu+J53dJFz95WUggjgg1w8UUk0iwwxs7uwCqoyST0AFAH6Y/shfso/s4eNv2afB3ivxZ8HNDv8AUb7SFku7y5tdzyvuYbic8nivSV/Yp/ZQVgw+Anhzg97LP9am/Y88Oa54S/Zh8E+H/EmmS2d7BoUXn2s6FXiLEsFYHlThhkHkHg16VQBR0/wx4b0mwg0vS/D9jbW1tCsVvbwWqIkUagBVVQMAAAAAdAKKvUUAf//Z');
+                }
+
+                .dropView>input.imgsrc {
+                    display: none;
+                }
+
+                .dropView>span.helper {
+                    width: 300px;
+                    height: 0;
+                    background-color: transparent;
+                }
+            </style>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

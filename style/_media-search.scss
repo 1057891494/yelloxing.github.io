@@ -36,6 +36,9 @@ only screen and (max-device-width:750px) {
     #book-content>#content {
         min-height: calc(111vh - 2.3rem);
     }
+    body.opensource>section {
+        min-height: calc(111vh - 1.7rem);
+    }
 }
 
 @media only screen and (max-width: 660px),
@@ -54,6 +57,9 @@ only screen and (max-device-width:660px) {
     }
     #book-content>#content {
         min-height: calc(125vh - 2.3rem);
+    }
+    body.opensource>section {
+        min-height: calc(125vh - 1.7rem);
     }
 }
 
@@ -74,6 +80,9 @@ only screen and (max-device-width:600px) {
     #book-content>#content {
         min-height: calc(143vh - 2.3rem);
     }
+    body.opensource>section {
+        min-height: calc(143vh - 1.7rem);
+    }
 }
 
 @media only screen and (max-width: 510px),
@@ -92,6 +101,9 @@ only screen and (max-device-width:510px) {
     }
     #book-content>#content {
         min-height: calc(166.7vh - 2.3rem);
+    }
+    body.opensource>section {
+        min-height: calc(166.7vh - 1.7rem);
     }
 }
 
@@ -112,6 +124,9 @@ only screen and (max-device-width:440px) {
     #book-content>#content {
         min-height: calc(200vh - 2.3rem);
     }
+    body.opensource>section {
+        min-height: calc(200vh - 1.7rem);
+    }
 }
 
 @media only screen and (max-width: 370px),
@@ -127,5 +142,8 @@ only screen and (max-device-width:370px) {
     header,
     footer {
         width: 217.4vw;
+    }
+    body.opensource>section {
+        min-height: calc(217.4vh - 1.7rem);
     }
 }

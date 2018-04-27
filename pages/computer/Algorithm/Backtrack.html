@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7416565268644863",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="https://yelloxing.github.io/webpage/index.html"  class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/algorithm.png")'>
+                算法设计与分析
+            </div>
+            <ul>
+                <li>
+                    <a href='RecursionTactics.html'>递归与分治策略</a>
+                </li>
+                <li>
+                    <a href='DynamicPlan.html'>动态规划</a>
+                </li>
+                <li>
+                    <a href='GreedyAlgorithm.html'>贪心算法</a>
+                </li>
+                <li>
+                    <a href='Backtrack.html' class='select'>回溯法</a>
+                </li>
+                <li>
+                    <a href='BranchLimit.html'>分支限界法</a>
+                </li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class="title-flag block">
+                        基本思想
+                    </p>
+                    <p class="block">
+                        说的直白点就是深度优先方式系统搜索问题的算法。
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class="title-flag block">
+                        算法使用例子
+                    </p>
+                    <p class="block little-flag">
+                        题目
+                    </p>
+                    <p class="block">
+                        有一批共n个集装箱要装上两艘载重方别为c1和c2的轮船上，其中集装箱i的重量为wi，且全部集装箱重量不大于两艘载重之和，问是否有一个装载方案完成装载。
+                    </p>
+                    <p class="block little-flag">
+                        思路
+                    </p>
+                    <p class="block">
+                        对第一艘船，构造一个0/1树，0代表不选择，1代表选择，然后分别去从根节点试图爬到叶节点，去一一记录下来可行的，选择最小的为解，余下的判断第二艘船是否装的下即可。
+                    </p>
+                    <p class="block little-flag">
+                        代码实现
+                    </p>
+                    <p class="block demo">
+                        <span onclick='showCode("javaCode")'>Java代码</span>
+                        <span onclick='showCode("pythonCode")'>Python代码</span>
+                        <span onclick='showCode("javascriptCode")'>JavaScript代码</span>
+                        <span onclick='showCode("cCode")'>C语言代码</span>
+                        <pre id='javaCode' class='code'>public class LoadQuestion{
+
+        static int weight1=30;//第一艘船载重
+        static int weight2=10;//第二艘船载重
+        static int w[]={1,9,9,4,4,9};//集装箱
+
+        static int nowW1=0;//当前载重
+        static int nowBest1=0;//当前最优装载
+        static int n=w.length;//集装箱个数
+
+        public static void main(String [] args){
+            Loading(1);
+            int firstLoad=nowBest1;
+            int all=0;
+            for(int i=0;i&lt;w.length;i++){
+                all+=w[i];
+            }
+            System.out.println("第一艘载重："+firstLoad);
+            if(all&gt;weight2+firstLoad){
+                System.out.println("失败");
+            }else{
+                System.out.println("成功");
+            }
+        }
+
+        public static void Loading(int deep){
+            if(deep>n){//如果到达根
+                if(nowW1&gt;nowBest1) nowBest1=nowW1;
+                return;
+            }
+            if(nowW1+w[deep-1]&lt;=weight1){//如果1分支可以
+                nowW1+=w[deep-1];
+                Loading(deep+1);
+                nowW1-=w[deep-1];
+            }
+            //0分支
+            Loading(deep+1);
+        }
+    }</pre>
+                        <pre id='pythonCode' class='code default'>#!/usr/bin/python
+    # coding=utf
+
+    weight1 = 30;             #第一艘船载重
+    weight2 = 10;             #第二艘船载重
+    w = [1, 9, 9, 4, 4, 9]; #集装箱
+
+    nowW1 = 0;    #当前载重
+    nowBest1 = 0; #当前最优装载
+    n = len(w); #集装箱个数
+
+    def Loading(deep):
+        global nowW1;
+        global nowBest1;
+        if (deep &gt; n):
+        #如果到达根
+            if (nowW1 &gt; nowBest1):
+                nowBest1 = nowW1;
+            return;
+
+        if (nowW1 + w[deep - 1] &lt;= weight1):
+            #如果1分支可以
+            nowW1 += w[deep - 1];
+            Loading(deep + 1);
+            nowW1 -= w[deep - 1];
+
+        #0分支
+        Loading(deep + 1);
+
+    def main():
+        Loading(1);
+        firstLoad = nowBest1;
+        all = 0;
+        for i in range(n):
+
+            all += w[i];
+
+        print "第一艘载重" ,firstLoad;
+        if (all &gt; weight2 + firstLoad):
+
+            print "失败\n";
+
+        else:
+            print "成功\n";
+
+    main();</pre>
+                        <pre id='javascriptCode' class='code default'>var weight1 = 30; //第一艘船载重
+    var weight2 = 10; //第二艘船载重
+    var w = [1, 9, 9, 4, 4, 9]; //集装箱
+
+    var nowW1 = 0; //当前载重
+    var nowBest1 = 0; //当前最优装载
+    var n = w.length; //集装箱个数
+
+    function Loading(deep) {
+        if (deep &gt; n) { //如果到达根
+            if (nowW1 &gt; nowBest1)
+                nowBest1 = nowW1;
+            return;
+        }
+        if (nowW1 + w[deep - 1] &lt;= weight1) { //如果1分支可以
+            nowW1 += w[deep - 1];
+            Loading(deep + 1);
+            nowW1 -= w[deep - 1];
+        }
+        //0分支
+        Loading(deep + 1);
+    }
+
+    function main() {
+        Loading(1);
+        var firstLoad = nowBest1;
+        var all = 0;
+        for (var i = 0; i &lt; n; i++) {
+            all += w[i];
+        }
+        console.log("第一艘载重：" + firstLoad + "\n");
+        if (all &gt; weight2 + firstLoad) {
+            console.log("失败\n");
+        } else {
+            console.log("成功\n");
+        }
+    }
+
+    main();</pre>
+                        <pre id='cCode' class='code default'>#include &lt;stdio.h&gt;
+
+    int weight1 = 30;             //第一艘船载重
+    int weight2 = 10;             //第二艘船载重
+    int w[] = {1, 9, 9, 4, 4, 9}; //集装箱
+
+    int nowW1 = 0;    //当前载重
+    int nowBest1 = 0; //当前最优装载
+    int n = sizeof(w)/sizeof(int); //集装箱个数
+
+    void Loading(int deep)
+    {
+        if (deep &gt; n)
+            { //如果到达根
+                if (nowW1 &gt; nowBest1)
+                    nowBest1 = nowW1;
+                return;
+            }
+        if (nowW1 + w[deep - 1] &lt;= weight1)
+        { //如果1分支可以
+            nowW1 += w[deep - 1];
+            Loading(deep + 1);
+            nowW1 -= w[deep - 1];
+        }
+        //0分支
+        Loading(deep + 1);
+    }
+
+    int main()
+    {
+        Loading(1);
+        int firstLoad = nowBest1;
+        int all = 0;
+        for (int i = 0; i &lt; n; i++)
+        {
+            all += w[i];
+        }
+        printf("第一艘载重：%d\n" ,firstLoad);
+        if (all &gt; weight2 + firstLoad)
+        {
+            printf("失败\n");
+        }
+        else
+        {
+            printf("成功\n");
+        }
+    }</pre>
+                    </p>
+                </section>
+            </article>
+            <style>
+                .default {
+                    display: none;
+                }
+
+                .block.demo span {
+                    color: #f6f8f8;
+                    background-color: #03A9F4;
+                    padding: 5px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            </style>
+            <script>
+                function showCode(id) {
+                    document.getElementById('javaCode').style.display = 'none';
+                    document.getElementById('pythonCode').style.display = 'none';
+                    document.getElementById('javascriptCode').style.display = 'none';
+                    document.getElementById('cCode').style.display = 'none';
+                    document.getElementById(id).style.display = 'block';
+                }
+            </script>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

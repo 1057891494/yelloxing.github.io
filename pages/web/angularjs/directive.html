@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7416565268644863",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="https://yelloxing.github.io/webpage/index.html"  class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/angularjs.png")'>
+                AngularJS 笔记
+            </div>
+            <ul>
+                <li><a href='directive.html' class='select'>自定义指令</a></li>
+                <li><a href='ngClass.html'>ngClass</a></li>
+                <li><a href='detail.html'>杂碎知识</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class="block">
+                        <span class='warn'>
+                温馨提示：这里介绍的是自定义指令涉及的内容，不是使用内置指令相关问题。
+            </span>
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class='block title-flag'>
+                        第一步：如何自定义指令。
+                    </p>
+                    <pre class='code'>angular.module('yelloxingApp', []).directive('uiDirective', function() {
+        return {
+            restrict:String,//标明该指令可以在模板中用于元素E、属性A、类C和注释M或组合
+            priority:Number,//设置指令执行优先级，在某个DOM上优先级高的会先执行
+            terminal:Boolean,
+            template:String or Template Function,//就是设置模板，和下面的templateUrl属性二个只可以设置一个，目的一样
+            templateUrl:String or Template Function,//除了字符串，这二个属性还可以设置函数，后面具体介绍
+            replace:Boolean,//指令模板是否替换原来的元素
+            scope:Boolean or Object,
+            controller:String or function(scope, element, attrs) { ... },
+            require:String or Array,
+            //你需要知道link在每个实例都执行一遍，compile全程只会执行一遍
+            link: function(scope, element, attrs,ctrl) { ... },
+            compile:function(element, attrs) {
+                //常用的就是compile的此处写执行一次的代码，或者在link方法里面写和dom有关的操作
+            }
+        };
+    }); </pre>
+                    <p class="block">
+                        上面是大致的说明，不是全面的，后面来具体说明一些没有提及的细节和重要的相关知识。
+                    </p>
+                </section>
+                <section class="section">
+                    <p class="block title-flag">
+                        第二步：自定义指令的细节
+                    </p>
+                    <p class="block little-flag">
+                        scope
+                    </p>
+                    <p class="block">
+                        可以设置boolean或者对象，先来说说boolean，这个比较简单。
+                        <span class="list">1.当设置true的时候，表示继承父scope，是一个子scope；</span>
+                        <span class="list">2.当设置false的时候，直接使用父scope。</span>
+                    </p>
+                    <p class="block">
+                        还有一种对象设置方法，就是设置一种隔离的scope，在使用隔离scope的时候，提供了三种方法同隔离之外的地方交互，下面用一个例子来一一说明。
+                    </p>
+                    <pre class="code">angular.module('yelloxingApp', []).directive("scopeExample", ['$rootScope', function($rootScope) {
+        return {
+            restrict: 'A',
+            scope: {
+                _userDataName: "=userDataName",
+                _onSend: "&onSend",
+                _fromName: "@fromName"
+            },
+            template: `
+                &lt;button ng-click="_useParentMethod()"&gt;
+                    点击按钮调用父级的方法
+                &lt;/button&gt;
+                <!--使用=符号可将本地作用域上的属性与父级作用域上的属性进行双向绑定-->
+                &lt;input ng-model="_userDataName"/&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;fromName={{newfromname}}&lt;/li&gt;
+                    &lt;li&gt;这是从父级获取到的{{_userDataName}}&lt;/li&gt;
+                &lt;/ul&gt;`,
+            link: function($scope, element, attrs) {
+                //使用@符号可将本地作用域的变量与DOM属性的值进行绑定，即这里通过@得到父类fromName的值
+                $scope.newfromname = $scope._fromName;
+                $scope._useParentMethod = function() {
+                    //使用&符号可以在其中调用父类的方法
+                    $scope._onSend({ "email": { "email": "yelloxing@gmail.com" } });
+                    console.log($scope._userDataName);
+                };
+            }
+        };
+    }]);</pre>
+                    <p class="block">
+                        上面是指令的写法，下面来看看控制器里面有什么：
+                    </p>
+                    <pre class="code">$scope.name = "心叶";
+    $scope.user = "yelloxing";
+    $scope.sendMail = function(email){
+        console.error(email);
+    }</pre>
+                    <p class="block">
+                        最后别忘了html里面的使用：
+                    </p>
+                    <pre class="code">&lt;div scope-example user-data-name="user" on-send='sendMail(email)' from-name={{name}}&gt;&lt;/div&gt;</pre>
+                    <p class="block little-flag">
+                        require
+                    </p>
+                    <p class="block">
+                        请求另外的controller，然后作为link方法的第四个参数传递进去，我们需要注意的是查找控制器的方法。
+                    </p>
+                    <p class="block">
+                        查找控制器的方法可以这样理解：使用？表示如果在当前指令中没有找到所需要的控制器，会将null作为传给link函数的第四个参数，如果添加了^前缀，指令会在上游的指令链中查找require参数所指定的控制器，他们也可以组合，比如require: "?^ngModel"，如果没有前缀，指令将会在自身所提供的控制器中进行查找，如果没有找到任何控制器（或具有指定名字的指令）就抛出一个错误。
+                    </p>
+                    <p class="block little-flag">
+                        terminal
+                    </p>
+                    <p class="block">
+                        属性terminal:为true时，指示优先级小于当前指令的指令都不执行，仅执行到本指令。
+                    </p>
+                </section>
+                <section class="section">
+                    <p class="block title-flag">
+                        第三步：重要的相关知识
+                    </p>
+                    <p class="block little-flag">
+                        视图和model之间的数据格式化
+                    </p>
+                    <p class="block">
+                        类似过滤器的功能，有时候我们希望页面显示的是数据经过某种翻译后的样子，以便于约定，不过对于数据库也许简单的序号会更有益，因此你可能会需要在link中使用下面的方法来实现这个功能：
+                        <span class="list">
+                1.ctrl.$formatters.unshift(function(input) {//model到view的数据格式化})；
+            </span>
+                        <span class="list">
+                2.ctrl.$parsers.unshift(function(input) {//view到model的数据格式化})。
+            </span>
+                    </p>
+                    <p class="block">
+                        上面的$formatters和$parsers就是二个队列，视图到model和model到视图，会方便经过里面定义的方法的过滤，有点类似管道流，最后流到目的地。
+                        <span class="error">
+                别忘了设置类似require: "?ngModel"这样的语句去查找控制器。
+            </span>
+                    </p>
+                    <p class="block little-flag">
+                        几个零碎的方法
+                    </p>
+                    <p class="block">
+                        <span class="list">
+                1.根据输入框是否合法来设置true或false：ctrl.$setValidity(errorType, boolean);//errorType表示错误类别，可以自定义
+            </span>
+                        <span class="list">
+                2.设置监听指定的一个model值，当然还有监听集合等方法：$scope.$watch(attrs['ngModel'], function(newValue, oldValue) {});
+            </span>
+                        <span class="list">
+                3.有时候在指令里面新添加的字符串需要被angularjs管理，就可以用下面的方法编译一下：$compile(newHtml)($scope)。
+            </span>
+                    </p>
+                    <p class="block little-flag">
+                        视图和model数据同步问题
+                    </p>
+                    <p class="block">
+                        有时候在指令里面通过jquery修改了input的数据，不过angularjs并不会知道，这时候，你可以选择下面中的一个方法：
+                        <span class="list">
+                1.触发输入框change改变，让Angularjs发现数据改变了，从而去调用$setViewValue(value),同步数据：$("input").trigger("change");
+            </span>
+                        <span class="list">
+                2.直接手动触发同步value到viewValue和modelValue中的行为：ctrl.$setViewValue($scope.info)。
+            </span>
+                    </p>
+                </section>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

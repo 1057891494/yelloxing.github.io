@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='utf-8'>
+    <title>云笔记-遇见更好的你</title>
+    <link rel="icon" href="../../../favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content="云笔记-遇见更好的你" />
+    <meta name="description" content="云笔记-遇见更好的你" />
+    <meta name="author" content="心叶" />
+    <link rel="apple-touch-icon" sizes="52x52" href="52icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="72icon.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="120icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="144icon.png" />
+    <link rel="stylesheet" href="../../../style.css" class="style">
+    <script src="../../../script.js"></script>
+    <script>
+        if (location.hostname == 'localhost' && location.hostname == '127.0.0.1') {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        }
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7416565268644863",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+
+<body class='home'>
+    <header>
+        <div>
+            <nav>
+                云笔记-遇见更好的你
+                <ul>
+                    <li><a href="../../../pages/web.html">前端</a></li>
+                    <li><a href="../../../pages/devLanguage.html">开发语言</a></li>
+                    <li><a href="../../../pages/computer.html">计算机</a></li>
+                    <li><a href="../../../pages/tool.html">工具</a></li>
+                    <li><a href="../../../pages/other.html">其它</a></li>
+                </ul>
+                <div class='yelloxing' onclick="window.location.href='../../../stepbystep.html'">
+                    <div>心叶
+                        <div></div>
+                    </div>
+                </div>
+                <a href="../../../opensource.html" class='opensource' target="_black">开源项目</a>
+                <a href="https://yelloxing.github.io/webpage/index.html"  class='online'>在线演示</a>
+                <div class='contact'>
+                    联系我们
+                    <div>
+                        <a href="mailto:yelloxing@gmail.com?subject=意见反馈（云笔记-只为遇见更好的你）" class='gmail'>
+                            邮箱
+                        </a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=1276327934&site=云笔记-遇见更好的你&menu=yes" class='qq' target="_blank">
+                            QQ
+                        </a>
+                        <a href="https://github.com/yelloxing" class='github' target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id='book-content'>
+        <nav>
+            <div style='background-image:url("../../../image/nav/html5.png")'>
+                H5 笔记
+            </div>
+            <ul>
+                <li><a href='IndexDB.html'>IndexDB 索引数据库</a></li>
+                <li><a href='WebSql.html' class='select'>Web Sql 关系数据库</a></li>
+                <li><a href='Storage.html'>Storage 存储</a></li>
+                <li><a href='WebWorkers.html'>Web Workers</a></li>
+                <li><a href='dropUpload.html'>拖拽上传文件</a></li>
+                <li><a href='SVG.html'>SVG 画图</a></li>
+                <li><a href='BezierSvg.html'>SVG 贝塞尔曲线</a></li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <article class='notebook content'>
+                <section class='section'>
+                    <p class='block'>
+                        前面说的IndexDB是索引型数据库，相对而言，不是真正的数据库，此处介绍的是关系型数据库，使用的方言是SQLlite。
+                        <span class='warn'>
+                温馨提示：目前很多浏览器都支持，不过这却是一个规范上被废弃的功能。
+            </span>
+                    </p>
+                    <p class="block">
+                        这里主要介绍的是下面三个方法：
+                        <span class='list'>1.openDatabase：这个方法使用现有数据库或新建数据库来创建数据库对象；</span>
+                        <span class='list'>2.transaction：这个方法允许我们根据情况控制事务提交或回滚；</span>
+                        <span class='list'>3.executeSql：这个方法用于执行SQL查询。</span>
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class="block title-flag">
+                        第一步：连接数据库。
+                    </p>
+                    <pre class='code'>var dataBase = openDatabase("hobby", "1.0", "个人业余爱好储存数据库", 1024 * 1024,
+        function() {
+            console.log('数据库创建成功');
+        }
+    );</pre>
+                    <p class="block">
+                        <span class="list">1.第一个参数代表数据库名称；</span>
+                        <span class="list">2.第二个参数代表版本号,目前为1.0；</span>
+                        <span class="list">3.第三个参数代表对数据库的描述；</span>
+                        <span class="list">4.第四个参数是用来设置数据的大小；</span>
+                        <span class="list">5.第五个参数是回调函数(可省略)。</span>
+                        <span class="warn">
+                    openDatabase方法打开一个已经存在的数据库，如果数据库不存在，它还可以创建数据库
+            </span>
+                    </p>
+                </section>
+                <section class='section'>
+                    <p class="block title-flag">
+                        第二步：事务。
+                    </p>
+                    <p class="block">
+                        transaction方法用以处理事务，当一条语句执行失败的时候，整个事务回滚，方法包含三个参数：
+                        <span class="list">1.包含事务内容的一个方法；</span>
+                        <span class="list">2.成功回调函数（可选）；</span>
+                        <span class="list">3.失败回调函数（可选）。</span>
+                    </p>
+                    <pre class='code'>dataBase.transaction(function(context){
+        context.executeSql('sql语句一');
+        context.executeSql('sql语句二');
+        context.executeSql('sql语句三');
+    },function(){
+        console.log('执行成功');
+    },function(){
+        console.log('执行失败');
+    });
+        </pre>
+                    <p class="block">
+                        上面一共执行了三条sql语句，其中任何一条sql执行如果遇到错误，整个事务都会回滚。
+                    </p>
+                </section>
+                <section class="section">
+                    <p class="block title-flag">
+                        第三步：执行SQL语句。
+                    </p>
+                    <p class="block">
+                        从上面的事务例子代码应该已经看出来，是在事务里面用executeSql方法来执行sql语句，其中有四个参数：
+                        <span class="list">1.字符串类型的sql语句；</span>
+                        <span class="list">2.用以替换查询字符串中问号的参数，是一个数组；</span>
+                        <span class="list">3.执行成功回调函数（可选），返回两个参数：context和执行的结果；</span>
+                        <span class="list">4.执行失败回调函数（可选），context和失败的错误信息。</span>
+                        <span class="warn">
+                使用的SQL语言是SQLite，如果要创建表，执行对数据的增删改查，使用对应的sql语句就可以了。
+            </span>
+                    </p>
+                </section>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <div class='info'>
+                yelloxing.github.io is sponsored by StepByStep | 本网站由【走一步 再走一步】支持
+            </div>
+            <div class='nav' onclick='window.location.href="https://github.com/yelloxing/yelloxing.github.io"'>
+                Fork me on Github
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!--
+=================================================
+走一步，再走一步。
+=================================================
+-->

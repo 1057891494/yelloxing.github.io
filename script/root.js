@@ -1,4 +1,16 @@
-window.Core={};
-require('./_ajax.js');
-require('./_script.js');
-require('./_tool.js');
+/*! yelloxing.github.io V4 | (c) 2007, 2018 心叶 | Apache-2.0 https://github.com/yelloxing/yelloxing.github.io.git */
+
+// 引入Luna.js
+require('../node_modules/luna-library/luna.js');
+
+// 对页面添加复制功能
+$(function() {
+    $('pre.code').append('<div class="clipboard"></div>');
+    $('div.clipboard').bind('click', function() {
+        $.clipboard($(this).parent().text(), function() {
+            alert('复制成功，现在可以粘贴了.');
+        }, function() {
+            alert('非常抱歉，复制失败！');
+        });
+    });
+});

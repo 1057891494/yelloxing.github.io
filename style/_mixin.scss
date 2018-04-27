@@ -1,0 +1,9 @@
+//清除浮动
+@mixin cleanBoth {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}

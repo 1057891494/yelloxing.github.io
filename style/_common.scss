@@ -18,3 +18,23 @@ html {
         height: 0;
     }
 }
+
+table {
+    width: 100%;
+    border: 2px solid #f0eeee;
+    padding: .1rem;
+    &>thead {
+        &>tr {
+            color: red;
+            line-height: .3rem;
+        }
+    }
+    &>tbody {
+        color: #9E9E9E;
+        font-weight: 300;
+    }
+}
+
+a{
+    text-decoration: none;
+}

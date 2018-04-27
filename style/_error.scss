@@ -1,0 +1,31 @@
+.errorpage {
+    width: 100%;
+    padding-top: 3rem;
+    margin-top: 0.5rem;
+    margin: auto;
+    background-image: url(#{$notFoundImg});
+    background-size: auto 3rem;
+    background-repeat: no-repeat;
+    background-position: center top;
+    text-align: center;
+    &>input {
+        margin-top: 0.5rem;
+        background-color: #ddab64;
+        line-height: 0.4rem;
+        width: 1.6rem;
+        font-size: 0.2rem;
+        border-radius: 0.15rem;
+        color: #fff;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 0.01rem 0.01rem 0.05rem #ddab64;
+            font-size: 0.22rem;
+        }
+        &:first-child {
+            margin-right: 0.5rem;
+        }
+        &:last-child {
+            margin-left: 0.5rem;
+        }
+    }
+}
